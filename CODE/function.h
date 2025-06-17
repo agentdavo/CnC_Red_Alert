@@ -49,74 +49,62 @@
 Map (screen) class heirarchy.
 
  MapeditClass (most derived class) -- scenario editor
-        ³
+        Â³
    MouseClass -- handles mouse animation and display control
-        ³
+        Â³
   ScrollClass -- map scroll handler
-        ³
+        Â³
     HelpClass -- pop-up help text handler
-        ³
+        Â³
      TabClass -- file folder tab screen mode control dispatcher
-        ³
+        Â³
  SidebarClass -- displays and controls construction list sidebar
-        ³
+        Â³
    PowerClass -- display power production/consumption bargraph
-        ³
+        Â³
    RadarClass -- displays and controls radar map
-        ³
+        Â³
  DisplayClass -- general tactical map display handler
-        ³
+        Â³
      MapClass -- general tactical map data handler
-        ³
+        Â³
  GScreenClass (pure virtual base class) -- generic screen control
 
                           AbstractClass
-                                  ³
-                                  ³
-                                  ³
-                                  ³
+                                  Â³
+                                  Â³
+                                  Â³
+                                  Â³
                             ObjectClass
-                                  ³
-       ÚÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄ¿
-   AnimClass  ³  TemplateClass    ³        ÃÄ FuseClass     ³    TerrainClass
-              ³                   ³        ÃÄ FlyClass      ³
-              ³                   ³  BulletClass            ³
-       OverlayClass        MissionClass               SmudgeClass
-                                  ³
-                             RadioClass
-                                  ³
-                                  ÃÄ CrewClass
-                                  ÃÄ FlasherClass
-                                  ÃÄ StageClass
-                                  ÃÄ CargoClass
-                            TechnoClass
-                                  ³
-                       ÚÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+                                  Â³
+       ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã‚Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã‚Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã…Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã‚Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã‚Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Â¿
+                                  Â³
+                       ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„ÃÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Â¿
                    FootClass                           BuildingClass
-                       ³
-         ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÁÂÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-    DriveClass  InfantryClass         ÃÄ FlyClass
-         ³                      AircraftClass
-       ÚÄÁÄÄÄÄÄÄÄÄÄ¿
-       ³           ³
-       ³     VesselClass
-       ³
+                       Â³
+         ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„ÃÃ‚Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Â¿
+    DriveClass  InfantryClass         ÃƒÃ„ FlyClass
+         Â³                      AircraftClass
+       ÃšÃ„ÃÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Â¿
+       Â³           Â³
+       Â³     VesselClass
+       Â³
     UnitClass
 
 
                             AbstractTypeClass
-                                    ³
+                                    Â³
                               ObjectTypeClass
-                                    ³
-             ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-             ³                      ³            ³                 ³
-       TechnoTypeClass              ³            ³                 ³
-             ³                BulletTypeClass    ³                 ³
-             ³                           TemplateTypeClass         ³
-    ÚÄÄÄÄÄÄÄÄÁÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄ¿    TerrainTypeClass
-    ³              ³           ³              ³        ³
-UnitTypeClass      ³   BuildingTypeClass      ³  VesselTypeClass
-                   ³                          ³
+                                    Â³
+             ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã…Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã‚Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Â¿
+             Â³                      Â³            Â³                 Â³
+       TechnoTypeClass              Â³            Â³                 Â³
+             Â³                BulletTypeClass    Â³                 Â³
+             Â³                           TemplateTypeClass         Â³
+    ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„ÃÃ„Ã„Ã„Ã„Ã„Ã‚Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã‚Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã‚Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Â¿    TerrainTypeClass
+    Â³              Â³           Â³              Â³        Â³
+UnitTypeClass      Â³   BuildingTypeClass      Â³  VesselTypeClass
+                   Â³                          Â³
            AircraftTypeClass          InfantryTypeClass
 #endif
 
@@ -246,7 +234,6 @@ typedef struct {
 	unsigned char	reserved;
 } TLucentType;
 
-
 #include	<string.h>
 #include	<stdlib.h>
 #include	<stdio.h>
@@ -260,13 +247,10 @@ typedef struct {
 #include	<process.h>
 #include	<new.h>
 
-
-
 #ifdef WIN32
 #define	int386x(a,b,c,d)	0
 #define	int386(a,b,c)	0
 #endif
-
 
 /*
 **	VQ player specific includes.
@@ -295,7 +279,6 @@ extern long LParam;
 */
 #include <modem.h>
 #include <fast.h>
-
 
 extern long Frame;
 CELL Coord_Cell(COORDINATE coord);
@@ -419,7 +402,6 @@ bool PlayMpegMovie(const char* name);
 
 #include	"externs.h"
 
-
 extern int Get_CD_Drive(void);
 extern void Fatal(char const *message, ...);
 
@@ -430,7 +412,6 @@ extern void Fatal(char const *message, ...);
 **  where we can see it.
 **
 */
-#ifndef __BORLANDC__
 #ifdef assert
 #undef assert
 #endif	//assert
@@ -441,9 +422,6 @@ void Assert_Failure (char *expression, int line, char *file);
 #else
  #define assert(expr)   ((expr)?(void)0:Assert_Failure(#expr,__LINE__,__FILE__))
 #endif	//NDEBUG
-
-#endif	//__BORLANDC__
-
 
 extern void Free_Interpolated_Palettes(void);
 extern int Load_Interpolated_Palettes(char const *filename, BOOL add=FALSE);
@@ -511,7 +489,6 @@ bool Is_Counterstrike_Installed (void);
 #ifdef FIXIT_CSII	//	checked - ajw 9/28/98
 bool Is_Aftermath_Installed (void);
 #endif
-
 
 #if(TEN)
 void Ten_Call_Back(void);
