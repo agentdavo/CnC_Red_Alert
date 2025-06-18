@@ -50,15 +50,8 @@
 
 #define	bool	int
 
-/*
-** Prototypes for linkage to assembly module
-*/
-extern "C" {
-	bool __cdecl Detect_MMX_Availability (void);
+#include "cpuid.h"
 
-	extern char CPUType;
-	extern char VendorID;
-}
 
 
 /***********************************************************************************************
