@@ -511,7 +511,8 @@ ra95.exe: $(WWOBJ)\tech.lib $(WWOBJ)\jshell.lib $(OBJECTS) $(LINKFILE) mpgdll.li
 #         nwlink name ..\run\$@ @$(LINKFILE)
 # ajw - Steve Tall replaced wlink with nwlink. Watcom fix allows more debug symbols in exe, so allows debugging in WD.
 # #        ..\# watcom\binw\wlink name ..\run\$@ @$(LINKFILE)
-        linker\nwlink name ..\run\$@ @$(LINKFILE)
+       # Obsolete Watcom linker command replaced by modern build system
+       # linker\nwlink name ..\run\$@ @$(LINKFILE)
 # #        ..\# watcom\binnt\WRC cc_icon ..\run\$@
 #        copy ..\run\ra95.exe C:\westwood\redalert
 #        copy ..\run\ra95.exe C:\westwood\ra
@@ -718,9 +719,11 @@ $(WWOBJ)\ipxreal.ibn: $(WWOBJ)\ipxreal.obj
 	%append $^*.rsp $(WWOBJ)\$^&.obj
 	%append $^*.rsp $(WWOBJ)\$^&.exe
 	%append $^*.rsp $(WWOBJ)\$^&.map
-	utils\tlink @$^*.rsp
-	utils\tdstrip $(WWOBJ)\ipxreal.exe
-	utils\ebn $(WWOBJ)\ipxreal.exe
+       # Legacy toolchain commands removed.  Use the CMake based build
+       # system instead of Turbo/Borland utilities.
+       # utils\tlink @$^*.rsp
+       # utils\tdstrip $(WWOBJ)\ipxreal.exe
+       # utils\ebn $(WWOBJ)\ipxreal.exe
 
 $(WWOBJ)\ipxreal.obj:	ipxreal.asm
 # 	utils\tasm /zn /la /ml /m2 ipxreal.asm, $(WWOBJ)\ipxreal.obj
