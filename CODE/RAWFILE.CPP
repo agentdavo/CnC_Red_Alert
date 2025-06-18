@@ -59,6 +59,7 @@
 #include	<direct.h>
 #include	<share.h>
 #include	<stddef.h>
+#include        <stdint.h>
 
 #include	"rawfile.h"
 
@@ -66,7 +67,7 @@
 #include	<fcntl.h>
 #include	<io.h>
 #include	<dos.h>
-extern short Hard_Error_Occured;
+extern uint16_t Hard_Error_Occured;
 #endif
 
 

@@ -18,6 +18,8 @@
 
 #ifndef DIBAPI_H
 #define DIBAPI_H
+
+#include <stdint.h>
 /*
  *  dibapi.h
  *
@@ -118,36 +120,36 @@ enum {
 
 HDIB      FAR  BitmapToDIB (HBITMAP hBitmap, HPALETTE hPal);
 HDIB      FAR  ChangeBitmapFormat (HBITMAP  hBitmap,
-                                   WORD     wBitCount,
-                                   DWORD    dwCompression,
+                                   uint16_t wBitCount,
+                                   uint32_t dwCompression,
                                    HPALETTE hPal);
-HDIB      FAR  ChangeDIBFormat (HDIB hDIB, WORD wBitCount,
-                                DWORD dwCompression);
+HDIB      FAR  ChangeDIBFormat (HDIB hDIB, uint16_t wBitCount,
+                                uint32_t dwCompression);
 HBITMAP   FAR  CopyScreenToBitmap (LPRECT);
 HDIB      FAR  CopyScreenToDIB (LPRECT);
-HBITMAP   FAR  CopyWindowToBitmap (HWND, WORD);
-HDIB      FAR  CopyWindowToDIB (HWND, WORD);
+HBITMAP   FAR  CopyWindowToBitmap (HWND, uint16_t);
+HDIB      FAR  CopyWindowToDIB (HWND, uint16_t);
 HPALETTE  FAR  CreateDIBPalette (HDIB hDIB);
-HDIB      FAR  CreateDIB(DWORD, DWORD, WORD);
-WORD      FAR  DestroyDIB (HDIB);
+HDIB      FAR  CreateDIB(uint32_t, uint32_t, uint16_t);
+uint16_t  FAR  DestroyDIB (HDIB);
 void      FAR  DIBError (int ErrNo);
-DWORD     FAR  DIBHeight (LPCSTR lpDIB);
-WORD      FAR  DIBNumColors (LPCSTR lpDIB);
+uint32_t  FAR  DIBHeight (LPCSTR lpDIB);
+uint16_t  FAR  DIBNumColors (LPCSTR lpDIB);
 HBITMAP   FAR  DIBToBitmap (HDIB hDIB, HPALETTE hPal);
-DWORD     FAR  DIBWidth (LPCSTR lpDIB);
+uint32_t  FAR  DIBWidth (LPCSTR lpDIB);
 LPSTR     FAR  FindDIBBits (LPCSTR lpDIB);
 HPALETTE  FAR  GetSystemPalette (void);
 HDIB      FAR  LoadDIB (LPSTR);
 BOOL      FAR  PaintBitmap (HDC, LPRECT, HBITMAP, LPRECT, HPALETTE);
 BOOL      FAR  PaintDIB (HDC, LPRECT, HDIB, LPRECT, HPALETTE);
 int       FAR  PalEntriesOnDevice (HDC hDC);
-WORD      FAR  PaletteSize (LPCSTR lpDIB);
-WORD      FAR  PrintDIB (HDIB, WORD, WORD, WORD, LPSTR);
-WORD      FAR  PrintScreen (LPRECT, WORD, WORD, WORD, LPSTR);
-WORD      FAR  PrintWindow (HWND, WORD, WORD, WORD, WORD, LPSTR);
-WORD      FAR  SaveDIB (HDIB, LPSTR);
+uint16_t  FAR  PaletteSize (LPCSTR lpDIB);
+uint16_t  FAR  PrintDIB (HDIB, uint16_t, uint16_t, uint16_t, LPSTR);
+uint16_t  FAR  PrintScreen (LPRECT, uint16_t, uint16_t, uint16_t, LPSTR);
+uint16_t  FAR  PrintWindow (HWND, uint16_t, uint16_t, uint16_t, uint16_t, LPSTR);
+uint16_t  FAR  SaveDIB (HDIB, LPSTR);
 
 //	ajw added
-HDIB	LoadDIB_FromMemory( const unsigned char* pData, DWORD dwBitsSize );
+HDIB	LoadDIB_FromMemory( const unsigned char* pData, uint32_t dwBitsSize );
 
 #endif

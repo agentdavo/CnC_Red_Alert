@@ -38,6 +38,8 @@
 #ifndef COMPAT_H
 #define COMPAT_H
 
+#include <stdint.h>
+
 
 #define	BuffType		BufferClass
 //#define movmem(a,b,c) memmove(b,a,c)
@@ -73,7 +75,7 @@
 
 //extern unsigned char *Palette;
 extern unsigned char MDisabled;			// Is mouse disabled?
-extern WORD Hard_Error_Occured;
+extern uint16_t Hard_Error_Occured;
 
 /*
 **	This is the menu control structures.

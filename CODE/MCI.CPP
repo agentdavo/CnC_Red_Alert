@@ -32,6 +32,7 @@
 ****************************************************************************/
 
 #include "function.h"
+#include <stdint.h>
 
 #ifdef MCIMPEG
 #include "mci.h"
@@ -338,8 +339,8 @@ const char* MCI::GetDeviceTypeName(unsigned long type)
 
 bool MCI::EnumerateDevices(MCIEnumCB* callback, void* context)
 	{
-	DWORD count;
-	DWORD i;
+	uint32_t count;
+	uint32_t i;
 	char name[64];
 	MCIDevice device;
 
