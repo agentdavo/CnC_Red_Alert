@@ -45,8 +45,6 @@
 **	definition.
 */
 
-//#pragma warning 604 9
-//#pragma warning 595 9
 
 /*
 **	This is a very simple fixed point class that functions like a regular integral type. However
