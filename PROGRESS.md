@@ -116,3 +116,13 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Converted Westwood and HMI ADPCM assembly decompressors to C and compile them when ENABLE_ASM is off.
 - Ported WIN32LIB/DRAWBUFF assembly routines to C and compile them as drawbuff_c.c when ENABLE_ASM is off.
 - Retrieved missing `phone.h` header from the TiberianDawn repository so network and phonebook code can compile.
+- Replaced `IPXPROT.ASM` and `IPXREAL.ASM` with portable stubs in
+  `src/ipx_stub.c`; the assembly files are excluded when `ENABLE_ASM` is OFF.
+- Added C implementations of the VQ Huffman and block decoders in `src/vq`.
+  Assembly versions from VQM32 and VQA32 are now skipped when `ENABLE_ASM` is OFF.
+- Stubbed legacy keyboard and mouse ASM routines in `input_asm_repl.c` and built
+  them when assembly is disabled.
+- Ported the remaining debug and tool assembly modules to portable C
+  (`src/debug/asm_replacements.c` and `tools/audiomak/scode.c`). The build now
+  omits `WIN32LIB/SRCDEBUG` and `TOOLS/AUDIOMAK/SCODE.ASM` entirely when
+  `ENABLE_ASM` is off.

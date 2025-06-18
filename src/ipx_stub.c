@@ -318,3 +318,24 @@ int (*IPX_Get_Outstanding_Buffer95)(unsigned char *) = stub_get_outstanding_buff
 int (*IPX_Start_Listening95)(void) = stub_start_listening95;
 void (*IPX_Shut_Down95)(void) = stub_shut_down95;
 
+
+/* ---------------------------------------------------------------------- */
+/* Replacement for the IPXPROT/IPXREAL real-mode stub accessors.          */
+/* These assemblies expose the address and size of a small real-mode      */
+/* handler routine.  The modern code no longer uses a real-mode handler,  */
+/* but some callers still expect these helpers to exist.  Provide trivial */
+/* stand-ins that return the address of a tiny dummy block so the old     */
+/* allocation logic can proceed without touching assembly.                */
+
+static const unsigned char rm_stub_code[] = { 0xCB }; /* RETF */
+
+void *Get_RM_IPX_Address(void)
+{
+    return (void *)rm_stub_code;
+}
+
+long Get_RM_IPX_Size(void)
+{
+    return (long)sizeof(rm_stub_code);
+}
+
