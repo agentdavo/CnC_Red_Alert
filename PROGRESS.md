@@ -148,3 +148,4 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Created a stub `pcx.h` that includes `CODE/filepcx.h` to satisfy `function.h` and `WRITEPCX.CPP`.
 - Switched the default `ENABLE_ASM` option in CMake to `OFF` and ran a build to capture the next set of compiler errors.
 - Replaced stub `pcx.h` with the official header from Renegade.
+- Guarded obsolete pragma directives in `queue.h` and `memflag.h` so modern compilers ignore them.

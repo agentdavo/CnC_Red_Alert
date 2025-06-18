@@ -48,7 +48,8 @@
 #include	"target.h"
 #include	"defines.h"
 
-#pragma warn -inl
+/* Watcom specific warning control - not needed */
+/* #pragma warn -inl */
 
 /*
 **	This class implements a classic FIFO queue (also known as - standing in line). Objects
