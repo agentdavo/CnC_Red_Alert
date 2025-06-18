@@ -121,7 +121,7 @@ int main(int argc, char * argv[])
 LOG_CALL("%s entered\n", __func__);
 #ifdef USE_LVGL
     lv_init();
-    lvgl_init_backend();
+    lvgl_init_backend(NULL);
 #endif
 
 	#ifndef MPEGMOVIE // Denzil 6/10/98
@@ -671,10 +671,13 @@ LOG_CALL("%s entered\n", __func__);
 			/*
 			** Wait until the message handler has dealt with the message
 			*/
-			do
-			{
-				Keyboard->Check();
-			}while (ReadyToQuit == 1);
+                        do
+                        {
+                                Keyboard->Check();
+#ifdef USE_LVGL
+                                lv_timer_handler();
+#endif
+                        }while (ReadyToQuit == 1);
 
 			return (EXIT_SUCCESS);
 
@@ -940,10 +943,13 @@ void Emergency_Exit ( int code )
 	/*
 	** Wait until the message handler has dealt with the message
 	*/
-	do
-	{
-		Keyboard->Check();
-	}while (ReadyToQuit == 3);
+        do
+        {
+                Keyboard->Check();
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
+        }while (ReadyToQuit == 3);
 
 
 #else	//WIN32

@@ -59,10 +59,18 @@ static void delete_swaps(const char *path)
 
 int launch_main(int argc, char **argv)
 {
-    #ifdef USE_LVGL
+#ifdef USE_LVGL
+    const char *backend_arg = NULL;
+    for (int i = 1; i < argc; ++i) {
+        if (strncmp(argv[i], "--backend=", 10) == 0) {
+            backend_arg = argv[i] + 10;
+            break;
+        }
+    }
+
     lv_init();
-    lvgl_init_backend();
-    #endif
+    lvgl_init_backend(backend_arg);
+#endif
     const char *cwd = ".";
     if (!check_disk_space(cwd)) {
         fprintf(stderr, "Error - insufficient disk space to run Red Alert.\n");
@@ -73,10 +81,14 @@ int launch_main(int argc, char **argv)
 
     char *new_argv[argc + 1];
     new_argv[0] = "./game.dat";
+    int j = 1;
     for (int i = 1; i < argc; ++i) {
-        new_argv[i] = argv[i];
+        if (strncmp(argv[i], "--backend=", 10) == 0) {
+            continue;
+        }
+        new_argv[j++] = argv[i];
     }
-    new_argv[argc] = NULL;
+    new_argv[j] = NULL;
 
 #ifdef _WIN32
     return _spawnv(_P_WAIT, new_argv[0], new_argv);

@@ -359,8 +359,11 @@ LOG_CALL("%s entered\n", __func__);
 		Fancy_Text_Print(TXT_STAND_BY, 160*RESFACTOR, 120*RESFACTOR, &ColorRemaps[PCOLOR_DIALOG_BLUE], TBLACK, TPF_CENTER|TPF_TEXT|TPF_DROPSHADOW);
 		Show_Mouse();
 
-		CCPalette.Set(FADE_PALETTE_SLOW);
-		Call_Back();
+                CCPalette.Set(FADE_PALETTE_SLOW);
+                        Call_Back();
+#ifdef USE_LVGL
+                        lv_timer_handler();
+#endif
 	}
 
 	/*
@@ -679,9 +682,12 @@ bool Select_Game(bool fade)
 #endif
 				selection = Main_Menu(ATTRACT_MODE_TIMEOUT);
 			}
-			Call_Back();
+                        Call_Back();
+#ifdef USE_LVGL
+                        lv_timer_handler();
+#endif
 
-			switch (selection) {
+                        switch (selection) {
 
 				/*
 				**	Pick an expansion scenario.

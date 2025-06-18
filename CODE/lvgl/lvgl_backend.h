@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-void lvgl_init_backend(void);
+void lvgl_init_backend(const char *backend);
 
 #ifdef __cplusplus
 }
