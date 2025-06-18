@@ -59,3 +59,11 @@ As the port progresses, updates on how each dependency has been replaced or stub
   for the original assembly routines.
 - Added stubs for missing <dos.h> and <pharlap.h> to keep the build going.
 - Removed legacy compiler pragmas and compiled VQA32 sources as C++.
+- Implemented a UDP-based IPX stub (`src/ipx_stub.c`) and excluded the
+  original real-mode IPX sources and assembly from the build. A simple
+  test harness (`ipx_stub_test`) verifies basic send/receive behavior.
+- Extended the stub with additional Win95-style functions and basic
+  asynchronous ECB semantics so existing IPX manager code can run
+  unmodified.
+- Refactored the IPX UDP stub to support Windows (Winsock2) and POSIX
+  sockets from a single C11 codebase.

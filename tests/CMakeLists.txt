@@ -1,0 +1,6 @@
+add_executable(ipx_stub_test ipx_stub_test.c ../src/ipx_stub.c)
+target_include_directories(ipx_stub_test PRIVATE ../CODE)
+if(WIN32)
+    target_link_libraries(ipx_stub_test PRIVATE ws2_32)
+endif()
+add_test(NAME ipx_stub_test COMMAND ipx_stub_test)

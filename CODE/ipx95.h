@@ -16,6 +16,16 @@
 **	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include <stdbool.h>
+
+#ifndef BOOL
+#define BOOL int
+#endif
+
+#ifndef __stdcall
+#define __stdcall
+#endif
+
 /***************************************************************************
  **   C O N F I D E N T I A L --- W E S T W O O D    S T U D I O S        **
  ***************************************************************************

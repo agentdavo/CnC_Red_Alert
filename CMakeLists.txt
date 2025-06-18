@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
 project(redalert C CXX)
+enable_testing()
 
 # Build options
 option(ENABLE_ASM "Enable assembly modules" ON)
@@ -15,6 +16,7 @@ add_subdirectory(CODE)
 add_subdirectory(VQ/VQA32)
 set(MINIAUDIO_NO_EXTRA_NODES ON CACHE BOOL "" FORCE)
 add_subdirectory(src/miniaudio)
+add_subdirectory(tests)
 
 set(SOURCES
     ${CODE_SOURCES}
@@ -35,6 +37,7 @@ set(SOURCES
         LAUNCH/main.c
         src/miniaudio.c
         src/ddraw/ddraw_stub.c
+        src/ipx_stub.c
 )
 
 set(ASM_SOURCES
@@ -52,4 +55,7 @@ endif()
 
 add_executable(redalert ${SOURCES} ${ASM_SOURCES})
 target_link_libraries(redalert PRIVATE gamecode vqa32 miniaudio pthread)
+if(WIN32)
+    target_link_libraries(redalert PRIVATE ws2_32)
+endif()
 
