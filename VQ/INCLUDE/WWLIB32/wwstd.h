@@ -182,7 +182,6 @@ typedef void 	VOID;
 
 #define	VOID		void
 
-#pragma	warn -eas
 #define	TRUE		1
 #define	FALSE		0
 
@@ -217,7 +216,7 @@ typedef void 	VOID;
 
 
 // Inline Routines
-//ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+//ÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃ
 //
 // These Template functions are generally used 
 // by classes when they havce over loaded > and <.

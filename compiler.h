@@ -405,6 +405,34 @@
     #endif
 #endif                                           /* Microsoft C           */
 
+#elif defined(__clang__)
+    #define GF_COMPILER_NAME "Clang"
+    #define GF_CLANG
+    #define GF_COMPILER_VERSION (__clang_major__ * 10000 + __clang_minor__ * 100 + __clang_patchlevel__)
+    #define ANSI_PROTOTYPES
+    #define GF_CONV
+    #define GF_CDECL
+    #define GF_INTERRUPT
+    #define GF_UNUSED_PARAMETER( a ) (void)(a)
+    #define GF_FAR
+    #define _LCODE 0
+    #define _LDATA 0
+    #define _HUGE 0
+
+#elif defined(__GNUC__)
+    #define GF_COMPILER_NAME "GCC"
+    #define GF_GCC
+    #define GF_COMPILER_VERSION (__GNUC__ * 100 + __GNUC_MINOR__)
+    #define ANSI_PROTOTYPES
+    #define GF_CONV
+    #define GF_CDECL
+    #define GF_INTERRUPT
+    #define GF_UNUSED_PARAMETER( a ) (void)(a)
+    #define GF_FAR
+    #define _LCODE 0
+    #define _LDATA 0
+    #define _HUGE 0
+
 #ifndef GF_COMPILER_NAME
 #error This is an unknown compiler!
 #endif
