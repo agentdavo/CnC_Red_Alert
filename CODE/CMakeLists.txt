@@ -313,18 +313,16 @@ if(USE_C_BLITTERS OR NOT ENABLE_ASM)
 endif()
 
 if(NOT ENABLE_ASM)
-    list(APPEND CODE_SOURCES "${CMAKE_CURRENT_LIST_DIR}/../src/cpuid.c")
+    list(APPEND CODE_SOURCES
+        "${CMAKE_CURRENT_LIST_DIR}/../src/cpuid.c"
+        "${CMAKE_SOURCE_DIR}/src/support.c"
+        "${CMAKE_SOURCE_DIR}/src/support_stub.c")
     list(REMOVE_ITEM CODE_ASM
         "${CMAKE_CURRENT_LIST_DIR}/CPUID.ASM"
         "${CMAKE_CURRENT_LIST_DIR}/COORDA.ASM"
         "${CMAKE_CURRENT_LIST_DIR}/SUPPORT.ASM"
         "${CMAKE_CURRENT_LIST_DIR}/2SUPPORT.ASM"
-        "${CMAKE_CURRENT_LIST_DIR}/LCWCOMP.ASM"
-        "${CMAKE_CURRENT_LIST_DIR}/../WIN32LIB/MEM/MEM_COPY.ASM"
-        "${CMAKE_CURRENT_LIST_DIR}/../WIN32LIB/MEM/VMPAGEIN.ASM")
-    list(APPEND CODE_SOURCES
-        "${CMAKE_SOURCE_DIR}/src/support_stub.c"
-        "${CMAKE_SOURCE_DIR}/src/mem_helpers.c")
+        "${CMAKE_CURRENT_LIST_DIR}/LCWCOMP.ASM")
 elseif(REPLACEMENT_ASM_DIR)
     file(GLOB CODE_ASM "${REPLACEMENT_ASM_DIR}/*.asm")
 endif()
