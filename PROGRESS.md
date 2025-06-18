@@ -101,3 +101,6 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - `lvgl_init_backend` now selects the display driver based on the `LV_BACKEND` environment variable and falls back to SDL when unknown.
 - `lvgl_init_backend` now logs display creation failures, falls back to the Wayland backend when SDL is unavailable and returns a status code so callers can exit gracefully.
 - LVGL backend is selected via the `--lvgl-backend` command-line option or the `LV_BACKEND` environment variable.
+- `lvgl_blit` now creates an indexed canvas once and copies the game's frame
+  buffer into it every frame using `lv_draw_buf_copy` while updating the
+  palette from `CurrentPalette`.
