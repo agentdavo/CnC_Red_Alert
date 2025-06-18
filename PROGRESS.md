@@ -99,6 +99,7 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Implemented a C version of `ModeX_Blit` and used it when assembly blitters are disabled.
 - Added runtime logs for each C replacement of assembly modules (ModeX_Blit, interpolation helpers, CPUID detection).
 - Added C fallbacks for SUPPORT.ASM, 2SUPPORT.ASM and LCWCOMP.ASM; these stubs build automatically when `ENABLE_ASM` is off.
+- Replaced SUPPORT.ASM and 2SUPPORT.ASM with a C11 implementation (`src/support.c`).
 - `lvgl_init_backend` now selects the display driver based on the `LV_BACKEND` environment variable and falls back to SDL when unknown.
 - `lvgl_init_backend` now logs display creation failures, falls back to the Wayland backend when SDL is unavailable and returns a status code so callers can exit gracefully.
 - LVGL backend is selected via the `--lvgl-backend` command-line option or the `LV_BACKEND` environment variable.
