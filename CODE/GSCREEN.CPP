@@ -48,6 +48,9 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 #include "function.h"
+#ifdef USE_LVGL
+#include "lvgl/lvgl_bridge.h"
+#endif
 
 
 GadgetClass * GScreenClass::Buttons = 0;
@@ -478,10 +481,13 @@ void GScreenClass::Blit_Display(void)
 		} else {
 			ModeX_Blit(&HiddenPage);
 		}
-	#else
-		Shadow_Blit(0, 0, 320, 200, HidPage, SeenPage, ShadowPage->Get_Buffer());
-	#endif
-	BEnd(BENCH_BLIT_DISPLAY);
+       #else
+               Shadow_Blit(0, 0, 320, 200, HidPage, SeenPage, ShadowPage->Get_Buffer());
+       #endif
+#ifdef USE_LVGL
+       lvgl_blit(&HiddenPage);
+#endif
+       BEnd(BENCH_BLIT_DISPLAY);
 }
 
 

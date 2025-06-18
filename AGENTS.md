@@ -23,5 +23,8 @@ Several Markdown files at the repository root contain critical details about the
 - `INFO.md` – overview of tools and library directories.
 - `DRAWING.md` – explanation of the rendering pipeline and assembly helpers.
 - `SOUND.md` – breakdown of the audio subsystem and DirectSound routines.
+- `DDRAW.md` – lists DirectDraw usage across the code base.
+- `MODEX.md` – describes the `ModeX_Blit` VGA routine.
+- `SHADOWX.md` – explains the `Shadow_Blit` path for DOS builds.
 
 Consult these documents when porting or refactoring code.
