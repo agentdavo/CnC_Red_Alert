@@ -4,6 +4,7 @@ project(redalert C CXX)
 # Build options
 option(ENABLE_ASM "Enable assembly modules" ON)
 set(REPLACEMENT_ASM_DIR "" CACHE PATH "Directory with replacement assembly code")
+option(USE_LVGL "Enable LVGL canvas support" ON)
 
 # Compiler configuration
 set(CMAKE_C_STANDARD 11)
@@ -13,6 +14,9 @@ add_compile_options(-Wall -Wextra -Werror)
 add_subdirectory(CODE)
 set(MINIAUDIO_NO_EXTRA_NODES ON CACHE BOOL "" FORCE)
 add_subdirectory(src/miniaudio)
+if(USE_LVGL)
+    add_subdirectory(src/lvgl)
+endif()
 
 set(SOURCES
     ${CODE_SOURCES}
@@ -49,4 +53,9 @@ endif()
 
 add_executable(redalert ${SOURCES} ${ASM_SOURCES})
 target_link_libraries(redalert PRIVATE gamecode miniaudio pthread)
+if(USE_LVGL)
+    target_link_libraries(redalert PRIVATE lvgl)
+endif()
+target_compile_definitions(gamecode PUBLIC $<$<BOOL:${USE_LVGL}>:USE_LVGL>)
+target_compile_definitions(redalert PRIVATE $<$<BOOL:${USE_LVGL}>:USE_LVGL>)
 

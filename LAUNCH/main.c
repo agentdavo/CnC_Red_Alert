@@ -7,6 +7,9 @@
 #include <stdbool.h>
 #include <limits.h>
 
+#ifdef USE_LVGL
+#include "../CODE/lvgl/lvgl_bridge.h"
+#endif
 static const unsigned long REQUIRED_DISK_SPACE = 15UL * 1024 * 1024; /* bytes */
 
 /*
@@ -40,6 +43,9 @@ int launch_main(int argc, char **argv)
     }
 
     delete_swaps(cwd);
+#ifdef USE_LVGL
+    lvgl_bridge_init(640, 480);
+#endif
 
     const char *prog = "./game.dat";
     char command[PATH_MAX] = {0};
@@ -48,7 +54,11 @@ int launch_main(int argc, char **argv)
         strncat(command, " ", sizeof(command) - strlen(command) - 1);
         strncat(command, argv[i], sizeof(command) - strlen(command) - 1);
     }
-    return system(command);
+    int ret = system(command);
+#ifdef USE_LVGL
+    lvgl_bridge_deinit();
+#endif
+    return ret;
 }
 
 #ifdef TEST_MAIN
