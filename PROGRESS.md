@@ -85,6 +85,8 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Added C stub blitters and USE_C_BLITTERS option to select them.
 - Implemented Buffer_Print, Get_Font_Palette_Ptr and interpolation stubs in C.
 - Verified blitter stubs cover functions from KEYFBUFF, TXTPRNT and WINASM.
+- Converted Buffer_Frame_To_Page and MCGA_Print from assembly to optimized C and
+  compile them automatically when `ENABLE_ASM` is disabled.
 - Replaced CPUID.ASM with a portable implementation using __get_cpuid.
 - Assembly modules are now assembled with NASM or YASM via CMake when `ENABLE_ASM` is enabled.
 - Deleted obsolete `#pragma warning` directives in headers and verified `watcom.h` is no longer included.
