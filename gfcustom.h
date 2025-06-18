@@ -1,0 +1,1 @@
+/* gfcustom.h stub */

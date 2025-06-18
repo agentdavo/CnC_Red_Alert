@@ -126,3 +126,6 @@ As the port progresses, updates on how each dependency has been replaced or stub
   (`src/debug/asm_replacements.c` and `tools/audiomak/scode.c`). The build now
   omits `WIN32LIB/SRCDEBUG` and `TOOLS/AUDIOMAK/SCODE.ASM` entirely when
   `ENABLE_ASM` is off.
+- Added a pure C implementation of `LCW_Uncompress` and stubs for the
+  `ASM_IPX_Initialise` helpers so `IPX16.ASM` is no longer required.
+- Removed Borland-specific pragma directives from imported Greenleaf headers.

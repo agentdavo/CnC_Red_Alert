@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+#include "debug_log.h"
 #include <stdint.h>
 #ifdef _WIN32
 #  define WIN32_LEAN_AND_MEAN
@@ -337,5 +338,24 @@ void *Get_RM_IPX_Address(void)
 long Get_RM_IPX_Size(void)
 {
     return (long)sizeof(rm_stub_code);
+}
+
+
+/* Stubs for the 16-bit initialization helpers originally in IPX16.ASM */
+#ifdef _WIN32
+#define PASCAL __stdcall
+#else
+#define PASCAL
+#endif
+
+int PASCAL ASM_IPX_Initialise(void)
+{
+    LOG_CALL("ASM_IPX_Initialise stub\n");
+    return 1; /* success */
+}
+
+void PASCAL ASM_IPX_Uninitialise(void)
+{
+    LOG_CALL("ASM_IPX_Uninitialise stub\n");
 }
 
