@@ -45,23 +45,6 @@ long Buffer_To_Page(int x, int y, int w, int h, void *Buffer, void *view)
     return MCGA_Buffer_To_Page(x, y, w, h, Buffer, view);
 }
 
-BOOL Linear_Blit_To_Linear(void *src, void *dst,
-                           int sx, int sy, int dx, int dy,
-                           int width, int height, BOOL trans)
-{
-    LOG_CALL("Linear_Blit_To_Linear C stub\n");
-    return Linear_Blit_To_Linear(src, dst, sx, sy, dx, dy, width, height, trans);
-}
-
-BOOL Linear_Scale_To_Linear(void *src, void *dst,
-                            int sx, int sy, int dx, int dy,
-                            int sw, int sh, int dw, int dh,
-                            BOOL trans, char *remap)
-{
-    LOG_CALL("Linear_Scale_To_Linear C stub\n");
-    return Linear_Scale_To_Linear(src, dst, sx, sy, dx, dy,
-                                  sw, sh, dw, dh, trans, remap);
-}
 
 
 void Buffer_Draw_Line(void *thisptr, int sx, int sy, int dx, int dy,

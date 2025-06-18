@@ -130,3 +130,6 @@ As the port progresses, updates on how each dependency has been replaced or stub
   `ASM_IPX_Initialise` helpers so `IPX16.ASM` is no longer required.
 - Removed Borland-specific pragma directives from imported Greenleaf headers.
 - Calls to real-mode IPX helpers now link against the UDP-based stub and the assembly sources are no longer built.
+- Converted BITBLIT, DRAWLINE, SHADOW and VESA routines to portable C11. The new
+  code lives in `src/dos_graphics.c` and `src/blit_stub.c`, so the game builds
+  without assembly when `ENABLE_ASM` is OFF.
