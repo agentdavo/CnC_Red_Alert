@@ -26,4 +26,34 @@
 #define _MAX_DRIVE 3
 #endif
 
+#include <stdio.h>
+
+#ifndef HAVE_ITOA
+static inline char *itoa(int value, char *str, int base)
+{
+    if (!str) return NULL;
+    if (base == 16)
+        snprintf(str, 33, "%x", value);
+    else if (base == 8)
+        snprintf(str, 33, "%o", value);
+    else
+        snprintf(str, 33, "%d", value);
+    return str;
+}
+#endif
+
+#ifndef HAVE_LTOA
+static inline char *ltoa(long value, char *str, int base)
+{
+    if (!str) return NULL;
+    if (base == 16)
+        snprintf(str, 33, "%lx", value);
+    else if (base == 8)
+        snprintf(str, 33, "%lo", value);
+    else
+        snprintf(str, 33, "%ld", value);
+    return str;
+}
+#endif
+
 #endif /* COMPAT_H */

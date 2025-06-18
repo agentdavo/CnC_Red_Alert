@@ -3,6 +3,25 @@
 #include "drawbuff.h"
 #include "gbuffer.h"
 #include "mcgaprim.h"
+#include "font.h"
+#include "vbuffer.h"
+
+#if !ENABLE_ASM
+static unsigned char Font_Color_Xlat[256];
+static void init_color_xlat(unsigned char fcol, unsigned char bcol)
+{
+    for (int i = 0; i < 16; ++i)
+        Font_Color_Xlat[i] = i;
+    for (int g = 1; g < 16; ++g) {
+        Font_Color_Xlat[g * 16] = g;
+        for (int j = 1; j < 16; ++j)
+            Font_Color_Xlat[g * 16 + j] = 0;
+    }
+    Font_Color_Xlat[0] = bcol;
+    Font_Color_Xlat[1] = fcol;
+    Font_Color_Xlat[16] = fcol;
+}
+#endif
 
 #ifdef __cplusplus
 extern "C" {
@@ -91,6 +110,24 @@ void Buffer_Draw_Stamp_Clip(void const *thisptr, void const *icondata, int icon,
     MCGA_Draw_Stamp_Clip(thisptr, icondata, icon, x_pixel, y_pixel, remap,
                          minx, miny, maxx, maxy);
 }
+
+#if !ENABLE_ASM
+
+LONG Buffer_Print(void *thisptr, const char *str, int x, int y,
+                  int fcolor, int bcolor)
+{
+    LOG_CALL("Buffer_Print C stub\n");
+    return MCGA_Print(thisptr, str, x, y, fcolor, bcolor);
+}
+
+void *Get_Font_Palette_Ptr(void)
+{
+    LOG_CALL("Get_Font_Palette_Ptr C stub\n");
+    init_color_xlat(0, 0);
+    return Font_Color_Xlat;
+}
+
+#endif /* !ENABLE_ASM */
 
  
 #ifdef __cplusplus
