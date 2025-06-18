@@ -63,8 +63,7 @@
 **	November of '94. Until the compiler supports this, use the following
 **	definition.
 */
-#endif
-#endif
+
 
 /**********************************************************************
 **	This class is solely used as a parameter to a constructor that does
