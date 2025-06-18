@@ -67,24 +67,24 @@
  * placement mode.                                                         *
  *   This routine does not modify PendingObject or PendingHouse.           *
  *                                                                         *
- *  ��������������������������������������������������Ŀ                   *
- *  �   [GDI]  [NOD]  [Neutral]                        �                   *
- *  �                                                  �                   *
- *  �   �������������������������������Ŀ              �                   *
- *  �   �                               � [Template]   �                   *
- *  �   �                               � [Overlay ]   �                   *
- *  �   �                               � [Smudge  ]   �                   *
- *  �   �                               � [Terrain ]   �                   *
- *  �   �      (Object picture)         � [Unit    ]   �                   *
- *  �   �                               � [Infantry]   �                   *
- *  �   �                               � [Aircraft]   �                   *
- *  �   �                               � [Building]   �                   *
- *  �   �                               �              �                   *
- *  �   ���������������������������������     ������Ŀ �                   *
- *  �             [<-]  [->]                  �(Grid)� �                   *
- *  �                                         �      � �                   *
- *  �         [OK]        [Cancel]            �������� �                   *
- *  ����������������������������������������������������                   *
+ *  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿                   *
+ *  ³   [GDI]  [NOD]  [Neutral]                        ³                   *
+ *  ³                                                  ³                   *
+ *  ³   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿              ³                   *
+ *  ³   ³                               ³ [Template]   ³                   *
+ *  ³   ³                               ³ [Overlay ]   ³                   *
+ *  ³   ³                               ³ [Smudge  ]   ³                   *
+ *  ³   ³                               ³ [Terrain ]   ³                   *
+ *  ³   ³      (Object picture)         ³ [Unit    ]   ³                   *
+ *  ³   ³                               ³ [Infantry]   ³                   *
+ *  ³   ³                               ³ [Aircraft]   ³                   *
+ *  ³   ³                               ³ [Building]   ³                   *
+ *  ³   ³                               ³              ³                   *
+ *  ³   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ     ÚÄÄÄÄÄÄ¿ ³                   *
+ *  ³             [<-]  [->]                  ³(Grid)³ ³                   *
+ *  ³                                         ³      ³ ³                   *
+ *  ³         [OK]        [Cancel]            ÀÄÄÄÄÄÄÙ ³                   *
+ *  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ                   *
  *                                                                         *
  * INPUT:                                                                  *
  *      none.                                                              *
@@ -335,6 +335,9 @@ int MapEditClass::Placement_Dialog(void)
 		**	Invoke game callback
 		*/
 		Call_Back();
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
 
 		/*
 		**	Refresh display if needed

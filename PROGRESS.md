@@ -104,3 +104,5 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - `lvgl_blit` now creates an indexed canvas once and copies the game's frame
   buffer into it every frame using `lv_draw_buf_copy` while updating the
   palette from `CurrentPalette`.
+- Menu processing loops now call `lv_timer_handler()` so LVGL widgets stay
+  responsive while waiting for user input.

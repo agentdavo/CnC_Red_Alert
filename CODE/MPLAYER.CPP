@@ -271,6 +271,9 @@ GameType Select_MPlayer_Game (void)
 		//	Invoke game callback
 		//.....................................................................
 		Call_Back();
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
 
 		//.....................................................................
 		//	Refresh display if needed
@@ -767,6 +770,9 @@ int Surrender_Dialog(int text)
 		//.....................................................................
 		if (Session.Type != GAME_SKIRMISH) {
 			if (Main_Loop()) {
+#ifdef USE_LVGL
+                                lv_timer_handler();
+#endif
 				retcode = 0;
 				process = false;
 			}
@@ -965,6 +971,9 @@ int Abort_Dialog(void)
 		//.....................................................................
 		if (Session.Type != GAME_SKIRMISH) {
 			if (Main_Loop()) {
+#ifdef USE_LVGL
+                                lv_timer_handler();
+#endif
 				retcode = 0;
 				process = false;
 			}

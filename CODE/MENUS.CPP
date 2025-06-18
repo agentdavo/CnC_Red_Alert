@@ -429,11 +429,14 @@ int Do_Menu(char const ** strings, bool )
 	Keyboard->Clear();
 	selection = -1;
 	UnknownKey = 0;
-	while (selection == -1) {
-		Call_Back();
-		selection = Check_Menu(0, strings, NULL, 0xFFL, 0);
-		if (UnknownKey != 0 || UnknownKey == KN_ESC || UnknownKey==KN_LMOUSE || UnknownKey==KN_RMOUSE) break;
-	}
+        while (selection == -1) {
+                Call_Back();
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
+                selection = Check_Menu(0, strings, NULL, 0xFFL, 0);
+                if (UnknownKey != 0 || UnknownKey == KN_ESC || UnknownKey==KN_LMOUSE || UnknownKey==KN_RMOUSE) break;
+        }
 	Keyboard->Clear();
 	Hide_Mouse();
 
@@ -746,6 +749,9 @@ int Main_Menu(unsigned long )
 		*/
 		Call_Back();
 
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
 		/*
 		**	Refresh display if needed.
 		*/

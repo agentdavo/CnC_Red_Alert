@@ -152,6 +152,9 @@ void Special_Dialog(bool simple)
 
 		if (Session.Type == GAME_NORMAL) {
 			Call_Back();
+#ifdef USE_LVGL
+            lv_timer_handler();
+#endif
 		} else {
 			if (Main_Loop()) {
 				process = false;
@@ -405,6 +408,9 @@ char const * Fetch_Password(int caption, int message, int btext)
 		**	Invoke game callback.
 		*/
 		Call_Back();
+#ifdef USE_LVGL
+            lv_timer_handler();
+#endif
 
 #ifdef WIN32
 		/*
@@ -560,6 +566,9 @@ int Fetch_Difficulty(void)
 		**	Invoke game callback.
 		*/
 		Call_Back();
+#ifdef USE_LVGL
+            lv_timer_handler();
+#endif
 
 #ifdef WIN32
 		/*

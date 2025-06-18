@@ -144,7 +144,10 @@ bool WOL_Options_Dialog( WolapiObject* pWO, bool bCalledFromGame )
 		**	Invoke game callback.
 		*/
 		if( !bCalledFromGame )
-			Call_Back();
+                        Call_Back();
+#ifdef USE_LVGL
+                        lv_timer_handler();
+#endif
 		else
 		{
 			if( Main_Loop() )	//	Game ended on us in the background.

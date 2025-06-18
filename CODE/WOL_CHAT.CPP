@@ -990,8 +990,14 @@ int WOL_Chat_Dialog( WolapiObject* pWO )
 		//.....................................................................
 		//	Service the sounds & score; GameActive must be false at this point,
 		//	so Call_Back() doesn't intercept global messages from me!
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
 		//.....................................................................
 		Call_Back();
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
 
 	}	// end of while
 

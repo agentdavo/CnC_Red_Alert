@@ -192,7 +192,10 @@ CREATEGAMEINFO WOL_CreateGame_Dialog( WolapiObject* pWO )
 		/*
 		**	Invoke game callback.
 		*/
-		Call_Back();
+                Call_Back();
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
 
 		#ifdef WIN32
 		/*

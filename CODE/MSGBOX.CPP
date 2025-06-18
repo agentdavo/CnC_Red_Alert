@@ -292,6 +292,9 @@ int WWMessageBox::Process(const char * msg, const char * b1txt, const char * b2t
 			**	Invoke game callback.
 			*/
 			Call_Back();
+#ifdef USE_LVGL
+                        lv_timer_handler();
+#endif
 
 			/*
 			**	Fetch and process input.

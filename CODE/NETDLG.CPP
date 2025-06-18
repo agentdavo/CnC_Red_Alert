@@ -433,16 +433,16 @@ char const *EngMisStr[] = {
 
 	"A Path Beyond (Lg)",					"Weg ins Jenseits (Gr)",
 	"Central Conflict (Lg)",				"Der zentrale Konflikt (Gr)",
-	"Coastal Influence (Med)",				"Sturm an der Kste (Mit)",
+	"Coastal Influence (Med)",				"Sturm an der KÂste (Mit)",
 	"Combat Alley (Med)",					"Boulevard der Schlachten (Mit)",
-	"Desolation (Lg)",						"Verwstung (Gr)",
+	"Desolation (Lg)",						"VerwÂstung (Gr)",
 	"Dugout Isle (Med)",						"Buddelschiff (Mit)",
 	"Equal Opportunity (Sm)",				"Gleiche Chancen (Kl)",
 	"First Come, First Serve (Sm)",		"Wer zuerst kommt... (Kl)",
 	"Island Hoppers (Sm)",					"Inselspringen (Kl)",
 	"Island Wars (Lg)",						"Der Krieg der Eilande (Gr)",
 	"Isle of Fury (Lg)",						"Insel des Zorns (Gr)",
-	"Ivory Wastelands (Sm)",				"Elfenbeinwste (Kl)",
+	"Ivory Wastelands (Sm)",				"ElfenbeinwÂste (Kl)",
 	"Keep off the Grass (Sm)",				"Rasen betreten verboten (Kl)",
 	"Marooned II (Med)",						"Gestrandet (Mit)",
 	"Middle Mayhem (Sm)",					"Mittelsmann (Kl)",
@@ -450,7 +450,7 @@ char const *EngMisStr[] = {
 	"No Man's Land (Med)",					"Niemandsland (Mit)",
 	"Normandy (Med)",							"Normandie (Mit)",
 	"North By Northwest (Lg)",				"Nord auf Nordwest (Gr)",
-	"Pond Skirmish (Med)",					"Teichgepl„nkel (Mit)",
+	"Pond Skirmish (Med)",					"TeichgeplÂ„nkel (Mit)",
 	"Raraku (Lg)",								"Raraku (Gr)",
 	"Ridge War (Med)",						"Das Tal der Cyborgs (Mit)",
 	"Shallow Grave (Med)",					"Ein enges Grab (Mit)",
@@ -458,18 +458,18 @@ char const *EngMisStr[] = {
 
 	"Africa (Lg)",								"Afrika (Gr)",
 	"Alaska Anarchy (Lg)",					"Anarchie in Alaska (Gr)",
-	"All that Glitters... (Lg)",			"Alles was gl„nzt... (Gr)",
+	"All that Glitters... (Lg)",			"Alles was glÂ„nzt... (Gr)",
 	"Apre's Peace (Lg)",						"Apres Frieden (Gr)",
 	"Antartica (Lg)",							"Antarktica (Gr)",
 	"Armourgarden (Lg)",						"Garten der Panzer (Gr)",
 	"Austraila (Med)",						"Koalaland (Mit)",
 	"Barrier to Entry (Lg)",				"Zutritt verboten (Gr)",
 	"Bavarian Blast (Med)",					"Bayrische Blasmusik (Mit)",
-	"Be Shore (Med)",							"Strandl„ufer (Mit)",
+	"Be Shore (Med)",							"StrandlÂ„ufer (Mit)",
 	"Bearing Straits (Med)",				"Die Heringstrasse (Mit)",
-	"Blow Holes (Lg)",						"L”cheriger K„se (Gr)",
+	"Blow Holes (Lg)",						"LÂ”cheriger KÂ„se (Gr)",
 	"Bonsai (Sm)",								"Bonsai (Kl)",
-	"Brother Stalin (Lg)",					"Brderchen Stalin (Gr)",
+	"Brother Stalin (Lg)",					"BrÂderchen Stalin (Gr)",
 	"Bullseye (Lg)",							"Bullseye (Gr)",
 	"C&C (Med)",								"C&C (Mit)",
 	"Camos Canyon (Med)",					"Camos-Canyon (Mit)",
@@ -479,11 +479,11 @@ char const *EngMisStr[] = {
 	"Central Arena (Lg)",					"Spielplatz des Teufels (Gr)",
 	"Canyon River (Med)",					"Canyonfluss (Mit)",
 	"Crossroads (Sm)",						"Kreuzung (Kl)",
-	"Czech Mate (Lg)",						"Tschechische Er”ffnung (Gr)",
+	"Czech Mate (Lg)",						"Tschechische ErÂ”ffnung (Gr)",
 	"Dday (Med)",								"D-Day (Mit)",
 	"Disaster Central (Lg)",				"Endstation Schweinebucht (Gr)",
 	"Docklands (Med)",						"Docklands (Mit)",
-	"East Coast (Med)",						"Ostkste (Mit)",
+	"East Coast (Med)",						"OstkÂste (Mit)",
 	"Eastern Seaboard (Lg)",				"Die Passage nach Osten (Gr)",
 	"Finger Lake (Lg)",						"Fingersee (Gr)",
 	"Fjords (Med)",							"Fjorde (Mit)",
@@ -492,13 +492,13 @@ char const *EngMisStr[] = {
 	"Four Corners (Lg)",						"Viereck (Gr)",
 	"Frostbit Fjords (Lg)",					"Frostbeulenfjord (Gr)",
 	"Glenboig (Sm)",							"Glenboig (Kl)",
-	"Hell Frozen Over (Lg)",				"Winter in der H”lle (Gr)",
+	"Hell Frozen Over (Lg)",				"Winter in der HÂ”lle (Gr)",
 	"India (Lg)",								"Indien (Gr)",
 	"Indirect Fire (Lg)",					"Indirekter Beschuss (Gr)",
 	"Island Wars II (Lg)",					"Krieg der Inseln (Gr)",
 	"Italy (Lg)",								"Italien (Gr)",
 	"Kabalo (Lg)",								"Kabalo (Gr)",
-	"King of the Hills (Lg)",				"K”nig des Maulwurfshgels (Gr)",
+	"King of the Hills (Lg)",				"KÂ”nig des MaulwurfshÂgels (Gr)",
 	"Lake Divide (Med)",						"Wasserscheide (Mit)",
 	"Lakelands (Lg)",							"Seenplatte (Gr)",
 	"Land Ladder (Lg)",						"Das Leiterspiel (Gr)",
@@ -507,23 +507,23 @@ char const *EngMisStr[] = {
 	"Malibu Fields (Med)",					"Malibu (Mit)",
 	"Marshland (Med)",						"Schlammschlacht (Mit)",
 	"MyLai Delta (Med)",						"Das Delta von My Lai (Mit)",
-	"Natural Harbor (Med)",					"Natrlicher Hafen (Mit)",
+	"Natural Harbor (Med)",					"NatÂrlicher Hafen (Mit)",
 	"No Way Out (Lg)",						"Kein Entkommen (Gr)",
 	"Normandy Landing (Lg)",				"Landung in der Normandie (Gr)",
 	"Ore Wars (Med)",							"Die Erz-Kriege (Mit)",
 	"Oz (Lg)",									"Das Land Oz (Gr)",
-	"Pilgrim Fathers II (Lg)",				"Die Grnderv„ter (Gr)",
+	"Pilgrim Fathers II (Lg)",				"Die GrÂndervÂ„ter (Gr)",
 	"Pip's Ice Tea (Med)",					"Pips Eistee (Mit)",
 	"Polar Panic (Lg)",						"Panik am Pol (Gr)",
-	"Ponds (Med)",								"Tmpelspringer (Mit)",
+	"Ponds (Med)",								"TÂmpelspringer (Mit)",
 	"Putney (Lg)",								"Putney (Gr)",
-	"Return to Zion (Lg)",					"Rckkehr nach Zion (Gr)",
+	"Return to Zion (Lg)",					"RÂckkehr nach Zion (Gr)",
 	"Ring of Land (Lg)",						"Der Landring (Gr)",
 	"River Basin (Lg)",						"Flusslauf (Gr)",
 	"River Delta (Med)",						"Flussdelta (Mit)",
 	"River Islands (Med)",					"Flussinsel (Mit)",
 	"River Maze (Sm)",						"Flussgewirr (Kl)",
-	"Rivers (Sm)",								"Flsse (Kl)",
+	"Rivers (Sm)",								"FlÂsse (Kl)",
 	"Run the Gauntlet (Med)",				"Spiessrutenlauf (Mit)",
 	"Scappa Flow (Lg)",						"Scapa Flow (Gr)",
 	"Siberian Slaughter (Lg)",				"Sibirisches Gemetzel (Gr)",
@@ -533,8 +533,8 @@ char const *EngMisStr[] = {
 	"Snowball fight (Lg)",					"Schneeballschlacht (Gr)",
 	"Snowy Island (Lg)",						"Schneeinsel (Gr)",
 	"So Near So Far (Sm)",					"So nah und doch so fern (Kl)",
-	"South America (Lg)",					"Sdamerika (Gr)",
-	"Spring Line (Lg)",						"Frhlingsgefhle (Gr)",
+	"South America (Lg)",					"SÂdamerika (Gr)",
+	"Spring Line (Lg)",						"FrÂhlingsgefÂhle (Gr)",
 	"Star (Lg)",								"Stern (Gr)",
 	"Straighter & Narrower (Sm)",			"Enger & schmaler (Kl)",
 	"TerrainSpotting (Sm)",					"TerrainSpotting (Kl)",
@@ -543,22 +543,22 @@ char const *EngMisStr[] = {
 	"The Great Lakes (Med)",				"Die Grossen Seen (Mit)",
 	"The Ice Arena (Lg)",					"Eisarena (Gr)",
 	"The Lake District (Lg)",				"Kalte Seenplatte (Gr)",
-	"The Linked lands (Lg)",				"Die verbundenen L„nder (Gr)",
-	"The Mississippi (Med)",				"Grsse von Tom Sawyer (Mit)",
+	"The Linked lands (Lg)",				"Die verbundenen LÂ„nder (Gr)",
+	"The Mississippi (Med)",				"GrÂsse von Tom Sawyer (Mit)",
 	"The Sticky Bit (Lg)",					"Der klebrige Teil (Gr)",
 	"The Valley (Med)",						"Das Tal (Mit)",
-	"The Woods Today (Lg)",					"Waldl„ufer (Gr)",
+	"The Woods Today (Lg)",					"WaldlÂ„ufer (Gr)",
 	"Things to Come (Lg)",					"Was die Zukunft bringt (Gr)",
 	"Tiger Core (Sm)",						"Das Herz des Tigers (Kl)",
 	"To the Core (Sm)",						"Mitten ins Herz (Kl)",
-	"Tournament Hills (Lg)",				"Hgel der Entscheidung (Gr)",
-	"Tropical Storm (Med)",					"Tropenstrme (Mit)",
+	"Tournament Hills (Lg)",				"HÂgel der Entscheidung (Gr)",
+	"Tropical Storm (Med)",					"TropenstÂrme (Mit)",
 	"Tundra Trouble (Lg)",					"Tauziehen in der Tundra (Gr)",
 	"Uk (Med)",									"GB (Mit)",
 	"Undiscovered Country (Sm)",			"Unentdecktes Land (Kl)",
 	"United States (Med)",					"US (Mit)",
 	"Volcano (Sm)",							"Vulkan (Kl)",
-	"Wastelands (Lg)",						"Wstenei (Gr)",
+	"Wastelands (Lg)",						"WÂstenei (Gr)",
 	"Water Works (Sm)",						"Wasserwerke (Kl)",
 	"World Map (Med)",						"Weltkarte (Kl)",
 	"Zambezi (Lg)",							"Sambesi (Gr)",
@@ -568,63 +568,63 @@ char const *EngMisStr[] = {
 	"Arena Valley Extreme (Mega 8 players)",		 "Arenatal (sehr gross, 8 Spieler)",
 	"Around the Rim (Sm 4 players)",					 "Um die Kante (klein, 4 Spieler)",
 	"Ashes to Ashes (Lg 6 players)",					 "Asche zu Asche (gross, 6 Spieler)",
-	"Artic Wasteland (Mega 8 players)",				 "Arktische Wste (sehr gross, 8 Spieler)",
+	"Artic Wasteland (Mega 8 players)",				 "Arktische WÂste (sehr gross, 8 Spieler)",
 	"Badajoz (Med 4 players)",							 "Badjoz (mittelgross, 4 Spieler)",
 	"Baptism of Fire (Lg 6 players)",				 "Feuertaufe (gross, 6 Spieler)",
 	"Big Fish, Small Pond (Lg 6 players)",			 "Grosser Fisch im kleinen Teich (gross, 6 Spieler)",
 	"Blue Lakes (Lg 8 players)",						 "Die blauen Seen (gross, 8 Spieler)",
 	"Booby Traps (Mega 8 players)",					 "Vorsicht, Falle! (sehr gross, 8 Spieler)",
-	"Bridgehead (Lg 6 players)",						 "Brckenkopf im Niemandsland (gross, 6 Spieler)",
+	"Bridgehead (Lg 6 players)",						 "BrÂckenkopf im Niemandsland (gross, 6 Spieler)",
 	"Butterfly Bay (Lg 6 players)",					 "Schmetterlingsbucht (gross, 6 Spieler)",
-	"Central Conflict Extreme (Mega 8 players)",  "Zentraler Konflikt fr K”nner (sehr gross, 8 Spieler)",
+	"Central Conflict Extreme (Mega 8 players)",  "Zentraler Konflikt fÂr KÂ”nner (sehr gross, 8 Spieler)",
 	"Circles of Death (Mega 8 players)",			 "Todeskreise (sehr gross, 8 Spieler)",
 	"Cold Front (Med 6 players)",						 "Kaltfront ( mittelgross, 6 Spieler)",
 	"Cold Pass (Med 4 players)",						 "Cooler Pass (mittelgross, 4 Spieler)",
 	"Combat Zones (Mega 8 players)",					 "Kampfgebiete (sehr gross, 8 Spieler)",
-	"Conflict Cove (Sm 4 players)",					 "H”hlenkonflikt (klein, 4 Spieler)",
+	"Conflict Cove (Sm 4 players)",					 "HÂ”hlenkonflikt (klein, 4 Spieler)",
 	"Culloden Moor (Med 8 players)",					 "Culloden-Moor (mittelgross, 8 Spieler)",
 	"Damnation Alley (Mega 8 players)",				 "Strasse der Verdammten (sehr gross, 8 Spieler)",
 	"Death Valley (Mega 8 players)",					 "Tal des Todes (sehr gross, 8 Spieler)",
 	"Deep Six (Mega 8 players)",						 "Tiefe Sechs (sehr gross, 8 Spieler)",
 	"Destruction Derby (Mega 8 players)",			 "Destruction Derby (sehr gross, 8 Spieler)",
-	"Diamonds Aren't Forever (Mega 8 players)",	 "Verg„ngliche Diamanten (sehr gross, 8 Spieler)",
+	"Diamonds Aren't Forever (Mega 8 players)",	 "VergÂ„ngliche Diamanten (sehr gross, 8 Spieler)",
 	"Elysium (Sm 4 players)",							 "Elysium (klein, 4 Spieler)",
 	"Equal Shares (Lg 4 players)",					 "Gleiche Anteile (gross, 4 Spieler)",
 	"Frost Bitten (Mega 8 players)",					 "Frostbrand (sehr gross, 8 Spieler)",
 	"Frozen Valley (Med 6 players)",					 "Eisiges Tal (mittelgross, 6 Spieler)",
 	"Gettysburg (Sm 4 players)",						 "Gettysburg (klein, 4 Spieler)",
 	"Glacial Valley (Sm 4 players)",					 "Gletschertal (klein, 4 Spieler)",
-	"Gold Coast (Med 6 players)",						 "Goldkste (mittelgross, 6 Spieler)",
+	"Gold Coast (Med 6 players)",						 "GoldkÂste (mittelgross, 6 Spieler)",
 	"Gold Rush (Lg 4 players)",						 "Goldrausch (gross, 4 Spieler)",
 	"Habitat (Lg 4 players)",							 "Habitat (gross, 4 Spieler)",
-	"Hades Frozen Over (Sm 4 players)",				 "Frostschutz fr die H”lle (klein, 4 Spieler)",
+	"Hades Frozen Over (Sm 4 players)",				 "Frostschutz fÂr die HÂ”lle (klein, 4 Spieler)",
 	"Hamburger Hill (Mega 8 players)",				 "Hamburger Hill (sehr gross, 8 Spieler)",
 	"Hastings (Sm 4 players)",							 "Hastings (klein, 4 Spieler)",
-	"Hell's Pass (Med 6 players)",					 "H”llenpass (mittelgross, 6 Spieler)",
+	"Hell's Pass (Med 6 players)",					 "HÂ”llenpass (mittelgross, 6 Spieler)",
 	"Holy Grounds (Mega 8 players)",					 "Heiliger Boden (sehr gross, 8 Spieler)",
 	"Ice Bergs (Med 6 players)",						 "Eisberge (mittelgross, 6 Spieler)",
 	"Ice Station (Lg 6 players)",						 "Eisstation  (gross, 6 Spieler)",
-	"Ice Queen (Lg 4 players)",						 "Eisk”nigin (gross, 4 Spieler)",
+	"Ice Queen (Lg 4 players)",						 "EiskÂ”nigin (gross, 4 Spieler)",
 	"In the Sun (Med 6 players)",						 "Unter der Sonne (mittelgross, 6 Spieler)",
 	"Innocents? (Mega 8 players)",					 "Unschuldig? Wer? (sehr gross, 8 Spieler)",
 	"Islands (Med 8 players)",							 "Inseln im Nebel (mittelgross, 8 Spieler)",
 	"Island Plateau (Lg 4 players)",					 "Inselplateau (gross, 4 Spieler)",
 	"Island Wars Extreme (Mega 8 players)",		 "Extremes Inselspringen (sehr gross, 8 Spieler)",
 	"Kananga (Med 6 players)",							 "Kananga (mittelgross, 6 Spieler)",
-	"King of the Hills Extreme (Mega 8 players)", "K”nig des Maulwurfshgels (sehr gross, 8 Spieler)",
+	"King of the Hills Extreme (Mega 8 players)", "KÂ”nig des MaulwurfshÂgels (sehr gross, 8 Spieler)",
 	"Lake Land (Lg 8 players)",						 "Seenland (gross, 8 Spieler)",
 	"Land Locked (Lg 8 players)",						 "Das Verschlossene Land (gross, 8 Spieler)",
 	"Lanes (Med 8 players)",							 "Gassenjungen (mittelgross, 8 Spieler)",
 	"Leipzip (Sm 4 players)",							 "Leipzig (klein, 4 Spieler)",
-	"Meander (Lg 8 players)",							 "M„ander (gross, 8 Spieler)",
+	"Meander (Lg 8 players)",							 "MÂ„ander (gross, 8 Spieler)",
 	"Mekong (Med 8 players)",							 "Mekong (mittelgross, 8 Spieler)",
 	"Middle Ground (Med 8 players)",					 "Mittelsmann (mittelgross, 8 Spieler)",
 	"Naval Conquests (Mega 8 players)",				 "Kommt zur Marine, haben sie gesagt (sehr gross, 8 Spieler)",
-	"On your Marks (Med 4 players)",					 "Auf die Pl„tze (mittelgross, 4 Spieler)",
+	"On your Marks (Med 4 players)",					 "Auf die PlÂ„tze (mittelgross, 4 Spieler)",
 	"Open Warfare (Mega 8 players)",					 "Offener Schlagabtausch (sehr gross, 8 Spieler)",
 	"Ore Gardens (Lg 8 players)",						 "Erzparadies (gross, 8 Spieler)",
-	"Potholes (Mega 8 players)",						 "Schlagl”cher (sehr gross, 8 Spieler)",
-	"Puddles (Med 4 players)",							 "Pftzen (mittelgross, 4 Spieler)",
+	"Potholes (Mega 8 players)",						 "SchlaglÂ”cher (sehr gross, 8 Spieler)",
+	"Puddles (Med 4 players)",							 "PfÂtzen (mittelgross, 4 Spieler)",
 	"Random Violence (Mega 8 players)",				 "Unberechenbare Gewalt (sehr gross, 8 Spieler)",
 	"Revenge (Med 8 players)",							 "Rache (mittelgross, 8 Spieler)",
 	"Rias (Med 8 players)",								 "Kabul (mittelgross, 8 Spieler)",
@@ -635,28 +635,28 @@ char const *EngMisStr[] = {
 	"Rorkes Drift (Lg 4 players)",					 "Rorkes Drift (gross, 4 Spieler)",
 	"Seaside (Med 4 players)",							 "Strandleben (mittelgross, 4 Spieler)",
 	"Shades (Med 8 players)",							 "Schattenreich (mittelgross, 8 Spieler)",
-	"Smuggler's Cove (Lg 6 players)",				 "Schmugglerh”hle (gross, 6 Spieler)",
-	"Snow Garden (Sm 2 players)",						 "Schneegest”ber (klein, 2 Spieler)",
+	"Smuggler's Cove (Lg 6 players)",				 "SchmugglerhÂ”hle (gross, 6 Spieler)",
+	"Snow Garden (Sm 2 players)",						 "SchneegestÂ”ber (klein, 2 Spieler)",
 	"Stalingrad (Sm 4 players)",						 "Stalingrad (klein, 4 Spieler)",
 	"Sticks & Stones (Med 4 players)",				 "Holz und Steine (mittelgross, 4 Spieler)",
 	"Strathearn Valley (Lg 6 players)",				 "Das Tal von Strathearn (gross, 6 Spieler)",
-	"Super Bridgehead (Mega 8 players)",			 "Super-Brckenkopf (sehr gross, 8 Spieler)",
+	"Super Bridgehead (Mega 8 players)",			 "Super-BrÂckenkopf (sehr gross, 8 Spieler)",
 	"Super Mekong (Mega 8 players)",					 "Super-Mekong (sehr gross, 8 Spieler)",
 	"Super Ore Gardens (Mega 8 players)",			 "Super-Erzparadies (sehr gross, 8 Spieler)",
 	"Switch (Med 4 players)",							 "Schalter (mittelgross, 4 Spieler)",
 	"The Berg (Mega 8 players)",						 "Der Berg (sehr gross, 8 Spieler)",
 	"The Boyne (Med 4 players)",						 "Boyne (mittelgross, 4 Spieler)",
-	"The Bulge (Sm 4 players)",						 "Die W”lbung (klein, 4 Spieler)",
+	"The Bulge (Sm 4 players)",						 "Die WÂ”lbung (klein, 4 Spieler)",
 	"The Cauldron (Lg 6 players)",					 "Der Kessel (gross, 6 Spieler)",
 	"The Finger (Lg 6 players)",						 "Der Finger (gross, 6 Spieler)",
-	"The Hills Have Eyes (Mega 8 players)",		 "Die Hgel haben Augen (sehr gross, 8 Spieler)",
+	"The Hills Have Eyes (Mega 8 players)",		 "Die HÂgel haben Augen (sehr gross, 8 Spieler)",
 	"The Keyes (Med 6 players)",						 "Ein Sumpf (mittelgross, 6 Spieler)",
 	"The Lakes (Med 8 players)",						 "Die Seen (mittelgross, 8 Spieler)",
 	"The Neck (Med 6 players)",						 "Der Hals (mittelgross, 6 Spieler)",
 	"The Web (Lg 6 players)",							 "Das Netz (gross, 6 Spieler)",
 	"To the Core (Lg 4 players)",						 "Mitten ins Herz (gross, 4 Spieler)",
 	"Trafalgar (Lg 4 players)",						 "Trafalgar (gross, 4 Spieler)",
-	"Twin Rivers (Sm 4 players)",						 "Zwillingsstr”me (klein, 4 Spieler)",
+	"Twin Rivers (Sm 4 players)",						 "ZwillingsstrÂ”me (klein, 4 Spieler)",
 	"Umtumbo Gorge (Lg 4 players)",					 "Die Umtumbo-Schlucht (gross, 4 Spieler)",
 	"Watch Your Step Extreme (Mega 8 players)",	 "Vorsicht, Lebensgefahr (sehr gross, 8 Spieler)",
 	"Waterfalls (Lg 8 players)",						 "Wasserfall (gross, 8 Spieler)",
@@ -675,18 +675,18 @@ char const *EngMisStr[] = {
 	"Central Conflict (Lg)",				"Conflit Central (Max)",
 	"Coastal Influence (Med)",				"Le Chant des Canons (Moy)",
 	"Combat Alley (Med)",					"Aux Armes! (Moy)",
-	"Desolation (Lg)",						"D‚solation (Max)",
+	"Desolation (Lg)",						"DÂ‚solation (Max)",
 	"Dugout Isle (Med)",						"L'Ile Maudite (Moy)",
 	"Equal Opportunity (Sm)",				"A Chances Egales (Min)",
 	"First Come, First Serve (Sm)",		"La Loi du Plus Fort (Min)",
-	"Island Hoppers (Sm)",					"D'une Ile … l'autre (Min)",
+	"Island Hoppers (Sm)",					"D'une Ile Â… l'autre (Min)",
 	"Island Wars (Lg)",						"Guerres Insulaires (Max)",
 	"Isle of Fury (Lg)",						"L'Ile de la Furie(Max)",
 	"Ivory Wastelands (Sm)",				"Terres d'Ivoire (Min)",
 	"Keep off the Grass (Sm)",				"Hors de mon Chemin (Min)",
 	"Marooned II (Med)",						"Isolement II (Moy)",
 	"Middle Mayhem (Sm)",					"Chaos Interne (Min)",
-	"No Escape (Med)",						"Le PiŠge (Moy)",
+	"No Escape (Med)",						"Le PiÂŠge (Moy)",
 	"No Man's Land (Med)",					"No Man's Land (Moy)",
 	"Normandy (Med)",							"Normandie (Moy)",
 	"North By Northwest (Lg)",				"Nord, Nord-Ouest (Max)",
@@ -694,43 +694,43 @@ char const *EngMisStr[] = {
 	"Raraku (Lg)",								"Raraku (Max)",
 	"Ridge War (Med)",						"Guerre au Sommet (Moy)",
 	"Shallow Grave (Med)",					"La Saveur de la Mort (Moy)",
-	"Treasure Isle (Med)",					"L'Ile au Tr‚sor (Moy)",
+	"Treasure Isle (Med)",					"L'Ile au TrÂ‚sor (Moy)",
 
 	"Africa (Lg)",								"Afrique (Max)",
 	"Alaska Anarchy (Lg)",					"Anarchie en Alaska (Max)",
 	"All that Glitters... (Lg)",			"Tout ce qui brille... (Max)",
-	"Apre's Peace (Lg)",						"Une Paix Durement N‚goci‚e... (Max)",
+	"Apre's Peace (Lg)",						"Une Paix Durement NÂ‚gociÂ‚e... (Max)",
 	"Antartica (Lg)",							"Antarctique (Max)",
-	"Armourgarden (Lg)",						"La Guerre des Blind‚s (Max)",
+	"Armourgarden (Lg)",						"La Guerre des BlindÂ‚s (Max)",
 	"Austraila (Med)",						"Australie (Moy)",
-	"Barrier to Entry (Lg)",				"BarriŠre … l'Entr‚e (Max)",
+	"Barrier to Entry (Lg)",				"BarriÂŠre Â… l'EntrÂ‚e (Max)",
 	"Bavarian Blast (Med)",					"Tonnerre Bavarois (Moy)",
-	"Be Shore (Med)",							"Plages Menac‚es (Moy)",
+	"Be Shore (Med)",							"Plages MenacÂ‚es (Moy)",
 	"Bearing Straits (Med)",				"Droit Devant ! (Moy)",
-	"Blow Holes (Lg)",						"CratŠres (Max)",
-	"Bonsai (Sm)",								"Bonsa‹ (Min)",
-	"Brother Stalin (Lg)",					"FrŠre Staline (Max)",
+	"Blow Holes (Lg)",						"CratÂŠres (Max)",
+	"Bonsai (Sm)",								"BonsaÂ‹ (Min)",
+	"Brother Stalin (Lg)",					"FrÂŠre Staline (Max)",
 	"Bullseye (Lg)",							"L'oeil du Taureau (Max)",
 	"C&C (Med)",								"C&C (Moy)",
 	"Camos Canyon (Med)",					"Le Canyon (Moy)",
 	"Camos Coves (Lg)",						"Criques (Max)",
 	"Camos Cross (Lg)",						"La Croix de Guerre (Max)",
-	"Camos Crossing (Sm)",					"La Crois‚e des Chemins (Min)",
-	"Central Arena (Lg)",					"L'ArŠne Diabolique (Max)",
-	"Canyon River (Med)",					"Au Milieu Coule Une RiviŠre (Moy)",
+	"Camos Crossing (Sm)",					"La CroisÂ‚e des Chemins (Min)",
+	"Central Arena (Lg)",					"L'ArÂŠne Diabolique (Max)",
+	"Canyon River (Med)",					"Au Milieu Coule Une RiviÂŠre (Moy)",
 	"Crossroads (Sm)",						"Carrefours (Min)",
-	"Czech Mate (Lg)",						"TchŠque et Mat (Max)",
+	"Czech Mate (Lg)",						"TchÂŠque et Mat (Max)",
 	"Dday (Med)",								"Le Jour J (Moy)",
-	"Disaster Central (Lg)",				"D‚sastre Central (Max)",
+	"Disaster Central (Lg)",				"DÂ‚sastre Central (Max)",
 	"Docklands (Med)",						"L'Enfer des Docks (Moy)",
-	"East Coast (Med)",						"C“te Est (Moy)",
+	"East Coast (Med)",						"CÂ“te Est (Moy)",
 	"Eastern Seaboard (Lg)",				"Rivages de l'Est (Max)",
 	"Finger Lake (Lg)",						"Le Lac de tous les Dangers (Max)",
 	"Fjords (Med)",							"Fjords (Moy)",
 	"Floodlands (Lg)",						"Campagne Lacustre (Max)",
-	"Forest under fire (Lg)",				"Forˆt en flammes (Max)",
+	"Forest under fire (Lg)",				"ForÂˆt en flammes (Max)",
 	"Four Corners (Lg)",						"4 Coins (Max)",
-	"Frostbit Fjords (Lg)",					"Fjords Gel‚s (Max)",
+	"Frostbit Fjords (Lg)",					"Fjords GelÂ‚s (Max)",
 	"Glenboig (Sm)",							"Glenboig (Min)",
 	"Hell Frozen Over (Lg)",				"Enfer de Glace Max)",
 	"India (Lg)",								"Inde (Max)",
@@ -740,40 +740,40 @@ char const *EngMisStr[] = {
 	"Kabalo (Lg)",								"Kabalo (Max)",
 	"King of the Hills (Lg)",				"Le Roi des Montagnes (Max)",
 	"Lake Divide (Med)",						"La Guerre du Lac (Moy)",
-	"Lakelands (Lg)",							"Terres Submerg‚es (Max)",
+	"Lakelands (Lg)",							"Terres SubmergÂ‚es (Max)",
 	"Land Ladder (Lg)",						"Jusqu'au Sommet (Max)",
 	"Lotsa Lakes (Lg)",						"Terres de Lacs (Max)",
-	"Lunar Battlefield (Lg Special)",	"Combat Lunaire (Max Sp‚cial)",
+	"Lunar Battlefield (Lg Special)",	"Combat Lunaire (Max SpÂ‚cial)",
 	"Malibu Fields (Med)",					"Les Champs de Malibu (Moy)",
-	"Marshland (Med)",						"Mar‚cages (Moy)",
+	"Marshland (Med)",						"MarÂ‚cages (Moy)",
 	"MyLai Delta (Med)",						"Le Delta Mylai (Moy)",
 	"Natural Harbor (Med)",					"Port Naturel (Moy)",
 	"No Way Out (Lg)",						"Sans Issue (Max)",
-	"Normandy Landing (Lg)",				"Le D‚barquement (Max)",
+	"Normandy Landing (Lg)",				"Le DÂ‚barquement (Max)",
 	"Ore Wars (Med)",							"La Guerre du Minerai (Moy)",
 	"Oz (Lg)",									"Oz (Max)",
-	"Pilgrim Fathers II (Lg)",				"Les PŠlerins 2 (Max)",
-	"Pip's Ice Tea (Med)",					"Les Tranch‚es de Glace (Moy)",
+	"Pilgrim Fathers II (Lg)",				"Les PÂŠlerins 2 (Max)",
+	"Pip's Ice Tea (Med)",					"Les TranchÂ‚es de Glace (Moy)",
 	"Polar Panic (Lg)",						"Panique Polaire (Max)",
 	"Ponds (Med)",								"Les Etangs (Moy)",
-	"Putney (Lg)",								"La Meilleure D‚fense... (Max)",
-	"Return to Zion (Lg)",					"Retour … Sion (Max)",
+	"Putney (Lg)",								"La Meilleure DÂ‚fense... (Max)",
+	"Return to Zion (Lg)",					"Retour Â… Sion (Max)",
 	"Ring of Land (Lg)",						"Le Cycle Infernal (Max)",
 	"River Basin (Lg)",						"Confrontation Navale (Max)",
 	"River Delta (Med)",						"Le Delta (Moy)",
-	"River Islands (Med)",					"C“tes … Surveiller de PrŠs (Moy)",
+	"River Islands (Med)",					"CÂ“tes Â… Surveiller de PrÂŠs (Moy)",
 	"River Maze (Sm)",						"Labyrinthe Fluvial (Min)",
-	"Rivers (Sm)",								"RiviŠres (Min)",
-	"Run the Gauntlet (Med)",				"Relevons le D‚fi ! (Moy)",
+	"Rivers (Sm)",								"RiviÂŠres (Min)",
+	"Run the Gauntlet (Med)",				"Relevons le DÂ‚fi ! (Moy)",
 	"Scappa Flow (Lg)",						"Combats Sanglants (Max)",
-	"Siberian Slaughter (Lg)",				"Carnage Sib‚rien (Max)",
-	"Sleepy Valley (Sm)",					"La Vall‚e Endormie (Min)",
-	"Snake River (Lg)",						"La RiviŠre aux Serpents (Max)",
+	"Siberian Slaughter (Lg)",				"Carnage SibÂ‚rien (Max)",
+	"Sleepy Valley (Sm)",					"La VallÂ‚e Endormie (Min)",
+	"Snake River (Lg)",						"La RiviÂŠre aux Serpents (Max)",
 	"Snow Wars (Lg)",							"Guerres de Neige (Max)",
 	"Snowball fight (Lg)",					"Bataille de Boules de Neige (Max)",
 	"Snowy Island (Lg)",						"L'Ile sous la Neige (Max)",
 	"So Near So Far (Sm)",					"Si Loin, Si Proche (Min)",
-	"South America (Lg)",					"Am‚rique du Sud (Max)",
+	"South America (Lg)",					"AmÂ‚rique du Sud (Max)",
 	"Spring Line (Lg)",						"Ligne de Front (Max)",
 	"Star (Lg)",								"Etoile (Max)",
 	"Straighter & Narrower (Sm)",			"L'Entonnoir (Min)",
@@ -781,14 +781,14 @@ char const *EngMisStr[] = {
 	"The Bay (Lg)",							"La Baie (Max)",
 	"The Garden (Lg)",						"Le Jardin (Max)",
 	"The Great Lakes (Med)",				"Les Grands Lacs (Moy)",
-	"The Ice Arena (Lg)",					"L'ArŠne de Glace (Max)",
+	"The Ice Arena (Lg)",					"L'ArÂŠne de Glace (Max)",
 	"The Lake District (Lg)",				"Un Lac Imprenable (Max)",
-	"The Linked lands (Lg)",				"Passages … Gu‚ (Max)",
+	"The Linked lands (Lg)",				"Passages Â… GuÂ‚ (Max)",
 	"The Mississippi (Med)",				"Mississippi (Moy)",
 	"The Sticky Bit (Lg)",					"Marasme (Max)",
-	"The Valley (Med)",						"La Vall‚e (Moy)",
+	"The Valley (Med)",						"La VallÂ‚e (Moy)",
 	"The Woods Today (Lg)",					"Aujoud'hui: la Mort ! (Max)",
-	"Things to Come (Lg)",					"D‚nouement Incertain (Max)",
+	"Things to Come (Lg)",					"DÂ‚nouement Incertain (Max)",
 	"Tiger Core (Sm)",						"Le Coeur du Tigre (Min)",
 	"To the Core (Sm)",						"Le Coeur du Conflit (Min)",
 	"Tournament Hills (Lg)",				"Combat en Altitude (Max)",
@@ -798,89 +798,89 @@ char const *EngMisStr[] = {
 	"Undiscovered Country (Sm)",			"Terre Inconnue (Min)",
 	"United States (Med)",					"Etats Unis (Moy)",
 	"Volcano (Sm)",							"Le Volcan (Min)",
-	"Wastelands (Lg)",						"Terres D‚sol‚es (Max)",
+	"Wastelands (Lg)",						"Terres DÂ‚solÂ‚es (Max)",
 	"Water Works (Sm)",						"Jeux d'Eau (Min)",
 	"World Map (Med)",						"Carte du Monde (Moy)",
-	"Zambezi (Lg)",							"ZambŠze (Max)",
+	"Zambezi (Lg)",							"ZambÂŠze (Max)",
 //#if 0
 	"A Pattern of Islands (Lg 8 players)",			 "Archipel (Max. 8 joueurs)",
-	"Arena Valley Extreme (Mega 8 players)",		 "La Vall‚e de l'arŠne (XL 8 joueurs)",
-	"Around the Rim (Sm 4 players)",					 "Autour de la crˆte (Min. 4 joueurs)",
-	"Ashes to Ashes (Lg 6 players)",					 "R‚duit en cendres (Max. 6 joueurs)",
-	"Artic Wasteland (Mega 8 players)",				 "D‚solation arctique (XL 8 joueurs)",
+	"Arena Valley Extreme (Mega 8 players)",		 "La VallÂ‚e de l'arÂŠne (XL 8 joueurs)",
+	"Around the Rim (Sm 4 players)",					 "Autour de la crÂˆte (Min. 4 joueurs)",
+	"Ashes to Ashes (Lg 6 players)",					 "RÂ‚duit en cendres (Max. 6 joueurs)",
+	"Artic Wasteland (Mega 8 players)",				 "DÂ‚solation arctique (XL 8 joueurs)",
 	"Badajoz (Med 4 players)",							 "Badjoz (Moy. 4 joueurs)",
-	"Baptism of Fire (Lg 6 players)",				 "Baptˆme du feu (Max. 6 joueurs)",
+	"Baptism of Fire (Lg 6 players)",				 "BaptÂˆme du feu (Max. 6 joueurs)",
 	"Big Fish, Small Pond (Lg 6 players)",			 "Gros poisson, Min. Mare (Max. 6 joueurs)",
 	"Blue Lakes (Lg 8 players)",						 "Lacs bleus (Max. 8 joueurs)",
-	"Booby Traps (Mega 8 players)",					 "PiŠges (XL 8 joueurs)",
-	"Bridgehead (Lg 6 players)",						 "Tˆte de pont (Max. 6 joueurs)",
+	"Booby Traps (Mega 8 players)",					 "PiÂŠges (XL 8 joueurs)",
+	"Bridgehead (Lg 6 players)",						 "TÂˆte de pont (Max. 6 joueurs)",
 	"Butterfly Bay (Lg 6 players)",					 "La baie du papillon (Max. 6 joueurs)",
-	"Central Conflict Extreme (Mega 8 players)",	 "Conflit central extrˆme (XL 8 joueurs)",
+	"Central Conflict Extreme (Mega 8 players)",	 "Conflit central extrÂˆme (XL 8 joueurs)",
 	"Circles of Death (Mega 8 players)",			 "Les cercles de la mort (XL 8 joueurs)",
 	"Cold Front (Med 6 players)",						 "Front froid ( Moy. 6 joueurs)",
-	"Cold Pass (Med 4 players)",						 "La Passe Glac‚e (Moy. 4 joueurs)",
+	"Cold Pass (Med 4 players)",						 "La Passe GlacÂ‚e (Moy. 4 joueurs)",
 	"Combat Zones (Mega 8 players)",					 "Zones de combat (XL 8 joueurs)",
 	"Conflict Cove (Sm 4 players)",					 "La Crique du conflit (Min. 4 joueurs)",
 	"Culloden Moor (Med 8 players)",					 "La Lande de Culloden (Moy. 8 joueurs)",
 	"Damnation Alley (Mega 8 players)",				 "Le chemin de la damnation (XL 8 joueurs)",
-	"Death Valley (Mega 8 players)",					 "La vall‚e de la mort (XL 8 joueurs)",
+	"Death Valley (Mega 8 players)",					 "La vallÂ‚e de la mort (XL 8 joueurs)",
 	"Deep Six (Mega 8 players)",						 "Six de profondeur (XL 8 joueurs)",
 	"Destruction Derby (Mega 8 players)",			 "Stock car (XL 8 joueurs)",
-	"Diamonds Aren't Forever (Mega 8 players)",	 "Les diamants ne sont pas ‚ternels (XL 8 joueurs)",
-	"Elysium (Sm 4 players)",							 "Elys‚e (Min. 4 joueurs)",
-	"Equal Shares (Lg 4 players)",					 "Parts ‚gales (Max. 4 joueurs)",
+	"Diamonds Aren't Forever (Mega 8 players)",	 "Les diamants ne sont pas Â‚ternels (XL 8 joueurs)",
+	"Elysium (Sm 4 players)",							 "ElysÂ‚e (Min. 4 joueurs)",
+	"Equal Shares (Lg 4 players)",					 "Parts Â‚gales (Max. 4 joueurs)",
 	"Frost Bitten (Mega 8 players)",					 "Engelures (XL 8 joueurs)",
-	"Frozen Valley (Med 6 players)",					 "La Vall‚e glac‚e (Moy. 6 joueurs)",
+	"Frozen Valley (Med 6 players)",					 "La VallÂ‚e glacÂ‚e (Moy. 6 joueurs)",
 	"Gettysburg (Sm 4 players)",						 "Gettysburg (Min. 4 joueurs)",
-	"Glacial Valley (Sm 4 players)",					 "Vall‚e de glace (Min. 4 joueurs)",
-	"Gold Coast (Med 6 players)",						 "La c“te dor‚e (Moy. 6 joueurs)",
-	"Gold Rush (Lg 4 players)",						 "La ru‚e vers l'or (Max. 4 joueurs)",
+	"Glacial Valley (Sm 4 players)",					 "VallÂ‚e de glace (Min. 4 joueurs)",
+	"Gold Coast (Med 6 players)",						 "La cÂ“te dorÂ‚e (Moy. 6 joueurs)",
+	"Gold Rush (Lg 4 players)",						 "La ruÂ‚e vers l'or (Max. 4 joueurs)",
 	"Habitat (Lg 4 players)",							 "Habitat (Max. 4 joueurs)",
-	"Hades Frozen Over (Sm 4 players)",				 "Les enfers glac‚s (Min. 4 joueurs)",
+	"Hades Frozen Over (Sm 4 players)",				 "Les enfers glacÂ‚s (Min. 4 joueurs)",
 	"Hamburger Hill (Mega 8 players)",				 "Hamburger Hill (XL 8 joueurs)",
 	"Hastings (Sm 4 players)",							 "Hastings (Min. 4 joueurs)",
 	"Hell's Pass (Med 6 players)",					 "La route de l'enfer (Moy. 6 joueurs)",
 	"Holy Grounds (Mega 8 players)",					 "Terres saintes (XL 8 joueurs)",
 	"Ice Bergs (Med 6 players)",						 "Icebergs (Moy. 6 joueurs)",
-	"Ice Station (Lg 6 players)",						 "Station glac‚e (Max. 6 joueurs)",
+	"Ice Station (Lg 6 players)",						 "Station glacÂ‚e (Max. 6 joueurs)",
 	"Ice Queen (Lg 4 players)",						 "Reine des glaces (Max. 4 joueurs)",
 	"In the Sun (Med 6 players)",						 "Sous le soleil (Moy. 6 joueurs)",
 	"Innocents? (Mega 8 players)",					 "Innocents ? (XL 8 joueurs)",
 	"Islands (Med 8 players)",							 "Iles (Moy. 8 joueurs)",
-	"Island Plateau (Lg 4 players)",					 "Plateau des Œles (Max. 4 joueurs)",
-	"Island Wars Extreme (Mega 8 players)",		 "Guerres insulaires extrˆme (XL 8 joueurs)",
+	"Island Plateau (Lg 4 players)",					 "Plateau des ÂŒles (Max. 4 joueurs)",
+	"Island Wars Extreme (Mega 8 players)",		 "Guerres insulaires extrÂˆme (XL 8 joueurs)",
 	"Kananga (Med 6 players)",							 "Kananga (Moy. 6 joueurs)",
-	"King of the Hills Extreme (Mega 8 players)", "Roi des collines extrˆme (XL 8 joueurs)",
+	"King of the Hills Extreme (Mega 8 players)", "Roi des collines extrÂˆme (XL 8 joueurs)",
 	"Lake Land (Lg 8 players)",						 "Paysage lacustre (Max. 8 joueurs)",
 	"Land Locked (Lg 8 players)",						 "Enclave (Max. 8 joueurs)",
 	"Lanes (Med 8 players)",							 "Le parcours du combattant (Moy. 8 joueurs)",
 	"Leipzip (Sm 4 players)",							 "Leipzig (Min. 4 joueurs)",
-	"Meander (Lg 8 players)",							 "M‚andre (Max. 8 joueurs)",
-	"Mekong (Med 8 players)",							 "M‚kong (Moy. 8 joueurs)",
-	"Middle Ground (Med 8 players)",					 "Plateau m‚dian (Moy. 8 joueurs)",
-	"Naval Conquests (Mega 8 players)",				 "Conquˆtes navales (XL 8 joueurs)",
+	"Meander (Lg 8 players)",							 "MÂ‚andre (Max. 8 joueurs)",
+	"Mekong (Med 8 players)",							 "MÂ‚kong (Moy. 8 joueurs)",
+	"Middle Ground (Med 8 players)",					 "Plateau mÂ‚dian (Moy. 8 joueurs)",
+	"Naval Conquests (Mega 8 players)",				 "ConquÂˆtes navales (XL 8 joueurs)",
 	"On your Marks (Med 4 players)",					 "A vos marques (Moy. 4 joueurs)",
 	"Open Warfare (Mega 8 players)",					 "Guerre ouverte (XL 8 joueurs)",
 	"Ore Gardens (Lg 8 players)",						 "Jardins de minerai (Max. 8 joueurs)",
 	"Potholes (Mega 8 players)",						 "Nids de poules (XL 8 joueurs)",
 	"Puddles (Med 4 players)",							 "Flaques (Moy. 4 joueurs)",
-	"Random Violence (Mega 8 players)",				 "Violence al‚atoire (XL 8 joueurs)",
+	"Random Violence (Mega 8 players)",				 "Violence alÂ‚atoire (XL 8 joueurs)",
 	"Revenge (Med 8 players)",							 "Vengeance (Moy. 8 joueurs)",
 	"Rias (Med 8 players)",								 "Rias (Moy. 8 joueurs)",
-	"River Crossing (Sm 4 players)",					 "Passage … gu‚ (Min. 4 joueurs)",
-	"River Rampage (Mega 8 players)",				 "RiviŠre d‚chaŒn‚e (XL 8 joueurs)",
+	"River Crossing (Sm 4 players)",					 "Passage Â… guÂ‚ (Min. 4 joueurs)",
+	"River Rampage (Mega 8 players)",				 "RiviÂŠre dÂ‚chaÂŒnÂ‚e (XL 8 joueurs)",
 	"River Rapids (Lg 6 players)",					 "Rapides (Max. 6 joueurs)",
-	"Rivers Wild (Mega 8 players)",					 "RiviŠres sauvages (XL 8 joueurs)",
+	"Rivers Wild (Mega 8 players)",					 "RiviÂŠres sauvages (XL 8 joueurs)",
 	"Rorkes Drift (Lg 4 players)",					 "L'Exode de Rorkes (Max. 4 joueurs)",
-	"Seaside (Med 4 players)",							 "C“te (Moy. 4 joueurs)",
+	"Seaside (Med 4 players)",							 "CÂ“te (Moy. 4 joueurs)",
 	"Shades (Med 8 players)",							 "Ombres (Moy. 8 joueurs)",
 	"Smuggler's Cove (Lg 6 players)",				 "La Crique du contrebandier (Max. 6 joueurs)",
 	"Snow Garden (Sm 2 players)",						 "Jardin de neige (Min. 2 joueurs)",
 	"Stalingrad (Sm 4 players)",						 "Stalingrad (Min. 4 joueurs)",
-	"Sticks & Stones (Med 4 players)",				 "Bƒton & Roches (Moy. 4 joueurs)",
-	"Strathearn Valley (Lg 6 players)",				 "La Vall‚e de Strathearn (Max. 6 joueurs)",
-	"Super Bridgehead (Mega 8 players)",			 "Super tˆte de pont (XL 8 joueurs)",
-	"Super Mekong (Mega 8 players)",					 "Super M‚kong (XL 8 joueurs)",
+	"Sticks & Stones (Med 4 players)",				 "BÂƒton & Roches (Moy. 4 joueurs)",
+	"Strathearn Valley (Lg 6 players)",				 "La VallÂ‚e de Strathearn (Max. 6 joueurs)",
+	"Super Bridgehead (Mega 8 players)",			 "Super tÂˆte de pont (XL 8 joueurs)",
+	"Super Mekong (Mega 8 players)",					 "Super MÂ‚kong (XL 8 joueurs)",
 	"Super Ore Gardens (Mega 8 players)",			 "Super jardin de minerai (XL 8 joueurs)",
 	"Switch (Med 4 players)",							 "Permutation (Moy. 4 joueurs)",
 	"The Berg (Mega 8 players)",						 "Le Berg (XL 8 joueurs)",
@@ -895,9 +895,9 @@ char const *EngMisStr[] = {
 	"The Web (Lg 6 players)",							 "La toile (Max. 6 joueurs)",
 	"To the Core (Lg 4 players)",						 "Jusqu'au cour (Max. 4 joueurs)",
 	"Trafalgar (Lg 4 players)",						 "Trafalgar (Max. 4 joueurs)",
-	"Twin Rivers (Sm 4 players)",						 "Les deux riviŠres (Min. 4 joueurs)",
+	"Twin Rivers (Sm 4 players)",						 "Les deux riviÂŠres (Min. 4 joueurs)",
 	"Umtumbo Gorge (Lg 4 players)",					 "La Gorge de Umtumbo (Max. 4 joueurs)",
-	"Watch Your Step Extreme (Mega 8 players)",	 "Pas-…-pas extrˆme (XL 8 joueurs)",
+	"Watch Your Step Extreme (Mega 8 players)",	 "Pas-Â…-pas extrÂˆme (XL 8 joueurs)",
 	"Waterfalls (Lg 8 players)",						 "Chutes d'eau (Max. 8 joueurs)",
 	"Waterloo Revisited (Lg 6 players)",			 "Waterloo II (Max. 6 joueurs)",
 	"Water Werks (Mega 8 players)",					 "Jeux d'eau (XL 8 joueurs)",
@@ -2858,6 +2858,9 @@ static int Net_Join_Dialog(void)
 					for (i = 0; i < Session.Chat.Count(); i++) {
 						if (stricmp(Session.Chat[i]->Name,playerlist.Get_Item(i)) ||
 							&ColorRemaps[ (Session.Chat[i]->Chat.Color == PCOLOR_DIALOG_BLUE) ?
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
 												PCOLOR_REALLY_BLUE : Session.Chat[i]->Chat.Color] !=
 							playerlist.Colors[i]) {
 
@@ -4994,6 +4997,9 @@ static int Net_New_Dialog(void)
 				Ipx.Send_Global_Message (&Session.GPacket, sizeof (GlobalPacketType),
 					1, &(Session.Players[i]->Address) );
 			}
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
 			Sound_Effect(VOC_OPTIONS_CHANGED);
 			transmit = 0;
 		}
@@ -6095,31 +6101,31 @@ extern bool Spawn_WChat(bool can_launch);
  * routine is exited; their contents are used to form connections to the other players,		  *
  * after the scenario has been loaded.																			  *
  *                                                                                             *
- *    ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿                                           *
- *    ³              New Network Game              ³                                           *
- *    ³                                            ³                                           *
- *    ³     Players               Scenario         ³                                           *
- *    ³ ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄ¿   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄ¿ ³                                           *
- *    ³ ³ Boffo       ³.³   ³ Green Acres      ³.³ ³                                           *
- *    ³ ³ Bozo        ÃÄ´   ³ Brown Sewers     ÃÄ´ ³                                           *
- *    ³ ³ Bonzo       ³ ³   ³      ...         ³ ³ ³                                           *
- *    ³ ³             ÃÄ´   ³                  ÃÄ´ ³                                           *
- *    ³ ³             ³.³   ³                  ³.³ ³                                           *
- *    ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÙ   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÙ ³                                           *
- *    ³     [Reject]             Count:--- ##      ³                                           *
- *    ³                          Level:--- ##      ³                                           *
- *    ³                                            ³                                           *
- *    ³               Credits: _____               ³                                           *
- *    ³       [  Bases   ]   [   Crates   ]        ³                                           *
- *    ³       [ Tiberium ]   [ AI Players ]        ³                                           *
- *    ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ³                                           *
- *    ³  ³                                     ³   ³                                           *
- *    ³  ³                                     ³   ³                                           *
- *    ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ³                                           *
- *    ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   ³                                           *
- *    ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ   ³                                           *
- *    ³              [OK]    [Cancel]              ³                                           *
- *    ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ                                           *
+ *    ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Â¿                                           *
+ *    Â³              New Network Game              Â³                                           *
+ *    Â³                                            Â³                                           *
+ *    Â³     Players               Scenario         Â³                                           *
+ *    Â³ ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã‚Ã„Â¿   ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã‚Ã„Â¿ Â³                                           *
+ *    Â³ Â³ Boffo       Â³.Â³   Â³ Green Acres      Â³.Â³ Â³                                           *
+ *    Â³ Â³ Bozo        ÃƒÃ„Â´   Â³ Brown Sewers     ÃƒÃ„Â´ Â³                                           *
+ *    Â³ Â³ Bonzo       Â³ Â³   Â³      ...         Â³ Â³ Â³                                           *
+ *    Â³ Â³             ÃƒÃ„Â´   Â³                  ÃƒÃ„Â´ Â³                                           *
+ *    Â³ Â³             Â³.Â³   Â³                  Â³.Â³ Â³                                           *
+ *    Â³ Ã€Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„ÃÃ„Ã™   Ã€Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„ÃÃ„Ã™ Â³                                           *
+ *    Â³     [Reject]             Count:--- ##      Â³                                           *
+ *    Â³                          Level:--- ##      Â³                                           *
+ *    Â³                                            Â³                                           *
+ *    Â³               Credits: _____               Â³                                           *
+ *    Â³       [  Bases   ]   [   Crates   ]        Â³                                           *
+ *    Â³       [ Tiberium ]   [ AI Players ]        Â³                                           *
+ *    Â³  ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Â¿   Â³                                           *
+ *    Â³  Â³                                     Â³   Â³                                           *
+ *    Â³  Â³                                     Â³   Â³                                           *
+ *    Â³  Ã€Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã™   Â³                                           *
+ *    Â³  ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Â¿   Â³                                           *
+ *    Â³  Ã€Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã™   Â³                                           *
+ *    Â³              [OK]    [Cancel]              Â³                                           *
+ *    Ã€Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã™                                           *
  *                                                                                             *
  * INPUT:                                                                                      *
  *      none.                                                                                  *
@@ -6633,6 +6639,9 @@ static int Net_Fake_New_Dialog(void)
 				Ipx.Send_Global_Message (&Session.GPacket, sizeof (GlobalPacketType),
 					1, &(Session.Players[i]->Address) );
 			}
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
 			Sound_Effect(VOC_OPTIONS_CHANGED);
 			transmit = 0;
 		}
@@ -6875,35 +6884,35 @@ static int Net_Fake_New_Dialog(void)
  * we ping him, requesting a CHAT_ANNOUNCE if he's still in chat.  If we don't hear				  *
  * from him after that, we remove him from our list.														  *
  *                                                                                             *
- *    ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿                                    *
- *    ³                 Network Games                     ³                                    *
- *    ³                                                   ³                                    *
- *    ³              Your Name: ____________              ³                                    *
- *    ³                  House: [GDI] [NOD]               ³                                    *
- *    ³          Desired Color: [ ][ ][ ][ ]              ³                                    *
- *    ³                                                   ³                                    *
- *    ³            Games                 Players          ³                                    *
- *    ³ ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄ¿ ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄ¿ ³                                    *
- *    ³ ³(Bill's Game         )³.³ ³ Peter Parker GDI ³.³ ³                                    *
- *    ³ ³ Peter Parker's Game  ÃÄ´ ³ Mary Jane    GDI ÃÄ´ ³                                    *
- *    ³ ³(Magnum PI's Game    )³ ³ ³ JJ Jameson   NOD ³ ³ ³                                    *
- *    ³ ³                      ÃÄ´ ³                  ÃÄ´ ³                                    *
- *    ³ ³                      ³.³ ³                  ³.³ ³                                    *
- *    ³ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÙ ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÙ ³                                    *
- *    ³           Scenario: Big Long Description          ³                                    *
- *    ³                Starting Credits: xxxx             ³                                    *
- *    ³          Count: ---          Level: ---           ³                                    *
- *    ³          Bases: ON          Crates: ON            ³                                    *
- *    ³       Tiberium: ON      AI Players: ON            ³                                    *
- *    ³                                                   ³                                    *
- *    ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³                                    *
- *    ³  ³                                             ³  ³                                    *
- *    ³  ³                                             ³  ³                                    *
- *    ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³                                    *
- *    ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  ³                                    *
- *    ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ  ³                                    *
- *    ³            [Join]  [Cancel]    [New]              ³                                    *
- *    ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ                                    *
+ *    ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Â¿                                    *
+ *    Â³                 Network Games                     Â³                                    *
+ *    Â³                                                   Â³                                    *
+ *    Â³              Your Name: ____________              Â³                                    *
+ *    Â³                  House: [GDI] [NOD]               Â³                                    *
+ *    Â³          Desired Color: [ ][ ][ ][ ]              Â³                                    *
+ *    Â³                                                   Â³                                    *
+ *    Â³            Games                 Players          Â³                                    *
+ *    Â³ ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã‚Ã„Â¿ ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã‚Ã„Â¿ Â³                                    *
+ *    Â³ Â³(Bill's Game         )Â³.Â³ Â³ Peter Parker GDI Â³.Â³ Â³                                    *
+ *    Â³ Â³ Peter Parker's Game  ÃƒÃ„Â´ Â³ Mary Jane    GDI ÃƒÃ„Â´ Â³                                    *
+ *    Â³ Â³(Magnum PI's Game    )Â³ Â³ Â³ JJ Jameson   NOD Â³ Â³ Â³                                    *
+ *    Â³ Â³                      ÃƒÃ„Â´ Â³                  ÃƒÃ„Â´ Â³                                    *
+ *    Â³ Â³                      Â³.Â³ Â³                  Â³.Â³ Â³                                    *
+ *    Â³ Ã€Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„ÃÃ„Ã™ Ã€Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„ÃÃ„Ã™ Â³                                    *
+ *    Â³           Scenario: Big Long Description          Â³                                    *
+ *    Â³                Starting Credits: xxxx             Â³                                    *
+ *    Â³          Count: ---          Level: ---           Â³                                    *
+ *    Â³          Bases: ON          Crates: ON            Â³                                    *
+ *    Â³       Tiberium: ON      AI Players: ON            Â³                                    *
+ *    Â³                                                   Â³                                    *
+ *    Â³  ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Â¿  Â³                                    *
+ *    Â³  Â³                                             Â³  Â³                                    *
+ *    Â³  Â³                                             Â³  Â³                                    *
+ *    Â³  Ã€Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã™  Â³                                    *
+ *    Â³  ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Â¿  Â³                                    *
+ *    Â³  Ã€Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã™  Â³                                    *
+ *    Â³            [Join]  [Cancel]    [New]              Â³                                    *
+ *    Ã€Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã™                                    *
  *                                                                                             *
  * INPUT:                                                                                      *
  *      none.                                                                                  *
@@ -7561,6 +7570,9 @@ static int Net_Fake_Join_Dialog(void)
 					delete [] item;
 
 					if (i <= game_index) {
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
 						if (joinstate==JOIN_CONFIRMED) {
 							game_index--;
 							join_index--;
