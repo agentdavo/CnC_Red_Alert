@@ -67,3 +67,4 @@ As the port progresses, updates on how each dependency has been replaced or stub
   for the original assembly routines.
 - Added stubs for missing <dos.h> and <pharlap.h> to keep the build going.
 - Removed legacy compiler pragmas and compiled VQA32 sources as C++.
+- Deleted obsolete `#pragma warning` directives in headers and verified `watcom.h` is no longer included.
