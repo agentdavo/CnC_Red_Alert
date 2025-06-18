@@ -38,7 +38,7 @@
 
 #include <wwstd.h>
 #include <mmsystem.h>
-#include "timer.H"
+#include "timer.h"
 #include <profile.h>
 
 /////////////////////////////////////////////////////////////////////////////////

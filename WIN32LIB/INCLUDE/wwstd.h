@@ -37,7 +37,6 @@
 #ifndef WWSTD_H
 #define	WWSTD_H
 
-
 //
 // Win 95 includes
 //
@@ -52,12 +51,10 @@
 #include <windowsx.h>
 #endif
 
-
 // Note: SKB 4/11/94
 // Before this library is done, this needs to be able to be set to TRUE.
 // Once it is, the FALSE parts should be removed from the source code.
 #define LIB_EXTERNS_RESOLVED FALSE
-
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -208,15 +205,6 @@ typedef void 	VOID;
 **	November of '94. Until the compiler supports this, use the following
 **	definition.
 */
-#ifndef __BORLANDC__
-#ifndef TRUE_FALSE_DEFINED
-#define TRUE_FALSE_DEFINED
-enum {false=0,true=1};
-typedef int bool;
-#endif
-#endif
-//#define	true		1
-//#define	false		0
 
 #define	BOOL		int					// 32 bits for speed. use CHAR for size optimizations.
 #if(0)
@@ -247,9 +235,8 @@ typedef int bool;
 #define	PROC_80486		1
 #define	PROC_PENTIUM	2
 
-
 // Inline Routines
-//ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+//ÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃÃ
 //
 // These Template functions are generally used
 // by classes when they havce over loaded > and <.
@@ -333,6 +320,5 @@ typedef enum {
 	WHITE,
 	COLOR_PADDING=0x1000
 } ColorType;
-
 
 #endif

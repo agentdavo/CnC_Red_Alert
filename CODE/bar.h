@@ -16,102 +16,89 @@
 **	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/* $Header: /CounterStrike/BLOWFISH.H 1     3/03/97 10:24a Joe_bostic $ */
+/* $Header: /CounterStrike/BAR.H 1     3/03/97 10:24a Joe_bostic $ */
 /***********************************************************************************************
  ***              C O N F I D E N T I A L  ---  W E S T W O O D  S T U D I O S               ***
  ***********************************************************************************************
  *                                                                                             *
  *                 Project Name : Command & Conquer                                            *
  *                                                                                             *
- *                    File Name : BLOWFISH.H                                                   *
+ *                    File Name : BAR.H                                                        *
  *                                                                                             *
  *                   Programmer : Joe L. Bostic                                                *
  *                                                                                             *
- *                   Start Date : 04/14/96                                                     *
+ *                   Start Date : 08/16/96                                                     *
  *                                                                                             *
- *                  Last Update : April 14, 1996 [JLB]                                         *
+ *                  Last Update : August 16, 1996 [JLB]                                        *
  *                                                                                             *
  *---------------------------------------------------------------------------------------------*
  * Functions:                                                                                  *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#ifndef BLOWFISH_H
-#define BLOWFISH_H
-
-#include	<limits.h>
-
+#ifndef BAR_H
+#define BAR_H
 
 /*
 **	The "bool" integral type was defined by the C++ committee in
 **	November of '94. Until the compiler supports this, use the following
 **	definition.
 */
-#ifndef __BORLANDC__
-#ifndef TRUE_FALSE_DEFINED
-#define TRUE_FALSE_DEFINED
-enum {false=0,true=1};
-typedef int bool;
 #endif
 #endif
 
+#include "fixed.h"
 
 /*
-**	This engine will process data blocks by encryption and decryption.
-**	The "Blowfish" algorithm is in the public domain. It uses
-**	a Feistal network (similar to IDEA). It has no known
-**	weaknesses, but is still relatively new. Blowfish is particularly strong
-**	against brute force attacks. It is also quite strong against linear and
-**	differential cryptanalysis. Its weakness is that it takes a relatively
-**	long time to set up with a new key (1/100th of a second on a P6-200).
-**	The time to set up a key is equivalent to encrypting 4240 bytes.
+**	This is a manager for a progress (or other) bargraph. Such a graph consists of a fill
+**	and a background region. The fill percentage of the bargraph is controlled by an
+**	update value. The bargraph can be optionally outlined.
 */
-class BlowfishEngine {
+class ProgressBarClass
+{
 	public:
-		BlowfishEngine(void) : IsKeyed(false) {}
-		~BlowfishEngine(void);
+		ProgressBarClass(int x, int y, int width, int height, int forecolor, int backcolor, int bordercolor=0);
 
-		void Submit_Key(void const * key, int length);
-
-		int Encrypt(void const * plaintext, int length, void * cyphertext);
-		int Decrypt(void const * cyphertext, int length, void * plaintext);
-
-		/*
-		**	This is the maximum key length supported.
-		*/
-		enum {MAX_KEY_LENGTH=56};
+		bool Update(fixed value);
+		void Redraw(void) const;
 
 	private:
-		bool IsKeyed;
 
-		void Sub_Key_Encrypt(unsigned long & left, unsigned long & right);
-
-		void Process_Block(void const * plaintext, void * cyphertext, unsigned long const * ptable);
-		void Initialize_Tables(void);
-
-		enum {
-			ROUNDS = 16,		// Feistal round count (16 is standard).
-			BYTES_PER_BLOCK=8	// The number of bytes in each cypher block (don't change).
-		};
+		void Outline(void) const;
+		bool Is_Horizontal(void) const;
+		bool Is_Outlined(void) const {return(BorderColor != 0);}
 
 		/*
-		**	Initialization data for sub keys. The initial values are constant and
-		**	filled with a number generated from pi. Thus they are not random but
-		**	they don't hold a weak pattern either.
+		**	This is the upper left coordinates of the bargraph.
 		*/
-		static unsigned long const P_Init[(int)ROUNDS+2];
-		static unsigned long const S_Init[4][UCHAR_MAX+1];
+		int X,Y;
 
 		/*
-		**	Permutation tables for encryption and decryption.
+		**	This is the dimensions of the bargraph.
 		*/
- 		unsigned long P_Encrypt[(int)ROUNDS+2];
- 		unsigned long P_Decrypt[(int)ROUNDS+2];
+		int Width, Height;
 
 		/*
-		**	S-Box tables (four).
+		**	These are the colors to use when drawing the progress bar.
 		*/
-		unsigned long bf_S[4][UCHAR_MAX+1];
+		int BarColor;
+		int BackColor;
+		int BorderColor;
+
+		/*
+		**	This is the current value of the bargraph.
+		*/
+		fixed CurrentValue;
+
+		/*
+		**	This is the current value as of the last time the bargraph was rendered.
+		*/
+		fixed LastDisplayCurrent;
+
+		/*
+		**	If the bargraph has been drawn at least once, then this flag will
+		**	be true.
+		*/
+		unsigned IsDrawn:1;
 };
 
 #endif
-

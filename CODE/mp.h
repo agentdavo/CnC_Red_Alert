@@ -46,20 +46,13 @@
 **	November of '94. Until the compiler supports this, use the following
 **	definition.
 */
-#ifndef __BORLANDC__
-#ifndef TRUE_FALSE_DEFINED
-#define TRUE_FALSE_DEFINED
-enum {false=0,true=1};
-typedef int bool;
 #endif
 #endif
-
 
 #include	"straw.h"
 #include	<stdlib.h>
 
 extern unsigned short primeTable[3511];
-
 
 #define	digit	unsigned long
 #define	signeddigit	signed long
@@ -73,7 +66,6 @@ extern unsigned short primeTable[3511];
 #ifndef ARRAY_SIZE
 #define ARRAY_SIZE(a)	(sizeof(a)/sizeof(a[0]))
 #endif
-
 
 int XMP_Significance(const digit * r, int precision);
 void XMP_Inc(digit * r, int precision);
@@ -125,19 +117,15 @@ int XMP_DER_Length_Encode(unsigned long length, unsigned char * output);
 int XMP_DER_Encode(digit const * from, unsigned char * output, int precision);
 void XMP_DER_Decode(digit * result, unsigned char const * input, int precision);
 
-
-
 inline int XMP_Digits_To_Bits(int digits)
 {
 	return(digits << LOG_UNITSIZE);
 }
 
-
 inline int XMP_Bits_To_Digits(int bits)
 {
 	return ((bits + (UNITSIZE-1)) / UNITSIZE);
 }
-
 
 inline digit XMP_Bits_To_Mask(int bits)
 {
@@ -145,18 +133,15 @@ inline digit XMP_Bits_To_Mask(int bits)
 	return(1 << ((bits-1) % UNITSIZE));
 }
 
-
 inline bool XMP_Is_Negative(const digit * r, int precision)
 {
 	return((signeddigit) *(r + (precision-1)) < 0);
 }
 
-
 inline bool XMP_Test_Eq_Int(digit const * r, int i, int p)
 {
 	return( (*r == i ) && XMP_Significance(r,p) <= 1 );
 }
-
 
 inline void XMP_Set_Bit(digit * r, unsigned bit)
 {
@@ -167,8 +152,6 @@ inline bool XMP_Test_Bit(const digit * r, unsigned bit)
 {
 	return (r[bit >> LOG_UNITSIZE] & ((digit)1 << (bit & (UNITSIZE-1))));
 }
-
-
 
 // Misc functions.
 void memrev(char * buffer, size_t length);

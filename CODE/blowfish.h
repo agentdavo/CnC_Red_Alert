@@ -16,84 +16,95 @@
 **	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/* $Header: /CounterStrike/BUFF.H 1     3/03/97 10:24a Joe_bostic $ */
+/* $Header: /CounterStrike/BLOWFISH.H 1     3/03/97 10:24a Joe_bostic $ */
 /***********************************************************************************************
  ***              C O N F I D E N T I A L  ---  W E S T W O O D  S T U D I O S               ***
  ***********************************************************************************************
  *                                                                                             *
  *                 Project Name : Command & Conquer                                            *
  *                                                                                             *
- *                    File Name : BUFF.H                                                       *
+ *                    File Name : BLOWFISH.H                                                   *
  *                                                                                             *
  *                   Programmer : Joe L. Bostic                                                *
  *                                                                                             *
- *                   Start Date : 07/29/96                                                     *
+ *                   Start Date : 04/14/96                                                     *
  *                                                                                             *
- *                  Last Update : July 29, 1996 [JLB]                                          *
+ *                  Last Update : April 14, 1996 [JLB]                                         *
  *                                                                                             *
  *---------------------------------------------------------------------------------------------*
  * Functions:                                                                                  *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
+#ifndef BLOWFISH_H
+#define BLOWFISH_H
 
-#ifndef CCBUFF_H
-#define CCBUFF_H
-
+#include	<limits.h>
 
 /*
 **	The "bool" integral type was defined by the C++ committee in
 **	November of '94. Until the compiler supports this, use the following
 **	definition.
 */
-#ifndef __BORLANDC__
-#ifndef TRUE_FALSE_DEFINED
-#define TRUE_FALSE_DEFINED
-enum {false=0,true=1};
-typedef int bool;
 #endif
 #endif
 
 /*
-**	A general purpose buffer pointer handler object. It holds not only the pointer to the
-**	buffer, but its size as well. By using this class instead of separate pointer and size
-**	values, function interfaces and algorithms become simpler to manage and understand.
+**	This engine will process data blocks by encryption and decryption.
+**	The "Blowfish" algorithm is in the public domain. It uses
+**	a Feistal network (similar to IDEA). It has no known
+**	weaknesses, but is still relatively new. Blowfish is particularly strong
+**	against brute force attacks. It is also quite strong against linear and
+**	differential cryptanalysis. Its weakness is that it takes a relatively
+**	long time to set up with a new key (1/100th of a second on a P6-200).
+**	The time to set up a key is equivalent to encrypting 4240 bytes.
 */
-class Buffer {
+class BlowfishEngine {
 	public:
-		Buffer(char * ptr, long size=0);
-		Buffer(void * ptr=0, long size=0);
-		Buffer(void const * ptr, long size=0);
-		Buffer(long size);
-		Buffer(Buffer const & buffer);
-		~Buffer(void);
+		BlowfishEngine(void) : IsKeyed(false) {}
+		~BlowfishEngine(void);
 
-		Buffer & operator = (Buffer const & buffer);
-		operator void * (void) const {return(BufferPtr);}
-		operator char * (void) const {return((char *)BufferPtr);}
+		void Submit_Key(void const * key, int length);
 
-		void Reset(void);
-		void * Get_Buffer(void) const {return(BufferPtr);}
-		long Get_Size(void) const {return(Size);}
-		bool Is_Valid(void) const {return(BufferPtr != 0);}
-
-	protected:
+		int Encrypt(void const * plaintext, int length, void * cyphertext);
+		int Decrypt(void const * cyphertext, int length, void * plaintext);
 
 		/*
-		**	Pointer to the buffer memory.
+		**	This is the maximum key length supported.
 		*/
-		void * BufferPtr;
+		enum {MAX_KEY_LENGTH=56};
+
+	private:
+		bool IsKeyed;
+
+		void Sub_Key_Encrypt(unsigned long & left, unsigned long & right);
+
+		void Process_Block(void const * plaintext, void * cyphertext, unsigned long const * ptable);
+		void Initialize_Tables(void);
+
+		enum {
+			ROUNDS = 16,		// Feistal round count (16 is standard).
+			BYTES_PER_BLOCK=8	// The number of bytes in each cypher block (don't change).
+		};
 
 		/*
-		**	The size of the buffer memory.
+		**	Initialization data for sub keys. The initial values are constant and
+		**	filled with a number generated from pi. Thus they are not random but
+		**	they don't hold a weak pattern either.
 		*/
-		long Size;
+		static unsigned long const P_Init[(int)ROUNDS+2];
+		static unsigned long const S_Init[4][UCHAR_MAX+1];
 
 		/*
-		**	Was the buffer allocated by this class? If so, then this class
-		**	will be responsible for freeing the buffer.
+		**	Permutation tables for encryption and decryption.
 		*/
-		bool IsAllocated;
+ 		unsigned long P_Encrypt[(int)ROUNDS+2];
+ 		unsigned long P_Decrypt[(int)ROUNDS+2];
+
+		/*
+		**	S-Box tables (four).
+		*/
+		unsigned long bf_S[4][UCHAR_MAX+1];
 };
 
-
 #endif
+

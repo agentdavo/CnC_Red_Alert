@@ -16,77 +16,76 @@
 **	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/* $Header: /CounterStrike/PIPE.H 1     3/03/97 10:25a Joe_bostic $ */
+/* $Header: /CounterStrike/BUFF.H 1     3/03/97 10:24a Joe_bostic $ */
 /***********************************************************************************************
  ***              C O N F I D E N T I A L  ---  W E S T W O O D  S T U D I O S               ***
  ***********************************************************************************************
  *                                                                                             *
  *                 Project Name : Command & Conquer                                            *
  *                                                                                             *
- *                    File Name : PIPE.H                                                       *
+ *                    File Name : BUFF.H                                                       *
  *                                                                                             *
  *                   Programmer : Joe L. Bostic                                                *
  *                                                                                             *
- *                   Start Date : 06/29/96                                                     *
+ *                   Start Date : 07/29/96                                                     *
  *                                                                                             *
- *                  Last Update : June 29, 1996 [JLB]                                          *
+ *                  Last Update : July 29, 1996 [JLB]                                          *
  *                                                                                             *
  *---------------------------------------------------------------------------------------------*
  * Functions:                                                                                  *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-
-#ifndef PIPE_H
-#define PIPE_H
-
-#include	<stddef.h>
+#ifndef CCBUFF_H
+#define CCBUFF_H
 
 /*
 **	The "bool" integral type was defined by the C++ committee in
 **	November of '94. Until the compiler supports this, use the following
 **	definition.
 */
-#ifndef __BORLANDC__
-#ifndef TRUE_FALSE_DEFINED
-#define TRUE_FALSE_DEFINED
-enum {false=0,true=1};
-typedef int bool;
 #endif
 #endif
-
 
 /*
-**	A "push through" pipe interface abstract class used for such purposes as compression
-**	and translation of data. In STL terms, this is functionally similar to an output
-**	iterator but with a few enhancements. A pipe class object that is not derived into
-**	another useful class serves only as a pseudo null-pipe. It will accept data but
-**	just throw it away but pretend that it sent it somewhere.
+**	A general purpose buffer pointer handler object. It holds not only the pointer to the
+**	buffer, but its size as well. By using this class instead of separate pointer and size
+**	values, function interfaces and algorithms become simpler to manage and understand.
 */
-class Pipe
-{
+class Buffer {
 	public:
-		Pipe(void) : ChainTo(0), ChainFrom(0) {}
-		virtual ~Pipe(void);
+		Buffer(char * ptr, long size=0);
+		Buffer(void * ptr=0, long size=0);
+		Buffer(void const * ptr, long size=0);
+		Buffer(long size);
+		Buffer(Buffer const & buffer);
+		~Buffer(void);
 
-		virtual int Flush(void);
-		virtual int End(void) {return(Flush());}
-		virtual void Put_To(Pipe * pipe);
-		void Put_To(Pipe & pipe) {Put_To(&pipe);}
-		virtual int Put(void const * source, int slen);
+		Buffer & operator = (Buffer const & buffer);
+		operator void * (void) const {return(BufferPtr);}
+		operator char * (void) const {return((char *)BufferPtr);}
+
+		void Reset(void);
+		void * Get_Buffer(void) const {return(BufferPtr);}
+		long Get_Size(void) const {return(Size);}
+		bool Is_Valid(void) const {return(BufferPtr != 0);}
+
+	protected:
 
 		/*
-		**	Pointer to the next pipe segment in the chain.
+		**	Pointer to the buffer memory.
 		*/
-		Pipe * ChainTo;
-		Pipe * ChainFrom;
-
-	private:
+		void * BufferPtr;
 
 		/*
-		**	Disable the copy constructor and assignment operator.
+		**	The size of the buffer memory.
 		*/
-		Pipe(Pipe & rvalue);
-		Pipe & operator = (Pipe const & pipe);
+		long Size;
+
+		/*
+		**	Was the buffer allocated by this class? If so, then this class
+		**	will be responsible for freeing the buffer.
+		*/
+		bool IsAllocated;
 };
 
 #endif

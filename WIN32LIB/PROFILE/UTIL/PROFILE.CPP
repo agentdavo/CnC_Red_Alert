@@ -43,7 +43,6 @@
  *                                                                                             *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-
 #include <string.h>
 #include <stdio.h>
 #include <sys\types.h>
@@ -53,12 +52,8 @@
 #include <io.h>
 #include <conio.h>
 
-#define bool int
-#define true 1
-#define false 0
 #define NAME_TABLE_SIZE 1000000					//Storage space for function names
 #define SAMPLE_START 1								//Offset (in dwords) of sample data in sample file
-
 
 /*
 ** Function prototypes
@@ -98,9 +93,6 @@ typedef struct tFunction {
 
 Function	FunctionList[10000];						//max 10,000 functions in map file.
 
-
-
-
 /***********************************************************************************************
  * main -- program entry point                                                                 *
  *                                                                                             *
@@ -120,7 +112,6 @@ int main(int argc, char *argv[])
 
 {
 	Print_My_Name();								// print the programs name
-
 
 	/*
 	** If the arguments dont make sense then print the usage
@@ -206,8 +197,6 @@ int main(int argc, char *argv[])
 	return(0);
 }
 
-
-
 /***********************************************************************************************
  * Print_My_Name -- print the programs name and version                                        *
  *                                                                                             *
@@ -229,7 +218,6 @@ void Print_My_Name(void)
 	cprintf("Programmer - Steve Tall.\n\n");
 }
 
-
 /***********************************************************************************************
  * Print_Usage -- print the instructions                                                       *
  *                                                                                             *
@@ -248,7 +236,6 @@ void Print_Usage (void)
 {
 	cprintf("Usage: PROFILE <sample_file> <map_file)\n\n");
 }
-
 
 /***********************************************************************************************
  * File_Error -- display a file error message                                                  *
@@ -269,7 +256,6 @@ void File_Error (char *file_name)
 	cprintf ("Error reading file:%s - aborting\n",file_name);
 }
 
-
 /***********************************************************************************************
  * Memory_Error -- display an out of memory message                                            *
  *                                                                                             *
@@ -289,7 +275,6 @@ void Memory_Error (void)
 {
 	cprintf ("Error - insufficient memory - aborting\n");
 }
-
 
 /***********************************************************************************************
  * Load_File -- load an entire file into memory                                                *
@@ -343,11 +328,6 @@ int Load_File(char *file_name , unsigned *load_addr , unsigned mode)
 	return (file_length);
 }
 
-
-
-
-
-
 /***********************************************************************************************
  * Map_Profiler_Hits -- map function hits from sample file to functions in map file            *
  *                                                                                             *
@@ -375,7 +355,6 @@ void Map_Profiler_Hits (void)
 			cprintf (".");
 		}
 
-
 		for (int j=TotalFunctions-1 ; j>=0 ; j--){
 			if (FunctionList[j].FunctionAddress < function_hit){
 				FunctionList[j].Hits++;
@@ -385,7 +364,6 @@ void Map_Profiler_Hits (void)
 	}
 
 }
-
 
 /***********************************************************************************************
  * Sort_Functions -- hideous bubble sort of functions into address order                       *
@@ -430,7 +408,6 @@ void Sort_Functions (void)
 	}
 }
 
-
 /***********************************************************************************************
  * Sort_Functions -- hideous bubble sort of functions into usage order                         *
  *                                                                                             *
@@ -474,9 +451,6 @@ void Sort_Functions_Again (void)
 	}
 }
 
-
-
-
 /***********************************************************************************************
  * Output_Profile -- output the function data to the screen                                    *
  *                                                                                             *
@@ -516,9 +490,6 @@ void Output_Profile(void)
 
 	}
 }
-
-
-
 
 /***********************************************************************************************
  * Extract_Function_Addresses -- gets the addresses of all global functions from a map file    *
@@ -611,8 +582,6 @@ bool Extract_Function_Addresses(void)
 
 	} while (chars_left > 0);
 
-
-
 	chars_left=MapFileLength;
 	/*
 	** Search for the 'Memory Map' segment of the map file
@@ -680,7 +649,6 @@ bool Extract_Function_Addresses(void)
 
 	} while (1);
 
-
 	/*
 	** Add in a dummy function at the highest address to represent unknown code hits
 	*/
@@ -693,9 +661,6 @@ bool Extract_Function_Addresses(void)
 
 	return (true);
 }
-
-
-
 
 /***********************************************************************************************
  * Get_Hex -- nasty function to convert an ascii hex number to an unsigned int                 *
@@ -818,8 +783,6 @@ unsigned Get_Hex (char string[] , int length)
 	return (hex_val);
 }
 
-
-
 /***********************************************************************************************
  * Search_For_Char -- search through ascii data for a particular character                     *
  *                                                                                             *
@@ -848,8 +811,6 @@ char *Search_For_Char (char character , char buffer_ptr[] , int buffer_length)
 	}
 	return (NULL);
 }
-
-
 
 /***********************************************************************************************
  * Search_For_String -- search for a string of chars within a buffer                           *
@@ -884,8 +845,4 @@ char *Search_For_String (char *string , char *buffer_ptr , int buffer_length)
 	return (NULL);
 
 }
-
-
-
-
 

@@ -35,7 +35,6 @@
  * Functions:                                                                                  *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-
 #ifndef LISTNODE_H
 #define LISTNODE_H
 
@@ -47,14 +46,8 @@
 **	November of '94. Until the compiler supports this, use the following
 **	definition.
 */
-#ifndef __BORLANDC__
-#ifndef TRUE_FALSE_DEFINED
-#define TRUE_FALSE_DEFINED
-enum {false=0,true=1};
-typedef int bool;
 #endif
 #endif
-
 
 #pragma warn -inl
 
@@ -110,7 +103,6 @@ class GenericNode {
 		GenericNode * PrevNode;
 };
 
-
 /*
 **	This is a generic list handler. It manages N generic nodes. Use the interface class
 **	to the generic list for added convenience.
@@ -137,8 +129,6 @@ class GenericList {
 		GenericList & operator = (GenericList const &);
 };
 
-
-
 /*
 **	This node class serves only as an "interface class" for the normal node
 **	object. In order to use this interface class you absolutely must be sure
@@ -157,7 +147,6 @@ class Node : public GenericNode {
 		bool Is_Valid(void) const {return(GenericNode::Is_Valid());}
 };
 
-
 /*
 **	This is an "interface class" for a list of nodes. The rules for the class T object
 **	are the same as the requirements required of the node class.
@@ -168,6 +157,5 @@ class List : public GenericList {
 		T * First(void) const {return((T*)GenericList::First());}
 		T * Last(void) const {return((T*)GenericList::Last());}
 };
-
 
 #endif
