@@ -466,9 +466,13 @@ void GScreenClass::Render(void)
  *   02/14/1994 JLB : Created.                                                                 *
  *   05/01/1994 JLB : Converted to member function.                                            *
  *=============================================================================================*/
+#if ENABLE_ASM
 extern "C" {
-	void ModeX_Blit (GraphicBufferClass * source);
+        void ModeX_Blit(GraphicBufferClass *source);
 }
+#else
+void ModeX_Blit(GraphicBufferClass *source);
+#endif
 
 void GScreenClass::Blit_Display(void)
 {

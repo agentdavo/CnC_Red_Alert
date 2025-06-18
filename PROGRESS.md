@@ -95,6 +95,9 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - LVGL initialization now occurs before other subsystems. `launch_main` and WinMain call `lv_init()` and `lvgl_init_backend()` and the main loop pumps events via `lv_timer_handler()`.
 - Implemented C inline versions of `Cardinal_To_Fixed` and `Fixed_To_Cardinal`. `COORDA.ASM` is excluded when `ENABLE_ASM` is OFF.
 - Pre-game menus now call `lv_timer_handler()` within their loops so LVGL input devices stay responsive.
-- `lvgl_init_backend` now accepts an optional backend name. `launch_main` parses
-  the new `--backend=<name>` argument and passes it along, falling back to the
-  `LV_BACKEND` environment variable if the option is missing. 
+- `lvgl_init_backend` now accepts an optional backend name. `launch_main` parses the new `--lvgl-backend=<name>` argument and passes it along, falling back to the `LV_BACKEND` environment variable if the option is missing.
+- Implemented a C version of `ModeX_Blit` and used it when assembly blitters are disabled.
+- Added runtime logs for each C replacement of assembly modules (ModeX_Blit, interpolation helpers, CPUID detection).
+- `lvgl_init_backend` now selects the display driver based on the `LV_BACKEND` environment variable and falls back to SDL when unknown.
+- `lvgl_init_backend` now logs display creation failures, falls back to the Wayland backend when SDL is unavailable and returns a status code so callers can exit gracefully.
+- LVGL backend is selected via the `--lvgl-backend` command-line option or the `LV_BACKEND` environment variable.
