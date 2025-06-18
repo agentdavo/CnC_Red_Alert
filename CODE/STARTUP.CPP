@@ -488,7 +488,7 @@ LOG_CALL("%s entered\n", __func__);
 					/*
 					** Aaaarrgghh!
 					*/
-					WWDebugString(TEXT_DDRAW_ERROR);WWDebugString("\n");
+                                       LOG_MSG(TEXT_DDRAW_ERROR);
 					MessageBox(MainWindow, TEXT_DDRAW_ERROR, TEXT_SHORT_TITLE, MB_ICONEXCLAMATION|MB_OK);
 					if (WindowsTimer) delete WindowsTimer;
 					return (EXIT_FAILURE);
@@ -757,7 +757,7 @@ bool InitDDraw(void)
 		if (surface_capabilities.dwCaps & DDSCAPS_SYSTEMMEMORY)
 			{
 			/* Aaaarrgghh! */
-			WWDebugString(TEXT_DDRAW_ERROR);WWDebugString("\n");
+                        LOG_MSG(TEXT_DDRAW_ERROR);
 			MessageBox(MainWindow, TEXT_DDRAW_ERROR, TEXT_SHORT_TITLE, MB_ICONEXCLAMATION|MB_OK);
 
 			if (WindowsTimer)

@@ -1025,10 +1025,10 @@ bool Select_Game(bool fade)
 								assert ( PacketTransport != NULL);
 
 								if (PacketTransport->Init()) {
-									WWDebugString ("RA95 - About to read multiplayer settings.\n");
+                                                                       LOG_MSG("RA95 - About to read multiplayer settings.");
 									Session.Read_MultiPlayer_Settings ();
 
-									WWDebugString ("RA95 - About to call Start_Server or Start_Client.\n");
+                                                                       LOG_MSG("RA95 - About to call Start_Server or Start_Client.");
 									PacketTransport->Start_Listening();
 
 									/*
@@ -1040,29 +1040,29 @@ bool Select_Game(bool fade)
 								} else {
 									delete PacketTransport;
 									PacketTransport = NULL;
-									WWDebugString ("RA95 - Winsock failed to initialise.\n");
+                                                                       LOG_MSG("RA95 - Winsock failed to initialise.");
 									Session.Type = GAME_NORMAL;
 									selection = SEL_EXIT;
 									Special.IsFromWChat = false;
 									break;
 								}
 
-								WWDebugString ("RA95 - About to call Init_Network.\n");
+                                                           LOG_MSG("RA95 - About to call Init_Network.");
 								Init_Network();
 
 
 #else	//WINSOCK_IPX
 
-								WWDebugString ("RA95 - About to initialise Winsock.\n");
+                                                           LOG_MSG("RA95 - About to initialise Winsock.");
 								if (Winsock.Init()) {
-									WWDebugString ("RA95 - About to read multiplayer settings.\n");
+                                                                       LOG_MSG("RA95 - About to read multiplayer settings.");
 									Session.Read_MultiPlayer_Settings ();
 									Server = PlanetWestwoodIsHost;
 
-									WWDebugString ("RA95 - About to set addresses.\n");
+                                                                       LOG_MSG("RA95 - About to set addresses.");
 									Winsock.Set_Host_Address(PlanetWestwoodIPAddress);
 
-									WWDebugString ("RA95 - About to call Start_Server or Start_Client.\n");
+                                                                       LOG_MSG("RA95 - About to call Start_Server or Start_Client.");
 									if (Server) {
 										Winsock.Start_Server();
 									} else {
@@ -1073,53 +1073,53 @@ bool Select_Game(bool fade)
 									/*
 									** Flush out any pending packets from a previous game.
 									*/
-									WWDebugString ("RA95 - About to flush packet queue.\n");
-									WWDebugString ("RA95 - Allocating scrap memory.\n");
+                                                                       LOG_MSG("RA95 - About to flush packet queue.");
+                                                                       LOG_MSG("RA95 - Allocating scrap memory.");
 									char *temp_buffer = new char[1024];
 
-									WWDebugString ("RA95 - Creating timer class instance.\n");
+                                                                       LOG_MSG("RA95 - Creating timer class instance.");
 									CountDownTimerClass ptimer;
 
-									WWDebugString ("RA95 - Entering read loop.\n");
+                                                                       LOG_MSG("RA95 - Entering read loop.");
 									while (Winsock.Read(temp_buffer, 1024)) {
 
-										WWDebugString ("RA95 - Discarding a packet.\n");
+                                                                               LOG_MSG("RA95 - Discarding a packet.");
 										ptimer.Set (30, true);
 										while (ptimer.Time()) {};
-										WWDebugString ("RA95 - Ready to check for more packets.\n");
+                                                                               LOG_MSG("RA95 - Ready to check for more packets.");
 
 									}
-									WWDebugString ("RA95 - About to delete scrap memory.\n");
+                                                                       LOG_MSG("RA95 - About to delete scrap memory.");
 									delete temp_buffer;
 
 
 
 								} else {
-									WWDebugString ("RA95 - Winsock failed to initialise.\n");
+                                                                       LOG_MSG("RA95 - Winsock failed to initialise.");
 									Session.Type = GAME_NORMAL;
 									selection = SEL_EXIT;
 									Special.IsFromWChat = false;
 									break;
 								}
 #endif	//WINSOCK_IPX
-								WWDebugString ("RA95 - About to call Init_Network.\n");
+                                                           LOG_MSG("RA95 - About to call Init_Network.");
 								Init_Network();
 
 								if (DDEServer.Get_MPlayer_Game_Info()) {
-									WWDebugString ("RA95 - About to call Read_Game_Options.\n");
+                                                                       LOG_MSG("RA95 - About to call Read_Game_Options.");
 									Read_Game_Options( NULL );
 								} else {
 									Read_Game_Options( "C&CSPAWN.INI" );
 								}
 #ifdef WINSOCK_IPX
-								WWDebugString ("RA95 - About to set addresses.\n");
+                                                           LOG_MSG("RA95 - About to set addresses.");
 								PacketTransport->Set_Broadcast_Address (PlanetWestwoodIPAddress);
 #endif	//WINSOCK_IPX
 								if (PlanetWestwoodIsHost) {
 
-									WWDebugString ("RA95 - About to call Server_Remote_Connect.\n");
+                                                                       LOG_MSG("RA95 - About to call Server_Remote_Connect.");
 									if (Server_Remote_Connect()) {
-										WWDebugString ("RA95 - Server_Remote_Connect returned success.\n");
+                                                                               LOG_MSG("RA95 - Server_Remote_Connect returned success.");
 										break;
 									} else {
 										/*
@@ -1137,9 +1137,9 @@ bool Select_Game(bool fade)
 										break;
 									}
 								} else {
-									WWDebugString ("RA95 - About to call Client_Remote_Connect.\n");
+                                                                       LOG_MSG("RA95 - About to call Client_Remote_Connect.");
 									if (Client_Remote_Connect()) {
-										WWDebugString ("RA95 - Client_Remote_Connect returned success.\n");
+                                                                               LOG_MSG("RA95 - Client_Remote_Connect returned success.");
 										break;
 									} else {
 										/*
@@ -1247,7 +1247,7 @@ bool Select_Game(bool fade)
 						**	Network (IPX): start a new network game.
 						*/
 						case GAME_IPX:
-							WWDebugString ("RA95 - Game type is IPX.\n");
+                                                   LOG_MSG("RA95 - Game type is IPX.");
 							/*
 							** Init network system & remote-connect
 							*/
@@ -1270,7 +1270,7 @@ bool Select_Game(bool fade)
 //							}
 
 #endif	//WINSOCK_IPX
-							WWDebugString ("RA95 - About to call Init_Network.\n");
+                                                   LOG_MSG("RA95 - About to call Init_Network.");
 							if (Session.Type == GAME_IPX && Init_Network() && Remote_Connect()) {
 #ifdef FIXIT_VERSION_3
 								Options.ScoreVolume = Options.MultiScoreVolume;

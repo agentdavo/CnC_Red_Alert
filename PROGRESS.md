@@ -26,6 +26,8 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Renamed files in LAUNCH and LAUNCHER directories to lowercase for cross-platform compatibility.
 - Identified program entry points: `Start` in `LAUNCH/launch.asm` (ported as `launch_main`) and `WinMain` in `CODE/STARTUP.CPP`.
 - Added debug logging macros for tracing execution (src/debug_log.h).
+- Legacy `WWDebugString` calls now map to `LOG_CALL` via `LOG_MSG` for
+  consistent formatting.
 - Cleaned up function.h includes for C11 compatibility and wrapped Windows-only headers.
 - Documented legacy pragmas and removed `watcom.h` includes (PRAGMA.md).
 - Added stub `CODE/wwlib32/wwlib32.h` for missing Windows library.

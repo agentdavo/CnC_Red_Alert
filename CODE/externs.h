@@ -50,7 +50,8 @@
 #include	"credits.h"
 #include	"goptions.h"
 #include	"options.h"
-#include	"infantry.h"
+#include        "infantry.h"
+#include "../src/debug_log.h"
 
 
 extern char _staging_buffer[32000];
@@ -448,7 +449,9 @@ void Do_Vortex (int x, int y, int frame);
 extern bool ReadyToQuit;							//Are we about to exit cleanly
 extern bool InDebugger;							//Are we being run from a debugger
 void Memory_Error_Handler(void);				//Memory error handler function
+#ifndef ENABLE_LOGGING
 void WWDebugString (char *string);
+#endif
 #else
 extern bool IsTheaterShape;
 #endif	//WIN32
