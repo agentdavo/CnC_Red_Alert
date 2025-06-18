@@ -1556,7 +1556,13 @@ void MapEditClass::Main_Menu(void)
 		/*
 		**	Invoke game callback, to update music
 		*/
-		Call_Back();
+                Call_Back();
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
 
 		/*
 		**	Invoke menu
@@ -2006,9 +2012,12 @@ bool MapEditClass::Get_Waypoint_Name(char wayptname[])
 		/*
 		**	Invoke game callback.
 		*/
-		if (Session.Type == GAME_NORMAL) {
-			Call_Back();
-		} else if (Main_Loop()) {
+                if (Session.Type == GAME_NORMAL) {
+                        Call_Back();
+#ifdef USE_LVGL
+                        lv_timer_handler();
+#endif
+                } else if (Main_Loop()) {
 			process = false;
 			cancel = true;
 		}

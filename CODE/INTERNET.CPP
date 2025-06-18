@@ -875,6 +875,9 @@ bool Do_The_Internet_Menu_Thang(void)
 	display = true;
 
 	while (process){
+#ifdef USE_LVGL
+        lv_timer_handler();
+#endif
 
 		/*
 		** If we have just received input focus again after running in the background then

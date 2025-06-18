@@ -272,7 +272,10 @@ void SoundControlsClass::Process(void)
 		**	Invoke game callback.
 		*/
 		if (Session.Type == GAME_NORMAL || Session.Type == GAME_SKIRMISH) {
-			Call_Back();
+                        Call_Back();
+#ifdef USE_LVGL
+                        lv_timer_handler();
+#endif
 		} else {
 			if (Main_Loop()) {
 				process = false;

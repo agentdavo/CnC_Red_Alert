@@ -137,7 +137,10 @@ bool ConfirmationClass::Process(char const * string)
 		**	Invoke game callback.
 		*/
 		if (Session.Type == GAME_NORMAL) {
-			Call_Back();
+                        Call_Back();
+#ifdef USE_LVGL
+                        lv_timer_handler();
+#endif
 		} else {
 			if (Main_Loop()) {
 				process = false;

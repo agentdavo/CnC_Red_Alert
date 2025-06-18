@@ -224,6 +224,9 @@ int WOL_Login_Dialog( WolapiObject* pWO )
 		**	Invoke game callback.
 		*/
 		Call_Back();
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
 
 		#ifdef WIN32
 		/*
@@ -455,6 +458,9 @@ int WOL_Login_Dialog( WolapiObject* pWO )
 				WWMessageBox().Process(TXT_WOL_DEBUG2, TXT_NONE);
 				while (timer > 0) {
 					Call_Back();
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
 				}
 				Keyboard->Clear();
 

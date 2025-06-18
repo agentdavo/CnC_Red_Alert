@@ -996,7 +996,10 @@ bool TeamTypeClass::Edit(void)
 		/*
 		**	Invoke game callback
 		*/
-		Call_Back();
+                Call_Back();
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
 
 		/*
 		**	Refresh display if needed

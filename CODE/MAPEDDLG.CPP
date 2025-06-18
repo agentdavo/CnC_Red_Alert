@@ -401,21 +401,21 @@ int MapEditClass::Save_Scenario(void)
  *   - House (GDI, NOD)                                                    *
  *   - Scenario #                                                          *
  *                                                                         *
- *           ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿                          *
- *           ³            Caption               ³                          *
- *           ³                                  ³                          *
- *           ³         Scenario ___             ³                          *
- *           ³          Version ___             ³                          *
- *           ³                                  ³                          *
- *           ³         [East]  [West]           ³                          *
- *           ³                                  ³                          *
- *           ³         [    GDI     ]           ³                          *
- *           ³         [    NOD     ]           ³                          *
- *           ³         [Multi-Player]           ³                          *
- *           ³                                  ³                          *
- *           ³         [OK]  [Cancel]           ³                          *
- *           ³                                  ³                          *
- *           ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ                          *
+ *           ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Â¿                          *
+ *           Â³            Caption               Â³                          *
+ *           Â³                                  Â³                          *
+ *           Â³         Scenario ___             Â³                          *
+ *           Â³          Version ___             Â³                          *
+ *           Â³                                  Â³                          *
+ *           Â³         [East]  [West]           Â³                          *
+ *           Â³                                  Â³                          *
+ *           Â³         [    GDI     ]           Â³                          *
+ *           Â³         [    NOD     ]           Â³                          *
+ *           Â³         [Multi-Player]           Â³                          *
+ *           Â³                                  Â³                          *
+ *           Â³         [OK]  [Cancel]           Â³                          *
+ *           Â³                                  Â³                          *
+ *           Ã€Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã™                          *
  *                                                                         *
  * INPUT:                                                                  *
  *      caption      string to use as a title                              *
@@ -700,6 +700,9 @@ int MapEditClass::Pick_Scenario(char const * caption, int & scen_nump, ScenarioP
 		**	Invoke game callback
 		*/
 		Call_Back();
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
 
 		/*
 		**	Refresh display if needed
@@ -898,26 +901,26 @@ int MapEditClass::Pick_Scenario(char const * caption, int & scen_nump, ScenarioP
  * properly exit the screen, since they have a blank undisplayed cell to   *
  * exit onto.                                                              *
  *                                                                         *
- *   ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿               *
- *   ³                                                     ³               *
- *   ³  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿   Clear Terrain            ³               *
- *   ³  ³                     ³   Water                    ³               *
- *   ³  ³                     ³   Tiberium                 ³               *
- *   ³  ³                     ³   Rock/Wall/Road           ³               *
- *   ³  ³     (Map Area)      ³   GDI Unit                 ³               *
- *   ³  ³                     ³   NOD Unit                 ³               *
- *   ³  ³                     ³   Neutral Unit             ³               *
- *   ³  ³                     ³   Terrain Object           ³               *
- *   ³  ³                     ³   Starting Cell            ³               *
- *   ³  ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ                            ³               *
- *   ³                                                     ³               *
- *   ³      X            Y            Width      Height    ³               *
- *   ³      ##           ##            ##          ##      ³               *
- *   ³                                                     ³               *
- *   ³                                                     ³               *
- *   ³               [OK]            [Cancel]              ³               *
- *   ³                                                     ³               *
- *   ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ               *
+ *   ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Â¿               *
+ *   Â³                                                     Â³               *
+ *   Â³  ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Â¿   Clear Terrain            Â³               *
+ *   Â³  Â³                     Â³   Water                    Â³               *
+ *   Â³  Â³                     Â³   Tiberium                 Â³               *
+ *   Â³  Â³                     Â³   Rock/Wall/Road           Â³               *
+ *   Â³  Â³     (Map Area)      Â³   GDI Unit                 Â³               *
+ *   Â³  Â³                     Â³   NOD Unit                 Â³               *
+ *   Â³  Â³                     Â³   Neutral Unit             Â³               *
+ *   Â³  Â³                     Â³   Terrain Object           Â³               *
+ *   Â³  Â³                     Â³   Starting Cell            Â³               *
+ *   Â³  Ã€Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã™                            Â³               *
+ *   Â³                                                     Â³               *
+ *   Â³      X            Y            Width      Height    Â³               *
+ *   Â³      ##           ##            ##          ##      Â³               *
+ *   Â³                                                     Â³               *
+ *   Â³                                                     Â³               *
+ *   Â³               [OK]            [Cancel]              Â³               *
+ *   Â³                                                     Â³               *
+ *   Ã€Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã™               *
  *                                                                         *
  * INPUT:                                                                  *
  *      x,y,w,h:      initial size parameters (-1 = center the thing)      *
@@ -1051,6 +1054,9 @@ int MapEditClass::Size_Map(int x, int y, int w, int h)
 		**	Invoke game callback
 		*/
 		Call_Back();
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
 
 		/*
 		**	Refresh display if needed
@@ -2020,6 +2026,9 @@ int MapEditClass::Scenario_Dialog(void)
 		**	Invoke game callback
 		*/
 		Call_Back();
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
 
 		/*
 		**	If the house changes, then all the gadgets that reflect the settings of the
@@ -2479,22 +2488,22 @@ void MapEditClass::Handle_Triggers(void)
  *                                                                         *
  * CurTrigger can be NULL when this function is called.                    *
  *                                                                         *
- *    ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿           *
- *    ³                       Triggers                         ³           *
- *    ³    ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄ¿    ³           *
- *    ³    ³ Name     Event     Action    House   Team  ³³    ³           *
- *    ³    ³ Name     Event     Action    House   Team  ÃÄ´    ³           *
- *    ³    ³ Name     Event     Action    House   Team  ³ ³    ³           *
- *    ³    ³ Name     Event     Action    House   Team  ³ ³    ³           *
- *    ³    ³                                            ³ ³    ³           *
- *    ³    ³                                            ³ ³    ³           *
- *    ³    ³                                            ÃÄ´    ³           *
- *    ³    ³                                            ³³    ³           *
- *    ³    ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÙ    ³           *
- *    ³                                                        ³           *
- *    ³      [Edit]        [New]        [Delete]      [OK]     ³           *
- *    ³                                                        ³           *
- *    ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ           *
+ *    ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Â¿           *
+ *    Â³                       Triggers                         Â³           *
+ *    Â³    ÃšÃ„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã‚Ã„Â¿    Â³           *
+ *    Â³    Â³ Name     Event     Action    House   Team  Â³Â³    Â³           *
+ *    Â³    Â³ Name     Event     Action    House   Team  ÃƒÃ„Â´    Â³           *
+ *    Â³    Â³ Name     Event     Action    House   Team  Â³ Â³    Â³           *
+ *    Â³    Â³ Name     Event     Action    House   Team  Â³ Â³    Â³           *
+ *    Â³    Â³                                            Â³ Â³    Â³           *
+ *    Â³    Â³                                            Â³ Â³    Â³           *
+ *    Â³    Â³                                            ÃƒÃ„Â´    Â³           *
+ *    Â³    Â³                                            Â³Â³    Â³           *
+ *    Â³    Ã€Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„ÃÃ„Ã™    Â³           *
+ *    Â³                                                        Â³           *
+ *    Â³      [Edit]        [New]        [Delete]      [OK]     Â³           *
+ *    Â³                                                        Â³           *
+ *    Ã€Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã„Ã™           *
  *                                                                         *
  * INPUT:                                                                  *
  *      none.                                                              *
@@ -2638,6 +2647,9 @@ int MapEditClass::Select_Trigger(void)
 		**	Invoke game callback
 		*/
 		Call_Back();
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
 
 		/*
 		**	Refresh display if requested.
