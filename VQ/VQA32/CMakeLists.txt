@@ -21,6 +21,7 @@ add_library(vqa32 STATIC ${VQA32_SOURCES})
   target_include_directories(vqa32 PUBLIC
       ${CMAKE_CURRENT_LIST_DIR}
       ${CMAKE_CURRENT_LIST_DIR}/..
+      ${CMAKE_CURRENT_LIST_DIR}/../INCLUDE
       ${CMAKE_CURRENT_LIST_DIR}/../VQM32
       "${CMAKE_SOURCE_DIR}"
   )
