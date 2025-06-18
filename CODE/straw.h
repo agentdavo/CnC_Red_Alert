@@ -45,8 +45,6 @@
 **	November of '94. Until the compiler supports this, use the following
 **	definition.
 */
-#endif
-#endif
 
 /*
 **	This is a demand driven data carrier. It will retrieve the byte request by passing

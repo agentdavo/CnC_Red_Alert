@@ -42,4 +42,13 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - `GScreenClass::Blit_Display` now bypasses DirectDraw when `USE_LVGL` is
   enabled and hands the frame buffer to `lvgl_blit`.
 - When `USE_LVGL` is passed to CMake the LVGL library is initialized at startup
-  and `lvgl_blit` copies each frame to a canvas instead of relying on DirectDraw. 
+  and `lvgl_blit` copies each frame to a canvas instead of relying on DirectDraw.
+- Added a Linux-compatible `conio.h` replacement under `src` and updated the
+  build system to search this directory so legacy `<conio.h>` includes resolve.
+- `src/debug_log.h` now maps logging calls to LVGL's log module for consistent
+  output when `ENABLE_LOGGING` is defined. A minimal `lv_conf.h` enables logging
+  with `LV_LOG_LEVEL_INFO`.
+- Simplified function.h by removing Windows-only assert hooks and redundant includes.
+- Implemented an LVGL-based terminal widget for on-screen debugging (`terminal.c` and `terminal.h`).
+
+- Removed stray `#endif` lines in several headers to fix build errors.

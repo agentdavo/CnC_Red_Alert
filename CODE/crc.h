@@ -45,8 +45,6 @@
 **	November of '94. Until the compiler supports this, use the following
 **	definition.
 */
-#endif
-#endif
 
 /*
 **	This is a CRC engine class. It will process submitted data and generate a CRC from it.

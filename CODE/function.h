@@ -41,7 +41,7 @@
 /*
 **	!!!DEFINE!!!  "NDEBUG" if the assertion code is to be !!!REMOVED!!! from the project.
 */
-#define	NDEBUG
+/* #define NDEBUG */
 
 /*
  * Formerly disabled a Watcom-specific warning. No longer needed in C11.
@@ -60,7 +60,6 @@
 #ifdef WIN32
 //#define WIN32_LEAN_AND_MEAN
 #include	<windows.h>
-#include <stdbool.h>
 #define WWFILE_H
 #define RAWFILE_H
 #define MONOC_H
@@ -68,6 +67,7 @@
 #define	_MAX_NAME	_MAX_FNAME
 
 #endif
+#include <stdbool.h>
 
 #ifndef BITMAPCLASS
 #define BITMAPCLASS
@@ -192,7 +192,6 @@ typedef struct {
 extern bool GameActive;
 extern long LParam;
 
-#include	<assert.h>
 #include	"vector.h"
 #include	"heap.h"
 #include	"ccfile.h"
@@ -337,22 +336,6 @@ extern int Get_CD_Drive(void);
 extern void Fatal(char const *message, ...);
 
 #ifdef WIN32
-
-/*
-** For WIN32, replace the assert macro so we get an error on the debugger screen
-**  where we can see it.
-**
-*/
-#ifdef assert
-#undef assert
-#endif	//assert
-void Assert_Failure (char *expression, int line, char *file);
-
-#ifdef NDEBUG
- #define assert(__ignore) ((void)0)
-#else
- #define assert(expr)   ((expr)?(void)0:Assert_Failure(#expr,__LINE__,__FILE__))
-#endif	//NDEBUG
 
 extern void Free_Interpolated_Palettes(void);
 extern int Load_Interpolated_Palettes(char const *filename, BOOL add=FALSE);

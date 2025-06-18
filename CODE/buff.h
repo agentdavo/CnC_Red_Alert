@@ -43,8 +43,6 @@
 **	November of '94. Until the compiler supports this, use the following
 **	definition.
 */
-#endif
-#endif
 
 /*
 **	A general purpose buffer pointer handler object. It holds not only the pointer to the
