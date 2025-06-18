@@ -60,16 +60,19 @@ static void delete_swaps(const char *path)
 int launch_main(int argc, char **argv)
 {
 #ifdef USE_LVGL
-    const char *backend_arg = NULL;
+    const char *backend_opt = NULL;
     for (int i = 1; i < argc; ++i) {
-        if (strncmp(argv[i], "--backend=", 10) == 0) {
-            backend_arg = argv[i] + 10;
-            break;
+        if (strncmp(argv[i], "--lvgl-backend=", 15) == 0) {
+            backend_opt = argv[i] + 15;
+        } else if (strcmp(argv[i], "--lvgl-backend") == 0 && i + 1 < argc) {
+            backend_opt = argv[i + 1];
+            ++i;
         }
     }
-
     lv_init();
-    lvgl_init_backend(backend_arg);
+    if(lvgl_init_backend(backend_opt) != 0) {
+        return 1;
+    }
 #endif
     const char *cwd = ".";
     if (!check_disk_space(cwd)) {
@@ -83,7 +86,10 @@ int launch_main(int argc, char **argv)
     new_argv[0] = "./game.dat";
     int j = 1;
     for (int i = 1; i < argc; ++i) {
-        if (strncmp(argv[i], "--backend=", 10) == 0) {
+        if (strncmp(argv[i], "--lvgl-backend=", 15) == 0) {
+            continue;
+        } else if (strcmp(argv[i], "--lvgl-backend") == 0 && i + 1 < argc) {
+            ++i;
             continue;
         }
         new_argv[j++] = argv[i];

@@ -63,12 +63,13 @@ git submodule update --init src/lvgl
 cp src/lvgl/lv_conf_template.h lv_conf.h    # basic configuration
 cmake -S . -B build -DCMAKE_C_FLAGS="-std=gnu11" -DUSE_LVGL=ON -DLVGL_BACKEND=$LV_BACKEND
 cmake --build build
-./build/redalert --backend=wayland
+./build/redalert --lvgl-backend=wayland
 ```
 
-You may omit `--backend` and rely on the `LV_BACKEND` environment variable.
+You may omit `--lvgl-backend` and rely on the `LV_BACKEND` environment variable.
 
 The launcher boots into the first menu using the selected LVGL backend.
+Pass `--lvgl-backend` to override `LV_BACKEND` at runtime.
 
 With `USE_LVGL` enabled the hidden page is copied to the LVGL canvas via the
 `lvgl_blit` routine inside `GScreenClass::Blit_Display`.
@@ -93,4 +94,5 @@ Compilation currently fails because of missing dependencies and obsolete pragmas
 - [MOUSE.md](MOUSE.md) – mouse handler and LVGL input device notes.
 The input driver defaults to the **x11** backend. Set `LV_BACKEND`
 before running the launcher or use `-DLVGL_BACKEND=<name>` when
-configuring CMake to select another backend.
+configuring CMake, or pass `--lvgl-backend <name>` on the command line to select
+another backend.

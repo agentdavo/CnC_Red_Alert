@@ -5,7 +5,15 @@
 extern "C" {
 #endif
 
-void lvgl_init_backend(const char *backend);
+typedef enum {
+    LV_BACKEND_SDL,
+    LV_BACKEND_X11,
+    LV_BACKEND_WAYLAND,
+    LV_BACKEND_FBDEV,
+    LV_BACKEND_UNKNOWN
+} lv_backend_t;
+
+int lvgl_init_backend(const char *backend);
 
 #ifdef __cplusplus
 }
