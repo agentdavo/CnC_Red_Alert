@@ -303,8 +303,15 @@ extern unsigned Bound(unsigned original, unsigned min, unsigned max);
 #endif
 
 
-unsigned Fixed_To_Cardinal(unsigned base, unsigned fixed);
-//#pragma aux Fixed_To_Cardinal parm [eax] [edx] 
+static inline unsigned Fixed_To_Cardinal(unsigned base, unsigned fixed)
+{
+    uint32_t result = (uint32_t)base * (uint32_t)fixed;
+    result += 0x80u;
+    if (result & 0xFF000000u)
+        return 0xFFFFu;
+    return result >> 8;
+}
+//#pragma aux Fixed_To_Cardinal parm [eax] [edx]
 //	modify [edx] 
 //	value [eax]		= 				
 //	"mul	edx"						
@@ -316,8 +323,13 @@ unsigned Fixed_To_Cardinal(unsigned base, unsigned fixed);
 //	"shr	eax,8"
 
 
-unsigned Cardinal_To_Fixed(unsigned base, unsigned cardinal);
-//#pragma aux Cardinal_To_Fixed parm [ebx] [eax] 
+static inline unsigned Cardinal_To_Fixed(unsigned base, unsigned cardinal)
+{
+    if (base == 0)
+        return 0xFFFFu;
+    return ((cardinal << 8) / base);
+}
+//#pragma aux Cardinal_To_Fixed parm [ebx] [eax]
 //	modify [edx] 
 //	value [eax]		= 				
 //	"or	ebx,ebx"					
