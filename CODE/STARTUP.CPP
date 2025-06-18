@@ -46,6 +46,10 @@
 #include  "ccdde.h"
 #include	"ipx95.h"
 #endif	//WIN32
+#ifdef USE_LVGL
+#include "../src/lvgl/src/lvgl.h"
+#include "lvgl/lvgl_backend.h"
+#endif
 
 #ifdef MCIMPEG // Denzil 6/15/98
 #include "mcimovie.h"
@@ -115,6 +119,10 @@ int main(int argc, char * argv[])
 {
 #ifdef WIN32
 LOG_CALL("%s entered\n", __func__);
+#ifdef USE_LVGL
+    lv_init();
+    lvgl_init_backend();
+#endif
 
 	#ifndef MPEGMOVIE // Denzil 6/10/98
 	DDSCAPS	surface_capabilities;

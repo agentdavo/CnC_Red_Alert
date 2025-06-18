@@ -87,6 +87,9 @@ B<A> test;
 
 #include	"function.h"
 #include "../src/debug_log.h"
+#ifdef USE_LVGL
+#include "../src/lvgl/src/lvgl.h"
+#endif
 #ifdef WIN32
 #ifdef WINSOCK_IPX
 #include	"WSProto.h"
@@ -2147,8 +2150,11 @@ LOG_CALL("%s entered\n", __func__);
 	int framedelay;
 
 Mono_Set_Cursor(0,0);
+#ifdef USE_LVGL
+    lv_timer_handler();
+#endif
 
-	if (!GameActive) return(!GameActive);
+        if (!GameActive) return(!GameActive);
 
 #ifdef WIN32
 	/*

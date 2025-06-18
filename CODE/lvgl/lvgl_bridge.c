@@ -56,6 +56,7 @@ void lvgl_blit(const struct GraphicBufferClass *page)
 
         canvas = lv_canvas_create(lv_screen_active());
         lv_canvas_set_draw_buf(canvas, canvas_buf);
+        lv_scr_load(canvas);
     }
 
     /* Update the palette from the game's global palette data */

@@ -13,6 +13,10 @@
 #ifdef _WIN32
 #include <process.h>
 #endif
+#ifdef USE_LVGL
+#include "../src/lvgl/src/lvgl.h"
+#include "../CODE/lvgl/lvgl_backend.h"
+#endif
 
 static const unsigned long REQUIRED_DISK_SPACE = 15UL * 1024 * 1024; /* bytes */
 
@@ -55,6 +59,10 @@ static void delete_swaps(const char *path)
 
 int launch_main(int argc, char **argv)
 {
+    #ifdef USE_LVGL
+    lv_init();
+    lvgl_init_backend();
+    #endif
     const char *cwd = ".";
     if (!check_disk_space(cwd)) {
         fprintf(stderr, "Error - insufficient disk space to run Red Alert.\n");

@@ -280,6 +280,7 @@ XPIPE.CPP
 XSTRAW.CPP
 _WSPROTO.CPP
 lvgl/lvgl_bridge.c
+lvgl/lvgl_backend.c
 lvgl/terminal.c
 )
 
