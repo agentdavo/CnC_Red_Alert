@@ -114,3 +114,4 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Added a GitHub action that cross compiles the project for the RV32IMA ILP32 architecture using the X11 backend.
 - Added C replacements for Mem_Copy, Largest_Mem_Block and page-in helpers. 
 - Converted Westwood and HMI ADPCM assembly decompressors to C and compile them when ENABLE_ASM is off.
+- Retrieved missing `phone.h` header from the TiberianDawn repository so network and phonebook code can compile.
