@@ -37,6 +37,18 @@
 #endif
 
 #include "compiler.h"
+#ifndef GF_CONV
+#define GF_CONV
+#endif
+#ifndef GF_CDECL
+#define GF_CDECL
+#endif
+#ifndef GF_DLL_FAR
+#define GF_DLL_FAR
+#endif
+#ifndef GF_FAR
+#define GF_FAR
+#endif
 #include "dosxptrs.h"
 #if defined( GF_WINDOWS ) || defined( GF_WIN32 )
 #include <windows.h>
