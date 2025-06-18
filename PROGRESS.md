@@ -131,6 +131,7 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Removed Borland-specific pragma directives from imported Greenleaf headers.
 - Added RISC-V 32/64 QEMU toolchain files in cmake/ for LVGL-only builds.
 - Calls to real-mode IPX helpers now link against the UDP-based stub and the assembly sources are no longer built.
+- Westwood and HMI ADPCM decompressors in `AUDUNCMP.ASM`, `OLSOSDEC.ASM` and `SOSCODEC.ASM` were fully ported to `src/audio_decompress.c`; the assembly files are no longer compiled.
 - Converted BITBLIT, DRAWLINE, SHADOW and VESA routines to portable C11. The new
   code lives in `src/dos_graphics.c` and `src/blit_stub.c`, so the game builds
   without assembly when `ENABLE_ASM` is OFF.

@@ -23,13 +23,11 @@ This guide lists each source file involved in audio playback along with its prim
 - `Sample_Copy` converts compressed audio blocks into raw PCM data used by DirectSound【F:WIN32LIB/AUDIO/SOUNDINT.CPP†L140-L192】.
 - `maintenance_callback` services each `SampleTrackerType` by locking buffers and feeding audio to the hardware【F:WIN32LIB/AUDIO/SOUNDINT.CPP†L260-L330】.
 
-## Assembly Modules
-- **`AUDUNCMP.ASM`** provides `Decompress_Frame` for Westwood ADPCM decoding【F:WIN32LIB/AUDIO/AUDUNCMP.ASM†L60-L80】.
-- **`OLSOSDEC.ASM`** supplies `sosCODECDecompressData` for HMI SOS streams【F:WIN32LIB/AUDIO/OLSOSDEC.ASM†L186-L208】.
-- **`SOSCODEC.ASM`** contains an optimized version of the same routine used during debugging【F:WIN32LIB/SRCDEBUG/SOSCODEC.ASM†L178-L208】.
-  The new `src/audio_decompress.c` module wraps these assembly routines when
-  `ENABLE_ASM` is defined. With assembly disabled it implements the Westwood
-  ADPCM and IMA-ADPCM algorithms described in `aud3.txt` directly in C.
+## Decompression Routines
+`src/audio_decompress.c` implements the Westwood ADPCM and HMI IMA-ADPCM
+algorithms in portable C. The legacy assembly files `AUDUNCMP.ASM`,
+`OLSOSDEC.ASM` and `SOSCODEC.ASM` are no longer built now that feature parity
+has been confirmed.
 
 ## Miniaudio Backend
 The legacy HMI timer callbacks were replaced by a portable implementation in `src/miniaudio.c`.  This module drives audio playback and provides simple timer hooks for the game when DirectSound is unavailable.
