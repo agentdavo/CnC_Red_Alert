@@ -6,6 +6,13 @@
 #include <math.h>
 #include <stdbool.h>
 #include <limits.h>
+#include <dirent.h>
+#include <unistd.h>
+#include <errno.h>
+#include <strings.h>
+#ifdef _WIN32
+#include <process.h>
+#endif
 
 static const unsigned long REQUIRED_DISK_SPACE = 15UL * 1024 * 1024; /* bytes */
 
@@ -22,13 +29,28 @@ static bool check_disk_space(const char *path)
 }
 
 /*
- * Remove stale swap files left by a prior run.  This originally scanned the
- * working directory for files ending in ".swp".  Directory traversal is
- * platform-specific, so this stub simply does nothing.
+ * Remove stale swap files left by a prior run.  The original DOS launcher
+ * deleted any files with a ".SWP" extension in the working directory.  This
+ * version performs the same cleanup using standard directory routines.
  */
 static void delete_swaps(const char *path)
 {
-    (void)path;
+    DIR *dir = opendir(path);
+    if (!dir) {
+        return;
+    }
+
+    struct dirent *ent;
+    char file[PATH_MAX];
+    while ((ent = readdir(dir)) != NULL) {
+        const char *name = ent->d_name;
+        size_t len = strlen(name);
+        if (len > 4 && strcasecmp(name + len - 4, ".swp") == 0) {
+            snprintf(file, sizeof(file), "%s/%s", path, name);
+            remove(file);
+        }
+    }
+    closedir(dir);
 }
 
 int launch_main(int argc, char **argv)
@@ -41,14 +63,20 @@ int launch_main(int argc, char **argv)
 
     delete_swaps(cwd);
 
-    const char *prog = "./game.dat";
-    char command[PATH_MAX] = {0};
-    strncpy(command, prog, sizeof(command) - 1);
+    char *new_argv[argc + 1];
+    new_argv[0] = "./game.dat";
     for (int i = 1; i < argc; ++i) {
-        strncat(command, " ", sizeof(command) - strlen(command) - 1);
-        strncat(command, argv[i], sizeof(command) - strlen(command) - 1);
+        new_argv[i] = argv[i];
     }
-    return system(command);
+    new_argv[argc] = NULL;
+
+#ifdef _WIN32
+    return _spawnv(_P_WAIT, new_argv[0], new_argv);
+#else
+    execv(new_argv[0], new_argv);
+    perror("execv");
+    return errno ? (int)errno : 1;
+#endif
 }
 
 #ifdef TEST_MAIN

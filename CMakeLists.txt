@@ -28,28 +28,42 @@ add_subdirectory(VQ/VQA32)
 set(MINIAUDIO_NO_EXTRA_NODES ON CACHE BOOL "" FORCE)
 add_subdirectory(src/miniaudio)
 
-set(SOURCES
-    ${CODE_SOURCES}
-        LAUNCHER/256bmp.c
-        LAUNCHER/bitmap.cpp
-        LAUNCHER/configfile.cpp
-        LAUNCHER/dialog.cpp
-        LAUNCHER/findpatch.cpp
-        LAUNCHER/loadbmp.cpp
-        LAUNCHER/main.cpp
-        LAUNCHER/monod.cpp
-        LAUNCHER/patch.cpp
-        LAUNCHER/process.cpp
-        LAUNCHER/streamer.cpp
-        LAUNCHER/wdebug.cpp
-        LAUNCHER/winblows.cpp
-        LAUNCHER/wstring.cpp
-        LAUNCH/main.c
-        src/miniaudio.c
-        src/ddraw/ddraw_stub.c
+set(LAUNCHER_SRC
+    LAUNCHER/256bmp.c
+    LAUNCHER/bitmap.cpp
+    LAUNCHER/configfile.cpp
+    LAUNCHER/dialog.cpp
+    LAUNCHER/findpatch.cpp
+    LAUNCHER/loadbmp.cpp
+    LAUNCHER/main.cpp
+    LAUNCHER/monod.cpp
+    LAUNCHER/patch.cpp
+    LAUNCHER/process.cpp
+    LAUNCHER/streamer.cpp
+    LAUNCHER/wdebug.cpp
+    LAUNCHER/winblows.cpp
+    LAUNCHER/wstring.cpp
 )
 
-set(SOURCES ${CODE_SOURCES} ${LAUNCHER_SRC} ${LAUNCH_SRC})
+set(LAUNCH_SRC
+    LAUNCH/main.c
+)
+
+set(SOURCES
+    ${CODE_SOURCES}
+    ${LAUNCHER_SRC}
+    ${LAUNCH_SRC}
+    src/miniaudio.c
+    src/ddraw/ddraw_stub.c
+)
+
+set(ASM_SOURCES ${CODE_ASM})
+
+if(NOT ENABLE_ASM)
+    set(ASM_SOURCES)
+elseif(REPLACEMENT_ASM_DIR)
+    file(GLOB ASM_SOURCES "${REPLACEMENT_ASM_DIR}/*.asm")
+endif()
 
 add_executable(redalert ${SOURCES})
 target_link_libraries(redalert PRIVATE gamecode vqa32 miniaudio pthread)
