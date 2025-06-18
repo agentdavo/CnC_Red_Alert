@@ -59,3 +59,5 @@ As the port progresses, updates on how each dependency has been replaced or stub
   for the original assembly routines.
 - Added stubs for missing <dos.h> and <pharlap.h> to keep the build going.
 - Removed legacy compiler pragmas and compiled VQA32 sources as C++.
+- Added C stub blitters and USE_C_BLITTERS option to select them.
+- Implemented Buffer_Print, Get_Font_Palette_Ptr and interpolation stubs in C.

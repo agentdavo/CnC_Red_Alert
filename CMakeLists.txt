@@ -4,6 +4,7 @@ project(redalert C CXX)
 # Build options
 option(ENABLE_ASM "Enable assembly modules" ON)
 option(USE_LVGL "Enable LVGL canvas output" OFF)
+option(USE_C_BLITTERS "Use C implementations of blit routines" OFF)
 set(REPLACEMENT_ASM_DIR "" CACHE PATH "Directory with replacement assembly code")
 
 # Compiler configuration
