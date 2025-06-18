@@ -25,3 +25,5 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Launcher now relies only on standard C headers; disk and swap file handling use stub implementations.
 - Renamed files in LAUNCH and LAUNCHER directories to lowercase for cross-platform compatibility.
 - Identified program entry points: `Start` in `LAUNCH/launch.asm` (ported as `launch_main`) and `WinMain` in `CODE/STARTUP.CPP`.
+- Simplified the top-level `CMakeLists.txt` to auto-detect all C/C++ sources and
+  added placeholders for DirectX and HMI dependencies.

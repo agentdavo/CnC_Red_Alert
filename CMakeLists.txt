@@ -1,52 +1,46 @@
-cmake_minimum_required(VERSION 3.13)
-project(redalert C CXX)
+cmake_minimum_required(VERSION 3.16)
 
-# Build options
-option(ENABLE_ASM "Enable assembly modules" ON)
-set(REPLACEMENT_ASM_DIR "" CACHE PATH "Directory with replacement assembly code")
+# Basic project setup
+project(RedAlert C CXX)
 
-# Compiler configuration
 set(CMAKE_C_STANDARD 11)
-set(CMAKE_C_STANDARD_REQUIRED ON)
-add_compile_options(-Wall -Wextra -Werror)
+set(CMAKE_CXX_STANDARD 11)
 
-add_subdirectory(CODE)
+# Enable warnings while the code is being modernized
+add_compile_options(-Wall -Wextra)
+
+# Gather source files
+file(GLOB_RECURSE CODE_SOURCES CONFIGURE_DEPENDS
+    CODE/*.c
+    CODE/*.cpp
+)
+file(GLOB_RECURSE LAUNCHER_SOURCES CONFIGURE_DEPENDS
+    LAUNCHER/*.c
+    LAUNCHER/*.cpp
+)
+file(GLOB_RECURSE LAUNCH_SOURCES CONFIGURE_DEPENDS
+    LAUNCH/*.c
+)
+
+set(SOURCES
+    CODE/STARTUP.CPP
+    ${CODE_SOURCES}
+    ${LAUNCHER_SOURCES}
+    ${LAUNCH_SOURCES}
+    src/miniaudio.c
+)
+
+# Placeholders for external dependencies that still rely on
+# DirectX, HMI audio and other legacy libraries.
+# TODO: replace these with portable equivalents or stubs.
+set(EXTERNAL_LIBS
+    # DirectX libraries
+    # HMI SOS library
+)
+
 set(MINIAUDIO_NO_EXTRA_NODES ON CACHE BOOL "" FORCE)
 add_subdirectory(src/miniaudio)
 
-set(SOURCES
-    ${CODE_SOURCES}
-        LAUNCHER/256bmp.c
-        LAUNCHER/bitmap.cpp
-        LAUNCHER/configfile.cpp
-        LAUNCHER/dialog.cpp
-        LAUNCHER/findpatch.cpp
-        LAUNCHER/loadbmp.cpp
-        LAUNCHER/main.cpp
-        LAUNCHER/monod.cpp
-        LAUNCHER/patch.cpp
-        LAUNCHER/process.cpp
-        LAUNCHER/streamer.cpp
-        LAUNCHER/wdebug.cpp
-        LAUNCHER/winblows.cpp
-        LAUNCHER/wstring.cpp
-        LAUNCH/main.c
-        src/miniaudio.c
-)
+add_executable(redalert ${SOURCES})
 
-set(ASM_SOURCES
-${CODE_ASM}
-)
-
-set(SOURCES ${CODE_SOURCES} ${LAUNCHER_SRC} ${LAUNCH_SRC})
-set(ASM_SOURCES ${CODE_ASM})
-
-if(NOT ENABLE_ASM)
-    set(ASM_SOURCES)
-elseif(REPLACEMENT_ASM_DIR)
-    file(GLOB ASM_SOURCES "${REPLACEMENT_ASM_DIR}/*.asm")
-endif()
-
-add_executable(redalert ${SOURCES} ${ASM_SOURCES})
-target_link_libraries(redalert PRIVATE gamecode miniaudio pthread)
-
+target_link_libraries(redalert PRIVATE miniaudio ${EXTERNAL_LIBS} pthread)
