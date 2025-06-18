@@ -472,20 +472,25 @@ extern "C" {
 
 void GScreenClass::Blit_Display(void)
 {
-	BStart(BENCH_BLIT_DISPLAY);
-	#ifdef WIN32
-		if (SeenBuff.Get_Width()!=320) {
-			WWMouse->Draw_Mouse(&HidPage);
-			HidPage.Blit(SeenBuff , 0 , 0 , 0 , 0 , HidPage.Get_Width() , HidPage.Get_Height() , (BOOL) FALSE );
-			WWMouse->Erase_Mouse(&HidPage, FALSE);
-		} else {
-			ModeX_Blit(&HiddenPage);
-		}
+       BStart(BENCH_BLIT_DISPLAY);
+#ifdef USE_LVGL
+       /*
+       ** When LVGL output is enabled, bypass the DirectDraw/ModeX routines
+       ** and hand the hidden page directly to the LVGL bridge.
+       */
+       lvgl_blit(&HiddenPage);
+#else
+       #ifdef WIN32
+               if (SeenBuff.Get_Width()!=320) {
+                       WWMouse->Draw_Mouse(&HidPage);
+                       HidPage.Blit(SeenBuff , 0 , 0 , 0 , 0 , HidPage.Get_Width() , HidPage.Get_Height() , (BOOL) FALSE );
+                       WWMouse->Erase_Mouse(&HidPage, FALSE);
+               } else {
+                       ModeX_Blit(&HiddenPage);
+               }
        #else
                Shadow_Blit(0, 0, 320, 200, HidPage, SeenPage, ShadowPage->Get_Buffer());
        #endif
-#ifdef USE_LVGL
-       lvgl_blit(&HiddenPage);
 #endif
        BEnd(BENCH_BLIT_DISPLAY);
 }
