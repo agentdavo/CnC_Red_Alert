@@ -135,3 +135,7 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Converted BITBLIT, DRAWLINE, SHADOW and VESA routines to portable C11. The new
   code lives in `src/dos_graphics.c` and `src/blit_stub.c`, so the game builds
   without assembly when `ENABLE_ASM` is OFF.
+- Reimplemented `Force_VM_Page_In` and basic mouse helpers (`Mouse_Shadow_Buffer`,
+  `Draw_Mouse`, `ASM_Set_Mouse_Cursor`) in C (`src/mem_helpers.c` and
+  `src/input_asm_repl.c`). The old `VMPAGEIN.ASM` and `WWMOUSE.ASM` modules are
+  no longer required when assembly is disabled.
