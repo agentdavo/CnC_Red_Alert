@@ -39,6 +39,9 @@
 
 #include	"function.h"
 #include "../src/debug_log.h"
+#ifdef USE_LVGL
+#include "lvgl/lvgl_bridge.h"
+#endif
 #include	<conio.h>
 #include	<io.h>
 
@@ -140,6 +143,9 @@ LOG_CALL("%s entered\n", __func__);
 	}
 
 
+#endif
+#ifdef USE_LVGL
+    lvgl_bridge_init(640, 480);
 #endif
 //printf("in program.\n");getch();
 //printf("ram free = %ld\n",Ram_Free(MEM_NORMAL));getch();
@@ -844,11 +850,14 @@ bool InitDDraw(void)
 #ifdef WIN32
 void __cdecl Prog_End(void)
 {
-	Sound_End();
-	if (WWMouse) {
-		delete WWMouse;
-		WWMouse = NULL;
-	}
+        Sound_End();
+#ifdef USE_LVGL
+        lvgl_bridge_deinit();
+#endif
+        if (WWMouse) {
+                delete WWMouse;
+                WWMouse = NULL;
+        }
 	if (WindowsTimer) {
 		 delete WindowsTimer;
 		 WindowsTimer = NULL;
@@ -858,15 +867,18 @@ void __cdecl Prog_End(void)
 
 void Prog_End(void)
 {
-	if (Session.Type == GAME_MODEM || Session.Type == GAME_NULL_MODEM) {
-		NullModem.Change_IRQ_Priority(0);
-	}
+        if (Session.Type == GAME_MODEM || Session.Type == GAME_NULL_MODEM) {
+                NullModem.Change_IRQ_Priority(0);
+        }
 
 	Set_Video_Mode(RESET_MODE);
 	Remove_Keyboard_Interrupt();
 	Remove_Mouse();
-	Sound_End();
-	Remove_Timer_System();
+        Sound_End();
+#ifdef USE_LVGL
+        lvgl_bridge_deinit();
+#endif
+        Remove_Timer_System();
 }
 #endif	//WIN32
 

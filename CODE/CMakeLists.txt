@@ -279,6 +279,7 @@ WSPUDP.CPP
 XPIPE.CPP
 XSTRAW.CPP
 _WSPROTO.CPP
+lvgl/lvgl_bridge.c
 )
 
 set(CODE_ASM
