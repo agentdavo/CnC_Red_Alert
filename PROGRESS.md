@@ -14,5 +14,10 @@ The original source relies on several legacy libraries that are no longer readil
 
 As the port progresses, updates on how each dependency has been replaced or stubbed should be recorded here.
 - Converted LAUNCH assembly launcher to portable C11 (launch/main.c).
-- Removed references to legacy Borland/Watcom tooling in `CODE/MAKEFILE`
-  in favor of the CMake build system.
+- Removed references to legacy Borland/Watcom tooling in `CODE/MAKEFILE` in favor of the CMake build system.
+- Removed DOS/4GW stub launcher (CWSTUB.C) and launch/main.c now runs the game directly.
+- Replaced bit manipulation assembly pragmas in jshell.h with portable C.
+- Removed segmentation keywords (far/near/huge) from legacy headers for C11 compliance.
+- Launcher now relies only on standard C headers; disk and swap file handling use stub implementations.
+- Renamed files in LAUNCH and LAUNCHER directories to lowercase for cross-platform compatibility.
+- Identified program entry points: `Start` in `LAUNCH/launch.asm` (ported as `launch_main`) and `WinMain` in `CODE/STARTUP.CPP`.

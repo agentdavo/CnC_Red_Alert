@@ -20,43 +20,43 @@
 #include <windowsx.h>
 #include <alloc.h>
 
-DWORD GetDibInfoHeaderSize (BYTE huge *);
-WORD GetDibWidth (BYTE huge *);
-WORD GetDibHeight (BYTE huge *);
-BYTE huge * GetDibBitsAddr (BYTE huge *);
-BYTE huge * ReadDib(char *);
+DWORD GetDibInfoHeaderSize (BYTE *);
+WORD GetDibWidth (BYTE *);
+WORD GetDibHeight (BYTE *);
+BYTE * GetDibBitsAddr (BYTE *);
+BYTE * ReadDib(char *);
 
 //-------------------------------------------------------------//
 
-DWORD GetDibInfoHeaderSize (BYTE huge * lpDib)
+DWORD GetDibInfoHeaderSize (BYTE * lpDib)
 {
-	return ((BITMAPINFOHEADER huge *) lpDib)->biSize ;
+        return ((BITMAPINFOHEADER *) lpDib)->biSize ;
 }
 
-WORD GetDibWidth (BYTE huge * lpDib)
+WORD GetDibWidth (BYTE * lpDib)
 {
-	if (GetDibInfoHeaderSize (lpDib) == sizeof (BITMAPCOREHEADER))
-		return (WORD) (((BITMAPCOREHEADER huge *) lpDib)->bcWidth) ;
-	else
-		return (WORD) (((BITMAPINFOHEADER huge *) lpDib)->biWidth) ;
+        if (GetDibInfoHeaderSize (lpDib) == sizeof (BITMAPCOREHEADER))
+                return (WORD) (((BITMAPCOREHEADER *) lpDib)->bcWidth) ;
+        else
+                return (WORD) (((BITMAPINFOHEADER *) lpDib)->biWidth) ;
 }
 
-WORD GetDibHeight (BYTE huge * lpDib)
+WORD GetDibHeight (BYTE * lpDib)
 {
-	if (GetDibInfoHeaderSize (lpDib) == sizeof (BITMAPCOREHEADER))
-		return (WORD) (((BITMAPCOREHEADER huge *) lpDib)->bcHeight) ;
-	else
-		return (WORD) (((BITMAPINFOHEADER huge *) lpDib)->biHeight) ;
+        if (GetDibInfoHeaderSize (lpDib) == sizeof (BITMAPCOREHEADER))
+                return (WORD) (((BITMAPCOREHEADER *) lpDib)->bcHeight) ;
+        else
+                return (WORD) (((BITMAPINFOHEADER *) lpDib)->biHeight) ;
 }
 
-BYTE huge * GetDibBitsAddr (BYTE huge * lpDib)
+BYTE * GetDibBitsAddr (BYTE * lpDib)
 {
-	DWORD dwNumColors, dwColorTableSize ;
-	WORD  wBitCount ;
+        DWORD dwNumColors, dwColorTableSize ;
+        WORD  wBitCount ;
 
 	if (GetDibInfoHeaderSize (lpDib) == sizeof (BITMAPCOREHEADER))
 	{
-		wBitCount = ((BITMAPCOREHEADER huge *) lpDib)->bcBitCount ;
+                wBitCount = ((BITMAPCOREHEADER *) lpDib)->bcBitCount ;
 
 		if (wBitCount != 24)
 			dwNumColors = 1L << wBitCount ;
@@ -67,10 +67,10 @@ BYTE huge * GetDibBitsAddr (BYTE huge * lpDib)
 	}
 	else
 	{
-		wBitCount = ((BITMAPINFOHEADER huge *) lpDib)->biBitCount ;
+                wBitCount = ((BITMAPINFOHEADER *) lpDib)->biBitCount ;
 
 		if (GetDibInfoHeaderSize (lpDib) >= 36)
-			dwNumColors = ((BITMAPINFOHEADER huge *) lpDib)->biClrUsed ;
+                        dwNumColors = ((BITMAPINFOHEADER *) lpDib)->biClrUsed ;
 		else
 			dwNumColors = 0 ;
 
@@ -89,10 +89,10 @@ BYTE huge * GetDibBitsAddr (BYTE huge * lpDib)
 }
 
 // Read a DIB from a file into memory
-BYTE huge * ReadDib (char * szFileName)
+BYTE * ReadDib (char * szFileName)
 {
 	BITMAPFILEHEADER bmfh ;
-	BYTE huge *      lpDib ;
+        BYTE *      lpDib ;
 	DWORD            dwDibSize, dwOffset, dwHeaderSize ;
 	int              hFile ;
 	WORD             wDibRead ;
@@ -115,7 +115,7 @@ BYTE huge * ReadDib (char * szFileName)
 
 	dwDibSize = bmfh.bfSize - sizeof (BITMAPFILEHEADER) ;
 
-	lpDib = (BYTE huge * ) GlobalAllocPtr (GMEM_MOVEABLE, dwDibSize) ;
+        lpDib = (BYTE * ) GlobalAllocPtr (GMEM_MOVEABLE, dwDibSize) ;
 
 	if (lpDib == NULL)
 	{
@@ -148,7 +148,7 @@ BYTE huge * ReadDib (char * szFileName)
 	return lpDib ;
 }
 
-long FAR PASCAL _export MainWndProc(HWND hWnd,UINT message,UINT wParam,LONG lParam)
+LRESULT CALLBACK MainWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	PAINTSTRUCT	ps;
 	HDC hdc;
@@ -157,8 +157,8 @@ long FAR PASCAL _export MainWndProc(HWND hWnd,UINT message,UINT wParam,LONG lPar
 	FILE *fi;
 	int i;
 
-	static BYTE huge *lpDib;
-	static BYTE huge *lpDibBits;
+        static BYTE *lpDib;
+        static BYTE *lpDibBits;
 	static int cxDib, cyDib;
 	static LPLOGPALETTE LogPal;
 	static HPALETTE hLogPal;

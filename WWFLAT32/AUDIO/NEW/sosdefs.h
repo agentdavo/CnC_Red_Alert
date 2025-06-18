@@ -60,22 +60,22 @@ typedef  signed long    LONG;
 typedef  unsigned long  DWORD;
 
 typedef  BYTE  *        PBYTE;
-typedef  char near *    PSTR;
+typedef  char *         PSTR;
 typedef  WORD  *        PWORD;
 typedef  LONG  *        PLONG;
 typedef  VOID  *        PVOID;
 
-typedef  BYTE  far   *  LPBYTE;
-typedef  BYTE  far   *  LPSTR;
-typedef  WORD  far   *  LPWORD;
-typedef  LONG  far   *  LPLONG;
-typedef  VOID  far   *  LPVOID;
+typedef  BYTE  *        LPBYTE;
+typedef  BYTE  *        LPSTR;
+typedef  WORD  *        LPWORD;
+typedef  LONG  *        LPLONG;
+typedef  VOID  *        LPVOID;
 
-typedef  BYTE  huge  *  HPBYTE;
-typedef  BYTE  huge  *  HPSTR;
-typedef  WORD  huge  *  HPWORD;
-typedef  LONG  huge  *  HPLONG;
-typedef  VOID  huge  *  HPVOID;
+typedef  BYTE  *        HPBYTE;
+typedef  BYTE  *        HPSTR;
+typedef  WORD  *        HPWORD;
+typedef  LONG  *        HPLONG;
+typedef  VOID  *        HPVOID;
 
 typedef  unsigned       HANDLE;
 
