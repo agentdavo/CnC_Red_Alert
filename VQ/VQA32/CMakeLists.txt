@@ -8,8 +8,11 @@ set(VQA32_SOURCES
     MONODISP.CPP
     TASK.CPP
     VERTAG.CPP
-    unvq_stub.c
 )
+
+if(ENABLE_ASM)
+    list(APPEND VQA32_SOURCES unvq_stub.c)
+endif()
 
 # Build the original sources as C++
 
