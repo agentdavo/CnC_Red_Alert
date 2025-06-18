@@ -308,7 +308,27 @@ elseif(REPLACEMENT_ASM_DIR)
     file(GLOB CODE_ASM "${REPLACEMENT_ASM_DIR}/*.asm")
 endif()
 
-add_library(gamecode STATIC ${CODE_SOURCES} ${CODE_ASM})
+set(ASM_OBJECTS)
+if(ENABLE_ASM)
+    if(WIN32)
+        set(ASM_EXT obj)
+    else()
+        set(ASM_EXT o)
+    endif()
+    foreach(ASM_FILE ${CODE_ASM})
+        get_filename_component(_name ${ASM_FILE} NAME_WE)
+        set(out_file ${CMAKE_CURRENT_BINARY_DIR}/${_name}.${ASM_EXT})
+        add_custom_command(
+            OUTPUT ${out_file}
+            COMMAND ${ASM_COMPILER} -f ${ASM_FORMAT} -o ${out_file} ${ASM_FILE}
+            DEPENDS ${ASM_FILE}
+        )
+        list(APPEND ASM_OBJECTS ${out_file})
+    endforeach()
+    set_source_files_properties(${ASM_OBJECTS} PROPERTIES GENERATED TRUE EXTERNAL_OBJECT TRUE)
+endif()
+
+add_library(gamecode STATIC ${CODE_SOURCES} ${ASM_OBJECTS})
 
 target_include_directories(gamecode PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/../WIN32LIB/INCLUDE
