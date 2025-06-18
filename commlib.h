@@ -130,8 +130,12 @@ typedef enum trigger_level{
 #define POS4INFO()               _asinb(POS4PORT)
 #define POS5INFO()               _asinb(POS5PORT)
 
+#ifndef TICKS_PER_SECOND
 #define TICKS_PER_SECOND              18
+#endif
+#ifndef MILLISECONDS_PER_TICK
 #define MILLISECONDS_PER_TICK         55
+#endif
 
 #ifndef TRUE
 #define TRUE            1

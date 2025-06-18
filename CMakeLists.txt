@@ -3,7 +3,7 @@ project(redalert C CXX)
 enable_testing()
 
 # Build options
-option(ENABLE_ASM "Enable assembly modules" ON)
+option(ENABLE_ASM "Enable assembly modules" OFF)
 option(USE_LVGL "Enable LVGL canvas output" OFF)
 set(LVGL_BACKEND "x11" CACHE STRING "LVGL backend (x11, wayland, sdl, windows)")
 option(USE_C_BLITTERS "Use C implementations of blit routines" OFF)
