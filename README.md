@@ -59,7 +59,7 @@ Fetch the submodule and compile with the option enabled:
 export LV_BACKEND=x11        # default backend; change as needed
 git submodule update --init src/lvgl
 cp src/lvgl/lv_conf_template.h lv_conf.h    # basic configuration
-cmake -S . -B build -DCMAKE_C_FLAGS="-std=gnu11" -DUSE_LVGL=ON
+cmake -S . -B build -DCMAKE_C_FLAGS="-std=gnu11" -DUSE_LVGL=ON -DLVGL_BACKEND=$LV_BACKEND
 cmake --build build
 ./build/redalert
 ```
@@ -88,4 +88,5 @@ Compilation currently fails because of missing dependencies and obsolete pragmas
 - [KEYBOARD.md](KEYBOARD.md) – keyboard queue and LVGL keyboard notes.
 - [MOUSE.md](MOUSE.md) – mouse handler and LVGL input device notes.
 The input driver defaults to the **x11** backend. Set `LV_BACKEND`
-before running the launcher to select another backend.
+before running the launcher or use `-DLVGL_BACKEND=<name>` when
+configuring CMake to select another backend.
