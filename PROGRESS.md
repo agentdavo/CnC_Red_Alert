@@ -129,3 +129,4 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Added a pure C implementation of `LCW_Uncompress` and stubs for the
   `ASM_IPX_Initialise` helpers so `IPX16.ASM` is no longer required.
 - Removed Borland-specific pragma directives from imported Greenleaf headers.
+- Calls to real-mode IPX helpers now link against the UDP-based stub and the assembly sources are no longer built.
