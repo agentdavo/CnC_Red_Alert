@@ -74,7 +74,6 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <stdio.h>
-
 #include <string.h>
 #include "vq.h"
 #include "unvq.h"

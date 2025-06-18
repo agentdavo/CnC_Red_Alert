@@ -115,8 +115,8 @@ INTERPAL.CPP
 INTRO.CPP
 IOMAP.CPP
 IOOBJ.CPP
-IPX.CPP
-IPX95.CPP
+# IPX real-mode implementation replaced by src/ipx_stub.c
+# IPX.CPP and IPX95.CPP excluded from build
 IPXADDR.CPP
 IPXCONN.CPP
 IPXGCONN.CPP
@@ -289,8 +289,6 @@ set(CODE_ASM
 2TXTPRNT.ASM
 COORDA.ASM
 CPUID.ASM
-IPXPROT.ASM
-IPXREAL.ASM
 KEYFBUFF.ASM
 LCWCOMP.ASM
 SUPPORT.ASM
@@ -301,13 +299,44 @@ WINASM.ASM
 list(TRANSFORM CODE_SOURCES PREPEND "${CMAKE_CURRENT_LIST_DIR}/")
 list(TRANSFORM CODE_ASM PREPEND "${CMAKE_CURRENT_LIST_DIR}/")
 
+if(USE_C_BLITTERS)
+    list(REMOVE_ITEM CODE_ASM
+        "${CMAKE_CURRENT_LIST_DIR}/KEYFBUFF.ASM"
+        "${CMAKE_CURRENT_LIST_DIR}/2KEYFBUF.ASM"
+        "${CMAKE_CURRENT_LIST_DIR}/TXTPRNT.ASM"
+        "${CMAKE_CURRENT_LIST_DIR}/2TXTPRNT.ASM"
+        "${CMAKE_CURRENT_LIST_DIR}/WINASM.ASM")
+    list(APPEND CODE_SOURCES "${CMAKE_SOURCE_DIR}/src/blit_stub.c")
+endif()
+
 if(NOT ENABLE_ASM)
-    set(CODE_ASM)
+    list(APPEND CODE_SOURCES "${CMAKE_CURRENT_LIST_DIR}/../src/cpuid.c")
+    list(REMOVE_ITEM CODE_ASM "${CMAKE_CURRENT_LIST_DIR}/CPUID.ASM")
 elseif(REPLACEMENT_ASM_DIR)
     file(GLOB CODE_ASM "${REPLACEMENT_ASM_DIR}/*.asm")
 endif()
 
-add_library(gamecode STATIC ${CODE_SOURCES} ${CODE_ASM})
+set(ASM_OBJECTS)
+if(ENABLE_ASM)
+    if(WIN32)
+        set(ASM_EXT obj)
+    else()
+        set(ASM_EXT o)
+    endif()
+    foreach(ASM_FILE ${CODE_ASM})
+        get_filename_component(_name ${ASM_FILE} NAME_WE)
+        set(out_file ${CMAKE_CURRENT_BINARY_DIR}/${_name}.${ASM_EXT})
+        add_custom_command(
+            OUTPUT ${out_file}
+            COMMAND ${ASM_COMPILER} -f ${ASM_FORMAT} -o ${out_file} ${ASM_FILE}
+            DEPENDS ${ASM_FILE}
+        )
+        list(APPEND ASM_OBJECTS ${out_file})
+    endforeach()
+    set_source_files_properties(${ASM_OBJECTS} PROPERTIES GENERATED TRUE EXTERNAL_OBJECT TRUE)
+endif()
+
+add_library(gamecode STATIC ${CODE_SOURCES} ${ASM_OBJECTS})
 
 target_include_directories(gamecode PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/../WIN32LIB/INCLUDE
@@ -320,6 +349,7 @@ target_include_directories(gamecode PUBLIC
 )
 
 target_compile_definitions(gamecode PUBLIC $<$<BOOL:${USE_LVGL}>:USE_LVGL>)
+target_compile_definitions(gamecode PUBLIC $<$<BOOL:${ENABLE_ASM}>:ENABLE_ASM>)
 
 set(CODE_SOURCES ${CODE_SOURCES} PARENT_SCOPE)
 set(CODE_ASM ${CODE_ASM} PARENT_SCOPE)

@@ -158,7 +158,7 @@ extern unsigned long 	PlanetWestwoodGameID;
 extern HINSTANCE		ProgramInstance;
 extern unsigned long 	PlanetWestwoodStartTime;
 
-extern "C" char	CPUType;
+#include "cpuid.h"
 
 
 bool			GameTimerInUse = false;

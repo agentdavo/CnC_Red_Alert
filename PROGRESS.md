@@ -12,6 +12,14 @@ The original source relies on several legacy libraries that are no longer readil
 - **Human Machine Interface (HMI) "Sound Operating System" (SOS)** – provides audio support. Replace with a modern audio library or stub.
 - **IPX networking components** – some modules expect IPX APIs. Implement wrappers around modern sockets or stub out for now.
 
+| Library | Example locations | Replacement or stub | Remaining work |
+| ------- | ----------------- | ------------------ | --------------- |
+| DirectX 5 SDK | `WIN32LIB/SRCDEBUG/DDRAW.CPP`, `WIN32LIB/AUDIO/SOUNDIO.CPP` | `src/ddraw/ddraw_stub.c`, LVGL bridge | Port all graphics and input to portable APIs |
+| DirectX Media 5.1 SDK | `CODE/MPGSET.CPP`, `WIN32LIB/MOVIE/MOVIE.CPP` | none | Provide modern video playback or stub |
+| Greenleaf Communications Library (GCL) | `CODE/NULLMGR.CPP`, `WIN32LIB/INCLUDE/wincomm.h` | none | Replace serial/comm routines with standard networking |
+| HMI SOS | `WIN32LIB/AUDIO/OLSOSDEC.ASM`, `VQ/VQA32/vqaplayp.h` | miniaudio-based timer | Port remaining audio paths |
+| IPX components | `CODE/IPXCONN.CPP`, `IPX/` directory | none | Implement socket-based networking |
+
 As the port progresses, updates on how each dependency has been replaced or stubbed should be recorded here.
 - Converted LAUNCH assembly launcher to portable C11 (launch/main.c).
 - Replaced legacy bool typedef with <stdbool.h> (function.h).
@@ -23,6 +31,8 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Replaced bit manipulation assembly pragmas in jshell.h with portable C.
 - Removed segmentation keywords (far/near/huge) from legacy headers for C11 compliance.
 - Launcher now relies only on standard C headers; disk and swap file handling use stub implementations.
+- Removed obsolete `LAUNCH/launch.asm`; `launch_main` now cleans up `.swp` files
+  and invokes `game.dat` directly.
 - Renamed files in LAUNCH and LAUNCHER directories to lowercase for cross-platform compatibility.
 - Identified program entry points: `Start` in `LAUNCH/launch.asm` (ported as `launch_main`) and `WinMain` in `CODE/STARTUP.CPP`.
 - Added debug logging macros for tracing execution (src/debug_log.h).
@@ -64,3 +74,17 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Fixed remaining DOS path separators in VQM include files.
 - Precomputed `SLUFF_BITS` in `defines.h` to avoid `sizeof` in preprocessor logic.
 - Added stubs for missing Windows headers and replaced deprecated APIs in VQA code.
+- Implemented a UDP-based IPX stub (`src/ipx_stub.c`) and excluded the
+  original real-mode IPX sources and assembly from the build. A simple
+  test harness (`ipx_stub_test`) verifies basic send/receive behavior.
+- Extended the stub with additional Win95-style functions and basic
+  asynchronous ECB semantics so existing IPX manager code can run
+  unmodified.
+- Refactored the IPX UDP stub to support Windows (Winsock2) and POSIX
+  sockets from a single C11 codebase.
+- Added C stub blitters and USE_C_BLITTERS option to select them.
+- Implemented Buffer_Print, Get_Font_Palette_Ptr and interpolation stubs in C.
+- Verified blitter stubs cover functions from KEYFBUFF, TXTPRNT and WINASM.
+- Replaced CPUID.ASM with a portable implementation using __get_cpuid.
+- Assembly modules are now assembled with NASM or YASM via CMake when `ENABLE_ASM` is enabled.
+- Deleted obsolete `#pragma warning` directives in headers and verified `watcom.h` is no longer included.

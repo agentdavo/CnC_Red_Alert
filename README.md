@@ -71,5 +71,12 @@ cmake -S . -B build -DCMAKE_C_FLAGS="-std=gnu11"
 cmake --build build
 ```
 
+The build requires **nasm** (or *yasm*) when `ENABLE_ASM` is set.
+
 Compilation currently fails because of missing dependencies and obsolete pragmas, but the commands illustrate the expected process.
 
+
+## Input devices
+
+- [KEYBOARD.md](KEYBOARD.md) – keyboard queue and LVGL keyboard notes.
+- [MOUSE.md](MOUSE.md) – mouse handler and LVGL input device notes.
