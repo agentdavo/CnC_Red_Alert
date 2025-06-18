@@ -7,8 +7,10 @@
 
 /*
  * Convert the game's 8-bit GraphicBufferClass surface to an LVGL canvas.
- * This is a minimal placeholder. A real implementation would copy the
- * pixel data and palette into an lv_img_dsc_t or canvas buffer.
+ * The routine creates a canvas the first time it's called and reuses it on
+ * subsequent frames. Each call updates the palette and copies the frame
+ * buffer to the canvas so LVGL can present the image on the selected
+ * backend.
  */
 /*
  * Minimal C representation of the GraphicBufferClass fields that are
@@ -68,13 +70,14 @@ void lvgl_blit(const struct GraphicBufferClass *page)
         lv_canvas_set_palette(canvas, i, col);
     }
 
-    /* Wrap the game's buffer so lv_canvas_copy_buf can read from it */
+    /* Wrap the game's buffer and copy it to the canvas */
     lv_draw_buf_t src_buf;
     uint32_t stride = gbc->view.width + gbc->view.pitch;
     lv_draw_buf_init(&src_buf, w, h, LV_COLOR_FORMAT_I8, stride,
                      gbc->buf.buffer, stride * h);
 
     lv_area_t area = {0, 0, w - 1, h - 1};
-    lv_canvas_copy_buf(canvas, &area, &src_buf, &area);
+    lv_draw_buf_copy(canvas_buf, &area, &src_buf, &area);
+    lv_obj_invalidate(canvas);
 }
 
