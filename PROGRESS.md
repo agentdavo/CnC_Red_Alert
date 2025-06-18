@@ -27,6 +27,9 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Identified program entry points: `Start` in `LAUNCH/launch.asm` (ported as `launch_main`) and `WinMain` in `CODE/STARTUP.CPP`.
 - Added debug logging macros for tracing execution (src/debug_log.h).
 - Cleaned up function.h includes for C11 compatibility and wrapped Windows-only headers.
+- Documented legacy pragmas and removed `watcom.h` includes (docs/pragma.md).
+- Added stub `CODE/wwlib32/wwlib32.h` for missing Windows library.
+- Fixed mismatched preprocessor directives in `ftimer.h` and `rect.h`.
 - Documented legacy pragmas and removed `watcom.h` includes (PRAGMA.md).
 - Added stub `CODE/wwlib32/wwlib32.h` for missing Windows library.
 - Fixed mismatched preprocessor directives in `ftimer.h` and `rect.h`.
@@ -37,5 +40,4 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - `GScreenClass::Blit_Display` now bypasses DirectDraw when `USE_LVGL` is
   enabled and hands the frame buffer to `lvgl_blit`.
 - When `USE_LVGL` is passed to CMake the LVGL library is initialized at startup
-  and `lvgl_blit` copies each frame to a canvas instead of relying on DirectDraw.
-
+  and `lvgl_blit` copies each frame to a canvas instead of relying on DirectDraw. 
