@@ -52,4 +52,3 @@ The sample player `VPLAY32` uses a Watcom makefile defining environment variable
 The library makefiles describe required environment variables such as `WWFLAT`, `WWVCS` and `WATCOM` and verify them with `!error` directives【F:WWFLAT32/AUDIO/MAKEFILE†L20-L56】.  This directory still contains many assembly modules and stub implementations that were later replaced in the Win32 library.
 
 Additional folders cover fonts, palettes, shape rendering, timers, and more.  Some directories contain backup files (`*.BAK`) and old assembly listings, highlighting the early DOS origins of this code base.
-
