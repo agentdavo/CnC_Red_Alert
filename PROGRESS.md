@@ -107,3 +107,5 @@ As the port progresses, updates on how each dependency has been replaced or stub
   palette from `CurrentPalette`.
 - Menu processing loops now call `lv_timer_handler()` so LVGL widgets stay
   responsive while waiting for user input.
+- Replaced `IPXPROT.ASM` and `IPXREAL.ASM` with portable stubs in
+  `src/ipx_stub.c`; the assembly files are excluded when `ENABLE_ASM` is OFF.
