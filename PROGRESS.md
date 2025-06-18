@@ -109,3 +109,4 @@ As the port progresses, updates on how each dependency has been replaced or stub
   responsive while waiting for user input.
 - Replaced `LCWCOMP.ASM` with a portable C implementation when `ENABLE_ASM`
   is disabled.
+- Added a GitHub action that cross compiles the project for the RV32IMA ILP32 architecture using the X11 backend.
