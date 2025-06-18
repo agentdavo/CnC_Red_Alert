@@ -297,11 +297,11 @@ inline TTimerClass<T>::TTimerClass(unsigned long set) :
 template<class T>
 inline unsigned long TTimerClass<T>::Value(void) const
 {
-	unsigned long value = Accumulated;
-	if (Started != 0xFFFFFFFFU) {
-		value += BasicTimerClass<T>::Value();
-	}
-	return(value);
+       unsigned long value = Accumulated;
+       if (this->Started != 0xFFFFFFFFU) {
+               value += BasicTimerClass<T>::Value();
+       }
+       return(value);
 }
 
 /***********************************************************************************************
@@ -324,11 +324,11 @@ inline unsigned long TTimerClass<T>::Value(void) const
 template<class T>
 inline TTimerClass<T>::operator unsigned long(void) const
 {
-	unsigned long value = Accumulated;
-	if (Started != 0xFFFFFFFFU) {
-		value += BasicTimerClass<T>::Value();
-	}
-	return(value);
+       unsigned long value = Accumulated;
+       if (this->Started != 0xFFFFFFFFU) {
+               value += BasicTimerClass<T>::Value();
+       }
+       return(value);
 }
 
 /***********************************************************************************************
@@ -351,11 +351,11 @@ inline TTimerClass<T>::operator unsigned long(void) const
 template<class T>
 inline unsigned long TTimerClass<T>::operator () (void) const
 {
-	unsigned long value = Accumulated;
-	if (Started != 0xFFFFFFFFU) {
-		value += BasicTimerClass<T>::Value();
-	}
-	return(value);
+       unsigned long value = Accumulated;
+       if (this->Started != 0xFFFFFFFFU) {
+               value += BasicTimerClass<T>::Value();
+       }
+       return(value);
 }
 
 /***********************************************************************************************
@@ -377,10 +377,10 @@ inline unsigned long TTimerClass<T>::operator () (void) const
 template<class T>
 void TTimerClass<T>::Stop(void)
 {
-	if (Started != 0xFFFFFFFFU) {
-		Accumulated += BasicTimerClass<T>::operator unsigned long();
-		Started = 0xFFFFFFFFU;
-	}
+       if (this->Started != 0xFFFFFFFFU) {
+               Accumulated += BasicTimerClass<T>::operator unsigned long();
+               this->Started = 0xFFFFFFFFU;
+       }
 }
 
 /***********************************************************************************************
@@ -400,9 +400,9 @@ void TTimerClass<T>::Stop(void)
 template<class T>
 void TTimerClass<T>::Start(void)
 {
-	if (Started == 0xFFFFFFFFU) {
-		Started = Timer();
-	}
+       if (this->Started == 0xFFFFFFFFU) {
+               this->Started = this->Timer();
+       }
 }
 
 /***********************************************************************************************
@@ -424,7 +424,7 @@ void TTimerClass<T>::Start(void)
 template<class T>
 inline bool TTimerClass<T>::Is_Active(void) const
 {
-	return(Started != 0xFFFFFFFFU);
+       return(this->Started != 0xFFFFFFFFU);
 }
 
 /*
