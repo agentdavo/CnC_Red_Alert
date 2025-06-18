@@ -308,6 +308,7 @@ int wherexy(int *x, int *y)
         lx = lx * 10 + in - '0';
     *x = lx;
     *y = ly;
+    return 0;
 }
 int wherex()
 {

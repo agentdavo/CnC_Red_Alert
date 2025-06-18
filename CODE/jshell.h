@@ -39,8 +39,9 @@
 #define JSHELL_H
 
 
-#include	<assert.h>
+#include <assert.h>
 #include <stdint.h>
+#include "input_asm_repl.h"
 
 #ifdef WIN32
 //#define getch	Get_Key_Num
@@ -187,7 +188,12 @@ long Bound(long, long, long);
 template<class T>
 T _rotl(T X, int n)
 {
-	return((T)(( ( ( X ) << n ) | ( ( X ) >> ( (sizeof(T)*8) - n ) ) )));
+        return((T)(( ( ( X ) << n ) | ( ( X ) >> ( (sizeof(T)*8) - n ) ) )));
+}
+
+static inline unsigned long _lrotl(unsigned long value, int shift)
+{
+    return (value << shift) | (value >> (32 - shift));
 }
 
 

@@ -268,6 +268,7 @@ LONG MCGA_Print(void *thisptr, const char *str, int x, int y, int fcolor, int bc
     return (unsigned long)(draw - (base + view->Get_Offset()));
 }
 
+#if ENABLE_ASM
 LONG Buffer_Print(void *thisptr, const char *str, int x, int y, int fcolor, int bcolor)
 {
     LOG_CALL("Buffer_Print C stub\n");
@@ -281,6 +282,7 @@ void *Get_Font_Palette_Ptr(void)
     init_color_xlat(0, 0);
     return Font_Color_Xlat;
 }
+#endif
 
 void Asm_Interpolate(unsigned char *src_ptr, unsigned char *dest_ptr,
                      int lines, int src_width, int dest_width)
