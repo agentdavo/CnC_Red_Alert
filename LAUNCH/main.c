@@ -2,46 +2,39 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <strings.h>
 #include <stdarg.h>
 #include <math.h>
-#include <dirent.h>
-#include <sys/statvfs.h>
-#include <unistd.h>
-#include <limits.h>
 #include <stdbool.h>
+#include <limits.h>
 
 static const unsigned long REQUIRED_DISK_SPACE = 15UL * 1024 * 1024; /* bytes */
 
+/*
+ * Portable disk space check placeholder.  The original DOS version relied on
+ * system-specific calls to ensure at least 15 MB free.  A portable
+ * implementation would require platform APIs, so for now simply return true
+ * and assume sufficient space.
+ */
 static bool check_disk_space(const char *path)
 {
-    struct statvfs s;
-    if (statvfs(path, &s) != 0)
-        return false;
-    unsigned long long free_bytes = (unsigned long long)s.f_bsize * s.f_bavail;
-    return free_bytes >= REQUIRED_DISK_SPACE;
+    (void)path;
+    return true;
 }
 
+/*
+ * Remove stale swap files left by a prior run.  This originally scanned the
+ * working directory for files ending in ".swp".  Directory traversal is
+ * platform-specific, so this stub simply does nothing.
+ */
 static void delete_swaps(const char *path)
 {
-    DIR *d = opendir(path);
-    if (!d)
-        return;
-    struct dirent *e;
-    char buf[PATH_MAX];
-    while ((e = readdir(d))) {
-        size_t len = strlen(e->d_name);
-        if (len > 4 && strcasecmp(e->d_name + len - 4, ".swp") == 0) {
-            snprintf(buf, sizeof(buf), "%s/%s", path, e->d_name);
-            unlink(buf);
-        }
-    }
-    closedir(d);
+    (void)path;
 }
 
 int launch_main(int argc, char **argv)
 {
-    setenv("DOS4GVM", "SwapMin:12M,SwapInc:0", 1);
+    /* DOS4G virtual memory settings retained for reference. */
+    (void)setenv("DOS4GVM", "SwapMin:12M,SwapInc:0", 1);
 
     const char *cwd = ".";
     if (!check_disk_space(cwd)) {

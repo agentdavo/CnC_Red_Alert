@@ -14,3 +14,5 @@ The original source relies on several legacy libraries that are no longer readil
 
 As the port progresses, updates on how each dependency has been replaced or stubbed should be recorded here.
 - Converted LAUNCH assembly launcher to portable C11 (launch/main.c).
+- Launcher now relies only on standard C headers; disk and swap file handling use stub implementations.
+- Renamed files in LAUNCH and LAUNCHER directories to lowercase for cross-platform compatibility.
