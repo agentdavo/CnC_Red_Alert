@@ -164,7 +164,8 @@ extern bool Is_Mission_Counterstrike (char *file_name);
  *=============================================================================================*/
 static void Load_Prolog_Page(void)
 {
-	Hide_Mouse();
+       LOG_CALL("%s entered\n", __func__);
+       Hide_Mouse();
 #ifdef WIN32
 	Load_Title_Screen("PROLOG.PCX", &HidPage, CCPalette);
 	HidPage.Blit(SeenPage);
@@ -1748,7 +1749,8 @@ void Anim_Init(void)
  *=============================================================================================*/
 bool Parse_Command_Line(int argc, char * argv[])
 {
-	/*
+       LOG_CALL("%s entered\n", __func__);
+       /*
 	**	Parse the command line and set globals to reflect the parameters
 	**	passed in.
 	*/
@@ -2674,7 +2676,8 @@ static void Init_Color_Remaps(void)
  *=============================================================================================*/
 static void Init_Heaps(void)
 {
-	/*
+       LOG_CALL("%s entered\n", __func__);
+       /*
 	**	Initialize the game object heaps.
 	*/
 	Vessels.Set_Heap(Rule.VesselMax);
@@ -2773,7 +2776,8 @@ static void Init_Expansion_Files(void)
  *=============================================================================================*/
 static void Init_One_Time_Systems(void)
 {
-	Call_Back();
+       LOG_CALL("%s entered\n", __func__);
+       Call_Back();
 	Map.One_Time();
 	Logic.One_Time();
 	Options.One_Time();
@@ -2814,7 +2818,8 @@ static void Init_One_Time_Systems(void)
  *=============================================================================================*/
 static void Init_Fonts(void)
 {
-	Metal12FontPtr = MFCD::Retrieve("12METFNT.FNT");
+       LOG_CALL("%s entered\n", __func__);
+       Metal12FontPtr = MFCD::Retrieve("12METFNT.FNT");
 	MapFontPtr = MFCD::Retrieve("HELP.FNT");
 	Font6Ptr = MFCD::Retrieve("6POINT.FNT");
 	GradFont6Ptr = MFCD::Retrieve("GRAD6FNT.FNT");
@@ -2849,7 +2854,8 @@ static void Init_Fonts(void)
  *=============================================================================================*/
 static void Init_CDROM_Access(void)
 {
-	VisiblePage.Clear();
+       LOG_CALL("%s entered\n", __func__);
+       VisiblePage.Clear();
 	HidPage.Clear();
 
 #ifdef FIXIT_VERSION_3
@@ -2943,7 +2949,8 @@ static void Init_CDROM_Access(void)
  *=============================================================================================*/
 static void Init_Bootstrap_Mixfiles(void)
 {
-	int temp = RequiredCD;
+       LOG_CALL("%s entered\n", __func__);
+       int temp = RequiredCD;
 	RequiredCD = -2;
 
 #ifdef WOLAPI_INTEGRATION
@@ -3119,7 +3126,8 @@ static void Init_Secondary_Mixfiles(void)
  *=============================================================================================*/
 static void Bootstrap(void)
 {
-	BlackPalette.Set();
+       LOG_CALL("%s entered\n", __func__);
+       BlackPalette.Set();
 
 	/*
 	**	Be sure to short circuit the CD-ROM check if there is a CD-ROM override
@@ -3250,7 +3258,8 @@ static void Bootstrap(void)
  *=============================================================================================*/
 static void Init_Mouse(void)
 {
-	/*
+       LOG_CALL("%s entered\n", __func__);
+       /*
 	** Since there is no mouse shape currently available we need
 	** to set one of our own.
 	*/
@@ -3402,7 +3411,8 @@ static void Init_Authorization(void)
  *=============================================================================================*/
 static void Init_Bulk_Data(void)
 {
-	/*
+       LOG_CALL("%s entered\n", __func__);
+       /*
 	**	Cache the main game data. This operation can take a very long time.
 	*/
 	MFCD::Cache("CONQUER.MIX");
@@ -3453,7 +3463,8 @@ static void Init_Bulk_Data(void)
  *=============================================================================================*/
 static void Init_Keys(void)
 {
-	RAMFileClass file((void*)Keys, strlen(Keys));
+       LOG_CALL("%s entered\n", __func__);
+       RAMFileClass file((void*)Keys, strlen(Keys));
 	INIClass ini;
 	ini.Load(file);
 
