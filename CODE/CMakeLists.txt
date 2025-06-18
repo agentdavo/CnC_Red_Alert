@@ -319,6 +319,7 @@ if(NOT ENABLE_ASM)
         "${CMAKE_CURRENT_LIST_DIR}/2SUPPORT.ASM"
         "${CMAKE_CURRENT_LIST_DIR}/LCWCOMP.ASM")
     list(APPEND CODE_SOURCES "${CMAKE_SOURCE_DIR}/src/support_stub.c")
+    list(APPEND CODE_SOURCES "${CMAKE_SOURCE_DIR}/src/lcw_comp.c")
 elseif(REPLACEMENT_ASM_DIR)
     file(GLOB CODE_ASM "${REPLACEMENT_ASM_DIR}/*.asm")
 endif()

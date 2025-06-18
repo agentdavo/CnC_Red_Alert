@@ -107,3 +107,5 @@ As the port progresses, updates on how each dependency has been replaced or stub
   palette from `CurrentPalette`.
 - Menu processing loops now call `lv_timer_handler()` so LVGL widgets stay
   responsive while waiting for user input.
+- Replaced `LCWCOMP.ASM` with a portable C implementation when `ENABLE_ASM`
+  is disabled.
