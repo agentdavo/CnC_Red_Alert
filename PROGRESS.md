@@ -13,3 +13,4 @@ The original source relies on several legacy libraries that are no longer readil
 - **IPX networking components** – some modules expect IPX APIs. Implement wrappers around modern sockets or stub out for now.
 
 As the port progresses, updates on how each dependency has been replaced or stubbed should be recorded here.
+- Converted LAUNCH assembly launcher to portable C11 (launch/main.c).
