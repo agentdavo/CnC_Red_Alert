@@ -59,3 +59,4 @@ As the port progresses, updates on how each dependency has been replaced or stub
   for the original assembly routines.
 - Added stubs for missing <dos.h> and <pharlap.h> to keep the build going.
 - Removed legacy compiler pragmas and compiled VQA32 sources as C++.
+- Replaced CPUID.ASM with a portable implementation using __get_cpuid.
