@@ -16,27 +16,20 @@
 **	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #include	<stdio.h>
 #include	<stdlib.h>
 #include	<conio.h>
 #include	<ctype.h>
 #include	<string.h>
 
-#define	true	1
-#define	false	0
-typedef int bool;
-
 char KeyPhrase[128] = "";
 char KeyCheck[128] = "";
 long Code = 0x00000000L;
-
 
 extern "C" {
 long Calculate_CRC(void const * buffer, long length);
 }
 long Obfuscate(char const * string);
-
 
 int main(int , char ** )
 {
@@ -90,7 +83,6 @@ int main(int , char ** )
 		*/
 		Code = Obfuscate(KeyPhrase);
 
-
 		sprintf(buffer, "0x%08lX", Code);
 		puts(buffer);
 	}
@@ -98,7 +90,6 @@ int main(int , char ** )
 	puts("Terminated");
 	return(0);
 }
-
 
 /***********************************************************************************************
  * Obfuscate -- Sufficiently transform parameter to thwart casual hackers.                     *
@@ -285,5 +276,4 @@ long Obfuscate(char const * string)
 	*/
 	return(code);
 }
-
 

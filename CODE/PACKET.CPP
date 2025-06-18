@@ -39,11 +39,7 @@
 #include <mem.h>
 #include <string.h>
 
-enum {false=0,true=1};
-typedef int bool;
-
 #include "packet.h"
-
 
 /**************************************************************************
  * PACKETCLASS::~PACKETCLASS -- destroys a packet class be freeing list   *
@@ -67,7 +63,6 @@ PacketClass::~PacketClass(void)
 		delete current;
 	}
 }
-
 
 /**************************************************************************
  * PACKETCLASS::ADD_FIELD -- Adds a FieldClass entry to head of packet li *
@@ -249,7 +244,6 @@ char *PacketClass::Create_Comms_Packet(int &size)
 	return(retval);
 }
 
-
 /**************************************************************************
  * PACKETCLASS::FIND_FIELD -- Finds a field if it exists in the packets   *
  *                                                                        *
@@ -268,7 +262,6 @@ FieldClass *PacketClass::Find_Field(char *id)
 	}
 	return NULL;
 }
-
 
 /**************************************************************************
  * GET_FIELD -- Find specified name and returns data                      *
@@ -293,7 +286,6 @@ bool PacketClass::Get_Field(char *id, char &data)
 	return((field) ? true : false);
 }
 
-
 /**************************************************************************
  * GET_FIELD -- Find specified name and returns data                      *
  *                                                                        *
@@ -316,7 +308,6 @@ bool PacketClass::Get_Field(char *id, unsigned char &data)
 	}
 	return((field) ? true : false);
 }
-
 
 /**************************************************************************
  * GET_FIELD -- Find specified name and returns data                      *
@@ -341,7 +332,6 @@ bool PacketClass::Get_Field(char *id, short &data)
 	return((field) ? true : false);
 }
 
-
 /**************************************************************************
  * GET_FIELD -- Find specified name and returns data                      *
  *                                                                        *
@@ -364,7 +354,6 @@ bool PacketClass::Get_Field(char *id, unsigned short &data)
 	}
 	return((field) ? true : false);
 }
-
 
 /**************************************************************************
  * GET_FIELD -- Find specified name and returns data                      *
@@ -435,7 +424,6 @@ bool PacketClass::Get_Field(char *id, unsigned long &data)
 	}
 	return((field) ? true : false);
 }
-
 
 /**************************************************************************
  * GET_FIELD -- Find specified name and returns data                      *

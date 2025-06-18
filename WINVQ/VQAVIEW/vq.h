@@ -40,9 +40,6 @@
 
 #include <vqa32\vqaplay.h>
 #include <vidmode.h>
-#define bool BOOL
-#define true 1
-#define false 0
 #include <rawfile.h>
 
 //==========================================================================
@@ -126,8 +123,6 @@ class VQAClass {
 		RawFileClass	*PaletteFile;
 		unsigned			NumPalettes;
 
-
-
 		/*=========================================================================*/
 		/* Private functions.																		*/
 		/*=========================================================================*/
@@ -147,7 +142,6 @@ class VQAClass {
 		void VQAClass::Write_Palettes(void);
 }; /* VQAClass */
 
-
 //==========================================================================
 // TYPES
 //==========================================================================
@@ -156,6 +150,4 @@ typedef struct {
 	unsigned long	file_offset;
 	unsigned long	file_size;
 } VQACacheHeader;
-
-
 

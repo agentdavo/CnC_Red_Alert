@@ -16,7 +16,7 @@
 **	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/* $Header:   F:\projects\c&c0\vcs\code\conquer.cpv   4.74   23 Sep 1996 12:36:00   JOE_BOSTIC  $ */
+/* $Header: /CounterStrike/KEY.H 1     3/03/97 10:25a Joe_bostic $ */
 /***********************************************************************************************
  *                                                                                             *
  *                 Project Name : Westwood Keyboard Library                                    *
@@ -36,6 +36,10 @@
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
 
+#ifndef WIN32
+#include	"..\wwflat32\include\keyboard.h"
+#else
+
 #include	<windows.h>
 
 /*
@@ -43,14 +47,8 @@
 **	November of '94. Until the compiler supports this, use the following
 **	definition.
 */
-#ifndef __BORLANDC__
-#ifndef TRUE_FALSE_DEFINED
-#define TRUE_FALSE_DEFINED
-enum {false=0,true=1};
-typedef int bool;
 #endif
 #endif
-
 
 typedef enum {
 	WWKEY_SHIFT_BIT	= 0x100,
@@ -61,7 +59,6 @@ typedef enum {
 	WWKEY_DBL_BIT		= 0x2000,
 	WWKEY_BTN_BIT		= 0x8000,
 } WWKey_Type;
-
 
 class WWKeyboardClass
 {
@@ -78,7 +75,7 @@ class WWKeyboardClass
 		bool Down(unsigned short key);
 
 		/* Define the main hook for the message processing loop.					*/
-		void Message_Handler(HWND hwnd, UINT message, UINT wParam, LONG lParam);
+		bool Message_Handler(HWND hwnd, UINT message, UINT wParam, LONG lParam);
 
 		/* Define the public access variables which are used with the			*/
 		/*   Keyboard Class.																	*/
@@ -108,6 +105,8 @@ class WWKeyboardClass
 		static bool Is_Mouse_Key(unsigned short key);
 		void Fill_Buffer_From_System(void);
 		bool Put_Key_Message(unsigned short vk_key, bool release = false);
+		bool Put_Mouse_Message(unsigned short vk_key, int x, int y, bool release = false);
+		int Available_Buffer_Room(void) const;
 
 		/*
 		**	These are the tracking pointers to maintain the
@@ -116,7 +115,6 @@ class WWKeyboardClass
 		int Head;
 		int Tail;
 };
-
 
 #define	VK_NONE				  0x00
 #define	VK_LBUTTON          0x01
@@ -380,7 +378,7 @@ class WWKeyboardClass
 #define	VK_DOWNRIGHT		  VK_NEXT
 #define	VK_ALT				  VK_MENU
 
-enum {
+typedef enum KeyASCIIType {
 	//
 	// Define all the KA types as variations of the VK types.  This is
 	// so the KA functions will work properly under windows 95.
@@ -525,8 +523,7 @@ enum {
 	KA_CTRL_BIT  		= WWKEY_CTRL_BIT,
 	KA_ALT_BIT   		= WWKEY_ALT_BIT,
 	KA_RLSE_BIT  		= WWKEY_RLS_BIT,
-};
-
+} KeyASCIIType;
 
 typedef enum KeyNumType {
 	KN_NONE				= 0,
@@ -646,7 +643,7 @@ typedef enum KeyNumType {
 	KN_BUTTON    		= WWKEY_BTN_BIT,
 } KeyNumType;
 
-
-extern WWKeyboardClass *_Kbd;
+//extern WWKeyboardClass *_Kbd;
+#endif
 
 #endif
