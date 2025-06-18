@@ -320,6 +320,7 @@ target_include_directories(gamecode PUBLIC
 )
 
 target_compile_definitions(gamecode PUBLIC $<$<BOOL:${USE_LVGL}>:USE_LVGL>)
+target_compile_definitions(gamecode PUBLIC $<$<BOOL:${ENABLE_ASM}>:ENABLE_ASM>)
 
 set(CODE_SOURCES ${CODE_SOURCES} PARENT_SCOPE)
 set(CODE_ASM ${CODE_ASM} PARENT_SCOPE)

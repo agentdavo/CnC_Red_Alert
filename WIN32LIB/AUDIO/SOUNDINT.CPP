@@ -66,6 +66,7 @@
 #include "soundint.h"
 #include "memflag.h"
 #include "audio.h"
+#include "audio_decompress.h"
 
 extern	DebugBuffer[];
 
@@ -231,14 +232,14 @@ long Sample_Copy(SampleTrackerType *st, void ** source, long * ssize, void ** al
 							return (datasize);
 						}
 						if (scomp == SCOMP_WESTWOOD) {
-							Decompress_Frame(LockedData.UncompBuffer, dest, dsize);
+							aud_decompress_frame(LockedData.UncompBuffer, dest, dsize);
 						} else {
 							st->sosinfo.lpSource = (char *)LockedData.UncompBuffer;
 							st->sosinfo.lpDest	 = (char *)dest;
 							if (st->sosinfo.wBitSize==16 && st->sosinfo.wChannels==1){
-								sosCODECDecompressData(&st->sosinfo, dsize);
+								aud_sos_decompress(&st->sosinfo, dsize);
 							} else {
-								General_sosCODECDecompressData(&st->sosinfo, dsize);
+								aud_sos_decompress_general(&st->sosinfo, dsize);
 							}
 						}
 						dest = Audio_Add_Long_To_Pointer(dest, dsize);

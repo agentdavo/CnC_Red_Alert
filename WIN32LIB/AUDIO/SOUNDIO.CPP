@@ -83,6 +83,7 @@ extern	void Colour_Debug (int call_number);
 #include	<math.h>
 #pragma		pack(1)
 #include	"audio.h"
+#include "audio_decompress.h"
 #pragma		pack(4)
 
 LPDIRECTSOUNDBUFFER	DumpBuffer;
@@ -1701,7 +1702,7 @@ int Play_Sample_Handle(void const *sample, int priority, int volume, signed shor
 		st->sosinfo.wBitSize             = (RawHeader.Flags & AUD_FLAG_16BIT)  ? 16 : 8;
 		st->sosinfo.dwCompSize   = RawHeader.Size;
 		st->sosinfo.dwUnCompSize = RawHeader.Size * ( st->sosinfo.wBitSize / 4 );
-		sosCODECInitStream(&st->sosinfo);
+		aud_sos_init_stream(&st->sosinfo);
 	}
 
 	/*

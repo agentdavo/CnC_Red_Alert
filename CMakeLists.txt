@@ -34,6 +34,7 @@ set(SOURCES
         LAUNCHER/wstring.cpp
         LAUNCH/main.c
         src/miniaudio.c
+        src/audio_decompress.c
         src/ddraw/ddraw_stub.c
 )
 
@@ -52,4 +53,5 @@ endif()
 
 add_executable(redalert ${SOURCES} ${ASM_SOURCES})
 target_link_libraries(redalert PRIVATE gamecode vqa32 miniaudio pthread)
+target_compile_definitions(redalert PRIVATE $<$<BOOL:${ENABLE_ASM}>:ENABLE_ASM>)
 
