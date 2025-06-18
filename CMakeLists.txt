@@ -29,21 +29,26 @@ add_subdirectory(VQ/VQA32)
 set(MINIAUDIO_NO_EXTRA_NODES ON CACHE BOOL "" FORCE)
 add_subdirectory(src/miniaudio)
 
-set(LAUNCHER_SRC
-    LAUNCHER/256bmp.c
-    LAUNCHER/bitmap.cpp
-    LAUNCHER/configfile.cpp
-    LAUNCHER/dialog.cpp
-    LAUNCHER/findpatch.cpp
-    LAUNCHER/loadbmp.cpp
-    LAUNCHER/main.cpp
-    LAUNCHER/monod.cpp
-    LAUNCHER/patch.cpp
-    LAUNCHER/process.cpp
-    LAUNCHER/streamer.cpp
-    LAUNCHER/wdebug.cpp
-    LAUNCHER/winblows.cpp
-    LAUNCHER/wstring.cpp
+set(SOURCES
+    ${CODE_SOURCES}
+        LAUNCHER/256bmp.c
+        LAUNCHER/bitmap.cpp
+        LAUNCHER/configfile.cpp
+        LAUNCHER/dialog.cpp
+        LAUNCHER/findpatch.cpp
+        LAUNCHER/loadbmp.cpp
+        LAUNCHER/main.cpp
+        LAUNCHER/monod.cpp
+        LAUNCHER/patch.cpp
+        LAUNCHER/process.cpp
+        LAUNCHER/streamer.cpp
+        LAUNCHER/wdebug.cpp
+        LAUNCHER/winblows.cpp
+        LAUNCHER/wstring.cpp
+        LAUNCH/main.c
+        src/miniaudio.c
+        src/audio_decompress.c
+        src/ddraw/ddraw_stub.c
 )
 
 set(LAUNCH_SRC
@@ -68,4 +73,5 @@ endif()
 
 add_executable(redalert ${SOURCES})
 target_link_libraries(redalert PRIVATE gamecode vqa32 miniaudio pthread)
+target_compile_definitions(redalert PRIVATE $<$<BOOL:${ENABLE_ASM}>:ENABLE_ASM>)
 

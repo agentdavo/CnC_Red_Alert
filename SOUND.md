@@ -27,6 +27,12 @@ This guide lists each source file involved in audio playback along with its prim
 - **`AUDUNCMP.ASM`** provides `Decompress_Frame` for Westwood ADPCM decoding【F:WIN32LIB/AUDIO/AUDUNCMP.ASM†L60-L80】.
 - **`OLSOSDEC.ASM`** supplies `sosCODECDecompressData` for HMI SOS streams【F:WIN32LIB/AUDIO/OLSOSDEC.ASM†L186-L208】.
 - **`SOSCODEC.ASM`** contains an optimized version of the same routine used during debugging【F:WIN32LIB/SRCDEBUG/SOSCODEC.ASM†L178-L208】.
+  The new `src/audio_decompress.c` module wraps these assembly routines when
+  `ENABLE_ASM` is defined. With assembly disabled it implements the Westwood
+  ADPCM and IMA-ADPCM algorithms described in `aud3.txt` directly in C.
+
+## Miniaudio Backend
+The legacy HMI timer callbacks were replaced by a portable implementation in `src/miniaudio.c`.  This module drives audio playback and provides simple timer hooks for the game when DirectSound is unavailable.
 
 ## CODE/AUDIO.CPP
 - Game-facing helpers such as `Sound_Effect` play positional effects with panning and volume scaling【F:CODE/AUDIO.CPP†L326-L469】.
