@@ -370,15 +370,14 @@ extern "C" {
 #   endif
 
 
-#elif defined(__STDC__)     /* Standard ANSI C */
+#elif defined(__STDC_VERSION__) && (__STDC_VERSION__ >= 201112L)
 #   define _CC_ANSI_
-#   define _CC32_           /* no segmentation via far/near */
+#   define _CC32_           /* flat 32-bit model, no segmentation */
+/* Segmentation keywords removed for C11 portability */
 #   define far
 #   define near
 #   define huge
 #   define cdecl
-
-/* Avoids parameter mismatches from _far, etc. */
 #   define _far
 #   define _near
 #   define _huge
@@ -877,20 +876,12 @@ extern "C" {
 #   define _MCVAR
 #endif  /* _CC_WATCOM_ */
 
-/*   32-bit compiler-independent stuff */
-#if !defined(_CC32_) 
-#define _MCFAR      far
-#define _MCFARCALL  far
-#define _MCNEAR     near
-#define _MCNEARCALL near
-#define _MCHUGE     huge
-#else
-#define _MCFAR  
+/* --- 32-bit compiler-independent declarations (C11) --- */
+#define _MCFAR
 #define _MCFARCALL
 #define _MCNEAR
 #define _MCNEARCALL
-#define _MCHUGE 
-#endif  /* _CC32_ */
+#define _MCHUGE
 
 /*
     MSC declares the following routines as "far"... 
@@ -900,11 +891,7 @@ extern "C" {
         _fstrncpy       _fstrcat        _fstrncat
         _fmemset        _fmemmove       _fmemccpy
 */
-#if !defined(_CC_WATCOM_)
-#   define _MCFARGLUE   far
-#else
-#   define _MCFARGLUE   
-#endif
+#define _MCFARGLUE
 
 
 /*  Microsoft C7 and later will not have
@@ -1976,10 +1963,10 @@ _RTLDECL(sprintf,   int,        (char *,const char *,...));
 
 /* WATCOM doesn't support these... */
 #if !defined(_CC32_)
-_RTLDECL(_fmalloc,  void far *, (size_t));
-_RTLDECL(_fcalloc,  void far *, (size_t, size_t));
-_RTLDECL(_ffree,    void,       (void far *));
-_RTLDECL(_fmsize,   size_t,     (void far *));
+_RTLDECL(_fmalloc,  void *, (size_t));
+_RTLDECL(_fcalloc,  void *, (size_t, size_t));
+_RTLDECL(_ffree,    void,       (void *));
+_RTLDECL(_fmsize,   size_t,     (void *));
 #endif
 
 _RTLDECL(_nmalloc,  void _MCNEAR *,(size_t));
@@ -1988,15 +1975,15 @@ _RTLDECL(_nfree,    void,       (void _MCNEAR *));
 /* *** Borland *** */
 
 #if !defined(_CC_POWERPACK32_)  
-_RTLDECL(farmalloc, void _MCFAR *,  (unsigned long));
-_RTLDECL(farcalloc, void _MCFAR *,  (unsigned long, unsigned long));
-_RTLDECL(farfree,   void,           (void _MCFAR *));
+_RTLDECL(farmalloc, void *,  (unsigned long));
+_RTLDECL(farcalloc, void *,  (unsigned long, unsigned long));
+_RTLDECL(farfree,   void,           (void *));
 
 /* *** General Porpoise *** */
 
-_RTLDECL(_fmemset,  void far * _MCFARGLUE,  (void far *,int,size_t));
-_RTLDECL(_fmemcpy,  void far * _MCFARGLUE,  (void far *,const void far *,size_t ));
-_RTLDECL(_fstrcpy,  char far * _MCFARGLUE,  (char far *,const void far *));
+_RTLDECL(_fmemset,  void *,  (void *,int,size_t));
+_RTLDECL(_fmemcpy,  void *,  (void *,const void *,size_t ));
+_RTLDECL(_fstrcpy,  char *,  (char *,const void *));
 #endif  /* not _CC_POWERPACK32_ */
 
 #endif  /* not STDC/ANSI */
