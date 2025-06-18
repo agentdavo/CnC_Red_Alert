@@ -483,16 +483,8 @@ $(WWOBJ)\tech.lnk: makefile
 	%create $^@
 	for %index in ($(TECHFILES))  do %append $^@ -+ $(WWOBJ)\%index
 
-#############################################################################
-# Builds the stub replacement program.
-CWSTUB.OBJ: CWSTUB.C
-# 	*# wcc /i=..\watcom\h /dQUIET /dVMM /ms /zQ -fo$(WWOBJ)\$^. $<
+# Stub replacement program removed.
 
-CWSTUB.EXE: CWSTUB.OBJ
-# 	*# watcom\binw\wlink system dos file $(WWOBJ)\cwstub.obj name cwstub.exe option quiet library \wat\lib386\dos\clibs.lib, \wat\lib386\math87s.lib, \wat\lib386\dos\emu87.lib
-
-
-#############################################################################
 # Build the EXE
 game.dat: $(WWOBJ)\tech.lib $(WWOBJ)\jshell.lib $(OBJECTS) $(LINKFILE) $(TECHFILE)
 	-Echo "dos.exe" linking phase.

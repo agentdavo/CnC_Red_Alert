@@ -33,9 +33,6 @@ static void delete_swaps(const char *path)
 
 int launch_main(int argc, char **argv)
 {
-    /* DOS4G virtual memory settings retained for reference. */
-    (void)setenv("DOS4GVM", "SwapMin:12M,SwapInc:0", 1);
-
     const char *cwd = ".";
     if (!check_disk_space(cwd)) {
         fprintf(stderr, "Error - insufficient disk space to run Red Alert.\n");
