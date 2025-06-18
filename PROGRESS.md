@@ -68,6 +68,8 @@ As the port progresses, updates on how each dependency has been replaced or stub
   for the original assembly routines.
 - Added stubs for missing <dos.h> and <pharlap.h> to keep the build going.
 - Removed legacy compiler pragmas and compiled VQA32 sources as C++.
+- Added C stub blitters and USE_C_BLITTERS option to select them.
+- Implemented Buffer_Print, Get_Font_Palette_Ptr and interpolation stubs in C.
 - Replaced CPUID.ASM with a portable implementation using __get_cpuid.
 - Assembly modules are now assembled with NASM or YASM via CMake when `ENABLE_ASM` is enabled.
 - Deleted obsolete `#pragma warning` directives in headers and verified `watcom.h` is no longer included.

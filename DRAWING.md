@@ -23,6 +23,15 @@ Game elements—tiles, units, UI, and mouse cursor—are thus drawn to `HidPage`
 - **`ObjectClass::Render`** – virtual function implemented by individual objects to draw themselves.
 - **`GScreenClass::Blit_Display`** – performs the page flip using DirectDraw, Mode X or `Shadow_Blit`.
 
+### Required Low-Level Functions
+The core assembly routines needed by the renderer are:
+
+- `Buffer_Frame_To_Page` – copies a rectangular sprite from a linear buffer to a viewport.
+- `MCGA_Print` – draws a text string onto a viewport using an 8×8 font.
+- `ModeX_Blit` – transfers the hidden page to video memory when running in VGA Mode X.
+- `Shadow_Blit` – DOS alternative that copies the hidden page directly to VGA memory.
+
+
 ## Buffer Blitting
 
 ### `KEYFBUFF.ASM` and `2KEYFBUF.ASM`
