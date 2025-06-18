@@ -43,8 +43,6 @@
 **	November of '94. Until the compiler supports this, use the following
 **	definition.
 */
-#endif
-#endif
 
 typedef enum {
 	WWKEY_SHIFT_BIT	= 0x100,

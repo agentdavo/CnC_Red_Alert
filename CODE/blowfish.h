@@ -45,8 +45,6 @@
 **	November of '94. Until the compiler supports this, use the following
 **	definition.
 */
-#endif
-#endif
 
 /*
 **	This engine will process data blocks by encryption and decryption.

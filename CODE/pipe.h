@@ -45,8 +45,6 @@
 **	November of '94. Until the compiler supports this, use the following
 **	definition.
 */
-#endif
-#endif
 
 /*
 **	A "push through" pipe interface abstract class used for such purposes as compression
