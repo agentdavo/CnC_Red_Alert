@@ -142,6 +142,9 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Added GCC and Clang detection to `compiler.h` so modern compilers no longer hit the "unknown compiler" error.
 - Removed Borland `#pragma option` and `#pragma warn` directives from all copies of `wwstd.h`.
 - Wrapped the `TICKS_PER_SECOND` macros in `commlib.h` with `#ifndef` to avoid clashes with `CODE/defines.h`.
+- Added fallback definitions for `GF_CONV`, `GF_CDECL`, `GF_DLL_FAR` and
+  `GF_FAR` in `commlib.h` so the file compiles cleanly with modern GCC and
+  Clang even when `compiler.h` does not provide them.
 - Created a stub `pcx.h` that includes `CODE/filepcx.h` to satisfy `function.h` and `WRITEPCX.CPP`.
 - Switched the default `ENABLE_ASM` option in CMake to `OFF` and ran a build to capture the next set of compiler errors.
 - Replaced stub `pcx.h` with the official header from Renegade.
