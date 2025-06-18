@@ -42,6 +42,14 @@ This repository and its contents are licensed under the GPL v3 license, with add
 
 The DOS launcher begins execution at the `Start` label in `LAUNCH/launch.asm`. In the portable version this is exposed as `launch_main` in `LAUNCH/main.c`. Windows builds start in the standard Win32 `WinMain` located in `CODE/STARTUP.CPP`.
 
+## Graphics modes
+
+Rendering can happen through three different routines depending on the platform and resolution:
+
+- **DirectDraw** – used for 640×400 or higher resolutions (see `DDRAW.md`).
+- **ModeX_Blit** – copies 320×200 buffers in VGA Mode X (`MODEX.md`).
+- **Shadow_Blit** – DOS-specific VGA blit (`SHADOWX.md`).
+
 ## Quick build
 
 A minimal CMake setup is provided for early testing. Run:

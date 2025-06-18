@@ -3,6 +3,7 @@ project(redalert C CXX)
 
 # Build options
 option(ENABLE_ASM "Enable assembly modules" ON)
+option(USE_LVGL "Enable LVGL canvas output" OFF)
 set(REPLACEMENT_ASM_DIR "" CACHE PATH "Directory with replacement assembly code")
 
 # Compiler configuration
@@ -32,6 +33,7 @@ set(SOURCES
         LAUNCHER/wstring.cpp
         LAUNCH/main.c
         src/miniaudio.c
+        src/ddraw/ddraw_stub.c
 )
 
 set(ASM_SOURCES
