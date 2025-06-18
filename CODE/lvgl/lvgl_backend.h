@@ -14,6 +14,7 @@ typedef enum {
 } lv_backend_t;
 
 int lvgl_init_backend(const char *backend);
+lv_backend_t lvgl_get_backend(void);
 
 #ifdef __cplusplus
 }

@@ -9,6 +9,13 @@
 #define strcasecmp _stricmp
 #endif
 
+static lv_backend_t current_backend = LV_BACKEND_UNKNOWN;
+
+lv_backend_t lvgl_get_backend(void)
+{
+    return current_backend;
+}
+
 int lvgl_init_backend(const char *backend)
 {
     const char *name = backend;
@@ -74,6 +81,18 @@ int lvgl_init_backend(const char *backend)
     }
 
     lv_display_set_default(disp);
+
+    if(strcasecmp(name, "sdl") == 0)
+        current_backend = LV_BACKEND_SDL;
+    else if(strcasecmp(name, "x11") == 0)
+        current_backend = LV_BACKEND_X11;
+    else if(strcasecmp(name, "wayland") == 0)
+        current_backend = LV_BACKEND_WAYLAND;
+    else if(strcasecmp(name, "fbdev") == 0)
+        current_backend = LV_BACKEND_FBDEV;
+    else
+        current_backend = LV_BACKEND_UNKNOWN;
+
     LV_LOG_INFO("LVGL backend: %s", name);
     return 0;
 }

@@ -16,6 +16,7 @@
 #ifdef USE_LVGL
 #include "../src/lvgl/src/lvgl.h"
 #include "../CODE/lvgl/lvgl_backend.h"
+#include "../src/debug_log.h"
 #endif
 
 static const unsigned long REQUIRED_DISK_SPACE = 15UL * 1024 * 1024; /* bytes */
@@ -61,18 +62,39 @@ int launch_main(int argc, char **argv)
 {
 #ifdef USE_LVGL
     const char *backend_opt = NULL;
+#endif
+    char *new_argv[argc + 1];
+    new_argv[0] = "./game.dat";
+    int j = 1;
     for (int i = 1; i < argc; ++i) {
+#ifdef USE_LVGL
         if (strncmp(argv[i], "--lvgl-backend=", 15) == 0) {
             backend_opt = argv[i] + 15;
+            continue;
         } else if (strcmp(argv[i], "--lvgl-backend") == 0 && i + 1 < argc) {
             backend_opt = argv[i + 1];
             ++i;
+            continue;
         }
+#endif
+        new_argv[j++] = argv[i];
     }
+    new_argv[j] = NULL;
+
+#ifdef USE_LVGL
     lv_init();
     if(lvgl_init_backend(backend_opt) != 0) {
         return 1;
     }
+    const char *backend_name = "unknown";
+    switch(lvgl_get_backend()) {
+        case LV_BACKEND_SDL: backend_name = "sdl"; break;
+        case LV_BACKEND_X11: backend_name = "x11"; break;
+        case LV_BACKEND_WAYLAND: backend_name = "wayland"; break;
+        case LV_BACKEND_FBDEV: backend_name = "fbdev"; break;
+        default: break;
+    }
+    LOG_CALL("LVGL backend selected: %s\n", backend_name);
 #endif
     const char *cwd = ".";
     if (!check_disk_space(cwd)) {
@@ -81,20 +103,6 @@ int launch_main(int argc, char **argv)
     }
 
     delete_swaps(cwd);
-
-    char *new_argv[argc + 1];
-    new_argv[0] = "./game.dat";
-    int j = 1;
-    for (int i = 1; i < argc; ++i) {
-        if (strncmp(argv[i], "--lvgl-backend=", 15) == 0) {
-            continue;
-        } else if (strcmp(argv[i], "--lvgl-backend") == 0 && i + 1 < argc) {
-            ++i;
-            continue;
-        }
-        new_argv[j++] = argv[i];
-    }
-    new_argv[j] = NULL;
 
 #ifdef _WIN32
     return _spawnv(_P_WAIT, new_argv[0], new_argv);
