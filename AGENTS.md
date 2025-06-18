@@ -28,5 +28,7 @@ Several Markdown files at the repository root contain critical details about the
 - `SHADOWX.md` – explains the `Shadow_Blit` path for DOS builds.
 - `LVGL.md` – documents the LVGL integration. See the `lvgl_init` and `lvgl_blit`
   routines used when `USE_LVGL` is enabled.
+- `KEYBOARD.md` – notes on the keyboard handler and LVGL keyboard integration.
+- `MOUSE.md` – notes on the mouse system and LVGL input devices.
 
 Consult these documents when porting or refactoring code.

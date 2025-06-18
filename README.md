@@ -73,3 +73,8 @@ cmake --build build
 
 Compilation currently fails because of missing dependencies and obsolete pragmas, but the commands illustrate the expected process.
 
+
+## Input devices
+
+- [KEYBOARD.md](KEYBOARD.md) – keyboard queue and LVGL keyboard notes.
+- [MOUSE.md](MOUSE.md) – mouse handler and LVGL input device notes.
