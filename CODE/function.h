@@ -43,73 +43,17 @@
 */
 #define	NDEBUG
 
-#pragma warn -hid
+/*
+ * Formerly disabled a Watcom-specific warning. No longer needed in C11.
+ */
 
 #ifdef NEVER
-Map (screen) class heirarchy.
-
- MapeditClass (most derived class) -- scenario editor
-        ³
-   MouseClass -- handles mouse animation and display control
-        ³
-  ScrollClass -- map scroll handler
-        ³
-    HelpClass -- pop-up help text handler
-        ³
-     TabClass -- file folder tab screen mode control dispatcher
-        ³
- SidebarClass -- displays and controls construction list sidebar
-        ³
-   PowerClass -- display power production/consumption bargraph
-        ³
-   RadarClass -- displays and controls radar map
-        ³
- DisplayClass -- general tactical map display handler
-        ³
-     MapClass -- general tactical map data handler
-        ³
- GScreenClass (pure virtual base class) -- generic screen control
-
-                          AbstractClass
-                                  ³
-                                  ³
-                                  ³
-                                  ³
-                            ObjectClass
-                                  ³
-       ÚÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄ¿
-                                  ³
-                       ÚÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-                   FootClass                           BuildingClass
-                       ³
-         ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÁÂÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-    DriveClass  InfantryClass         ÃÄ FlyClass
-         ³                      AircraftClass
-       ÚÄÁÄÄÄÄÄÄÄÄÄ¿
-       ³           ³
-       ³     VesselClass
-       ³
-    UnitClass
-
-
-                            AbstractTypeClass
-                                    ³
-                              ObjectTypeClass
-                                    ³
-             ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
-             ³                      ³            ³                 ³
-       TechnoTypeClass              ³            ³                 ³
-             ³                BulletTypeClass    ³                 ³
-             ³                           TemplateTypeClass         ³
-    ÚÄÄÄÄÄÄÄÄÁÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄ¿    TerrainTypeClass
-    ³              ³           ³              ³        ³
-UnitTypeClass      ³   BuildingTypeClass      ³  VesselTypeClass
-                   ³                          ³
-           AircraftTypeClass          InfantryTypeClass
+/*
+ * Historical ASCII-art hierarchy diagram removed for portability.
+ */
 #endif
 
 
-#include	"watcom.h"
 #include "lint.h"
 
 
@@ -179,7 +123,7 @@ struct NoInitClass {
 #include	"key.h"
 #endif
 
-#include <wwlib32.h>
+#include "wwlib32/wwlib32.h"
 #include	"mpu.h"
 #include	"bench.h"
 #include	"rect.h"
@@ -224,14 +168,15 @@ typedef struct {
 #include	<stdlib.h>
 #include	<stdio.h>
 #include	<stddef.h>
-#include	<mem.h>
-#include	<dos.h>
-#include	<direct.h>
+#ifdef WIN32
+#include        <dos.h>
+#include        <direct.h>
+#include        <process.h>
+#include        <new.h>
+#endif
 #include	<stdarg.h>
 #include	<ctype.h>
 #include	<assert.h>
-#include	<process.h>
-#include	<new.h>
 
 #ifdef WIN32
 #define	int386x(a,b,c,d)	0
@@ -241,8 +186,8 @@ typedef struct {
 /*
 **	VQ player specific includes.
 */
-#include <vqa32\vqaplay.h>
-#include <vqa32\vqafile.h>
+#include <vqa32/vqaplay.h>
+#include <vqa32/vqafile.h>
 
 extern bool GameActive;
 extern long LParam;

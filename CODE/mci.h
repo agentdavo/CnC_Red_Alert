@@ -39,7 +39,6 @@
 #include <windows.h>
 #include <mmsystem.h>
 #include <digitalv.h>
-#include "watcom.h"
 
 /* MCIDevice - MCI device capabilities and description
  *

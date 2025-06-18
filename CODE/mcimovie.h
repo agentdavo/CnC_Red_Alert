@@ -26,7 +26,6 @@
 #include <windowsx.h>
 #include <mmsystem.h>
 #include <digitalv.h>
-#include "watcom.h"
 
 class MCIMovie
 	{
