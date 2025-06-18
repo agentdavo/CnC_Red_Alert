@@ -108,3 +108,4 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Menu processing loops now call `lv_timer_handler()` so LVGL widgets stay
   responsive while waiting for user input.
 - Added a GitHub action that cross compiles the project for the RV32IMA ILP32 architecture using the X11 backend.
+- Added C replacements for Mem_Copy, Largest_Mem_Block and page-in helpers.
