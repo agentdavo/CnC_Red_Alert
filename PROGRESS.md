@@ -86,8 +86,12 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Implemented Buffer_Print, Get_Font_Palette_Ptr and interpolation stubs in C.
 - Verified blitter stubs cover functions from KEYFBUFF, TXTPRNT and WINASM.
 - Replaced CPUID.ASM with a portable implementation using __get_cpuid.
+- Added runtime logs for each C replacement of assembly modules
+  (ModeX_Blit, interpolation helpers, CPUID detection).
 - Assembly modules are now assembled with NASM or YASM via CMake when `ENABLE_ASM` is enabled.
 - Deleted obsolete `#pragma warning` directives in headers and verified `watcom.h` is no longer included.
 - LVGL is now built from the bundled submodule and linked when `USE_LVGL` is enabled.
 - Added a minimal `lv_conf.h` to configure the LVGL build.
 - LVGL initialization now occurs before other subsystems. `launch_main` and WinMain call `lv_init()` and `lvgl_init_backend()` and the main loop pumps events via `lv_timer_handler()`.
+- LVGL backend is selected via the `--lvgl-backend` command-line option or the
+  `LV_BACKEND` environment variable.

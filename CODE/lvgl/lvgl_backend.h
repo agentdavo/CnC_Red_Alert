@@ -5,7 +5,11 @@
 extern "C" {
 #endif
 
-void lvgl_init_backend(void);
+/* Initialize LVGL using the selected backend. The backend name is taken
+ * from the command line or environment. Pass NULL to use the LV_BACKEND
+ * environment variable or the default.
+ */
+void lvgl_init_backend(const char *backend);
 
 #ifdef __cplusplus
 }

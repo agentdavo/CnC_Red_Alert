@@ -60,8 +60,17 @@ static void delete_swaps(const char *path)
 int launch_main(int argc, char **argv)
 {
     #ifdef USE_LVGL
+    const char *backend_opt = NULL;
+    for (int i = 1; i < argc; ++i) {
+        if (strncmp(argv[i], "--lvgl-backend=", 15) == 0) {
+            backend_opt = argv[i] + 15;
+        } else if (strcmp(argv[i], "--lvgl-backend") == 0 && i + 1 < argc) {
+            backend_opt = argv[i + 1];
+            ++i;
+        }
+    }
     lv_init();
-    lvgl_init_backend();
+    lvgl_init_backend(backend_opt);
     #endif
     const char *cwd = ".";
     if (!check_disk_space(cwd)) {

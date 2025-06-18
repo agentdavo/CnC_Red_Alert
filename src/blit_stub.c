@@ -4,6 +4,7 @@
 #include "vbuffer.h"
 #include "mcgaprim.h"
 #include "font.h"
+#include "debug_log.h"
 
 /* Slow C implementations of core assembly blitters */
 
@@ -20,6 +21,7 @@ static void init_color_xlat(void)
 
 long MCGA_Buffer_To_Page(int x, int y, int w, int h, void *Buffer, void *viewptr)
 {
+    LOG_CALL("MCGA_Buffer_To_Page C stub\n");
     GraphicViewPortClass *view = (GraphicViewPortClass *)viewptr;
     unsigned char *dst = (unsigned char *)view->Get_Graphic_Buffer()->Get_Buffer();
     int pitch = view->Get_Width() + view->Get_XAdd();
@@ -58,12 +60,14 @@ void MCGA_Clear(void *thisptr, unsigned char color)
 
 long Buffer_Frame_To_Page(int x, int y, int w, int h, void *Buffer, GraphicViewPortClass &view, int flags, ...)
 {
+    LOG_CALL("Buffer_Frame_To_Page C stub\n");
     (void)flags; /* ignore transparency options for the stub */
     return MCGA_Buffer_To_Page(x, y, w, h, Buffer, &view);
 }
 
 long Buffer_Frame_To_LogicPage(int x, int y, int w, int h, void *Buffer, int flags, ...)
 {
+    LOG_CALL("Buffer_Frame_To_LogicPage C stub\n");
     (void)flags;
     extern GraphicViewPortClass *LogicPage;
     return MCGA_Buffer_To_Page(x, y, w, h, Buffer, LogicPage);
@@ -71,6 +75,7 @@ long Buffer_Frame_To_LogicPage(int x, int y, int w, int h, void *Buffer, int fla
 
 void ModeX_Blit(GraphicBufferClass *source)
 {
+    LOG_CALL("ModeX_Blit C stub\n");
     /* Simply copy the source buffer to the visible page */
     extern GraphicBufferClass VisiblePage;
     MCGA_Buffer_To_Page(0, 0, source->Get_Width(), source->Get_Height(),
@@ -80,6 +85,7 @@ void ModeX_Blit(GraphicBufferClass *source)
 void Shadow_Blit(long xpix, long ypix, long width, long height,
                  GraphicViewPortClass &src, VideoBufferClass &dst, void *shadowbuff)
 {
+    LOG_CALL("Shadow_Blit C stub\n");
     (void)shadowbuff;
     unsigned char *srcbuf = (unsigned char *)src.Get_Graphic_Buffer()->Get_Buffer();
     unsigned char *dstbuf = (unsigned char *)dst.Get_Video_Buffer()->Get_Buffer();
@@ -94,6 +100,7 @@ void Shadow_Blit(long xpix, long ypix, long width, long height,
 
 LONG MCGA_Print(void *thisptr, const char *str, int x, int y, int fcolor, int bcolor)
 {
+    LOG_CALL("MCGA_Print C stub\n");
     (void)bcolor;
     GraphicViewPortClass *view = (GraphicViewPortClass *)thisptr;
     while (*str) {
@@ -111,12 +118,14 @@ LONG MCGA_Print(void *thisptr, const char *str, int x, int y, int fcolor, int bc
 
 LONG Buffer_Print(void *thisptr, const char *str, int x, int y, int fcolor, int bcolor)
 {
+    LOG_CALL("Buffer_Print C stub\n");
     /* linear surfaces handled the same way for the stub */
     return MCGA_Print(thisptr, str, x, y, fcolor, bcolor);
 }
 
 void *Get_Font_Palette_Ptr(void)
 {
+    LOG_CALL("Get_Font_Palette_Ptr C stub\n");
     init_color_xlat();
     return Font_Color_Xlat;
 }
@@ -124,6 +133,7 @@ void *Get_Font_Palette_Ptr(void)
 void Asm_Interpolate(unsigned char *src_ptr, unsigned char *dest_ptr,
                      int lines, int src_width, int dest_width)
 {
+    LOG_CALL("Asm_Interpolate C stub\n");
     for (int y = 0; y < lines; ++y) {
         unsigned char *src = src_ptr + y * src_width;
         unsigned char *dst = dest_ptr + (y * 2) * dest_width;
@@ -139,17 +149,20 @@ void Asm_Interpolate(unsigned char *src_ptr, unsigned char *dest_ptr,
 void Asm_Interpolate_Line_Double(unsigned char *src_ptr, unsigned char *dest_ptr,
                                  int lines, int src_width, int dest_width)
 {
+    LOG_CALL("Asm_Interpolate_Line_Double C stub\n");
     Asm_Interpolate(src_ptr, dest_ptr, lines, src_width, dest_width);
 }
 
 void Asm_Interpolate_Line_Interpolate(unsigned char *src_ptr, unsigned char *dest_ptr,
                                       int lines, int src_width, int dest_width)
 {
+    LOG_CALL("Asm_Interpolate_Line_Interpolate C stub\n");
     Asm_Interpolate(src_ptr, dest_ptr, lines, src_width, dest_width);
 }
 
 void Asm_Create_Palette_Interpolation_Table(void)
 {
+    LOG_CALL("Asm_Create_Palette_Interpolation_Table C stub\n");
     extern void Create_Palette_Interpolation_Table(void);
     Create_Palette_Interpolation_Table();
 }

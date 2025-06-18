@@ -1,4 +1,5 @@
 #include "cpuid.h"
+#include "debug_log.h"
 #include <cpuid.h>
 #include <string.h>
 
@@ -7,6 +8,7 @@ char VendorID[13] = "Not available";
 
 bool Detect_MMX_Availability(void)
 {
+    LOG_CALL("Detect_MMX_Availability C stub\n");
     unsigned int eax, ebx, ecx, edx;
     unsigned int max_leaf = __get_cpuid_max(0, NULL);
 

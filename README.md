@@ -65,6 +65,7 @@ cmake --build build
 ```
 
 The launcher boots into the first menu using the selected LVGL backend.
+Pass `--lvgl-backend` to override `LV_BACKEND` at runtime.
 
 With `USE_LVGL` enabled the hidden page is copied to the LVGL canvas via the
 `lvgl_blit` routine inside `GScreenClass::Blit_Display`.
@@ -88,4 +89,5 @@ Compilation currently fails because of missing dependencies and obsolete pragmas
 - [KEYBOARD.md](KEYBOARD.md) – keyboard queue and LVGL keyboard notes.
 - [MOUSE.md](MOUSE.md) – mouse handler and LVGL input device notes.
 The input driver defaults to the **x11** backend. Set `LV_BACKEND`
-before running the launcher to select another backend.
+or pass `--lvgl-backend <name>` on the command line to select
+another backend.
