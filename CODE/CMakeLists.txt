@@ -279,6 +279,7 @@ WSPUDP.CPP
 XPIPE.CPP
 XSTRAW.CPP
 _WSPROTO.CPP
+lvgl/lvgl_bridge.c
 )
 
 set(CODE_ASM
@@ -306,6 +307,14 @@ elseif(REPLACEMENT_ASM_DIR)
 endif()
 
 add_library(gamecode STATIC ${CODE_SOURCES} ${CODE_ASM})
+
+target_include_directories(gamecode PUBLIC
+    ${CMAKE_CURRENT_LIST_DIR}/../WIN32LIB/INCLUDE
+    ${CMAKE_CURRENT_LIST_DIR}/../VQ/INCLUDE/WWLIB32
+    ${CMAKE_CURRENT_LIST_DIR}/../src/ddraw
+)
+
+target_compile_definitions(gamecode PUBLIC $<$<BOOL:${USE_LVGL}>:USE_LVGL>)
 
 set(CODE_SOURCES ${CODE_SOURCES} PARENT_SCOPE)
 set(CODE_ASM ${CODE_ASM} PARENT_SCOPE)
