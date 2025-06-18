@@ -47,7 +47,7 @@
 #include	<stdio.h>
 #include	<string.h>
 #include	<stdlib.h>
-#include	<new.h>
+#include	<new>
 
 /*
 **	This implements the Secure Hash Algorithm. It is a cryptographically

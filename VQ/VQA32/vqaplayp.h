@@ -18,6 +18,10 @@
 
 #ifndef VQAPLAYP_H
 #define VQAPLAYP_H
+
+#ifndef cdecl
+#define cdecl
+#endif
 /****************************************************************************
 *
 *         C O N F I D E N T I A L -- W E S T W O O D  S T U D I O S
@@ -42,9 +46,9 @@
 *
 ****************************************************************************/
 
-#include <vqm32\video.h>
-#include <vqm32\soscomp.h>
-#include <vqm32\captoken.h>
+#include "../VQM32/video.h"
+#include "../VQM32/soscomp.h"
+#include "../VQM32/captoken.h"
 #include "vqafile.h"
 #include "vqaplay.h"
 #include "caption.h"
@@ -59,9 +63,9 @@
 
 /* Internal library version. */
 #define VQA_VERSION "2.41"
-#define VQA_DATE    __DATE__" "__TIME__
+#define VQA_DATE    __DATE__ " " __TIME__
 
-#define VQA_IDSTRING "VQA32 "VQA_VERSION" ("VQA_DATE")"
+#define VQA_IDSTRING "VQA32 " VQA_VERSION " (" VQA_DATE ")"
 #define VQA_REQUIRES "VQM32 2.12 or better."
 
 /* Block dimensions macro and identifiers. */

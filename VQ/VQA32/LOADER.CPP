@@ -69,13 +69,13 @@
 
 #include <stdio.h>
 #include <fcntl.h>
-#include <io.h>
+#include <unistd.h>
 #include <malloc.h>
-#include <mem.h>
-#include <dos.h>
+#include <string.h>
+#include <stddef.h>
 #include "vq.h"
 #include "vqaplayp.h"
-#include <vqm32\all.h>
+#include "../VQM32/all.h"
 
 /*---------------------------------------------------------------------------
  * PRIVATE DECLARATIONS

@@ -51,3 +51,11 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Simplified function.h by removing Windows-only assert hooks and redundant includes.
 - Implemented an LVGL-based terminal widget for on-screen debugging (`terminal.c` and `terminal.h`).
 - Removed stray `#endif` lines in several headers to fix build errors.
+- Commented out Watcom `#pragma aux` directives in `mpu.h` and `jshell.h` so GCC/Clang builds don't error under `-Werror`.
+- Replaced `<io.h>` include in `wwfile.h` with standard `<unistd.h>` for portability.
+- Updated `<new.h>` includes to use the standard C++ `<new>` header so Linux builds
+  don't fail.
+- Introduced a CMake build for the VQA32 playback library and provided C stubs
+  for the original assembly routines.
+- Added stubs for missing <dos.h> and <pharlap.h> to keep the build going.
+- Removed legacy compiler pragmas and compiled VQA32 sources as C++.

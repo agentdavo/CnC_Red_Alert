@@ -38,7 +38,7 @@
 // INCLUDES
 //==========================================================================
 
-#include <vqa32\vqaplay.h>
+#include "vqaplay.h"
 #include <vidmode.h>
 #include <rawfile.h>
 

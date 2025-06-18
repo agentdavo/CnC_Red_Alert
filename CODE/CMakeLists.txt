@@ -312,8 +312,11 @@ add_library(gamecode STATIC ${CODE_SOURCES} ${CODE_ASM})
 target_include_directories(gamecode PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/../WIN32LIB/INCLUDE
     ${CMAKE_CURRENT_LIST_DIR}/../VQ/INCLUDE/WWLIB32
+    ${CMAKE_CURRENT_LIST_DIR}/../VQ/VQA32
+    ${CMAKE_CURRENT_LIST_DIR}/../VQ/VQM32
     ${CMAKE_CURRENT_LIST_DIR}/../src/ddraw
     ${CMAKE_CURRENT_LIST_DIR}/../src
+    "${CMAKE_SOURCE_DIR}"
 )
 
 target_compile_definitions(gamecode PUBLIC $<$<BOOL:${USE_LVGL}>:USE_LVGL>)

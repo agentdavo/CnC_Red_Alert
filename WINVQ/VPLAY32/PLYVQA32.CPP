@@ -59,14 +59,14 @@
 #include <string.h>
 #include <conio.h>
 #include <sys\timeb.h>
-#include <mem.h>
-#include <io.h>
+#include <string.h>
+#include <unistd.h>
 #include <ctype.h>
 #include <process.h>
-#include <dos.h>
 
-#include <vqa32\vqaplay.h>
-#include <vqa32\vqafile.h>
+
+#include "vqaplay.h"
+#include "vqafile.h"
 #include <vqm32\all.h>
 
 #if(CAPTIONS)
