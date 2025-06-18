@@ -45,7 +45,9 @@ add_subdirectory(CODE)
 add_subdirectory(VQ/VQA32)
 set(MINIAUDIO_NO_EXTRA_NODES ON CACHE BOOL "" FORCE)
 add_subdirectory(src/miniaudio)
-add_subdirectory(tests)
+if(BUILD_TESTING)
+    add_subdirectory(tests)
+endif()
 
 set(SOURCES
     ${CODE_SOURCES}
@@ -93,4 +95,7 @@ if(USE_LVGL)
 endif()
 if(WIN32)
     target_link_libraries(redalert PRIVATE ws2_32)
+endif()
+if(COMMAND add_qemu_run_target)
+    add_qemu_run_target(redalert)
 endif()
