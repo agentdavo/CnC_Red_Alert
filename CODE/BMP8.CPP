@@ -18,6 +18,7 @@
 
 
 #include "bmp8.h"
+#include <stdint.h>
 
 //***********************************************************************************************
 BMP8::~BMP8()
@@ -34,7 +35,7 @@ bool BMP8::Init( const char* szFile, HWND hWnd )
 {
   int                  i;
   char                 string[128];
-  DWORD                dwRead;
+  uint32_t             dwRead;
   BITMAPFILEHEADER     bitmapHeader;
   BITMAPINFOHEADER     bitmapInfoHeader;
   LPLOGPALETTE         lpLogPalette;

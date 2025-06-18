@@ -50,6 +50,7 @@
 
 #ifndef 	__DDE_H
 #define	__DDE_H
+#include <stdint.h>
 
 #define	DDE_ADVISE_CONNECT		-1		// advisory "client has connected"
 #define	DDE_ADVISE_DISCONNECT	-2		// advisory "client has disconnected"
@@ -84,14 +85,14 @@ class	Instance_Class {
 		Send data routine:
 		- sends an unsolicited packet of data to the remote server
 		.....................................................................*/
-		BOOL	Poke_Server( LPBYTE, DWORD);
+		BOOL	Poke_Server( uint8_t*, uint32_t);
 
 		/*.....................................................................
 		Send data routine:
 		- sets up DNS for the server and registers a user callback to handle
 		  incoming data
 		.....................................................................*/
-		BOOL	Register_Server( BOOL CALLBACK (*)(LPBYTE, long));
+		BOOL	Register_Server( BOOL CALLBACK (*)(uint8_t*, long));
 
 		/*.....................................................................
 		Does a trial connect to the remote server.
@@ -123,7 +124,7 @@ class	Instance_Class {
 		.....................................................................*/
 		static BOOL CALLBACK	(*callback) (
 
-			LPBYTE pointer,		// pointer to received data
+			uint8_t* pointer,		// pointer to received data
 			long length				// if >0 length of received data
 										// if <0
 										//	-1 == client connect detected

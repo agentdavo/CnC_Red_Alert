@@ -19,44 +19,45 @@
 #include <windows.h>
 #include <windowsx.h>
 #include <alloc.h>
+#include <stdint.h>
 
-DWORD GetDibInfoHeaderSize (BYTE *);
-WORD GetDibWidth (BYTE *);
-WORD GetDibHeight (BYTE *);
-BYTE * GetDibBitsAddr (BYTE *);
-BYTE * ReadDib(char *);
+uint32_t GetDibInfoHeaderSize (uint8_t huge *);
+uint16_t GetDibWidth (uint8_t huge *);
+uint16_t GetDibHeight (uint8_t huge *);
+uint8_t huge * GetDibBitsAddr (uint8_t huge *);
+uint8_t huge * ReadDib(char *);
 
 //-------------------------------------------------------------//
 
-DWORD GetDibInfoHeaderSize (BYTE * lpDib)
+uint32_t GetDibInfoHeaderSize (uint8_t huge * lpDib)
 {
-        return ((BITMAPINFOHEADER *) lpDib)->biSize ;
+	return ((BITMAPINFOHEADER huge *) lpDib)->biSize ;
 }
 
-WORD GetDibWidth (BYTE * lpDib)
+uint16_t GetDibWidth (uint8_t huge * lpDib)
 {
-        if (GetDibInfoHeaderSize (lpDib) == sizeof (BITMAPCOREHEADER))
-                return (WORD) (((BITMAPCOREHEADER *) lpDib)->bcWidth) ;
-        else
-                return (WORD) (((BITMAPINFOHEADER *) lpDib)->biWidth) ;
+	if (GetDibInfoHeaderSize (lpDib) == sizeof (BITMAPCOREHEADER))
+		return (WORD) (((BITMAPCOREHEADER huge *) lpDib)->bcWidth) ;
+	else
+		return (WORD) (((BITMAPINFOHEADER huge *) lpDib)->biWidth) ;
 }
 
-WORD GetDibHeight (BYTE * lpDib)
+uint16_t GetDibHeight (uint8_t huge * lpDib)
 {
-        if (GetDibInfoHeaderSize (lpDib) == sizeof (BITMAPCOREHEADER))
-                return (WORD) (((BITMAPCOREHEADER *) lpDib)->bcHeight) ;
-        else
-                return (WORD) (((BITMAPINFOHEADER *) lpDib)->biHeight) ;
+	if (GetDibInfoHeaderSize (lpDib) == sizeof (BITMAPCOREHEADER))
+		return (WORD) (((BITMAPCOREHEADER huge *) lpDib)->bcHeight) ;
+	else
+		return (WORD) (((BITMAPINFOHEADER huge *) lpDib)->biHeight) ;
 }
 
-BYTE * GetDibBitsAddr (BYTE * lpDib)
+uint8_t huge * GetDibBitsAddr (uint8_t huge * lpDib)
 {
-        DWORD dwNumColors, dwColorTableSize ;
-        WORD  wBitCount ;
+	uint32_t dwNumColors, dwColorTableSize ;
+	uint16_t  wBitCount ;
 
 	if (GetDibInfoHeaderSize (lpDib) == sizeof (BITMAPCOREHEADER))
 	{
-                wBitCount = ((BITMAPCOREHEADER *) lpDib)->bcBitCount ;
+		wBitCount = ((BITMAPCOREHEADER huge *) lpDib)->bcBitCount ;
 
 		if (wBitCount != 24)
 			dwNumColors = 1L << wBitCount ;
@@ -67,10 +68,10 @@ BYTE * GetDibBitsAddr (BYTE * lpDib)
 	}
 	else
 	{
-                wBitCount = ((BITMAPINFOHEADER *) lpDib)->biBitCount ;
+		wBitCount = ((BITMAPINFOHEADER huge *) lpDib)->biBitCount ;
 
 		if (GetDibInfoHeaderSize (lpDib) >= 36)
-                        dwNumColors = ((BITMAPINFOHEADER *) lpDib)->biClrUsed ;
+			dwNumColors = ((BITMAPINFOHEADER huge *) lpDib)->biClrUsed ;
 		else
 			dwNumColors = 0 ;
 
@@ -89,13 +90,13 @@ BYTE * GetDibBitsAddr (BYTE * lpDib)
 }
 
 // Read a DIB from a file into memory
-BYTE * ReadDib (char * szFileName)
+uint8_t huge * ReadDib (char * szFileName)
 {
-	BITMAPFILEHEADER bmfh ;
-        BYTE *      lpDib ;
-	DWORD            dwDibSize, dwOffset, dwHeaderSize ;
-	int              hFile ;
-	WORD             wDibRead ;
+        BITMAPFILEHEADER bmfh ;
+        uint8_t huge *      lpDib ;
+        uint32_t            dwDibSize, dwOffset, dwHeaderSize ;
+        int              hFile ;
+        uint16_t             wDibRead ;
 
 	if (-1 == (hFile = _lopen (szFileName, OF_READ | OF_SHARE_DENY_WRITE)))
 		return NULL ;
@@ -115,7 +116,7 @@ BYTE * ReadDib (char * szFileName)
 
 	dwDibSize = bmfh.bfSize - sizeof (BITMAPFILEHEADER) ;
 
-        lpDib = (BYTE * ) GlobalAllocPtr (GMEM_MOVEABLE, dwDibSize) ;
+	lpDib = (uint8_t huge * ) GlobalAllocPtr (GMEM_MOVEABLE, dwDibSize) ;
 
 	if (lpDib == NULL)
 	{
@@ -148,7 +149,7 @@ BYTE * ReadDib (char * szFileName)
 	return lpDib ;
 }
 
-LRESULT CALLBACK MainWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+long FAR PASCAL _export MainWndProc(HWND hWnd,UINT message,UINT wParam,LONG lParam)
 {
 	PAINTSTRUCT	ps;
 	HDC hdc;
@@ -157,8 +158,8 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPar
 	FILE *fi;
 	int i;
 
-        static BYTE *lpDib;
-        static BYTE *lpDibBits;
+	static uint8_t huge *lpDib;
+	static uint8_t huge *lpDibBits;
 	static int cxDib, cyDib;
 	static LPLOGPALETTE LogPal;
 	static HPALETTE hLogPal;
