@@ -130,7 +130,6 @@ LAYER.CPP
 LCW.CPP
 LCWPIPE.CPP
 LCWSTRAW.CPP
-LCWUNCMP.CPP
 LINK.CPP
 LIST.CPP
 LOADDLG.CPP
@@ -345,7 +344,8 @@ if(NOT ENABLE_ASM)
         "${CMAKE_SOURCE_DIR}/src/ipx_stub.c"
         "${CMAKE_SOURCE_DIR}/src/debug/asm_replacements.c"
         "${CMAKE_SOURCE_DIR}/src/vq/huffman_decode.c"
-        "${CMAKE_SOURCE_DIR}/src/vq/unvq_decode.c")
+        "${CMAKE_SOURCE_DIR}/src/vq/unvq_decode.c"
+        "${CMAKE_SOURCE_DIR}/src/lcw_uncompress.c")
     list(REMOVE_ITEM CODE_ASM
         "${CMAKE_CURRENT_LIST_DIR}/CPUID.ASM"
         "${CMAKE_CURRENT_LIST_DIR}/COORDA.ASM"
