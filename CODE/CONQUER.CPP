@@ -86,6 +86,7 @@ B<A> test;
 
 
 #include	"function.h"
+#include "../src/debug_log.h"
 #ifdef WIN32
 #ifdef WINSOCK_IPX
 #include	"WSProto.h"
@@ -214,6 +215,7 @@ void MPATH_Call_Back(void);
  *=============================================================================================*/
 void Main_Game(int argc, char * argv[])
 {
+LOG_CALL("%s entered\n", __func__);
 	static bool fade = true;
 
 	/*
@@ -2138,6 +2140,7 @@ void Reallocate_Big_Shape_Buffer(void);
 
 bool Main_Loop()
 {
+LOG_CALL("%s entered\n", __func__);
 	KeyNumType	input;					// Player input.
 	int x;
 	int y;
@@ -4533,7 +4536,7 @@ bool Force_CD_Available( int cd_desired )				//	ajw
 			if( cd_desired == CD_DVD )
 			{
 				#ifdef FRENCH
-			   	sprintf(buffer, "InsŠrez le %s",  _cd_name[4]);
+			   	sprintf(buffer, "InsÂŠrez le %s",  _cd_name[4]);
 				#else
 				#ifdef GERMAN
 				sprintf(buffer, "Bitte %s",  _cd_name[4]);
@@ -4545,7 +4548,7 @@ bool Force_CD_Available( int cd_desired )				//	ajw
 			else if( cd_desired == CD_COUNTERSTRIKE || cd_desired == CD_AFTERMATH )
 			{
 				#ifdef FRENCH
-			   	sprintf(buffer, "InsŠrez le %s",  _cd_name[cd_desired]);
+			   	sprintf(buffer, "InsÂŠrez le %s",  _cd_name[cd_desired]);
 				#else
 				#ifdef GERMAN
 				sprintf(buffer, "Bitte %s",  _cd_name[cd_desired]);
@@ -4929,7 +4932,7 @@ bool Force_CD_Available(int cd)
 			#endif
 
 				#ifdef FRENCH
-			   	sprintf(buffer, "InsŠrez le %s",  _cd_name[cd]);
+			   	sprintf(buffer, "InsÂŠrez le %s",  _cd_name[cd]);
 				#else
 				#ifdef GERMAN
 				sprintf(buffer, "Bitte %s",  _cd_name[cd]);
@@ -4942,7 +4945,7 @@ bool Force_CD_Available(int cd)
 				{
 				#ifdef DVD
 				#ifdef FRENCH
-			   	sprintf(buffer, "InsŠrez le %s", _cd_name[4]);
+			   	sprintf(buffer, "InsÂŠrez le %s", _cd_name[4]);
 				#else
 				#ifdef GERMAN 
 				sprintf(buffer, "Bitte %s", _cd_name[4]);
