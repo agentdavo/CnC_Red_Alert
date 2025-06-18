@@ -61,8 +61,10 @@ git submodule update --init src/lvgl
 cp src/lvgl/lv_conf_template.h lv_conf.h    # basic configuration
 cmake -S . -B build -DCMAKE_C_FLAGS="-std=gnu11" -DUSE_LVGL=ON
 cmake --build build
-./build/redalert
+./build/redalert --backend=wayland
 ```
+
+You may omit `--backend` and rely on the `LV_BACKEND` environment variable.
 
 The launcher boots into the first menu using the selected LVGL backend.
 
@@ -87,5 +89,6 @@ Compilation currently fails because of missing dependencies and obsolete pragmas
 
 - [KEYBOARD.md](KEYBOARD.md) – keyboard queue and LVGL keyboard notes.
 - [MOUSE.md](MOUSE.md) – mouse handler and LVGL input device notes.
-The input driver defaults to the **x11** backend. Set `LV_BACKEND`
-before running the launcher to select another backend.
+The input driver defaults to the **x11** backend. Select another
+backend with the `--backend` option or by setting `LV_BACKEND` before
+running the launcher.
