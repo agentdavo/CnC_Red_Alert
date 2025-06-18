@@ -11,16 +11,32 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 add_compile_options(-Wall -Wextra -Werror)
 
 add_subdirectory(CODE)
+set(MINIAUDIO_NO_EXTRA_NODES ON CACHE BOOL "" FORCE)
+add_subdirectory(src/miniaudio)
 
-# Launcher sources
-file(GLOB LAUNCHER_SRC
-    LAUNCHER/*.c
-    LAUNCHER/*.cpp
-    LAUNCHER/util/*.cpp
-    LAUNCHER/util/*.c)
+set(SOURCES
+    ${CODE_SOURCES}
+        LAUNCHER/256bmp.c
+        LAUNCHER/bitmap.cpp
+        LAUNCHER/configfile.cpp
+        LAUNCHER/dialog.cpp
+        LAUNCHER/findpatch.cpp
+        LAUNCHER/loadbmp.cpp
+        LAUNCHER/main.cpp
+        LAUNCHER/monod.cpp
+        LAUNCHER/patch.cpp
+        LAUNCHER/process.cpp
+        LAUNCHER/streamer.cpp
+        LAUNCHER/wdebug.cpp
+        LAUNCHER/winblows.cpp
+        LAUNCHER/wstring.cpp
+        LAUNCH/main.c
+        src/miniaudio.c
+)
 
-# Launch stub
-file(GLOB LAUNCH_SRC LAUNCH/*.c)
+set(ASM_SOURCES
+${CODE_ASM}
+)
 
 set(SOURCES ${CODE_SOURCES} ${LAUNCHER_SRC} ${LAUNCH_SRC})
 set(ASM_SOURCES ${CODE_ASM})
@@ -32,5 +48,5 @@ elseif(REPLACEMENT_ASM_DIR)
 endif()
 
 add_executable(redalert ${SOURCES} ${ASM_SOURCES})
-target_link_libraries(redalert PRIVATE gamecode)
-target_compile_features(redalert PRIVATE c_std_11)
+target_link_libraries(redalert PRIVATE gamecode miniaudio pthread)
+
