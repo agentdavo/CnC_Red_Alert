@@ -129,3 +129,4 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Added a pure C implementation of `LCW_Uncompress` and stubs for the
   `ASM_IPX_Initialise` helpers so `IPX16.ASM` is no longer required.
 - Removed Borland-specific pragma directives from imported Greenleaf headers.
+- Added RISC-V 32/64 QEMU toolchain files in cmake/ for LVGL-only builds.
