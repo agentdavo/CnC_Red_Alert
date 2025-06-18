@@ -466,9 +466,13 @@ void GScreenClass::Render(void)
  *   02/14/1994 JLB : Created.                                                                 *
  *   05/01/1994 JLB : Converted to member function.                                            *
  *=============================================================================================*/
+#if ENABLE_ASM
 extern "C" {
-	void ModeX_Blit (GraphicBufferClass * source);
+        void ModeX_Blit(GraphicBufferClass *source);
 }
+#else
+void ModeX_Blit(GraphicBufferClass *source);
+#endif
 
 void GScreenClass::Blit_Display(void)
 {
@@ -486,7 +490,11 @@ void GScreenClass::Blit_Display(void)
                        HidPage.Blit(SeenBuff , 0 , 0 , 0 , 0 , HidPage.Get_Width() , HidPage.Get_Height() , (BOOL) FALSE );
                        WWMouse->Erase_Mouse(&HidPage, FALSE);
                } else {
+#if ENABLE_ASM
                        ModeX_Blit(&HiddenPage);
+#else
+                       ModeX_Blit(&HiddenPage);
+#endif
                }
        #else
                Shadow_Blit(0, 0, 320, 200, HidPage, SeenPage, ShadowPage->Get_Buffer());

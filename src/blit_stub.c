@@ -71,10 +71,34 @@ long Buffer_Frame_To_LogicPage(int x, int y, int w, int h, void *Buffer, int fla
 
 void ModeX_Blit(GraphicBufferClass *source)
 {
-    /* Simply copy the source buffer to the visible page */
+    /*
+     * Copy a planar back buffer into the visible linear surface. This mimics
+     * the behaviour of the original assembly routine which blitted a 320x200
+     * page to Mode X video memory.  The C version simply performs a pitched
+     * memcpy for each scan line.
+     */
+
     extern GraphicBufferClass VisiblePage;
-    MCGA_Buffer_To_Page(0, 0, source->Get_Width(), source->Get_Height(),
-                        source->Get_Buffer(), &VisiblePage);
+
+    unsigned char *src = (unsigned char *)source->Get_Buffer();
+    unsigned char *dst = (unsigned char *)VisiblePage.Get_Buffer();
+
+    int width      = source->Get_Width();
+    int height     = source->Get_Height();
+
+    int src_pitch = width + source->Get_XAdd() + source->Get_Pitch();
+    int dst_pitch = VisiblePage.Get_Width() +
+                    VisiblePage.Get_XAdd() +
+                    VisiblePage.Get_Pitch();
+
+    src += source->Get_Offset();
+    dst += VisiblePage.Get_Offset();
+
+    for (int y = 0; y < height; ++y) {
+        memcpy(dst, src, width);
+        src += src_pitch;
+        dst += dst_pitch;
+    }
 }
 
 void Shadow_Blit(long xpix, long ypix, long width, long height,
