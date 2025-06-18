@@ -65,7 +65,6 @@ set(SOURCES
         LAUNCHER/wstring.cpp
         LAUNCH/main.c
         src/miniaudio.c
-        src/audio_decompress.c
         src/ddraw/ddraw_stub.c
         src/fast_stub.c
         src/ipx_stub.c

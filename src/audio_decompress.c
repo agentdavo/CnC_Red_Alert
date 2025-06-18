@@ -66,7 +66,7 @@ long aud_decompress_frame(void *source, void *dest, long size)
         case 1:
             while (count-- && size >= 2) {
                 uint8_t delta = *s++;
-                consumed--;
+                consumed++;
                 previous += bit4_table[delta & 0x0F];
                 if (previous < 0) previous = 0; else if (previous > 255) previous = 255;
                 *d++ = (uint8_t)previous;
@@ -80,7 +80,7 @@ long aud_decompress_frame(void *source, void *dest, long size)
         case 2:
             while (count-- && size >= 4) {
                 uint8_t delta = *s++;
-                consumed--;
+                consumed++;
                 for (int i = 0; i < 4; ++i) {
                     previous += bit2_table[(delta >> (i*2)) & 3];
                     if (previous < 0) previous = 0; else if (previous > 255) previous = 255;
@@ -101,50 +101,50 @@ long aud_decompress_frame(void *source, void *dest, long size)
     return consumed;
 }
 
-static const int index_table[16] = { -1,-1,-1,-1,2,4,6,8,-1,-1,-1,-1,2,4,6,8 };
-static const int step_table[89] = {
-    7,8,9,10,11,12,13,14,16,17,19,21,23,25,28,31,
-    34,37,41,45,50,55,60,66,73,80,88,97,107,118,130,143,
-    157,173,190,209,230,253,279,307,337,371,408,449,494,544,598,658,
-    724,796,876,963,1060,1166,1282,1411,1552,1707,1878,2066,2272,2499,2749,3024,
-    3327,3660,4026,4428,4871,5358,5894,6484,7132,7845,8630,9493,10442,11487,12635,13899,
-    15289,16818,18500,20350,22385,24623,27086,29794,32767
-};
+extern unsigned short IndexTable[];
+extern long DiffTable[];
 
-static inline int decode_nibble(int nibble, int *predictor, int *index)
+static unsigned long decode_adpcm_mono16(_SOS_COMPRESS_INFO *info, unsigned long numbytes)
 {
-    int step = step_table[*index];
-    int diff = step >> 3;
-    if (nibble & 1) diff += step >> 2;
-    if (nibble & 2) diff += step >> 1;
-    if (nibble & 4) diff += step;
-    if (nibble & 8) *predictor -= diff; else *predictor += diff;
-    if (*predictor > 32767) *predictor = 32767;
-    else if (*predictor < -32768) *predictor = -32768;
-    *index += index_table[nibble & 0x0F];
-    if (*index < 0) *index = 0; else if (*index > 88) *index = 88;
-    return *predictor;
-}
+    unsigned long token;
+    long sample;
+    unsigned int fastindex;
+    unsigned char *inbuff = (unsigned char *)info->lpSource;
+    unsigned short *outbuff = (unsigned short *)info->lpDest;
 
-static unsigned long decode_adpcm_mono16(_SOS_COMPRESS_INFO *info, unsigned long bytes)
-{
-    const uint8_t *src = (const uint8_t *)info->lpSource;
-    int16_t *dst = (int16_t *)info->lpDest;
-    unsigned long samples = bytes / 2;
-    int predictor = info->dwPredicted;
-    int index = info->wIndex;
+    fastindex = (unsigned int)info->dwSampleIndex;
+    sample = info->dwPredicted;
 
-    for (unsigned long i = 0; i < samples; ++i) {
-        int nibble = (i & 1) ? (src[i/2] >> 4) & 0xF : src[i/2] & 0xF;
-        dst[i] = (int16_t)decode_nibble(nibble, &predictor, &index);
-    }
+    if (!numbytes)
+        goto SkipLoop;
 
-    info->dwPredicted = predictor;
-    info->wIndex = index;
-    info->lpSource += (samples + 1) / 2;
-    info->lpDest += bytes;
-    info->dwSampleIndex += samples;
-    return bytes;
+    do {
+        token = *inbuff++;
+        fastindex += token & 0x0f;
+        sample += DiffTable[fastindex];
+        fastindex = IndexTable[fastindex];
+        if (sample > 32767L)
+            sample = 32767L;
+        if (sample < -32768L)
+            sample = -32768L;
+        *outbuff++ = (unsigned short)sample;
+
+        fastindex += token >> 4;
+        sample += DiffTable[fastindex];
+        fastindex = IndexTable[fastindex];
+        if (sample > 32767L)
+            sample = 32767L;
+        if (sample < -32768L)
+            sample = -32768L;
+        *outbuff++ = (unsigned short)sample;
+    } while(--numbytes);
+
+SkipLoop:
+    info->dwSampleIndex = (unsigned long)fastindex;
+    info->dwPredicted = sample;
+    info->lpSource = (char *)inbuff;
+    info->lpDest = (char *)outbuff;
+    return numbytes << 2;
 }
 
 void aud_sos_init_stream(_SOS_COMPRESS_INFO *info)
