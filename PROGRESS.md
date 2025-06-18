@@ -113,3 +113,4 @@ As the port progresses, updates on how each dependency has been replaced or stub
   is disabled.
 - Added a GitHub action that cross compiles the project for the RV32IMA ILP32 architecture using the X11 backend.
 - Added C replacements for Mem_Copy, Largest_Mem_Block and page-in helpers. 
+- Added C implementations of the VQ Huffman and block decoders in src/vq. Assembly versions from VQM32 and VQA32 are now skipped when ENABLE_ASM is OFF.

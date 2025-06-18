@@ -316,13 +316,19 @@ if(NOT ENABLE_ASM)
     list(APPEND CODE_SOURCES
         "${CMAKE_CURRENT_LIST_DIR}/../src/cpuid.c"
         "${CMAKE_SOURCE_DIR}/src/support.c"
-        "${CMAKE_SOURCE_DIR}/src/support_stub.c")
+        "${CMAKE_SOURCE_DIR}/src/support_stub.c"
+        "${CMAKE_SOURCE_DIR}/src/vq/huffman_decode.c"
+        "${CMAKE_SOURCE_DIR}/src/vq/unvq_decode.c")
     list(REMOVE_ITEM CODE_ASM
         "${CMAKE_CURRENT_LIST_DIR}/CPUID.ASM"
         "${CMAKE_CURRENT_LIST_DIR}/COORDA.ASM"
         "${CMAKE_CURRENT_LIST_DIR}/SUPPORT.ASM"
         "${CMAKE_CURRENT_LIST_DIR}/2SUPPORT.ASM"
-        "${CMAKE_CURRENT_LIST_DIR}/LCWCOMP.ASM")
+        "${CMAKE_CURRENT_LIST_DIR}/LCWCOMP.ASM"
+        "${CMAKE_CURRENT_LIST_DIR}/../VQ/VQM32/HUFFDCMP.ASM"
+        "${CMAKE_CURRENT_LIST_DIR}/../VQ/VQA32/UNVQBUFF.ASM"
+        "${CMAKE_CURRENT_LIST_DIR}/../VQ/VQA32/UNVQVESA.ASM"
+        "${CMAKE_CURRENT_LIST_DIR}/../VQ/VQA32/UNVQXMDE.ASM")
     list(APPEND CODE_SOURCES
         "${CMAKE_SOURCE_DIR}/src/support_stub.c"
         "${CMAKE_SOURCE_DIR}/src/dos_graphics.c")
