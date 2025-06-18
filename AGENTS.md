@@ -15,3 +15,13 @@ These instructions apply to all files within this repository.
 - After each modification, run available build or test scripts where possible.
 
 Use this file as a quick reference when planning code conversions or dependency replacements.
+
+## Reference Documentation
+
+Several Markdown files at the repository root contain critical details about the original engine:
+
+- `INFO.md` – overview of tools and library directories.
+- `DRAWING.md` – explanation of the rendering pipeline and assembly helpers.
+- `SOUND.md` – breakdown of the audio subsystem and DirectSound routines.
+
+Consult these documents when porting or refactoring code.
