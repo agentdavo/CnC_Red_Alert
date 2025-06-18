@@ -63,11 +63,17 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Removed stray `#endif` lines in several headers to fix build errors.
 - Commented out Watcom `#pragma aux` directives in `mpu.h` and `jshell.h` so GCC/Clang builds don't error under `-Werror`.
 - Replaced `<io.h>` include in `wwfile.h` with standard `<unistd.h>` for portability.
-- Updated `<new.h>` includes to use the standard C++ `<new>` header so Linux builds don't fail.
+- Updated `<new.h>` includes to use the standard C++ `<new>` header so Linux builds
+  don't fail.
 - Introduced a CMake build for the VQA32 playback library and provided C stubs
   for the original assembly routines.
 - Added stubs for missing <dos.h> and <pharlap.h> to keep the build going.
 - Removed legacy compiler pragmas and compiled VQA32 sources as C++.
+- Created portable stubs for the Greenleaf serial functions in `fast.h` and `src/fast_stub.c`.
+- Updated legacy VQM headers to compile under C11 by defining the `cdecl` macro when missing.
+- Fixed remaining DOS path separators in VQM include files.
+- Precomputed `SLUFF_BITS` in `defines.h` to avoid `sizeof` in preprocessor logic.
+- Added stubs for missing Windows headers and replaced deprecated APIs in VQA code.
 - Implemented a UDP-based IPX stub (`src/ipx_stub.c`) and excluded the
   original real-mode IPX sources and assembly from the build. A simple
   test harness (`ipx_stub_test`) verifies basic send/receive behavior.

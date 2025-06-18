@@ -531,8 +531,9 @@ typedef union {
 	} Sub;
 }	COORD_COMPOSITE;
 
-typedef signed short		CELL;
-#define	SLUFF_BITS	(sizeof(CELL)*CHAR_BIT)-(14)
+typedef signed short            CELL;
+/* sizeof cannot be used in preprocessor expressions. For this 32-bit port CELL is 16-bit, leaving two unused bits. */
+#define SLUFF_BITS      2
 typedef union {
 	CELL Cell;
 	struct {

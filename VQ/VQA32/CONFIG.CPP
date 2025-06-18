@@ -52,6 +52,7 @@
 #include "vqaplayp.h"
 #include "../VQM32/all.h"
 
+#include "compat.h"
 /*---------------------------------------------------------------------------
  * PRIVATE DECLARATIONS
  *-------------------------------------------------------------------------*/
@@ -180,7 +181,7 @@ static VQAConfig _defaultconfig = {
 	NULL,
 
 	/* EVAFont: EVA text font. */
-	NULL,
+	NULL
 };
 
 /* Supported video modes. */
@@ -267,9 +268,8 @@ VideoModeTag VideoModeTags[] = {
 
 void VQA_INIConfig(VQAConfig *config)
 {
-	char *ininame;
+	const char *ininame;
 	char buf[80];
-	long i;
 
 	/* Set all Config entries to 0. */
 	memset(config, 0, sizeof(VQAConfig));
@@ -426,7 +426,7 @@ void VQA_INIConfig(VQAConfig *config)
 	if (!stricmp(buf, "-1")) {
 		config->DigiPort = -1;
 	} else {
-		sscanf(buf, "%x", &config->DigiPort);
+		sscanf(buf, "%lx", &config->DigiPort);
 	}
 
 	GetINIString("Player", "IRQ", "-1", buf, 80, ininame);

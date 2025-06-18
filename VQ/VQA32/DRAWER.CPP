@@ -73,8 +73,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
-#include <conio.h>
-
+#include <stdio.h>
 #include <string.h>
 #include "vq.h"
 #include "unvq.h"

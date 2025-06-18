@@ -63,7 +63,7 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <string.h>
-#include <sys/timeb.h>
+#include <sys/time.h>
 #include "vqaplayp.h"
 #include "../VQM32/all.h"
 
@@ -112,7 +112,7 @@ static long VQATickCount = 0;
 #endif /* VQAAUDIO_ON */
 
 static long TickOffset = 0;
-char *HMIDevName = "<none>";
+const char *HMIDevName = "<none>";
 
 #if(VQAAUDIO_ON)
 /* This is a dummy function that is used to mark the start of the module.
@@ -469,7 +469,7 @@ long VQA_OpenAudio(VQAHandleP *vqap)
 			config->DigiPort = audio->DigiHardware.wPort;
 			config->DigiIRQ = audio->DigiHardware.wIRQ;
 			config->DigiDMA = audio->DigiHardware.wDMA;
-			HMIDevName = (char *)audio->DigiCaps.szDeviceName;
+			HMIDevName = (const char *)audio->DigiCaps.szDeviceName;
 		} else {
 			audio->DigiHardware.wPort = config->DigiPort;
 			audio->DigiHardware.wIRQ = config->DigiIRQ;
@@ -1247,10 +1247,10 @@ unsigned long VQA_GetTime(VQAHandleP *vqap)
 		default:
 		case VQA_TMETHOD_DOS:
 			{
-			struct timeb mytime;
+			struct timeval mytime;
 
-			ftime(&mytime);
- 			ticks = (unsigned long)mytime.time*1000L+(unsigned long)mytime.millitm;
+			gettimeofday(&mytime, NULL);
+ 			ticks = (unsigned long)mytime.tv_sec*1000L+(unsigned long)(mytime.tv_usec/1000);
 			ticks = ((ticks * VQA_TIMETICKS) / 1000L);
 			ticks += TickOffset;
 			}
@@ -1258,11 +1258,11 @@ unsigned long VQA_GetTime(VQAHandleP *vqap)
 	}
 	#else
 	{
-	struct timeb mytime;
+	struct timeval mytime;
 
 	vqap = vqap;
-	ftime(&mytime);
-	ticks = (unsigned long)mytime.time*1000L+(unsigned long)mytime.millitm;
+	gettimeofday(&mytime, NULL);
+	ticks = (unsigned long)mytime.tv_sec*1000L+(unsigned long)(mytime.tv_usec/1000);
 	ticks = ((ticks * VQA_TIMETICKS) / 1000L);
 	ticks += TickOffset;
 	}

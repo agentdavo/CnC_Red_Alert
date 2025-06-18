@@ -43,16 +43,16 @@
 #include <VQM32/portio.h>
 #include <VQM32/profile.h>
 #include <VQM32/targa.h>
-#include <vqm32\compress.h>
-#include <vqm32\video.h>
-#include <vqm32\palette.h>
-#include "vesavid.h"
-#include <vqm32\vesablit.h>
-#include <vqm32\graphics.h>
-#include <vqm32\mixfile.h>
-#include <vqm32\crc.h>
-#include <vqm32\huffman.h>
-#include <vqm32\mem.h>
+#include <VQM32/compress.h>
+#include <VQM32/video.h>
+#include <VQM32/palette.h>
+#include <VQM32/vesavid.h>
+#include <VQM32/vesablit.h>
+#include <VQM32/graphics.h>
+#include <VQM32/mixfile.h>
+#include <VQM32/crc.h>
+#include <VQM32/huffman.h>
+#include <VQM32/mem.h>
 
 #endif /* VQMALL_H */
 

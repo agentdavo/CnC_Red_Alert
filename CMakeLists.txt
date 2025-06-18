@@ -51,11 +51,8 @@ set(SOURCES
         src/miniaudio.c
         src/audio_decompress.c
         src/ddraw/ddraw_stub.c
+        src/fast_stub.c
         src/ipx_stub.c
-)
-
-set(LAUNCH_SRC
-    LAUNCH/main.c
 )
 
 set(SOURCES
