@@ -316,7 +316,8 @@ if(NOT ENABLE_ASM)
     list(APPEND CODE_SOURCES
         "${CMAKE_CURRENT_LIST_DIR}/../src/cpuid.c"
         "${CMAKE_SOURCE_DIR}/src/support.c"
-        "${CMAKE_SOURCE_DIR}/src/support_stub.c")
+        "${CMAKE_SOURCE_DIR}/src/support_stub.c"
+        "${CMAKE_SOURCE_DIR}/src/debug/asm_replacements.c")
     list(REMOVE_ITEM CODE_ASM
         "${CMAKE_CURRENT_LIST_DIR}/CPUID.ASM"
         "${CMAKE_CURRENT_LIST_DIR}/COORDA.ASM"
