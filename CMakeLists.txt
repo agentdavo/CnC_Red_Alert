@@ -11,6 +11,8 @@ add_compile_options(-Wall -Wextra -Werror)
 option(ENABLE_ASM "Enable assembly modules" ON)
 set(REPLACEMENT_ASM_DIR "" CACHE PATH "Directory with replacement assembly code")
 add_subdirectory(CODE)
+set(MINIAUDIO_NO_EXTRA_NODES ON CACHE BOOL "" FORCE)
+add_subdirectory(src/miniaudio)
 
 set(SOURCES
     ${CODE_SOURCES}
@@ -29,6 +31,7 @@ set(SOURCES
         LAUNCHER/winblows.cpp
         LAUNCHER/wstring.cpp
         LAUNCH/main.c
+        src/miniaudio.c
 )
 
 set(ASM_SOURCES
@@ -43,4 +46,4 @@ elseif(REPLACEMENT_ASM_DIR)
 endif()
 
 add_executable(redalert ${SOURCES} ${ASM_SOURCES})
-target_link_libraries(redalert PRIVATE gamecode)
+target_link_libraries(redalert PRIVATE gamecode miniaudio pthread)

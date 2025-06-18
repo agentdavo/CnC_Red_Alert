@@ -14,3 +14,5 @@ The original source relies on several legacy libraries that are no longer readil
 
 As the port progresses, updates on how each dependency has been replaced or stubbed should be recorded here.
 - Converted LAUNCH assembly launcher to portable C11 (launch/main.c).
+- Replaced HMI SOS timer callbacks with a miniaudio-based implementation (src/miniaudio.c).
+- Added the official miniaudio library under `src/miniaudio` and integrated it via CMake.
