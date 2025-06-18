@@ -12,6 +12,14 @@ The original source relies on several legacy libraries that are no longer readil
 - **Human Machine Interface (HMI) "Sound Operating System" (SOS)** – provides audio support. Replace with a modern audio library or stub.
 - **IPX networking components** – some modules expect IPX APIs. Implement wrappers around modern sockets or stub out for now.
 
+| Library | Example locations | Replacement or stub | Remaining work |
+| ------- | ----------------- | ------------------ | --------------- |
+| DirectX 5 SDK | `WIN32LIB/SRCDEBUG/DDRAW.CPP`, `WIN32LIB/AUDIO/SOUNDIO.CPP` | `src/ddraw/ddraw_stub.c`, LVGL bridge | Port all graphics and input to portable APIs |
+| DirectX Media 5.1 SDK | `CODE/MPGSET.CPP`, `WIN32LIB/MOVIE/MOVIE.CPP` | none | Provide modern video playback or stub |
+| Greenleaf Communications Library (GCL) | `CODE/NULLMGR.CPP`, `WIN32LIB/INCLUDE/wincomm.h` | none | Replace serial/comm routines with standard networking |
+| HMI SOS | `WIN32LIB/AUDIO/OLSOSDEC.ASM`, `VQ/VQA32/vqaplayp.h` | miniaudio-based timer | Port remaining audio paths |
+| IPX components | `CODE/IPXCONN.CPP`, `IPX/` directory | none | Implement socket-based networking |
+
 As the port progresses, updates on how each dependency has been replaced or stubbed should be recorded here.
 - Converted LAUNCH assembly launcher to portable C11 (launch/main.c).
 - Replaced legacy bool typedef with <stdbool.h> (function.h).
