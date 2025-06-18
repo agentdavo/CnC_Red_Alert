@@ -448,11 +448,7 @@ bool Is_Speaking(void);
 /*
 **	CDFILE.CPP
 */
-#ifdef WIN32
 int harderr_handler(unsigned, unsigned, unsigned *);
-#else
-int harderr_handler(unsigned, unsigned, unsigned __far *);
-#endif
 
 /*
 **	COMBAT.CPP

@@ -60,6 +60,7 @@
 #include	<file.h>
 #include	<i86.h>
 #include <timer.h>
+#include "../../src/miniaudio.h"
 #pragma pack(1)
 #include "audio.h"
 #pragma pack(4)
@@ -849,13 +850,13 @@ BOOL Audio_Init(int sample, int address, int inter, int dma, RateType rate, int 
 
 	Bits_Per_Sample = bits_per_sample;
 
-	sosTIMERInitSystem(_TIMER_DOS_RATE, _SOS_DEBUG_NORMAL);
+    ra_timer_init();
 
 	if (TimerSystemOn) {
-		sosTIMERRegisterEvent(60, &Timer_Interrupt_Func, &SystemTimer);
+            ra_timer_register(60, &Timer_Interrupt_Func, &SystemTimer);
 //		TickCount.Start();
 	} else
-		sosTIMERRegisterEvent(60, &HMI_TimerCallback, &SystemTimer);
+                ra_timer_register(60, &HMI_TimerCallback, &SystemTimer);
 
 	/*
 	**	Special code to handle the HMI problem with running under Windows.
@@ -927,9 +928,9 @@ BOOL Audio_Init(int sample, int address, int inter, int dma, RateType rate, int 
 
 
 		if (sample >= _GUS_8_MONO && sample <= _GUS_16_ST) {
-			error = sosTIMERRegisterEvent(120, init.lpFillHandler, &DigiTimer);
+                    error = ra_timer_register(120, init.lpFillHandler, &DigiTimer);
 		} else {
-			error = sosTIMERRegisterEvent(60, init.lpFillHandler, &DigiTimer);
+                    error = ra_timer_register(60, init.lpFillHandler, &DigiTimer);
 		}
 		if (error) {
 			printf("Unable to regiser the fill handler.\n");
@@ -957,11 +958,11 @@ BOOL Audio_Init(int sample, int address, int inter, int dma, RateType rate, int 
 			LockedData.SampleTracker[index].FileHandle = ERROR;
 			LockedData.SampleTracker[index].QueueBuffer = NULL;
 		}
-		error = sosTIMERRegisterEvent(MAINTENANCE_RATE, (void (__far *)(void))maintenance_callback, &MaintainTimer);
+            error = ra_timer_register(MAINTENANCE_RATE, maintenance_callback, &MaintainTimer);
 		if (error) {
 			printf("Unable to initialize the maintenance callback.\n");
 			Get_Key();
-			sosTIMERRemoveEvent(DigiTimer);
+                    ra_timer_remove(DigiTimer);
 			sosDIGIUnInitDriver(LockedData.DigiHandle, TRUE, TRUE);
 			LockedData.DigiHandle = -1;
 			break;
@@ -997,8 +998,8 @@ VOID Sound_End(VOID)
 {
 
 	if (LockedData.DigiHandle != -1) {
-		sosTIMERRemoveEvent(DigiTimer);
-		sosTIMERRemoveEvent(MaintainTimer);
+           ra_timer_remove(DigiTimer);
+           ra_timer_remove(MaintainTimer);
 		sosDIGIUnInitDriver(LockedData.DigiHandle, TRUE, TRUE);
 		sosDIGIUnInitSystem();
 		LockedData.DigiHandle = -1;
@@ -1011,8 +1012,8 @@ VOID Sound_End(VOID)
 		Free(LockedData.UncompBuffer);
 		LockedData.UncompBuffer = 0;
 	}
-	sosTIMERRemoveEvent(SystemTimer);
-	sosTIMERUnInitSystem(0);
+   ra_timer_remove(SystemTimer);
+   ra_timer_uninit();
 	Unlock_Locked_Data();
 }
 
