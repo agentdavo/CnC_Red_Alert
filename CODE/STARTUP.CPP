@@ -121,7 +121,9 @@ int main(int argc, char * argv[])
 LOG_CALL("%s entered\n", __func__);
 #ifdef USE_LVGL
     lv_init();
-    lvgl_init_backend();
+    if(lvgl_init_backend() != 0) {
+        return 1;
+    }
 #endif
 
 	#ifndef MPEGMOVIE // Denzil 6/10/98
