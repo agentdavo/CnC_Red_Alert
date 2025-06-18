@@ -45,7 +45,8 @@
 #include	"mp.h"
 #include	"straw.h"
 
-#pragma warn -inl
+/* Watcom specific warning control - not needed */
+/* #pragma warn -inl */
 
 template<int PRECISION>
 class Int {
@@ -256,8 +257,9 @@ T Gcd(const T & a, const T & n)
 
 
 
-#pragma warning 604 9
-#pragma warning 595 9
+/* Watcom pragma warnings disabled */
+/* #pragma warning 604 9 */
+/* #pragma warning 595 9 */
 template<class T>
 T Generate_Prime(Straw & rng, int pbits, T const *)
 {

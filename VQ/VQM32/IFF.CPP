@@ -54,11 +54,11 @@
 ****************************************************************************/
 
 #include <stdio.h>
-#include <malloc.h>
-#include <io.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include <fcntl.h>
-#include <sys\stat.h>
-#include <mem.h>
+#include <sys/stat.h>
+#include <string.h>
 #include "iff.h"
 
 

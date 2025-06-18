@@ -47,7 +47,8 @@
 **	definition.
 */
 
-#pragma warn -inl
+/* Watcom specific warning control - not needed */
+/* #pragma warn -inl */
 
 /*
 **	This is a doubly linked list node. Typical use of this node is to derive

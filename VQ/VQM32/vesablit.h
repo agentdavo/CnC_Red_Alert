@@ -1,3 +1,6 @@
+#ifndef cdecl
+#define cdecl
+#endif
 /*
 **	Command & Conquer Red Alert(tm)
 **	Copyright 2025 Electronic Arts Inc.
@@ -38,7 +41,7 @@
 *
 ****************************************************************************/
 
-#include <vqm32\video.h>
+#include <VQM32/video.h>
 
 /*---------------------------------------------------------------------------
  * FUNCTION PROTOTYPES

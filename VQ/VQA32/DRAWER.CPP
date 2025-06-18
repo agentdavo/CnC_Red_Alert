@@ -73,13 +73,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
-#include <conio.h>
-#include <dos.h>
-#include <mem.h>
+#include <stdio.h>
+
+#include <string.h>
 #include "vq.h"
 #include "unvq.h"
 #include "vqaplayp.h"
-#include <vqm32\all.h>
+#include "../VQM32/all.h"
 
 /*---------------------------------------------------------------------------
  * PRIVATE DECLARATIONS

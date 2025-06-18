@@ -1,3 +1,6 @@
+#ifndef cdecl
+#define cdecl
+#endif
 /*
 **	Command & Conquer Red Alert(tm)
 **	Copyright 2025 Electronic Arts Inc.

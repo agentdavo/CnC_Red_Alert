@@ -59,11 +59,16 @@
  *=============================================================================================*/
 unsigned long Get_CPU_Clock(unsigned long & high);
 #ifndef __BORLANDC__
+/* Watcom specific calling convention - not supported by gcc/clang
+ * Keep the original definition for reference but disable it to avoid
+ * unknown pragma warnings treated as errors. */
+/*
 #pragma aux Get_CPU_Clock parm [esi] \
-	modify [edx] \
-	value [eax] = \
-	"db 0fh,031h" \
-	"mov [esi],edx"
+        modify [edx] \
+        value [eax] = \
+        "db 0fh,031h" \
+        "mov [esi],edx"
+*/
 #endif
 
 #endif

@@ -39,12 +39,12 @@
 *
 ****************************************************************************/
 
-#include <mem.h>
+#include <string.h>
 #include <malloc.h>
-#include <vqm32\font.h>
-#include <vqm32\text.h>
-#include <vqm32\graphics.h>
-#include <vqm32\captoken.h>
+#include "../VQM32/font.h"
+#include "../VQM32/text.h"
+#include "../VQM32/graphics.h"
+#include "../VQM32/captoken.h"
 #include "caption.h"
 
 
