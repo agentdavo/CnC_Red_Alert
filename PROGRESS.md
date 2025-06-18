@@ -50,5 +50,4 @@ As the port progresses, updates on how each dependency has been replaced or stub
   with `LV_LOG_LEVEL_INFO`.
 - Simplified function.h by removing Windows-only assert hooks and redundant includes.
 - Implemented an LVGL-based terminal widget for on-screen debugging (`terminal.c` and `terminal.h`).
-
 - Removed stray `#endif` lines in several headers to fix build errors.
