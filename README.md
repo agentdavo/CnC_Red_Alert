@@ -55,8 +55,8 @@ Rendering can happen through three different routines depending on the platform 
 An experimental LVGL canvas can replace DirectDraw during the launcher.
 Fetch the submodule and compile with the option enabled.
 The launcher reads the `LV_BACKEND` environment variable at runtime and
-defaults to `x11`.  Available backend names are `x11`, `wayland`,
-`fbdev`, and `sdl`:
+defaults to `x11` when no override is provided.  Available backend names
+are `x11`, `wayland`, `fbdev`, and `sdl`:
 
 ```sh
 git submodule update --init src/lvgl
@@ -66,10 +66,9 @@ cmake --build build
 ./build/redalert --lvgl-backend=wayland
 ```
 
-You may omit `--lvgl-backend` and rely on the `LV_BACKEND` environment variable.
-
 The launcher boots into the first menu using the selected LVGL backend.
-Pass `--lvgl-backend` to override `LV_BACKEND` at runtime.
+Pass `--lvgl-backend <name>` to override `LV_BACKEND`; the command line
+option takes priority if both are present.
 
 With `USE_LVGL` enabled the hidden page is copied to the LVGL canvas via the
 `lvgl_blit` routine inside `GScreenClass::Blit_Display`.
