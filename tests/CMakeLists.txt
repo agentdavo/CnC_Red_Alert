@@ -1,6 +1,10 @@
 add_executable(ipx_stub_test ipx_stub_test.c ../src/ipx_stub.c)
-target_include_directories(ipx_stub_test PRIVATE ../CODE)
+target_include_directories(ipx_stub_test PRIVATE ../CODE ../src)
 if(WIN32)
     target_link_libraries(ipx_stub_test PRIVATE ws2_32)
 endif()
 add_test(NAME ipx_stub_test COMMAND ipx_stub_test)
+
+add_executable(fixed_math_test fixed_math_test.cpp)
+target_include_directories(fixed_math_test PRIVATE ../CODE ../src)
+add_test(NAME fixed_math_test COMMAND fixed_math_test)
