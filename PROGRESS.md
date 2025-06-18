@@ -108,7 +108,8 @@ As the port progresses, updates on how each dependency has been replaced or stub
   palette from `CurrentPalette`.
 - Menu processing loops now call `lv_timer_handler()` so LVGL widgets stay
   responsive while waiting for user input.
+- Added C implementations of MCGAPRIM and SVGAPRIM routines in src/dos_graphics.c. Assembly versions are skipped when ENABLE_ASM is OFF.
 - Replaced `LCWCOMP.ASM` with a portable C implementation when `ENABLE_ASM`
   is disabled.
 - Added a GitHub action that cross compiles the project for the RV32IMA ILP32 architecture using the X11 backend.
-- Added C replacements for Mem_Copy, Largest_Mem_Block and page-in helpers.
+- Added C replacements for Mem_Copy, Largest_Mem_Block and page-in helpers. 
