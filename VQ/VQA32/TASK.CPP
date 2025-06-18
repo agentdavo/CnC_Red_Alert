@@ -59,11 +59,11 @@
 
 #include <stdio.h>
 #include <malloc.h>
-#include <dos.h>
-#include <mem.h>
+
+#include <string.h>
 #include <conio.h>
-#include <sys\timeb.h>
-#include <vqm32\all.h>
+#include <sys/timeb.h>
+#include "../VQM32/all.h"
 #include "vqaplayp.h"
 
 

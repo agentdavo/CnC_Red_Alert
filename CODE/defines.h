@@ -542,7 +542,7 @@ typedef union {
 		**	Unused upper bits will cause problems on a big-endian machine unless they
 		**	are deliberately accounted for.
 		*/
-		unsigned sluff:SLUF_BITS;
+                unsigned sluff:SLUFF_BITS;
 #endif
 		unsigned Y:7;
 		unsigned X:7;

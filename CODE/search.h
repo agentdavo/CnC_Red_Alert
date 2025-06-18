@@ -59,8 +59,7 @@
 **	definition.
 */
 
-#define	_USERENTRY
-#endif
+#define _USERENTRY
 
 /*
 **	This class is used to create and maintain an index. It does this by assigning a unique

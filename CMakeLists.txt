@@ -12,6 +12,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 add_compile_options(-Wall -Wextra -Werror)
 
 add_subdirectory(CODE)
+add_subdirectory(VQ/VQA32)
 set(MINIAUDIO_NO_EXTRA_NODES ON CACHE BOOL "" FORCE)
 add_subdirectory(src/miniaudio)
 
@@ -50,5 +51,5 @@ elseif(REPLACEMENT_ASM_DIR)
 endif()
 
 add_executable(redalert ${SOURCES} ${ASM_SOURCES})
-target_link_libraries(redalert PRIVATE gamecode miniaudio pthread)
+target_link_libraries(redalert PRIVATE gamecode vqa32 miniaudio pthread)
 
