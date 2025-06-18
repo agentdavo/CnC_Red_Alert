@@ -6,6 +6,18 @@ option(ENABLE_ASM "Enable assembly modules" ON)
 option(USE_LVGL "Enable LVGL canvas output" OFF)
 set(REPLACEMENT_ASM_DIR "" CACHE PATH "Directory with replacement assembly code")
 
+if(ENABLE_ASM)
+    find_program(ASM_COMPILER NAMES nasm yasm)
+    if(NOT ASM_COMPILER)
+        message(FATAL_ERROR "NASM or YASM assembler required but not found")
+    endif()
+    if(WIN32)
+        set(ASM_FORMAT win32)
+    else()
+        set(ASM_FORMAT elf32)
+    endif()
+endif()
+
 # Compiler configuration
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
@@ -37,19 +49,8 @@ set(SOURCES
         src/ddraw/ddraw_stub.c
 )
 
-set(ASM_SOURCES
-${CODE_ASM}
-)
-
 set(SOURCES ${CODE_SOURCES} ${LAUNCHER_SRC} ${LAUNCH_SRC})
-set(ASM_SOURCES ${CODE_ASM})
 
-if(NOT ENABLE_ASM)
-    set(ASM_SOURCES)
-elseif(REPLACEMENT_ASM_DIR)
-    file(GLOB ASM_SOURCES "${REPLACEMENT_ASM_DIR}/*.asm")
-endif()
-
-add_executable(redalert ${SOURCES} ${ASM_SOURCES})
+add_executable(redalert ${SOURCES})
 target_link_libraries(redalert PRIVATE gamecode vqa32 miniaudio pthread)
 
