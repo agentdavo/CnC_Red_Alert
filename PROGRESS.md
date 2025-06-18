@@ -29,3 +29,5 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Created a minimal DirectDraw shim (`src/ddraw`) so the code can build without legacy headers.
 - Documented graphics blit routines in MODEX.md and SHADOWX.md
 - Added debug logging macros for tracing execution (src/debug_log.h).
+- When `USE_LVGL` is passed to CMake the LVGL library is initialized at startup
+  and `lvgl_blit` copies each frame to a canvas instead of relying on DirectDraw.
