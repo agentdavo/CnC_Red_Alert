@@ -117,8 +117,8 @@ int main(int argc, char * argv[])
 #endif	//WIN32
 
 {
+    LOG_CALL("%s entered\n", __func__);
 #ifdef WIN32
-LOG_CALL("%s entered\n", __func__);
 #ifdef USE_LVGL
     lv_init();
     if(lvgl_init_backend(NULL) != 0) {
