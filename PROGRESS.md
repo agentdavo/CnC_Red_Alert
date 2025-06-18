@@ -139,3 +139,9 @@ As the port progresses, updates on how each dependency has been replaced or stub
   `Draw_Mouse`, `ASM_Set_Mouse_Cursor`) in C (`src/mem_helpers.c` and
   `src/input_asm_repl.c`). The old `VMPAGEIN.ASM` and `WWMOUSE.ASM` modules are
   no longer required when assembly is disabled.
+- Added GCC and Clang detection to `compiler.h` so modern compilers no longer hit the "unknown compiler" error.
+- Removed Borland `#pragma option` and `#pragma warn` directives from all copies of `wwstd.h`.
+- Wrapped the `TICKS_PER_SECOND` macros in `commlib.h` with `#ifndef` to avoid clashes with `CODE/defines.h`.
+- Created a stub `pcx.h` that includes `CODE/filepcx.h` to satisfy `function.h` and `WRITEPCX.CPP`.
+- Switched the default `ENABLE_ASM` option in CMake to `OFF` and ran a build to capture the next set of compiler errors.
+- Replaced stub `pcx.h` with the official header from Renegade.

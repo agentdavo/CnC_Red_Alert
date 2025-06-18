@@ -109,7 +109,6 @@
 #endif
 #define GET_SIZE(a)					((sizeof(a) / sizeof(*a)))
 
-#pragma option -Jg
 // Returns the absolute value of the number.
 #ifdef ABS
 #undef ABS
@@ -144,7 +143,6 @@ template<class T> T MAX(T a, T b)
 short MAX(short, short);
 int MAX(int, int);
 long MAX(long, long);
-#pragma option -Jgd
 
 // Returns the low word of a long
 #define	LOW_WORD(a)		((unsigned short)((long)(a) & 0x0000FFFFL))
@@ -196,7 +194,6 @@ typedef void 	VOID;
 
 #define	VOID		void
 
-#pragma	warn -eas
 #define	TRUE		1
 #define	FALSE		0
 

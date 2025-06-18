@@ -19,7 +19,8 @@ set(CMAKE_C_FLAGS_INIT "-march=rv64ima -mabi=lp64" CACHE STRING "" FORCE)
 set(CMAKE_CXX_FLAGS_INIT "-march=rv64ima -mabi=lp64" CACHE STRING "" FORCE)
 set(CMAKE_EXE_LINKER_FLAGS_INIT "-nostdlib -static -Wl,--gc-sections" CACHE STRING "" FORCE)
 
-set(ENABLE_ASM OFF CACHE BOOL "Disable assembly")
+set(ENABLE_ASM OFF CACHE BOOL "Disable assembly" FORCE)
+set(USE_C_BLITTERS ON CACHE BOOL "Use C implementations of blitters" FORCE)
 set(USE_LVGL ON CACHE BOOL "Enable LVGL")
 set(LVGL_BACKEND "x11" CACHE STRING "LVGL backend")
 
