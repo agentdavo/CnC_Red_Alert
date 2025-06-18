@@ -99,6 +99,7 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Implemented a C version of `ModeX_Blit` and used it when assembly blitters are disabled.
 - Added runtime logs for each C replacement of assembly modules (ModeX_Blit, interpolation helpers, CPUID detection).
 - Added C fallbacks for SUPPORT.ASM, 2SUPPORT.ASM and LCWCOMP.ASM; these stubs build automatically when `ENABLE_ASM` is off.
+- Replaced SUPPORT.ASM and 2SUPPORT.ASM with a C11 implementation (`src/support.c`).
 - `lvgl_init_backend` now selects the display driver based on the `LV_BACKEND` environment variable and falls back to SDL when unknown.
 - `lvgl_init_backend` now logs display creation failures, falls back to the Wayland backend when SDL is unavailable and returns a status code so callers can exit gracefully.
 - LVGL backend is selected via the `--lvgl-backend` command-line option or the `LV_BACKEND` environment variable.
@@ -108,3 +109,7 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Menu processing loops now call `lv_timer_handler()` so LVGL widgets stay
   responsive while waiting for user input.
 - Added C implementations of MCGAPRIM and SVGAPRIM routines in src/dos_graphics.c. Assembly versions are skipped when ENABLE_ASM is OFF.
+- Replaced `LCWCOMP.ASM` with a portable C implementation when `ENABLE_ASM`
+  is disabled.
+- Added a GitHub action that cross compiles the project for the RV32IMA ILP32 architecture using the X11 backend.
+- Added C replacements for Mem_Copy, Largest_Mem_Block and page-in helpers. 
