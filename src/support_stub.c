@@ -105,9 +105,3 @@ unsigned Square_Root(unsigned val)
     return (unsigned)sqrt((double)val);
 }
 
-int LCW_Comp(void const *source, void *dest, int length)
-{
-    LOG_CALL("LCW_Comp C stub\n");
-    memcpy(dest, source, (size_t)length);
-    return length;
-}
