@@ -14,25 +14,25 @@ add_subdirectory(CODE)
 
 set(SOURCES
     ${CODE_SOURCES}
-        LAUNCHER/256BMP.C
-        LAUNCHER/BITMAP.CPP
-        LAUNCHER/CONFIGFILE.CPP
-        LAUNCHER/DIALOG.CPP
-        LAUNCHER/FINDPATCH.CPP
-        LAUNCHER/LOADBMP.CPP
-        LAUNCHER/MAIN.CPP
-        LAUNCHER/MONOD.CPP
-        LAUNCHER/PATCH.CPP
-        LAUNCHER/PROCESS.CPP
-        LAUNCHER/STREAMER.CPP
-        LAUNCHER/WDEBUG.CPP
-        LAUNCHER/WINBLOWS.CPP
-        LAUNCHER/WSTRING.CPP
+        LAUNCHER/256bmp.c
+        LAUNCHER/bitmap.cpp
+        LAUNCHER/configfile.cpp
+        LAUNCHER/dialog.cpp
+        LAUNCHER/findpatch.cpp
+        LAUNCHER/loadbmp.cpp
+        LAUNCHER/main.cpp
+        LAUNCHER/monod.cpp
+        LAUNCHER/patch.cpp
+        LAUNCHER/process.cpp
+        LAUNCHER/streamer.cpp
+        LAUNCHER/wdebug.cpp
+        LAUNCHER/winblows.cpp
+        LAUNCHER/wstring.cpp
+        LAUNCH/main.c
 )
 
 set(ASM_SOURCES
 ${CODE_ASM}
-LAUNCH/LAUNCH.ASM
 )
 
 
