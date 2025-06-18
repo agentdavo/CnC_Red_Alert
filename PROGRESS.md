@@ -91,3 +91,5 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - LVGL is now built from the bundled submodule and linked when `USE_LVGL` is enabled.
 - Added a minimal `lv_conf.h` to configure the LVGL build.
 - LVGL initialization now occurs before other subsystems. `launch_main` and WinMain call `lv_init()` and `lvgl_init_backend()` and the main loop pumps events via `lv_timer_handler()`.
+- `lvgl_init_backend` now selects the display driver based on the `LV_BACKEND`
+  environment variable and falls back to SDL when unknown.
