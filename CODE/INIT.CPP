@@ -60,6 +60,7 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 #include	"function.h"
+#include "../src/debug_log.h"
 #include	"loaddlg.h"
 #ifdef WIN32
 #ifdef WINSOCK_IPX
@@ -196,6 +197,7 @@ static void Load_Prolog_Page(void)
 //#include    <locale.h>
 bool Init_Game(int , char * [])
 {
+LOG_CALL("%s entered\n", __func__);
 	/*
 	**	Allocate the benchmark tracking objects only if the machine and
 	**	compile flags indicate.

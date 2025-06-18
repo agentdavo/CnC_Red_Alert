@@ -38,6 +38,7 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 #include	"function.h"
+#include "../src/debug_log.h"
 #include	<conio.h>
 #include	<io.h>
 
@@ -113,6 +114,7 @@ int main(int argc, char * argv[])
 
 {
 #ifdef WIN32
+LOG_CALL("%s entered\n", __func__);
 
 	#ifndef MPEGMOVIE // Denzil 6/10/98
 	DDSCAPS	surface_capabilities;

@@ -56,7 +56,7 @@
 #include <mem.h>
 #include "combuf.h"
 #include "connect.h"	// for command names for debug output
-#include "wwlib32.h"	// to enable mono output
+#include "wwlib32/wwlib32.h"	// to enable mono output
 
 
 /***************************************************************************
@@ -868,31 +868,31 @@ void CommBufferClass::Mono_Debug_Print(int refresh)
 	//------------------------------------------------------------------------
 	if (refresh) {
 		Mono_Clear_Screen ();
-		Mono_Printf("�����������������������������������������������������������������������������Ŀ\n");
-		Mono_Printf("�                                                                             �\n");
-		Mono_Printf("�                                                                             �\n");
-		Mono_Printf("�                                                                             �\n");
-		Mono_Printf("�����������������������������������������������������������������������������Ĵ\n");
-		Mono_Printf("�              Send Queue              �             Receive Queue            �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("� ID  Ct ACK   ID  Ct ACK    ID  Ct ACK� ID  Rd ACK    ID  Rd ACK   ID  Rd ACK�\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�������������������������������������������������������������������������������");
+		Mono_Printf("ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿\n");
+		Mono_Printf("³                                                                             ³\n");
+		Mono_Printf("³                                                                             ³\n");
+		Mono_Printf("³                                                                             ³\n");
+		Mono_Printf("ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´\n");
+		Mono_Printf("³              Send Queue              ³             Receive Queue            ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³ ID  Ct ACK   ID  Ct ACK    ID  Ct ACK³ ID  Rd ACK    ID  Rd ACK   ID  Rd ACK³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ");
 	}
 
 	//------------------------------------------------------------------------
@@ -998,31 +998,31 @@ void CommBufferClass::Mono_Debug_Print2(int refresh)
 	//------------------------------------------------------------------------
 	if (refresh) {
 		Mono_Clear_Screen ();
-		Mono_Printf("�����������������������������������������������������������������������������Ŀ\n");
-		Mono_Printf("�                                                                             �\n");
-		Mono_Printf("�                                                                             �\n");
-		Mono_Printf("�                                                                             �\n");
-		Mono_Printf("�����������������������������������������������������������������������������Ĵ\n");
-		Mono_Printf("�              Send Queue              �             Receive Queue            �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("� ID  Ct Type   Data  Name         ACK � ID  Rd Type   Data  Name         ACK �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�                                      �                                      �\n");
-		Mono_Printf("�������������������������������������������������������������������������������");
+		Mono_Printf("ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿\n");
+		Mono_Printf("³                                                                             ³\n");
+		Mono_Printf("³                                                                             ³\n");
+		Mono_Printf("³                                                                             ³\n");
+		Mono_Printf("ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´\n");
+		Mono_Printf("³              Send Queue              ³             Receive Queue            ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³ ID  Ct Type   Data  Name         ACK ³ ID  Rd Type   Data  Name         ACK ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("³                                      ³                                      ³\n");
+		Mono_Printf("ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ");
 	}
 
 	//------------------------------------------------------------------------
