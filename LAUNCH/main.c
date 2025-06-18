@@ -41,7 +41,6 @@ static void delete_swaps(const char *path)
 
 int launch_main(int argc, char **argv)
 {
-    setenv("DOS4GVM", "SwapMin:12M,SwapInc:0", 1);
 
     const char *cwd = ".";
     if (!check_disk_space(cwd)) {
