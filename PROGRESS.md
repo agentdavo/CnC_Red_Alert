@@ -27,4 +27,5 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Identified program entry points: `Start` in `LAUNCH/launch.asm` (ported as `launch_main`) and `WinMain` in `CODE/STARTUP.CPP`.
 - Added an LVGL bridge module (`CODE/lvgl/lvgl_bridge.c`) for converting 8-bit screens to an LVGL canvas. Use `USE_LVGL` to enable the call from `GScreenClass::Blit_Display`.
 - Created a minimal DirectDraw shim (`src/ddraw`) so the code can build without legacy headers.
- - Documented graphics blit routines in MODEX.md and SHADOWX.md
+- Documented graphics blit routines in MODEX.md and SHADOWX.md
+- Added debug logging macros for tracing execution (src/debug_log.h).
