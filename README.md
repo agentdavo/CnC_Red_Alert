@@ -50,6 +50,18 @@ Rendering can happen through three different routines depending on the platform 
 - **ModeX_Blit** – copies 320×200 buffers in VGA Mode X (`MODEX.md`).
 - **Shadow_Blit** – DOS-specific VGA blit (`SHADOWX.md`).
 
+## LVGL canvas output
+
+An experimental LVGL canvas can replace DirectDraw during the launcher. Enable
+it when generating the build system:
+
+```sh
+cmake -S . -B build -DCMAKE_C_FLAGS="-std=gnu11" -DUSE_LVGL=ON
+```
+
+With `USE_LVGL` enabled the hidden page is copied to the LVGL canvas via the
+`lvgl_blit` routine inside `GScreenClass::Blit_Display`.
+
 ## Quick build
 
 A minimal CMake setup is provided for early testing. Run:

@@ -31,3 +31,5 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Added debug logging macros for tracing execution (src/debug_log.h).
 - `GScreenClass::Blit_Display` now bypasses DirectDraw when `USE_LVGL` is
   enabled and hands the frame buffer to `lvgl_blit`.
+- When `USE_LVGL` is passed to CMake the LVGL library is initialized at startup
+  and `lvgl_blit` copies each frame to a canvas instead of relying on DirectDraw.

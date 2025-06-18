@@ -26,5 +26,7 @@ Several Markdown files at the repository root contain critical details about the
 - `DDRAW.md` – lists DirectDraw usage across the code base.
 - `MODEX.md` – describes the `ModeX_Blit` VGA routine.
 - `SHADOWX.md` – explains the `Shadow_Blit` path for DOS builds.
+- `LVGL.md` – documents the LVGL integration. See the `lvgl_init` and `lvgl_blit`
+  routines used when `USE_LVGL` is enabled.
 
 Consult these documents when porting or refactoring code.
