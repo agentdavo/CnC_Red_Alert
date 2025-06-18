@@ -52,8 +52,15 @@ Rendering can happen through three different routines depending on the platform 
 
 ## LVGL canvas output
 
-An experimental LVGL canvas can replace DirectDraw during the launcher. Enable
-it when generating the build system:
+An experimental LVGL canvas can replace DirectDraw during the launcher. First
+initialize the LVGL submodule, then enable it when generating the build system:
+
+```sh
+git submodule update --init src/lvgl
+cp src/lvgl/lv_conf_template.h lv_conf.h    # basic configuration
+```
+
+After the submodule is checked out, configure the build with:
 
 ```sh
 cmake -S . -B build -DCMAKE_C_FLAGS="-std=gnu11" -DUSE_LVGL=ON

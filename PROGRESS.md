@@ -88,3 +88,5 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Replaced CPUID.ASM with a portable implementation using __get_cpuid.
 - Assembly modules are now assembled with NASM or YASM via CMake when `ENABLE_ASM` is enabled.
 - Deleted obsolete `#pragma warning` directives in headers and verified `watcom.h` is no longer included.
+- LVGL is now built from the bundled submodule and linked when `USE_LVGL` is enabled.
+- Added a minimal `lv_conf.h` to configure the LVGL build.
