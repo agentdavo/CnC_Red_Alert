@@ -107,3 +107,4 @@ As the port progresses, updates on how each dependency has been replaced or stub
   palette from `CurrentPalette`.
 - Menu processing loops now call `lv_timer_handler()` so LVGL widgets stay
   responsive while waiting for user input.
+- Added C implementations of MCGAPRIM and SVGAPRIM routines in src/dos_graphics.c. Assembly versions are skipped when ENABLE_ASM is OFF.
