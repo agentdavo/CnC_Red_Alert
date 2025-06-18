@@ -130,3 +130,4 @@ As the port progresses, updates on how each dependency has been replaced or stub
   `ASM_IPX_Initialise` helpers so `IPX16.ASM` is no longer required.
 - Removed Borland-specific pragma directives from imported Greenleaf headers.
 - Added RISC-V 32/64 QEMU toolchain files in cmake/ for LVGL-only builds.
+- Calls to real-mode IPX helpers now link against the UDP-based stub and the assembly sources are no longer built.
