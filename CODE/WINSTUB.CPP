@@ -122,13 +122,16 @@ void Check_For_Focus_Loss(void)
 
 	if ( !GameInFocus ) {
 		Focus_Loss();
-		while ( PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE | PM_NOYIELD ) ) {
-	  		if (!GetMessage( &msg, NULL, 0, 0 ) ) {
-				return;
-			}
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
-		}
+                while ( PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE | PM_NOYIELD ) ) {
+                        if (!GetMessage( &msg, NULL, 0, 0 ) ) {
+                                return;
+                        }
+                        TranslateMessage(&msg);
+                        DispatchMessage(&msg);
+#ifdef USE_LVGL
+                        lv_timer_handler();
+#endif
+                }
 	}
 
 	if (!focus_last_time && GameInFocus) {
@@ -137,16 +140,19 @@ void Check_For_Focus_Loss(void)
 		CountDownTimerClass cd;
 		cd.Set(60*1);
 
-		do {
-			while (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE )) {
-	  			if (!GetMessage( &msg, NULL, 0, 0 ) ) {
-					return;
-				}
-				TranslateMessage(&msg);
-				DispatchMessage(&msg);
-			}
+                do {
+                        while (PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE )) {
+                                if (!GetMessage( &msg, NULL, 0, 0 ) ) {
+                                        return;
+                                }
+                                TranslateMessage(&msg);
+                                DispatchMessage(&msg);
+#ifdef USE_LVGL
+                                lv_timer_handler();
+#endif
+                        }
 
-		} while (cd.Time());
+                } while (cd.Time());
 		VQA_ResumeAudio();
 		PostMessage (MainWindow, CCFocusMessage, 0, 0);
 //		AllSurfaces.Restore_Surfaces();
@@ -510,11 +516,14 @@ void Window_Dialog_Box(HANDLE  hinst, LPCTSTR  lpszTemplate, HWND  hwndOwner, DL
 	** until the dialog box is closed.
 	*/
 
-	DialogBox(hinst, lpszTemplate, hwndOwner, dlgprc);
-	while (GetMessage(&msg, NULL, 0, 0) && !AllDone) {
-		TranslateMessage(&msg);
-		DispatchMessage(&msg);
-	}
+        DialogBox(hinst, lpszTemplate, hwndOwner, dlgprc);
+        while (GetMessage(&msg, NULL, 0, 0) && !AllDone) {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
+        }
 
 	/*
 	** Restore the westwood mouse cursor and get rid of the windows one
@@ -797,11 +806,14 @@ void Memory_Error_Handler(void)
 
 	ReadyToQuit = 1;
 
-	PostMessage(MainWindow, WM_DESTROY, 0, 0);
-	do
-	{
-		Keyboard->Check();
-	}while (ReadyToQuit == 1);
+        PostMessage(MainWindow, WM_DESTROY, 0, 0);
+        do
+        {
+                Keyboard->Check();
+#ifdef USE_LVGL
+                lv_timer_handler();
+#endif
+        }while (ReadyToQuit == 1);
 
 	ExitProcess(0);
 }
