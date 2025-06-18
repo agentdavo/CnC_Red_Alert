@@ -280,6 +280,7 @@ XPIPE.CPP
 XSTRAW.CPP
 _WSPROTO.CPP
 lvgl/lvgl_bridge.c
+lvgl/terminal.c
 )
 
 set(CODE_ASM
@@ -312,6 +313,7 @@ target_include_directories(gamecode PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/../WIN32LIB/INCLUDE
     ${CMAKE_CURRENT_LIST_DIR}/../VQ/INCLUDE/WWLIB32
     ${CMAKE_CURRENT_LIST_DIR}/../src/ddraw
+    ${CMAKE_CURRENT_LIST_DIR}/../src
 )
 
 target_compile_definitions(gamecode PUBLIC $<$<BOOL:${USE_LVGL}>:USE_LVGL>)
