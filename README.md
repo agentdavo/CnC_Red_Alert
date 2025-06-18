@@ -37,3 +37,19 @@ This repository is for preservation purposes only and is archived without suppor
 ## License
 
 This repository and its contents are licensed under the GPL v3 license, with additional terms applied. Please see [LICENSE.md](LICENSE.md) for details.
+
+## Entry points
+
+The DOS launcher begins execution at the `Start` label in `LAUNCH/launch.asm`. In the portable version this is exposed as `launch_main` in `LAUNCH/main.c`. Windows builds start in the standard Win32 `WinMain` located in `CODE/STARTUP.CPP`.
+
+## Quick build
+
+A minimal CMake setup is provided for early testing. Run:
+
+```sh
+cmake -S . -B build -DCMAKE_C_FLAGS="-std=gnu11"
+cmake --build build
+```
+
+Compilation currently fails because of missing dependencies and obsolete pragmas, but the commands illustrate the expected process.
+

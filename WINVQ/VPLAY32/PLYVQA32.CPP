@@ -110,8 +110,7 @@ int __cdecl Get_Key(void);
 int HardErr_Handler(int errval, int ax, int bp, int si);
 #endif
 #else
-int __far HardErr_Handler(unsigned deverror, unsigned errcode,
-		unsigned __far *devhdr);
+int HardErr_Handler(unsigned deverror, unsigned errcode, unsigned *devhdr);
 #endif
 
 
@@ -944,8 +943,7 @@ int HardErr_Handler(int errval, int ax, int bp, int si)
 *
 ****************************************************************************/
 
-int __far HardErr_Handler(unsigned deverror, unsigned errcode,
-		unsigned __far *devhdr)
+int HardErr_Handler(unsigned deverror, unsigned errcode, unsigned *devhdr)
 {
 	/* Prevent compiler warnings. */
 	errcode = errcode;
