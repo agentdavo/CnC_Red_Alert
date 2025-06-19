@@ -53,9 +53,10 @@
 #include	"keyboard.h"
 #include	"misc.h"
 #include <io.h>
-#include <sys\types.h>
-#include <sys\stat.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <fcntl.h>
+#include "../INCLUDE/port.h"
 
 
 /*
@@ -1364,9 +1365,9 @@ int WinModemClass::Send_Command_To_Modem(char *command, char terminator, char *b
 	** Flush out any pending characters from the port
 	*/
 	unsigned char	nothing_buff[80];
-	Read_From_Serial_Port(nothing_buff,80);
-	Sleep (100);
-	Read_From_Serial_Port(nothing_buff,80);
+        Read_From_Serial_Port(nothing_buff,80);
+        ww_sleep(100);
+        Read_From_Serial_Port(nothing_buff,80);
 
 
 	for (times = 0 ; times<retries; times++){
@@ -1414,10 +1415,10 @@ int WinModemClass::Send_Command_To_Modem(char *command, char terminator, char *b
 		/*
 		** Spurious write for no apparent reason. Well it was there in the DOS version so...
 		*/
-		Sleep (100);
+                ww_sleep(100);
 		Write_To_Serial_Port((unsigned char*)"\r",1);
-		Wait_For_Serial_Write();
-		Sleep (100);
+                Wait_For_Serial_Write();
+                ww_sleep(100);
 	}
 
 	return (ASTIMEOUT);

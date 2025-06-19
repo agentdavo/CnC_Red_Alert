@@ -45,12 +45,11 @@
 
 #include <string.h>
 #include <stdio.h>
-#include <sys\types.h>
-#include <sys\stat.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <fcntl.h>
-#include <malloc.h>
-#include <io.h>
-#include <conio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 #define NAME_TABLE_SIZE 1000000					//Storage space for function names
 #define SAMPLE_START 1								//Offset (in dwords) of sample data in sample file
@@ -117,15 +116,15 @@ int main(int argc, char *argv[])
 	** If the arguments dont make sense then print the usage
 	*/
 	if (argc!=3 ||
-			!strcmpi(argv[1],"/?") ||
-			!strcmpi(argv[1],"/h") ||
-			!strcmpi(argv[1],"/help") ||
-			!strcmpi(argv[1],"-?") ||
-			!strcmpi(argv[1],"-h") ||
-			!strcmpi(argv[1],"-help") ||
-			!strcmpi(argv[1],"?") ||
-			!strcmpi(argv[1],"h") ||
-			!strcmpi(argv[1],"help")){
+			!strcasecmp(argv[1],"/?") ||
+			!strcasecmp(argv[1],"/h") ||
+			!strcasecmp(argv[1],"/help") ||
+			!strcasecmp(argv[1],"-?") ||
+			!strcasecmp(argv[1],"-h") ||
+			!strcasecmp(argv[1],"-help") ||
+			!strcasecmp(argv[1],"?") ||
+			!strcasecmp(argv[1],"h") ||
+			!strcasecmp(argv[1],"help")){
 		Print_Usage();
 		return(0);
 	}
@@ -159,30 +158,30 @@ int main(int argc, char *argv[])
 	/*
 	** Get the function names from the map file
 	*/
-	cprintf ("Extracting function data from map file.\n");
+	printf ("Extracting function data from map file.\n");
 	if (!Extract_Function_Addresses()){
-		cprintf ("Error parsing .MAP file - aborting\n\n");
+		printf ("Error parsing .MAP file - aborting\n\n");
 		return (0);
 	}
 
 	/*
 	** Sort the functions into address order to make it easier to map the functions
 	*/
-	cprintf ("Sorting function list by address");
+	printf ("Sorting function list by address");
 	Sort_Functions();
 
 	/*
 	** Map the addresses in the sample file to the function addresses
 	*/
-	cprintf ("\nMapping profiler hits to functions");
+	printf ("\nMapping profiler hits to functions");
 	Map_Profiler_Hits();
 
 	/*
 	** Sort the functions into order of usage for output
 	*/
-	cprintf ("\nSorting function list by activity");
+	printf ("\nSorting function list by activity");
 	Sort_Functions_Again();
-	cprintf ("\n\n");
+	printf ("\n\n");
 
 	/*
 	** Print the function usage statistics
@@ -213,9 +212,9 @@ int main(int argc, char *argv[])
 
 void Print_My_Name(void)
 {
-	cprintf("Westwood profile data analyzer.\n");
-	cprintf("V 1.0 - 11/17/95\n");
-	cprintf("Programmer - Steve Tall.\n\n");
+	printf("Westwood profile data analyzer.\n");
+	printf("V 1.0 - 11/17/95\n");
+	printf("Programmer - Steve Tall.\n\n");
 }
 
 /***********************************************************************************************
@@ -234,7 +233,7 @@ void Print_My_Name(void)
 
 void Print_Usage (void)
 {
-	cprintf("Usage: PROFILE <sample_file> <map_file)\n\n");
+	printf("Usage: PROFILE <sample_file> <map_file)\n\n");
 }
 
 /***********************************************************************************************
@@ -253,7 +252,7 @@ void Print_Usage (void)
 
 void File_Error (char *file_name)
 {
-	cprintf ("Error reading file:%s - aborting\n",file_name);
+	printf ("Error reading file:%s - aborting\n",file_name);
 }
 
 /***********************************************************************************************
@@ -273,7 +272,7 @@ void File_Error (char *file_name)
 
 void Memory_Error (void)
 {
-	cprintf ("Error - insufficient memory - aborting\n");
+	printf ("Error - insufficient memory - aborting\n");
 }
 
 /***********************************************************************************************
@@ -306,9 +305,12 @@ int Load_File(char *file_name , unsigned *load_addr , unsigned mode)
 		return (false);
 	}
 
-	file_length = filelength(handle);
-
-	if (file_length==-1) return (false);
+        struct stat st;
+        if (fstat(handle, &st) == -1) {
+                close(handle);
+                return false;
+        }
+        file_length = st.st_size;
 
 	buffer = malloc (file_length+10);
 
@@ -352,7 +354,7 @@ void Map_Profiler_Hits (void)
 
 		function_hit=*(samples+i);
 		if (1023==(1023 & i)){
-			cprintf (".");
+			printf (".");
 		}
 
 		for (int j=TotalFunctions-1 ; j>=0 ; j--){
@@ -390,7 +392,7 @@ void Sort_Functions (void)
 			address_swap.FunctionAddress=0;
 
 			if (127==(127 & outer)){
-				cprintf (".");
+				printf (".");
 			}
 
 			for (int inner=0 ; inner < TotalFunctions-1 ; inner++){
@@ -433,7 +435,7 @@ void Sort_Functions_Again (void)
 			address_swap.FunctionAddress=0;
 
 			if (127==(127 & outer)){
-				cprintf (".");
+				printf (".");
 			}
 
 			for (int inner=0 ; inner < TotalFunctions-1 ; inner++){

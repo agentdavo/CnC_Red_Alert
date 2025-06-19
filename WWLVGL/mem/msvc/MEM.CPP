@@ -51,14 +51,14 @@
  *   Mem_Get_ID -- Returns ID of node.                                     *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
+#include <stdint.h>
+#include "../../INCLUDE/port.h"
 #include <wwstd.h>
 #include "wwmem.h"
 #include <timer.h>
 
 #include	<stddef.h>
-#include	<memory.h>
+#include	<string.h>
 
 #define DEBUG_FILL FALSE
 
@@ -380,7 +380,7 @@ void Mem_Reference(void *node)
 	nodeptr = (MemChain_Type *) node;			  
 	nodeptr--;
 
-	nodeptr->Time = (unsigned short)GetTickCount() >> 8;
+	nodeptr->Time = (unsigned short)ww_get_ticks() >> 8;
 
 }
 
@@ -560,7 +560,7 @@ void *Mem_Find_Oldest(void *poolptr)
 	oldtime = 0;
 	node = ((MemPool_Type*) poolptr)->UsedChain;
 
-  basetime = (unsigned int)(GetTickCount() >> 8);
+  basetime = (unsigned int)(ww_get_ticks() >> 8);
 
 	while (node) {
 
@@ -978,7 +978,7 @@ PRIVATE void MemNode_Insert(MemPool_Type *pool, int freechain, MemChain_Type *no
 		node->Next = NULL;
 		node->Prev = NULL;
 		node->Size = size;
-		node->Time = (unsigned short)(GetTickCount() >> 8);
+		node->Time = (unsigned short)(ww_get_ticks() >> 8);
 		node->ID = id;
 		*chain = node;
 		return;
@@ -1079,7 +1079,7 @@ PRIVATE void MemNode_Insert(MemPool_Type *pool, int freechain, MemChain_Type *no
 		node->Prev = prev;
 		node->Next = next;
 		node->Size = size;
-		node->Time = (unsigned short)(GetTickCount() >> 8);
+		node->Time = (unsigned short)(ww_get_ticks() >> 8);
 		node->ID = id;
 	}
 }
