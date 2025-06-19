@@ -162,3 +162,4 @@ As the port progresses, updates on how each dependency has been replaced or stub
   `LV_COLOR_FORMAT_RAW` for display.
 - Added LVGL input bridge that maps keyboard and mouse events to lv_indev callbacks.
 - Introduced portable file I/O wrappers (`src/file_io.c`) that replace DOS-specific calls with standard POSIX functions.
+- Started restructuring WWLVGL build using a dedicated CMakeLists with component library enumeration.

@@ -4,35 +4,54 @@ project(lv_ww_lib C ASM)
 
 set(ENABLE_ASM OFF CACHE BOOL "Enable assembly modules")
 
-# collect C and C++ sources
-file(GLOB_RECURSE WWLVGL_C_SOURCES
-    AUDIO/*.c DIPTHONG/*.c DRAWBUFF/*.c FONT/*.c IFF/*.c KEYBOARD/*.c
-    MEM/*.c MISC/*.c MONO/*.c MOVIE/*.c PALETTE/*.c PLAYCD/*.c PROFILE/*.c
-    RAWFILE/*.c SHAPE/*.c SRCDEBUG/*.c TILE/*.c TIMER/*.c WINCOMM/*.c
-    WSA/*.c WW_WIN/*.c
+set(SUBLIBS
+    AUDIO
+    DIPTHONG
+    DRAWBUFF
+    FONT
+    IFF
+    KEYBOARD
+    MEM
+    MISC
+    MONO
+    PALETTE
+    SHAPE
+    TILE
+    TIMER
+    WW_WIN
+    WSA
+    PROFILE
+    PLAYCD
+    WINCOMM
 )
 
-file(GLOB_RECURSE WWLVGL_CPP_SOURCES
-    AUDIO/*.cpp DIPTHONG/*.cpp DRAWBUFF/*.cpp FONT/*.cpp IFF/*.cpp KEYBOARD/*.cpp
-    MEM/*.cpp MISC/*.cpp MONO/*.cpp MOVIE/*.cpp PALETTE/*.cpp PLAYCD/*.cpp PROFILE/*.cpp
-    RAWFILE/*.cpp SHAPE/*.cpp SRCDEBUG/*.cpp TILE/*.cpp TIMER/*.cpp WINCOMM/*.cpp
-    WSA/*.cpp WW_WIN/*.cpp
-)
+set(WWLVGL_SOURCES)
 
-set(WWLVGL_SOURCES ${WWLVGL_C_SOURCES} ${WWLVGL_CPP_SOURCES})
+foreach(lib ${SUBLIBS})
+    file(GLOB local_c ${lib}/*.c)
+    file(GLOB local_cpp ${lib}/*.cpp)
+    list(APPEND WWLVGL_SOURCES ${local_c} ${local_cpp})
+    if(ENABLE_ASM)
+        file(GLOB local_asm ${lib}/*.asm)
+        list(APPEND WWLVGL_SOURCES ${local_asm})
+    endif()
+endforeach()
 
+# sources that live outside of the component libraries
+file(GLOB extra_c SRCDEBUG/*.c MOVIE/*.c RAWFILE/*.c)
+file(GLOB extra_cpp SRCDEBUG/*.cpp MOVIE/*.cpp RAWFILE/*.cpp)
+list(APPEND WWLVGL_SOURCES ${extra_c} ${extra_cpp})
 if(ENABLE_ASM)
-    file(GLOB_RECURSE WWLVGL_ASM_SOURCES
-        AUDIO/*.asm DIPTHONG/*.asm DRAWBUFF/*.asm KEYBOARD/*.asm MEM/*.asm
-        MISC/*.asm MONO/*.asm MOVIE/*.asm PALETTE/*.asm PROFILE/*.asm
-        SRCDEBUG/*.asm TIMER/*.asm WINCOMM/*.asm WSA/*.asm WW_WIN/*.asm
-    )
-    set(WWLVGL_SOURCES ${WWLVGL_SOURCES} ${WWLVGL_ASM_SOURCES})
+    file(GLOB extra_asm SRCDEBUG/*.asm MOVIE/*.asm RAWFILE/*.asm)
+    list(APPEND WWLVGL_SOURCES ${extra_asm})
 endif()
 
 add_library(lv_ww_lib STATIC ${WWLVGL_SOURCES})
 
 target_include_directories(lv_ww_lib PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/INCLUDE
+    ${CMAKE_CURRENT_LIST_DIR}/..
+    ${CMAKE_CURRENT_LIST_DIR}/../WWFLAT32/WINDOWS
+    ${CMAKE_CURRENT_LIST_DIR}/../VQ/INCLUDE/WWLIB32
 )
 
