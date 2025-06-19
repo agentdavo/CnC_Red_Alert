@@ -6,7 +6,6 @@ mkdir -p "$repo_root/logs"
 cd "$repo_root"
 {
     git submodule update --init src/lvgl
-    export BUILDLOGS=1
     cmake -S . -B build -DPLATFORM=LVGL
-    cmake --build build
+    cmake --build build --target lvgl
 } > "$repo_root/logs/platformLVGL.log" 2>&1
