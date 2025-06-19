@@ -21,11 +21,13 @@ add_library(vqa32_lvgl STATIC ${VQLVGL_SOURCES})
 # Public include paths match the DOS version
 target_include_directories(vqa32_lvgl PUBLIC
      ${CMAKE_CURRENT_LIST_DIR}
-     ${CMAKE_CURRENT_LIST_DIR}/INCLUDE
+    ${CMAKE_CURRENT_LIST_DIR}/include
      ${CMAKE_CURRENT_LIST_DIR}/..
-     ${CMAKE_CURRENT_LIST_DIR}/../INCLUDE
+    ${CMAKE_CURRENT_LIST_DIR}/../INCLUDE
     ${CMAKE_CURRENT_LIST_DIR}/../VQM32
     "${CMAKE_SOURCE_DIR}"
+    "${CMAKE_SOURCE_DIR}/src"
+    "${CMAKE_SOURCE_DIR}/CODE"
     "${CMAKE_SOURCE_DIR}/WWFLAT32/INCLUDE"
  )
 

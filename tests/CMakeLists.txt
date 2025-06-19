@@ -14,7 +14,7 @@ target_include_directories(vqa_video_player PRIVATE
     ../CODE
     ../src
     ../VQ/LVGL
-    ../VQ/LVGL/INCLUDE
+    ../VQ/LVGL/include
     ../src/lvgl/src
 )
 target_link_libraries(vqa_video_player PRIVATE vqa32_lvgl lvgl)

@@ -49,7 +49,9 @@
 
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdint.h>
 #include "vqaplayp.h"
+#include "debug_log.h"
 #ifndef O_BINARY
 #define O_BINARY 0
 #endif
@@ -85,7 +87,8 @@ static long VQADOSHandler(VQAHandle *vqa, long action, void *buffer,
 
 void VQA_InitAsDOS(VQAHandle *vqa)
 {
-	((VQAHandleP *)vqa)->IOHandler = VQADOSHandler;
+        LOG_CALL("VQA_InitAsDOS\n");
+        ((VQAHandleP *)vqa)->IOHandler = VQADOSHandler;
 }
 
 
@@ -114,10 +117,11 @@ void VQA_InitAsDOS(VQAHandle *vqa)
 ****************************************************************************/
 
 static long VQADOSHandler(VQAHandle *vqa, long action, void *buffer,
-		long nbytes)
+                long nbytes)
 {
-	long fh;
-	long error;
+        LOG_CALL("VQADOSHandler\n");
+        long fh;
+        long error;
 
 	fh = vqa->VQAio;
 

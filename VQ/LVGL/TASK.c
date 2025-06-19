@@ -59,9 +59,12 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 #include <string.h>
+#if VQASTANDALONE
 #include <conio.h>
+#endif
 #include <sys/timeb.h>
 #include "../VQM32/all.h"
 #include "vqaplayp.h"
@@ -210,7 +213,9 @@ long VQA_Play(VQAHandle *vqa, long mode)
 	VQADrawer *drawer;
 	long      rc;
 	long      i;
-	long      key;
+#if VQASTANDALONE
+        long      key;
+#endif
 
 	/* Dereference commonly used data members for quick access. */
 	vqabuf = ((VQAHandleP *)vqa)->VQABuf;

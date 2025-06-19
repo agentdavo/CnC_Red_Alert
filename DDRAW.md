@@ -43,3 +43,12 @@ WIN32LIB/KEYBOARD/TEST/TEST.CPP:80:extern       LPDIRECTDRAW    DirectDrawObject
 There are over two hundred DirectDraw references across the project; the full `grep -R "DirectDraw"` output lists them all. Most reside in `WIN32LIB/MISC/DDRAW.CPP`, which sets video modes and manages surfaces, and in `CODE/CONQUER.CPP` for movie playback.
 
 The newly added shim under `src/ddraw` provides stub implementations so the code can be compiled without the original DirectDraw headers.
+
+## Additional findings
+
+- `WIN32LIB/MISC/DDRAW.CPP` houses most of the DirectDraw initialization and palette management. It creates `DirectDrawObject`, sets display modes and queries hardware capabilities. These routines should call the LVGL back-end or become no-ops.
+- `gbuffer.h` (and its copy in `DRAWBUFF/`) maintains an `IsDirectDraw` flag and stores an `LPDIRECTDRAWSURFACE` for each `GraphicBufferClass`. Many modules (`DISPLAY.CPP`, `INTERPAL.CPP`, `EGOS.CPP`, `RADAR.CPP`) check this flag before locking or blitting. With LVGL the flag can remain `false` so all blits occur in system memory.
+- `ICONCACH.CPP` allocates DirectDraw surfaces for cached icons. The cache can be rewritten to use plain memory when porting.
+- Movie playback headers (`CODE/movie.h`, `WIN32LIB/MOVIE/movie.h`) rely on `IDirectDraw` handles. LVGL builds should deliver decoded frames to `lvgl_blit` instead of creating DirectDraw surfaces.
+- The stub in `src/ddraw` only defines a minimal subset of the API; additional methods may need stubs as more code is compiled.
+

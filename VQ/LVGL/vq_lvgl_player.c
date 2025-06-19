@@ -7,6 +7,8 @@
 #include "unvq.h"
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
+#include "debug_log.h"
 
 lv_obj_t *img_obj;
 static lv_img_dsc_t frame_desc_storage;
@@ -20,6 +22,7 @@ lv_img_dsc_t *get_lvgl_frame_desc(void)
 
 void decode_frame_node(VQAHandle *vqa, VQAFrameNode *frame, unsigned char *dest)
 {
+    LOG_CALL("decode_frame_node\n");
     if(!frame) return;
 
     VQAData *vqabuf = ((VQAHandleP *)vqa)->VQABuf;
@@ -52,6 +55,7 @@ void decode_frame_node(VQAHandle *vqa, VQAFrameNode *frame, unsigned char *dest)
 
 void swap_lvgl_buffers(void)
 {
+    LOG_CALL("swap_lvgl_buffers\n");
     unsigned char *tmp = (unsigned char *)frame_desc->data;
     frame_desc->data = next_frame_data;
     next_frame_data = tmp;
@@ -67,6 +71,7 @@ void swap_lvgl_buffers(void)
 
 void lvgl_drawer_init(const VQAHeader *header)
 {
+    LOG_CALL("lvgl_drawer_init\n");
     size_t sz;
 
     frame_desc->header.cf = LV_COLOR_FORMAT_RAW;
