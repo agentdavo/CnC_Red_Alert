@@ -16,7 +16,17 @@ These instructions apply to all files within this folder only.
 - Document notable changes and dependency replacements in `PROGRESS.md`.
 - After each modification, run available build or test scripts where possible.
 
-Use this file as a quick reference when planning code conversions or dependency replacements withing this folder.
+Use this file as a quick reference when planning code conversions or dependency replacements within this folder.
+
+## Iterative Development
+
+When working on this folder iteratively:
+
+- Build the WWLVGL sources after each change using either `CMake` or `MAKE.BAT`.
+- Fix any compilation issues before proceeding to the next change.
+- Document each step in `PROGRESS.md` so progress can be tracked.
+- Some build scripts (for example `MAKE.BAT`) invoke tools from the `CODE/` directory.
+  Keep these cross-directory paths valid or update them if the layout changes.
 
 ## Reference Documentation
 
