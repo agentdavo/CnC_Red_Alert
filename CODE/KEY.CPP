@@ -57,6 +57,9 @@
 #include "key.h"
 
 #include	"monoc.h"
+#ifdef USE_LVGL
+#include "lvgl/lvgl_input.h"
+#endif
 
 //void Message_Loop(void);
 
@@ -231,15 +234,18 @@ bool WWKeyboardClass::Put_Key_Message(unsigned short vk_key, bool release)
 		}
 	}
 
-	if (release) {
-		vk_key |= WWKEY_RLS_BIT;
-	}
+        if (release) {
+                vk_key |= WWKEY_RLS_BIT;
+        }
 
-	/*
-	** Finally use the put command to enter the key into the keyboard
-	** system.
-	*/
-	return(Put(vk_key));
+        /*
+        ** Finally use the put command to enter the key into the keyboard
+        ** system.
+        */
+#ifdef USE_LVGL
+        lvgl_input_push_key(vk_key & 0xFF, !release);
+#endif
+        return(Put(vk_key));
 }
 
 
@@ -265,13 +271,17 @@ bool WWKeyboardClass::Put_Key_Message(unsigned short vk_key, bool release)
  *=============================================================================================*/
 bool WWKeyboardClass::Put_Mouse_Message(unsigned short vk_key, int x, int y, bool release)
 {
-	if (Available_Buffer_Room() >= 3 && Is_Mouse_Key(vk_key)) {
-		Put_Key_Message(vk_key, release);
-		Put((unsigned short)x);
-		Put((unsigned short)y);
-		return(true);
-	}
-	return(false);
+        if (Available_Buffer_Room() >= 3 && Is_Mouse_Key(vk_key)) {
+                Put_Key_Message(vk_key, release);
+                Put((unsigned short)x);
+                Put((unsigned short)y);
+#ifdef USE_LVGL
+                lvgl_input_set_mouse_pos(x, y);
+                lvgl_input_push_mouse_button(vk_key & 0xFF, !release);
+#endif
+                return(true);
+        }
+        return(false);
 }
 
 

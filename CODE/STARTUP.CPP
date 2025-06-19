@@ -49,6 +49,7 @@
 #ifdef USE_LVGL
 #include "../src/lvgl/src/lvgl.h"
 #include "lvgl/lvgl_backend.h"
+#include "lvgl/lvgl_input.h"
 #endif
 
 #ifdef MCIMPEG // Denzil 6/15/98
@@ -124,6 +125,7 @@ int main(int argc, char * argv[])
     if(lvgl_init_backend(NULL) != 0) {
         return 1;
     }
+    lvgl_input_init();
 #endif
 
 	#ifndef MPEGMOVIE // Denzil 6/10/98

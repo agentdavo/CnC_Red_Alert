@@ -281,6 +281,7 @@ _WSPROTO.CPP
 lvgl/lvgl_bridge.c
 lvgl/lvgl_backend.c
 lvgl/terminal.c
+lvgl/lvgl_input.c
 )
 
 set(CODE_ASM
