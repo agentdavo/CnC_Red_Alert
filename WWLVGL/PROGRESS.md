@@ -95,3 +95,8 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Added FILE, BUFFER, FONT, PALETTE and VIDEO subfolders in SRCDEBUG.
 - Each module exposes an interface target using GNU++11.
 - Created SRCDEBUG/AGENTS.md documenting the C++11 requirement.
+
+### 2025-07-01
+- Audited files from MIGRATION.md and removed `<windows.h>`/`<windowsx.h>` includes.
+- Added `port.h` wrappers where timing functions were required.
+
