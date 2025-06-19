@@ -1,4 +1,6 @@
 #include "../../src/lvgl/src/lvgl.h"
+#include "../../src/lvgl/src/draw/lv_image_decoder_private.h"
+#include "../../src/lvgl/src/draw/lv_draw_buf_private.h"
 #include "vq_lvgl_player.h"
 #include "vq_lvgl_decoder.h"
 

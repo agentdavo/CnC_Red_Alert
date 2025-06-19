@@ -73,9 +73,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stddef.h>
-#include "vq.h"
 #include "vqaplayp.h"
+#include "vq.h"
+#include "unvq.h"
 #include "../VQM32/all.h"
+#include "vq_lvgl_player.h"
 
 /*---------------------------------------------------------------------------
  * PRIVATE DECLARATIONS
@@ -86,7 +88,6 @@ static void FreeBuffers(VQAData *vqa, VQAConfig *config, VQAHeader *header);
 static long PrimeBuffers(VQAHandle *vqa);
 static long Load_VQF(VQAHandleP *vqap, unsigned long iffsize);
 static long Load_FINF(VQAHandleP *vqap, unsigned long iffsize);
-static long Load_VQHD(VQAHandleP *vqap, unsigned long iffsize);
 static long Load_CBF0(VQAHandleP *vqap, unsigned long iffsize);
 static long Load_CBFZ(VQAHandleP *vqap, unsigned long iffsize);
 static long Load_CBP0(VQAHandleP *vqap, unsigned long iffsize);
@@ -95,6 +96,11 @@ static long Load_CPL0(VQAHandleP *vqap, unsigned long iffsize);
 static long Load_CPLZ(VQAHandleP *vqap, unsigned long iffsize);
 static long Load_VPT0(VQAHandleP *vqap, unsigned long iffsize);
 static long Load_VPTZ(VQAHandleP *vqap, unsigned long iffsize);
+static long PageFlip_Nop(VQAHandle *vqa);
+static void UnVQ_Nop(unsigned char *codebook, unsigned char *pointers,
+                     unsigned char *buffer, unsigned long blocksperrow,
+                     unsigned long numrows, unsigned long bufwidth);
+long DrawFrame_Buffer(VQAHandle *vqa);
 
 #if(VQAAUDIO_ON)
 static long Load_SND0(VQAHandleP *vqap, unsigned long iffsize);
@@ -148,7 +154,6 @@ long VQA_Open(VQAHandle *vqa, char const *filename, VQAConfig *config)
 	VQAHandleP  *vqap;
 	VQAHeader   *header;
 	ChunkHeader chunk;
-	long        max_frm_size;
 	long        i;
 	long        done;
 	long        found;
@@ -1586,6 +1591,7 @@ static VQAData *AllocBuffers(VQAHeader *header, VQAConfig *config)
 
 static void FreeBuffers(VQAData *vqa, VQAConfig *config, VQAHeader *header)
 {
+        (void)header;
 	VQACBNode    *cb_this,
 	             *cb_next;
 	VQAFrameNode *frame_this,
@@ -1928,7 +1934,7 @@ static long Load_FINF(VQAHandleP *vqap, unsigned long iffsize)
 *
 ****************************************************************************/
 
-static long Load_VQHD(VQAHandleP *vqap, unsigned long iffsize)
+static __attribute__((unused)) long Load_VQHD(VQAHandleP *vqap, unsigned long iffsize)
 {
 	/* Read the header */
 	if (vqap->IOHandler((VQAHandle *)vqap, VQACMD_READ, &vqap->Header,
@@ -2829,4 +2835,60 @@ static void Load_AudFrame(VQAHandleP *vqap)
 }
 #endif /* VQAVOC_ON */
 #endif /* VQAAUDIO_ON */
+
+static long PageFlip_Nop(VQAHandle *vqa)
+{
+    (void)vqa;
+    return 0;
+}
+
+static void UnVQ_Nop(unsigned char *codebook, unsigned char *pointers,
+                     unsigned char *buffer, unsigned long blocksperrow,
+                     unsigned long numrows, unsigned long bufwidth)
+{
+    (void)codebook; (void)pointers; (void)buffer;
+    (void)blocksperrow; (void)numrows; (void)bufwidth;
+}
+
+void VQA_Configure_Drawer(VQAHandleP *vqap)
+{
+    VQAData   *vqabuf = vqap->VQABuf;
+    VQAConfig *config = &vqap->Config;
+    VQAHeader *header = &vqap->Header;
+    VQADrawer *drawer = &vqabuf->Drawer;
+    long      blkdim;
+
+#ifdef USE_LVGL
+    lvgl_drawer_init(header);
+#endif
+
+    drawer->ImageWidth = header->ImageWidth;
+    drawer->ImageHeight = header->ImageHeight;
+    drawer->X1 = 0;
+    drawer->Y1 = 0;
+    drawer->X2 = header->ImageWidth - 1;
+    drawer->Y2 = header->ImageHeight - 1;
+
+    drawer->BlocksPerRow = header->ImageWidth / header->BlockWidth;
+    drawer->NumRows = header->ImageHeight / header->BlockHeight;
+    drawer->NumBlocks = drawer->BlocksPerRow * drawer->NumRows;
+    blkdim = BLOCK_DIM(header->BlockWidth, header->BlockHeight);
+
+    vqabuf->UnVQ = UnVQ_Nop;
+    vqabuf->Page_Flip = PageFlip_Nop;
+
+    if (config->DrawFlags & VQACFGF_BUFFER) {
+        switch (blkdim) {
+        case BLOCK_2X2: vqabuf->UnVQ = UnVQ_2x2; break;
+        case BLOCK_2X3: vqabuf->UnVQ = UnVQ_2x3; break;
+        case BLOCK_4X2: vqabuf->UnVQ = UnVQ_4x2; break;
+        case BLOCK_4X4: vqabuf->UnVQ = UnVQ_4x4; break;
+        default: break;
+        }
+    }
+
+    vqabuf->Draw_Frame = DrawFrame_Buffer;
+    drawer->ScreenOffset = 0;
+    drawer->CurFrame = vqabuf->Loader.CurFrame;
+}
 
