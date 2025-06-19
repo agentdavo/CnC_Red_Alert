@@ -80,3 +80,18 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Replaced `Sleep` and `GetTickCount` usages in WinComm and memory code.
 - Cleaned `PROFILE/UTIL/PROFILE.CPP` and `SRCDEBUG/MONO.CPP` of DOS-only headers.
 - Updated `AGENTS.md` with coding guidelines for cross-platform development.
+
+### 2025-06-28
+- Restructured SRCDEBUG into module subfolders (AUDIO, RAWFILE, PROFILE, SHAPE, WINCOMM).
+- Added CMake targets for each debug module and updated the aggregator.
+- Top-level build now links against `srcdebug_lib`.
+- Verified compilation succeeds after the restructure.
+
+### 2025-06-29
+- Split additional SRCDEBUG modules into subfolders: KEYBOARD, MOUSE, TIMER and VESA.
+- Created interface targets for each module and updated the aggregate `srcdebug_lib`.
+
+### 2025-06-30
+- Added FILE, BUFFER, FONT, PALETTE and VIDEO subfolders in SRCDEBUG.
+- Each module exposes an interface target using GNU++11.
+- Created SRCDEBUG/AGENTS.md documenting the C++11 requirement.
