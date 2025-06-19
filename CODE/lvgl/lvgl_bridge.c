@@ -1,6 +1,7 @@
 #include "lvgl_bridge.h"
 #include "../../src/lvgl/src/lvgl.h"
 #include "../../WWFLAT32/PALETTE/palette.h"
+#include "../../src/debug_log.h"
 #include <stdint.h>
 #include <stddef.h>
 #include <string.h>
@@ -45,6 +46,8 @@ void lvgl_blit(const struct GraphicBufferClass *page)
 {
     const struct gbc_fields *gbc = (const struct gbc_fields *)page;
 
+    LOG_CALL("lvgl_blit start\n");
+
     /* Lazily create the canvas on the first call */
     static lv_obj_t *canvas = NULL;
     static lv_draw_buf_t *canvas_buf = NULL;
@@ -53,6 +56,7 @@ void lvgl_blit(const struct GraphicBufferClass *page)
     int h = gbc->view.height;
 
     if(canvas == NULL) {
+        LOG_CALL("create canvas %dx%d\n", w, h);
         canvas_buf = lv_draw_buf_create(w, h, LV_COLOR_FORMAT_I8, LV_STRIDE_AUTO);
         if(!canvas_buf) return;
 
@@ -62,6 +66,7 @@ void lvgl_blit(const struct GraphicBufferClass *page)
     }
 
     /* Update the palette from the game's global palette data */
+    LOG_CALL("update palette\n");
     for(int i = 0; i < 256; i++) {
         lv_color32_t col = lv_color32_make(CurrentPalette[i * 3],
                                            CurrentPalette[i * 3 + 1],
@@ -77,6 +82,7 @@ void lvgl_blit(const struct GraphicBufferClass *page)
                      gbc->buf.buffer, stride * h);
 
     lv_area_t area = {0, 0, w - 1, h - 1};
+    LOG_CALL("copy frame to canvas\n");
     lv_draw_buf_copy(canvas_buf, &area, &src_buf, &area);
     lv_obj_invalidate(canvas);
 }

@@ -1,0 +1,43 @@
+# Common build options
+
+option(ENABLE_ASM "Enable assembly modules" OFF)
+option(USE_LVGL "Enable LVGL canvas output" OFF)
+set(LVGL_BACKEND "x11" CACHE STRING "LVGL backend (x11, wayland, sdl, windows)")
+option(USE_C_BLITTERS "Use C implementations of blit routines" OFF)
+set(REPLACEMENT_ASM_DIR "" CACHE PATH "Directory with replacement assembly code")
+
+if(ENABLE_ASM)
+    find_program(ASM_COMPILER NAMES nasm yasm)
+    if(NOT ASM_COMPILER)
+        message(FATAL_ERROR "NASM or YASM assembler required but not found")
+    endif()
+    if(WIN32)
+        set(ASM_FORMAT win32)
+    else()
+        set(ASM_FORMAT elf32)
+    endif()
+endif()
+
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+add_compile_options(-Wall -Wextra -Werror)
+
+if(USE_LVGL)
+    add_subdirectory(src/lvgl)
+    if(LVGL_BACKEND STREQUAL "x11")
+        target_compile_definitions(lvgl PUBLIC LV_USE_X11=1 LV_USE_WAYLAND=0 LV_USE_SDL=0 LV_USE_WINDOWS=0)
+    elseif(LVGL_BACKEND STREQUAL "wayland")
+        target_compile_definitions(lvgl PUBLIC LV_USE_X11=0 LV_USE_WAYLAND=1 LV_USE_SDL=0 LV_USE_WINDOWS=0)
+    elseif(LVGL_BACKEND STREQUAL "sdl")
+        target_compile_definitions(lvgl PUBLIC LV_USE_X11=0 LV_USE_WAYLAND=0 LV_USE_SDL=1 LV_USE_WINDOWS=0)
+    elseif(LVGL_BACKEND STREQUAL "windows")
+        target_compile_definitions(lvgl PUBLIC LV_USE_X11=0 LV_USE_WAYLAND=0 LV_USE_SDL=0 LV_USE_WINDOWS=1)
+    else()
+        message(FATAL_ERROR "Unknown LVGL_BACKEND: ${LVGL_BACKEND}")
+    endif()
+endif()
+
+# Platform hook variables
+set(PLATFORM_EXTRA_SOURCES "" CACHE INTERNAL "Platform extra sources")
+set(PLATFORM_EXCLUDE_SOURCES "" CACHE INTERNAL "Platform excluded sources")
+set(PLATFORM_LINK_LIBS "" CACHE INTERNAL "Platform specific libraries")

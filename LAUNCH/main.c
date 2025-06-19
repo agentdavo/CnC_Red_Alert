@@ -82,10 +82,12 @@ int launch_main(int argc, char **argv)
     new_argv[j] = NULL;
 
 #ifdef USE_LVGL
+    LOG_CALL("lv_init start\n");
     lv_init();
     if(lvgl_init_backend(backend_opt) != 0) {
         return 1;
     }
+    LOG_CALL("lvgl backend initialised\n");
     const char *backend_name = "unknown";
     switch(lvgl_get_backend()) {
         case LV_BACKEND_SDL: backend_name = "sdl"; break;

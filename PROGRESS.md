@@ -149,3 +149,5 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Switched the default `ENABLE_ASM` option in CMake to `OFF` and ran a build to capture the next set of compiler errors.
 - Replaced stub `pcx.h` with the official header from Renegade.
 - Guarded obsolete pragma directives in `queue.h` and `memflag.h` so modern compilers ignore them.
+- Added platformDOS, platformWIN and platformLVGL CMake presets to select sources without Windows dependencies.
+- Centralized build options into `cmake/base.cmake` and moved platform specific source lists to the platform files.
