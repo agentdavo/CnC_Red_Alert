@@ -26,3 +26,4 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Enabled strict build flags in `CMakeLists.txt` so all WWLVGL sources compile with `-std=gnu11 -pedantic -Wall -Wextra -Werror`.
 - Switched audio playback to the bundled miniaudio library.
 - Began C11 cleanup of MEM module: removed DOS-only headers, added stub `timer.h`, and replaced deprecated includes.
+- Replaced legacy MEMFLAG.H with C11 version and added timer stubs for MEM build.

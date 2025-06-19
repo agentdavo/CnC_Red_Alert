@@ -53,15 +53,17 @@
 
 #include "wwstd.h"
 #include "wwmem.h"
-#include "timer.h"
+#include <time.h>
 
 #include	<stddef.h>
 #include	<string.h>
 
 #define DEBUG_FILL FALSE
 
-TimerClass TickCount;
-CountDownTimerClass CountDown;
+static unsigned long timer_ticks(void)
+{
+    return (unsigned long)(clock());
+}
 
 ////////////////////////////////////////////////////////////////////////////
 
@@ -205,7 +207,7 @@ void *Mem_Alloc(void *poolptr, long lsize, unsigned long id)
 	**	If there is no free memory then the allocation will
 	**	always fail.
 	*/
-	if (!poolptr || !lsize) return(NULL);
+	if (!poolptr || !lsize) return 0;
 	pool = (MemPool_Type *) poolptr;
 
 	/*
@@ -220,7 +222,7 @@ void *Mem_Alloc(void *poolptr, long lsize, unsigned long id)
 	**	then we KNOW that an allocation will fail -- just return.
 	*/
 	if (pool->TotalMem < size) {
-		return(NULL);
+		return 0;
 	}
 
 	/*
@@ -241,7 +243,7 @@ void *Mem_Alloc(void *poolptr, long lsize, unsigned long id)
 		node = node->Next;
 	}
 	if (!found) {
-		return(NULL);
+		return 0;
 	}
 
 	/*
@@ -381,7 +383,7 @@ void Mem_Reference(void *node)
 	nodeptr = (MemChain_Type *) node;
 	nodeptr--;
 
-	nodeptr->Time = (unsigned short)(TickCount.Time() >> 4);
+	nodeptr->Time = (unsigned short)(timer_ticks() >> 4);
 
 }
 
@@ -470,7 +472,7 @@ void *Mem_Find(void *poolptr, unsigned long id)
 	MemPool_Type	*pool;			// pointer to structure.
 	MemChain_Type	*node;			// Working node structure.
 
-	if (!poolptr) return(NULL);
+	if (!poolptr) return 0;
 
 	pool = (MemPool_Type *) poolptr;
 
@@ -478,7 +480,7 @@ void *Mem_Find(void *poolptr, unsigned long id)
 	** Cannot free a node that is not on the UsedChain list.
 	*/
 	if (!pool->UsedChain) {
-		return(NULL);
+		return 0;
 	}
 
 	/*
@@ -493,7 +495,7 @@ void *Mem_Find(void *poolptr, unsigned long id)
 		}
 		node = node->Next;
 	}
-	return(NULL);
+	return 0;
 }
 
 
@@ -551,7 +553,7 @@ void *Mem_Find_Oldest(void *poolptr)
 	unsigned int	basetime;			// Time to mark our base time with.
 	unsigned int	time;					// basetime + time of node.
 
-	if (!poolptr) return(NULL);
+	if (!poolptr) return 0;
 
 	/*
 	**	Sweep through entire allocation chain to find
@@ -561,7 +563,7 @@ void *Mem_Find_Oldest(void *poolptr)
 	oldtime = 0;
 	node = ((MemPool_Type*) poolptr)->UsedChain;
 
-  basetime = (unsigned int)(TickCount.Time() >> 4);
+  basetime = (unsigned int)(timer_ticks() >> 4);
 
 	while (node) {
 
@@ -621,12 +623,12 @@ void *Mem_Free_Oldest(void *poolptr)
 {
 	MemChain_Type	*node;		// Copy of pointer to oldest node.
 
-	if (!poolptr) return(NULL);
+	if (!poolptr) return 0;
 	node = (MemChain *) Mem_Find_Oldest(poolptr);
 	if (Mem_Free(poolptr, node)) {
 		return(node);
 	}
-	return(NULL);
+	return 0;
 }
 
 /***************************************************************************
@@ -647,7 +649,7 @@ long Mem_Pool_Size(void *poolptr)
 	MemPool_Type	*pool;			// Memory pool control structure.
 	long				memtotal;		// Total amount of memory free.
 
-	if (!poolptr) return(NULL);
+	if (!poolptr) return 0;
 	pool = (MemPool_Type *) poolptr;
 
 	memtotal = ((long)pool->TotalMem) << 4;
@@ -681,7 +683,7 @@ long Mem_Avail(void *poolptr)
 	MemPool_Type	*pool;		// Memory pool control structure.
 	long				memtotal;	// Total amount of memory free.
 
-	if (!poolptr) return(NULL);
+	if (!poolptr) return 0;
 	pool = (MemPool_Type *) poolptr;
 
 	memtotal = ((long)pool->FreeMem) << 4;
@@ -715,7 +717,7 @@ long Mem_Largest_Avail(void *poolptr)
 	/*
 	** Make sure that it is a buffer.
 	*/
-	if (!poolptr) return(NULL);
+	if (!poolptr) return 0;
 
 	/*
 	** Go through the entire free chain looking for the largest block.
@@ -979,7 +981,7 @@ PRIVATE void MemNode_Insert(MemPool_Type *pool, int freechain, MemChain_Type *no
 		node->Next = NULL;
 		node->Prev = NULL;
 		node->Size = size;
-		node->Time = (unsigned short)(TickCount.Time() >> 4);
+		node->Time = (unsigned short)(timer_ticks() >> 4);
 		node->ID = id;
 		*chain = node;
 		return;
@@ -1080,7 +1082,7 @@ PRIVATE void MemNode_Insert(MemPool_Type *pool, int freechain, MemChain_Type *no
 		node->Prev = prev;
 		node->Next = next;
 		node->Size = size;
-		node->Time = (unsigned short)(TickCount.Time() >> 4);
+		node->Time = (unsigned short)(timer_ticks() >> 4);
 		node->ID = id;
 	}
 }

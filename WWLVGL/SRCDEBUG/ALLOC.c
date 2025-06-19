@@ -74,7 +74,7 @@ static unsigned long TotalRam = 0L;
 static unsigned long Memory_Calls = 0L;
 
 void (*Memory_Error)(void) = NULL;
-extern void (*Memory_Error_Exit)(char *string)=NULL;
+void (*Memory_Error_Exit)(char *string) = NULL;
 
 
 //#define MEM_CHECK
@@ -94,9 +94,11 @@ extern void (*Memory_Error_Exit)(char *string)=NULL;
  * HISTORY:                                                                *
  *   06/23/1995 PWG : Created.                                             *
  *=========================================================================*/
-#include"mono.h"
-void DPMI_Lock(VOID const *, long const )
+#include "mono.h"
+void DPMI_Lock(const void *ptr, long size)
 {
+    (void)ptr;
+    (void)size;
 }
 
 /***************************************************************************
@@ -111,8 +113,10 @@ void DPMI_Lock(VOID const *, long const )
  * HISTORY:                                                                *
  *   06/23/1995 PWG : Created.                                             *
  *=========================================================================*/
-void DPMI_Unlock(void const *, long const )
+void DPMI_Unlock(const void *ptr, long size)
 {
+    (void)ptr;
+    (void)size;
 }
 
 /***************************************************************************
