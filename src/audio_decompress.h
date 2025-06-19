@@ -1,7 +1,11 @@
 #ifndef AUDIO_DECOMPRESS_H
 #define AUDIO_DECOMPRESS_H
 
-#include "WIN32LIB/INCLUDE/soscomp.h"
+#include <stdint.h>
+
+#ifndef _SOS_COMPRESS_INFO
+struct _SOS_COMPRESS_INFO;
+#endif
 
 #ifdef __cplusplus
 extern "C" {

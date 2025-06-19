@@ -8,6 +8,7 @@ set(ENABLE_ASM OFF CACHE BOOL "Enable assembly modules")
 # converted to C11.
 # Build sub-libraries individually
 add_subdirectory(mem)
+add_subdirectory(AUDIO)
 
 set(WWLVGL_SOURCES)
 
@@ -22,7 +23,7 @@ set(WWLVGL_SOURCES)
 # endif()
 
 add_library(lv_ww_lib INTERFACE)
-target_link_libraries(lv_ww_lib INTERFACE mem_lib)
+target_link_libraries(lv_ww_lib INTERFACE mem_lib audio_lib)
 
 target_include_directories(lv_ww_lib INTERFACE
     ${CMAKE_CURRENT_LIST_DIR}/INCLUDE

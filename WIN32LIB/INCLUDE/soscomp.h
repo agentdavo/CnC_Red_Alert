@@ -72,12 +72,9 @@ typedef struct _tagCOMPRESS_HEADER {
 	char          szName[16];          // file type, for error checking
 	} _SOS_COMPRESS_HEADER;
 
-/* Prototypes */
-extern "C" {
-	void __cdecl sosCODECInitStream(_SOS_COMPRESS_INFO *);
-	unsigned long __cdecl sosCODECCompressData(_SOS_COMPRESS_INFO *,	unsigned long);
-	unsigned long __cdecl sosCODECDecompressData(_SOS_COMPRESS_INFO *, unsigned long);
-	unsigned long __cdecl General_sosCODECDecompressData(_SOS_COMPRESS_INFO *, unsigned long);
-}
+void sosCODECInitStream(_SOS_COMPRESS_INFO *);
+unsigned long sosCODECCompressData(_SOS_COMPRESS_INFO *, unsigned long);
+unsigned long sosCODECDecompressData(_SOS_COMPRESS_INFO *, unsigned long);
+unsigned long General_sosCODECDecompressData(_SOS_COMPRESS_INFO *, unsigned long);
 
 #endif

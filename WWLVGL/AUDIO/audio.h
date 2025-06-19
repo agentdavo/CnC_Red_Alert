@@ -45,7 +45,7 @@
 // PWG 3-14-95: This structure used to have bit fields defined for Stereo
 //   and Bits.  These were removed because watcom packs them into a 32 bit
 //   flag entry even though they could have fit in a 8 bit entry.
-#pragma pack(1);
+#pragma pack(push,1)
 typedef struct {
 	unsigned short int	Rate;				// Playback rate (hertz).
 	long	Size;				// Size of data (bytes).
@@ -56,7 +56,7 @@ typedef struct {
 	unsigned char Compression;	// What kind of compression for this sample?
 } AUDHeaderType;
 
-
+#pragma pack(pop)
 /*=========================================================================*/
 /*	There can be a different sound driver for sound effects, digitized		*/
 /*	samples, and musical scores.  Each one must be of these specified			*/
@@ -118,21 +118,21 @@ typedef enum {
 /*=========================================================================*/
 /* The following prototypes are for the file: SOUNDIO.CPP						*/
 /*=========================================================================*/
-int File_Stream_Sample(char const *filename, BOOL real_time_start = FALSE);
-int File_Stream_Sample_Vol(char const *filename, int volume, BOOL real_time_start = FALSE);
-void __cdecl Sound_Callback(void);
-void __cdecl far maintenance_callback(void);
+int File_Stream_Sample(char const *filename, BOOL real_time_start);
+int File_Stream_Sample_Vol(char const *filename, int volume, BOOL real_time_start);
+void Sound_Callback(void);
+void maintenance_callback(void);
 void *Load_Sample(char const *filename);
 long Load_Sample_Into_Buffer(char const *filename, void *buffer, long size);
 long Sample_Read(int fh, void *buffer, long size);
 void Free_Sample(void const *sample);
-BOOL Audio_Init( HWND window , int bits_per_sample, BOOL stereo , int rate , int reverse_channels);
+BOOL Audio_Init( void * window , int bits_per_sample, BOOL stereo , int rate , int reverse_channels);
 void Sound_End(void);
 void Stop_Sample(int handle);
 BOOL Sample_Status(int handle);
 BOOL Is_Sample_Playing(void const * sample);
 void Stop_Sample_Playing(void const * sample);
-int Play_Sample(void const *sample, int priority=0xFF, int volume=0xFF, signed short panloc = 0x0);
+int Play_Sample(void const *sample, int priority, int volume, signed short panloc);
 int Play_Sample_Handle(void const *sample, int priority, int volume, signed short panloc, int id);
 int Set_Sound_Vol(int volume);
 int Set_Score_Vol(int volume);
@@ -155,6 +155,5 @@ extern int Misc;
 extern SFX_Type SoundType;
 extern Sample_Type SampleType;
 
-extern CRITICAL_SECTION	GlobalAudioCriticalSection;
 
 extern int StreamLowImpact;
