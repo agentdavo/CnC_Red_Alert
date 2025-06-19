@@ -37,7 +37,6 @@
 #define WWMEM_H
 
 #include "wwstd.h"
-#include "new.h"
 #include "memflag.h"
 
 // Defines
@@ -67,4 +66,3 @@ void Mem_Cleanup(void *poolptr);
 
 
 #endif
-

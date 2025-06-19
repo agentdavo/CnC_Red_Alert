@@ -52,7 +52,7 @@
 #endif
 
 
-extern "C" unsigned long Largest_Mem_Block ( void ) ;
+unsigned long Largest_Mem_Block ( void ) ;
 
 /*
 ** Define the equates necessary to call a DPMI interrupt.
@@ -80,9 +80,6 @@ extern void (*Memory_Error_Exit)(char *string)=NULL;
 //#define MEM_CHECK
 
 #ifdef MEM_CHECK
-extern "C"{
-	extern void __cdecl Int3(void);
-}
 #endif	//MEM_CHECK
 
 /***************************************************************************
