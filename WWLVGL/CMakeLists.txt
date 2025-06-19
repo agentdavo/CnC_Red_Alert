@@ -55,3 +55,10 @@ target_include_directories(lv_ww_lib PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/../VQ/INCLUDE/WWLIB32
 )
 
+# Enforce strict compilation flags for all sources
+set_target_properties(lv_ww_lib PROPERTIES
+    C_STANDARD 11
+    C_EXTENSIONS ON
+)
+target_compile_options(lv_ww_lib PRIVATE -std=gnu11 -pedantic -Wall -Wextra -Werror)
+
