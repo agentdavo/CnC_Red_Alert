@@ -1,3 +1,4 @@
+#include <port.h>
 /*
 **	Command & Conquer Red Alert(tm)
 **	Copyright 2025 Electronic Arts Inc.
@@ -39,7 +40,6 @@
 
 #include	<wwstd.h>
 #include	<keyboard.h>
-#include "windows.h"
 
 
 #if(IBM)

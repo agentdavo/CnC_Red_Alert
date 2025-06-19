@@ -101,3 +101,8 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Replaced MessageBox calls in DDRAW.CPP with logging and migrated functions to the new API.
 - Replaced DirectSound usage in `SRCDEBUG/AUDIO/SOUNDIO.CPP` with the miniaudio device API.
 - Added a minimal `soundint.h` stub in the same folder to remove DirectSound buffer fields.
+
+### 2025-07-02
+- Removed `<windows.h>` and `<windowsx.h>` includes from legacy modules listed in `MIGRATION.md`.
+- Added `port.h` to provide `ww_sleep` and other wrappers.
+- Replaced a `Sleep` call in `AUDIO/OLD/SOUNDIO.CPP` with `ww_sleep`.

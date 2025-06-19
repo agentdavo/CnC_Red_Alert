@@ -1,3 +1,4 @@
+#include <port.h>
 /*
 **	Command & Conquer Red Alert(tm)
 **	Copyright 2025 Electronic Arts Inc.
@@ -38,8 +39,6 @@
 #define _WIN32
 #endif // _WIN32
 #define WIN32
-#include <windows.h>
-#include <windowsx.h>
 #include <objbase.h>
 #include "dsound.h"
 #include <mem.h>
