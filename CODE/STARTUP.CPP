@@ -38,7 +38,7 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 #include	"function.h"
-#include "../src/debug_log.h"
+#include <ra/debug_log.h>
 #include	<conio.h>
 #include	<io.h>
 

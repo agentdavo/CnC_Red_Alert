@@ -83,7 +83,7 @@ extern	void Colour_Debug (int call_number);
 #include	<math.h>
 #pragma		pack(1)
 #include	"audio.h"
-#include "audio_decompress.h"
+#include <ra/audio_decompress.h>
 #pragma		pack(4)
 
 LPDIRECTSOUNDBUFFER	DumpBuffer;

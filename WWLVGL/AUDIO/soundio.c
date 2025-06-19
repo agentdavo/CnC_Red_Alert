@@ -12,8 +12,8 @@
 #include <stdint.h>
 #include "audio.h"
 #include "soundint.h"
-#include "audio_decompress.h"
-#include "../..//src/miniaudio.h"
+#include <ra/audio_decompress.h>
+#include <ra/miniaudio.h>
 
 #ifndef TRUE
 #define TRUE 1

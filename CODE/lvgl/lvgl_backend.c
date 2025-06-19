@@ -1,5 +1,5 @@
 #include "lvgl_backend.h"
-#include "../../src/debug_log.h"
+#include <ra/debug_log.h>
 #include "../../src/lvgl/src/lvgl.h"
 #include "../../src/lvgl/src/drivers/lv_drivers.h"
 #include "../externs.h" /* for ScreenWidth/ScreenHeight */

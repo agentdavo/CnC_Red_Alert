@@ -1,5 +1,5 @@
 #include <string.h>
-#include "debug_log.h"
+#include <ra/debug_log.h>
 #include "lcw.h"
 
 /* C implementation of the LCW_Comp routine originally written in assembly. */

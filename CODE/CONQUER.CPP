@@ -87,7 +87,7 @@ B<A> test;
 
 #include "function.h"
 #include <shape.h>
-#include "../src/debug_log.h"
+#include <ra/debug_log.h>
 #ifdef USE_LVGL
 #include "../src/lvgl/src/lvgl.h"
 #endif

@@ -4,5 +4,6 @@ add_library(srcdebug_keyboard_lib INTERFACE)
 
 target_include_directories(srcdebug_keyboard_lib INTERFACE
     ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_SOURCE_DIR}/include
     ${CMAKE_CURRENT_LIST_DIR}/../INCLUDE
 )

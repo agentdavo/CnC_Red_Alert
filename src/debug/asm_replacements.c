@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <cpuid.h>
-#include "debug_log.h"
+#include <ra/debug_log.h>
 
 unsigned char Random(void)
 {

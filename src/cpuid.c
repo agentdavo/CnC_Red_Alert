@@ -1,5 +1,5 @@
-#include "cpuid.h"
-#include "debug_log.h"
+#include <ra/cpuid.h>
+#include <ra/debug_log.h>
 #include <cpuid.h>
 #include <string.h>
 

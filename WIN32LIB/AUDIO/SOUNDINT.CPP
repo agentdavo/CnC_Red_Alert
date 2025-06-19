@@ -66,7 +66,7 @@
 #include "soundint.h"
 #include "memflag.h"
 #include "audio.h"
-#include "audio_decompress.h"
+#include <ra/audio_decompress.h>
 
 extern	DebugBuffer[];
 

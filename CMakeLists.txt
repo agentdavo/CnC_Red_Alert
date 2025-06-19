@@ -51,6 +51,10 @@ elseif(REPLACEMENT_ASM_DIR)
 endif()
 
 add_executable(redalert ${SOURCES})
+target_include_directories(redalert PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/ra
+)
 target_link_libraries(redalert PRIVATE gamecode vqa32 miniaudio pthread lv_ww_lib)
 if(USE_LVGL)
     target_link_libraries(redalert PRIVATE lvgl)

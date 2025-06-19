@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
-#include "debug_log.h"
+#include <ra/debug_log.h>
 
 lv_obj_t *img_obj;
 static lv_img_dsc_t frame_desc_storage;

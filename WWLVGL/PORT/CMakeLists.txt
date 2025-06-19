@@ -5,7 +5,8 @@ add_library(port_lib STATIC
 )
 
 target_include_directories(port_lib PUBLIC
-    ${CMAKE_CURRENT_LIST_DIR}/..
+    ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_SOURCE_DIR}/include/..
     ${CMAKE_CURRENT_LIST_DIR}/../INCLUDE
 )
 

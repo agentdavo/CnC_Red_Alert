@@ -41,5 +41,6 @@ target_link_libraries(srcdebug_lib INTERFACE
 # (../ refers to WWLVGL)
 target_include_directories(srcdebug_lib INTERFACE
     ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_SOURCE_DIR}/include
     ${CMAKE_CURRENT_LIST_DIR}/../INCLUDE
 )

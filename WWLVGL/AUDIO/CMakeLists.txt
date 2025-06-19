@@ -9,6 +9,7 @@ add_library(audio_lib STATIC
 # Public include directories
 target_include_directories(audio_lib PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_SOURCE_DIR}/include
     ${CMAKE_CURRENT_LIST_DIR}/..
     ${CMAKE_CURRENT_LIST_DIR}/../INCLUDE
     ${CMAKE_SOURCE_DIR}/src

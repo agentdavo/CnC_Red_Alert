@@ -41,7 +41,7 @@
 
 #include <assert.h>
 #include <stdint.h>
-#include "input_asm_repl.h"
+#include <ra/input_asm_repl.h>
 #include "mouse.h"
 #include "keyboard.h"
 #include <shape.h>

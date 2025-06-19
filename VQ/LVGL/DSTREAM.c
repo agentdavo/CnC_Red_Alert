@@ -51,7 +51,7 @@
 #include <unistd.h>
 #include <stdint.h>
 #include "vqaplayp.h"
-#include "debug_log.h"
+#include <ra/debug_log.h>
 #ifndef O_BINARY
 #define O_BINARY 0
 #endif

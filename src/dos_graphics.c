@@ -3,7 +3,7 @@
 #include "gbuffer.h"
 #include "vbuffer.h"
 #include "mcgaprim.h"
-#include "debug_log.h"
+#include <ra/debug_log.h>
 
 #ifdef __cplusplus
 extern "C" {

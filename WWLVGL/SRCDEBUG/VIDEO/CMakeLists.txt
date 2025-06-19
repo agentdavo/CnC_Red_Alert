@@ -6,6 +6,7 @@ add_library(srcdebug_video_lib
 
 target_include_directories(srcdebug_video_lib PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_SOURCE_DIR}/include
     ${CMAKE_CURRENT_LIST_DIR}/../INCLUDE
     ${CMAKE_CURRENT_LIST_DIR}/../../src/lvgl/src
 )

@@ -37,9 +37,9 @@
 #ifndef PCX_H
 #define PCX_H
 
-#include "CODE/surface.h"
-#include "WIN32LIB/INCLUDE/palette.h"
-#include "CODE/wwfile.h"
+#include <surface.h>
+#include <palette.h>
+#include <wwfile.h>
 #include <string.h>
 
 struct RGB {

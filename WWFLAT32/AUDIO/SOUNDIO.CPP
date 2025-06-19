@@ -60,7 +60,7 @@
 #include	<file.h>
 #include	<i86.h>
 #include <timer.h>
-#include "../../src/miniaudio.h"
+#include <ra/miniaudio.h>
 #pragma pack(1)
 #include "audio.h"
 #pragma pack(4)

@@ -16,7 +16,7 @@
 #ifdef USE_LVGL
 #include "../src/lvgl/src/lvgl.h"
 #include "../CODE/lvgl/lvgl_backend.h"
-#include "../src/debug_log.h"
+#include <ra/debug_log.h>
 #endif
 
 static const unsigned long REQUIRED_DISK_SPACE = 15UL * 1024 * 1024; /* bytes */

@@ -1,4 +1,4 @@
-#include "miniaudio.h"  /* our wrapper */
+#include <ra/miniaudio.h>  /* our wrapper */
 #include "miniaudio/miniaudio.h"  /* external library */
 #include <pthread.h>
 #include <unistd.h>
