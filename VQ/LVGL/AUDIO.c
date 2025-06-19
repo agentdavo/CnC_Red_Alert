@@ -61,7 +61,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <malloc.h>
 #include <string.h>
 #include <sys/time.h>
 #include "vqaplayp.h"
@@ -89,9 +88,9 @@
 
 #if(VQAAUDIO_ON)
 long AutoDetect(_SOS_CAPABILITIES *digicaps, long bitsize, long channels);
-void far TimerCallback(void);
-void far cdecl AudioCallback(WORD wDriverHandle, WORD wAction,
-		WORD wSampleID);
+void TimerCallback(void);
+void cdecl AudioCallback(WORD wDriverHandle, WORD wAction,
+                WORD wSampleID);
 
 /* Dummy functions used to mark the start/end address of the file. */
 static void StartAddr(void);
@@ -297,7 +296,7 @@ void VQA_StopTimerInt(VQAHandleP *vqap)
 *
 ****************************************************************************/
 
-void far TimerCallback(void)
+void TimerCallback(void)
 {
 	VQATickCount++;
 }
@@ -972,7 +971,7 @@ long CopyAudio(VQAHandleP *vqap)
 *
 ****************************************************************************/
 
-void far cdecl AudioCallback(WORD wDriverHandle,WORD wAction,WORD wSampleID)
+void cdecl AudioCallback(WORD wDriverHandle,WORD wAction,WORD wSampleID)
 {
 	VQAAudio  *audio;
 	VQAConfig *config;

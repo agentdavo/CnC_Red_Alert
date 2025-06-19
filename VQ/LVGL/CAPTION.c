@@ -40,7 +40,7 @@
 ****************************************************************************/
 
 #include <string.h>
-#include <malloc.h>
+#include <stdlib.h>
 #include "../VQM32/font.h"
 #include "../VQM32/text.h"
 #include "../VQM32/graphics.h"

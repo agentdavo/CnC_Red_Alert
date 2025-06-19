@@ -36,7 +36,16 @@
 #define  _SOS_DEFINED   
 #include "sosdefs.h"
 
+#ifndef far
+#define far
+#endif
+#ifndef interrupt
+#define interrupt
+#endif
+
+#ifdef __WATCOMC__
 #pragma pack(4)
+#endif
  
 // error definition for sound operating system  
 #define  _SOS_ERR          -1
@@ -531,11 +540,13 @@ enum
 // define for special 18.2 callback rate to dos
 #define  _TIMER_DOS_RATE   0xff00
 
+#ifdef __WATCOMC__
 #pragma pack()
 
 #pragma aux int_3 = "int 3"
- 
-#pragma pack( 1 ) 
+
+#pragma pack( 1 )
+#endif
 typedef struct
 {
 	unsigned       region_size;
@@ -557,7 +568,9 @@ typedef struct
 
 } VDS_STRUCT;
 
-#pragma pack() 
+#ifdef __WATCOMC__
+#pragma pack()
+#endif
 
 #include "sosdata.h"
 #include "sosfnct.h"
