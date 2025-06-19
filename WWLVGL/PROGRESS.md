@@ -50,3 +50,8 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Updated `memflag.h` prototypes for C11 and added `stdint.h` includes.
 - Verified `mem` library builds cleanly with strict C11 flags.
 - Attempted to compile remaining WWLVGL folders; build failed due to C++ constructs.
+
+### 2025-06-23
+- Added `CMakeLists.txt` to `mem` subdirectory for modular builds.
+- Refreshed headers in `mem` sources and removed legacy DOS headers.
+- Verified `mem` library compiles cleanly.

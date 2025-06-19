@@ -1,6 +1,6 @@
 /*
- * Memory allocator for Red Alert.
- * last updated: 2024-06-22
+ * mem/alloc.c - memory allocator routines
+ * Last updated: 2025-06-19
  */
 
 /***************************************************************************
@@ -31,8 +31,14 @@
 #include <string.h>
 #include <stdlib.h>
 #if defined(_WIN32)
-#include <dos.h>
-#include <bios.h>
+/* Windows-specific headers removed */
+#endif
+
+#ifndef _WIN32
+typedef struct { unsigned long eax, ebx, ecx, edx, esi, edi, cflag; } REGS;
+typedef struct { unsigned short es, cs, ss, ds; } SREGS;
+static inline void segread(SREGS *s) { (void)s; }
+static inline void int386x(int i, REGS *r1, REGS *r2, SREGS *s) { (void)i; (void)r1; (void)r2; (void)s; }
 #endif
 
 

@@ -1,6 +1,6 @@
 /*
- * Memory pool implementation for Red Alert.
- * last updated: 2024-06-22
+ * mem/mem.c - memory pool implementation
+ * Last updated: 2025-06-19
  */
 
 
