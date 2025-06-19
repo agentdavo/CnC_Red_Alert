@@ -47,8 +47,6 @@
 #endif // _WIN32
 #define WIN32 1
 #define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-#include <windowsx.h>
 #endif
 
 // Note: SKB 4/11/94

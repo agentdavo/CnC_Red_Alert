@@ -1,3 +1,4 @@
+#include <port.h>
 /*
 **	Command & Conquer Red Alert(tm)
 **	Copyright 2025 Electronic Arts Inc.
@@ -64,8 +65,6 @@ extern	void Colour_Debug (int call_number);
 #define _WIN32
 #endif // _WIN32
 
-#include	<windows.h>
-#include	<windowsx.h>
 #include	"dsound.h"
 
 #include	<mem.h>
@@ -894,7 +893,7 @@ void Sound_Thread (void *)
 		EnterCriticalSection(&GlobalAudioCriticalSection);
 		maintenance_callback();
 		LeaveCriticalSection(&GlobalAudioCriticalSection);
-		Sleep(1000/40);
+		ww_sleep(1000/40);
 	}
 
 	SoundThreadActive = FALSE;

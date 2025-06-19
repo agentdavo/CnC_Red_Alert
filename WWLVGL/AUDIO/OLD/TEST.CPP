@@ -1,3 +1,4 @@
+#include <port.h>
 /*
 **	Command & Conquer Red Alert(tm)
 **	Copyright 2025 Electronic Arts Inc.
@@ -18,8 +19,6 @@
 
 
 #define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-#include <windowsx.h>
 #include "audio.h"
 
 
