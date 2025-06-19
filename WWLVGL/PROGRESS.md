@@ -24,3 +24,4 @@ Each of these will need a modern replacement or a temporary stub in order to bui
 As the port progresses, updates on how each dependency has been replaced or stubbed should be recorded here.
 
 - Enabled strict build flags in `CMakeLists.txt` so all WWLVGL sources compile with `-std=gnu11 -pedantic -Wall -Wextra -Werror`.
+- Switched audio playback to the bundled miniaudio library.
