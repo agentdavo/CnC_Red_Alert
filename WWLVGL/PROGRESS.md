@@ -66,3 +66,11 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Added `audio_lib` with new `CMakeLists.txt` and minimal headers.
 - Stubbed legacy SOS structures and removed Win32 dependencies.
 - Verified `mem_lib` and `audio_lib` build successfully with strict flags.
+
+### 2025-06-26
+- Added `port` module providing `ww_get_drive_type` wrapper and new `port.h` header.
+- Replaced Windows `GetDriveType` calls in `PLAYCD/GETCD.CPP` with portable function.
+- Removed `<dos.h>` from the file.
+- Created `CMakeLists.txt` for every WWLVGL subdirectory and updated top-level
+  CMake to include them.
+- Removed `WIN32` compile definition from `mem` build.
