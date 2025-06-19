@@ -45,6 +45,9 @@
 #include "keyboard.h"
 
 #include	"monoc.h"
+#ifdef USE_LVGL
+#include "lvgl/lvgl_input.h"
+#endif
 
 //void Message_Loop(void);
 
@@ -208,15 +211,18 @@ bool WWKeyboardClass::Put_Key_Message(unsigned short vk_key, bool release)
 		}
 	}
 
-	if (release) {
-		vk_key |= WWKEY_RLS_BIT;
-	}
+        if (release) {
+                vk_key |= WWKEY_RLS_BIT;
+        }
 
-	//
-	// Finally use the put command to enter the key into the keyboard
-	// system.
-	//
-	return(Put(vk_key));
+        //
+        // Finally use the put command to enter the key into the keyboard
+        // system.
+        //
+#ifdef USE_LVGL
+        lvgl_input_push_key(vk_key & 0xFF, !release);
+#endif
+        return(Put(vk_key));
 
 
 
@@ -398,17 +404,25 @@ void WWKeyboardClass::Message_Handler(HWND , UINT message, UINT wParam, LONG lPa
 			Put_Key_Message((unsigned short)wParam, true);
 			break;
 
-		case WM_LBUTTONDOWN:
-			Put_Key_Message(VK_LBUTTON);
-			Put(LOWORD(lParam));
-			Put(HIWORD(lParam));
-			break;
+                case WM_LBUTTONDOWN:
+                        Put_Key_Message(VK_LBUTTON);
+                        Put(LOWORD(lParam));
+                        Put(HIWORD(lParam));
+#ifdef USE_LVGL
+                        lvgl_input_set_mouse_pos(LOWORD(lParam), HIWORD(lParam));
+                        lvgl_input_push_mouse_button(VK_LBUTTON, 1);
+#endif
+                        break;
 
-		case WM_LBUTTONUP:
-			Put_Key_Message(VK_LBUTTON, true);
-			Put(LOWORD(lParam));
-			Put(HIWORD(lParam));
-			break;
+                case WM_LBUTTONUP:
+                        Put_Key_Message(VK_LBUTTON, true);
+                        Put(LOWORD(lParam));
+                        Put(HIWORD(lParam));
+#ifdef USE_LVGL
+                        lvgl_input_set_mouse_pos(LOWORD(lParam), HIWORD(lParam));
+                        lvgl_input_push_mouse_button(VK_LBUTTON, 0);
+#endif
+                        break;
 
 		case WM_LBUTTONDBLCLK:
 			Put_Key_Message(VK_LBUTTON, true);
@@ -419,17 +433,25 @@ void WWKeyboardClass::Message_Handler(HWND , UINT message, UINT wParam, LONG lPa
 			Put(HIWORD(lParam));
 			break;
 
-		case WM_MBUTTONDOWN:
-			Put_Key_Message(VK_MBUTTON);
-			Put(LOWORD(lParam));
-			Put(HIWORD(lParam));
-			break;
+                case WM_MBUTTONDOWN:
+                        Put_Key_Message(VK_MBUTTON);
+                        Put(LOWORD(lParam));
+                        Put(HIWORD(lParam));
+#ifdef USE_LVGL
+                        lvgl_input_set_mouse_pos(LOWORD(lParam), HIWORD(lParam));
+                        lvgl_input_push_mouse_button(VK_MBUTTON, 1);
+#endif
+                        break;
 
-		case WM_MBUTTONUP:
-			Put_Key_Message(VK_MBUTTON, true);
-			Put(LOWORD(lParam));
-			Put(HIWORD(lParam));
-			break;
+                case WM_MBUTTONUP:
+                        Put_Key_Message(VK_MBUTTON, true);
+                        Put(LOWORD(lParam));
+                        Put(HIWORD(lParam));
+#ifdef USE_LVGL
+                        lvgl_input_set_mouse_pos(LOWORD(lParam), HIWORD(lParam));
+                        lvgl_input_push_mouse_button(VK_MBUTTON, 0);
+#endif
+                        break;
 
 		case WM_MBUTTONDBLCLK:
 			Put_Key_Message(VK_MBUTTON, true);
@@ -440,17 +462,25 @@ void WWKeyboardClass::Message_Handler(HWND , UINT message, UINT wParam, LONG lPa
 			Put(HIWORD(lParam));
 			break;
 
-		case WM_RBUTTONDOWN:
-			Put_Key_Message(VK_RBUTTON);
-			Put(LOWORD(lParam));
-			Put(HIWORD(lParam));
-			break;
+                case WM_RBUTTONDOWN:
+                        Put_Key_Message(VK_RBUTTON);
+                        Put(LOWORD(lParam));
+                        Put(HIWORD(lParam));
+#ifdef USE_LVGL
+                        lvgl_input_set_mouse_pos(LOWORD(lParam), HIWORD(lParam));
+                        lvgl_input_push_mouse_button(VK_RBUTTON, 1);
+#endif
+                        break;
 
-		case WM_RBUTTONUP:
-			Put_Key_Message(VK_RBUTTON, true);
-			Put(LOWORD(lParam));
-			Put(HIWORD(lParam));
-			break;
+                case WM_RBUTTONUP:
+                        Put_Key_Message(VK_RBUTTON, true);
+                        Put(LOWORD(lParam));
+                        Put(HIWORD(lParam));
+#ifdef USE_LVGL
+                        lvgl_input_set_mouse_pos(LOWORD(lParam), HIWORD(lParam));
+                        lvgl_input_push_mouse_button(VK_RBUTTON, 0);
+#endif
+                        break;
 
 		case WM_RBUTTONDBLCLK:
 			Put_Key_Message(VK_RBUTTON, true);
