@@ -99,3 +99,5 @@ As the port progresses, updates on how each dependency has been replaced or stub
 ### 2025-07-01
 - Added LVGL-based surface API with blit, palette and flip operations.
 - Replaced MessageBox calls in DDRAW.CPP with logging and migrated functions to the new API.
+- Replaced DirectSound usage in `SRCDEBUG/AUDIO/SOUNDIO.CPP` with the miniaudio device API.
+- Added a minimal `soundint.h` stub in the same folder to remove DirectSound buffer fields.
