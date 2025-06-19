@@ -55,3 +55,14 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Added `CMakeLists.txt` to `mem` subdirectory for modular builds.
 - Refreshed headers in `mem` sources and removed legacy DOS headers.
 - Verified `mem` library compiles cleanly.
+
+### 2025-06-24
+- Ran CMake in `build_full/` attempting full WWLVGL compile.
+- `mem_lib` built successfully but other modules failed due to Win32 APIs and C++ features.
+- Next step: convert remaining `.cpp` files to C and add `CMakeLists.txt` per subfolder.
+
+### 2025-06-25
+- Converted `AUDIO` sources to C11 and renamed files to lowercase `.c`.
+- Added `audio_lib` with new `CMakeLists.txt` and minimal headers.
+- Stubbed legacy SOS structures and removed Win32 dependencies.
+- Verified `mem_lib` and `audio_lib` build successfully with strict flags.
