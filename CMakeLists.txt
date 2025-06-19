@@ -31,6 +31,7 @@ set(SOURCES
     src/ddraw/ddraw_stub.c
     src/fast_stub.c
     src/ipx_stub.c
+    src/file_io.c
 )
 if(DEFINED PLATFORM_EXCLUDE_SOURCES)
     list(REMOVE_ITEM SOURCES ${PLATFORM_EXCLUDE_SOURCES})
