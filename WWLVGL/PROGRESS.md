@@ -74,3 +74,9 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Created `CMakeLists.txt` for every WWLVGL subdirectory and updated top-level
   CMake to include them.
 - Removed `WIN32` compile definition from `mem` build.
+
+### 2025-06-27
+- Introduced `ww_sleep` and `ww_get_ticks` in `PORT` module.
+- Replaced `Sleep` and `GetTickCount` usages in WinComm and memory code.
+- Cleaned `PROFILE/UTIL/PROFILE.CPP` and `SRCDEBUG/MONO.CPP` of DOS-only headers.
+- Updated `AGENTS.md` with coding guidelines for cross-platform development.

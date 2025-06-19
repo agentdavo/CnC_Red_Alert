@@ -17,6 +17,12 @@ These instructions apply to all files within this folder only.
 - After each modification, run available build or test scripts where possible.
 
 Use this file as a quick reference when planning code conversions or dependency replacements within this folder.
+## Coding Guidelines
+
+- Prefer forward slashes in `#include` directives (`<sys/types.h>` rather than `<sys\types.h>`).
+- Avoid `<dos.h>`, `<conio.h>`, and direct Win32 headers except in isolated portability stubs.
+- Replace Win32 functions such as `Sleep` or `GetTickCount` with the wrappers in `PORT/port.c` (`ww_sleep`, `ww_get_ticks`).
+- Stick to the C11 standard library: `<stdint.h>`, `<stdbool.h>`, `<time.h>` and similar headers.
 
 ## Iterative Development
 

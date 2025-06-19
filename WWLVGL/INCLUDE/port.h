@@ -17,6 +17,12 @@ enum {
 
 int ww_get_drive_type(const char *path);
 
+/* Portable replacement for Win32 Sleep */
+void ww_sleep(unsigned int ms);
+
+/* Millisecond tick counter */
+unsigned long ww_get_ticks(void);
+
 #ifdef __cplusplus
 }
 #endif
