@@ -61,4 +61,5 @@ set_target_properties(lv_ww_lib PROPERTIES
     C_EXTENSIONS ON
 )
 target_compile_options(lv_ww_lib PRIVATE -std=gnu11 -pedantic -Wall -Wextra -Werror)
+target_link_libraries(lv_ww_lib PUBLIC miniaudio)
 
