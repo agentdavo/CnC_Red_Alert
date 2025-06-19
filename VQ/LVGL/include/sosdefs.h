@@ -36,6 +36,16 @@
 #ifndef  _SOSDEFS_DEFINED
 #define  _SOSDEFS_DEFINED
 
+#ifndef near
+#define near
+#endif
+#ifndef far
+#define far
+#endif
+#ifndef huge
+#define huge
+#endif
+
 #undef   _TRUE
 #undef   _FALSE
 #undef   _NULL
@@ -80,4 +90,4 @@ typedef  VOID  huge  *  HPVOID;
 typedef  unsigned       HANDLE;
 
 #endif
-
+

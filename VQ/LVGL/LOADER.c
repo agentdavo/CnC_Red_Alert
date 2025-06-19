@@ -73,7 +73,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stddef.h>
+#include <stdint.h>
 #include "vqaplayp.h"
+#include "debug_log.h"
 #include "vq.h"
 #include "unvq.h"
 #include "../VQM32/all.h"
@@ -151,7 +153,8 @@ static void Load_AudFrame(VQAHandleP *vqap);
 
 long VQA_Open(VQAHandle *vqa, char const *filename, VQAConfig *config)
 {
-	VQAHandleP  *vqap;
+        LOG_CALL("VQA_Open\n");
+        VQAHandleP  *vqap;
 	VQAHeader   *header;
 	ChunkHeader chunk;
 	long        i;

@@ -1,5 +1,7 @@
 #include <string.h>
+#include <stdint.h>
 #include "unvq.h"
+#include "debug_log.h"
 
 /* Simple placeholder implementations for assembly routines. */
 
@@ -7,6 +9,7 @@ void UnVQ_2x2(unsigned char *codebook, unsigned char *pointers,
               unsigned char *buffer, unsigned long blocksperrow,
               unsigned long numrows, unsigned long bufwidth)
 {
+    LOG_CALL("UnVQ_2x2\n");
     (void)codebook; (void)pointers; (void)blocksperrow;
     (void)numrows; (void)bufwidth;
     memset(buffer, 0, bufwidth * numrows * 2);

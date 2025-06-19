@@ -1,8 +1,10 @@
+#include <stdint.h>
 #include "../../src/lvgl/src/lvgl.h"
 #include "../../src/lvgl/src/draw/lv_image_decoder_private.h"
 #include "../../src/lvgl/src/draw/lv_draw_buf_private.h"
 #include "vq_lvgl_player.h"
 #include "vq_lvgl_decoder.h"
+#include "debug_log.h"
 
 static lv_image_decoder_t *vq_dec;
 
@@ -43,6 +45,7 @@ static void vq_decoder_close(lv_image_decoder_t *decoder, lv_image_decoder_dsc_t
 
 void vq_lvgl_decoder_init(void)
 {
+    LOG_CALL("vq_lvgl_decoder_init\n");
     if(vq_dec) return;
     vq_dec = lv_image_decoder_create();
     lv_image_decoder_set_info_cb(vq_dec, vq_decoder_info);

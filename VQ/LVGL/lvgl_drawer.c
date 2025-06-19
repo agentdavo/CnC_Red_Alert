@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
+#include <stdint.h>
+#include "debug_log.h"
 #include "vqaplayp.h"
 #include "vq.h"
 #include "unvq.h"
@@ -26,6 +28,7 @@ void UnVQ_Nop(unsigned char *codebook, unsigned char *pointers,
 
 static long Select_Frame(VQAHandleP *vqap)
 {
+    LOG_CALL("Select_Frame\n");
     VQAData      *vqabuf = vqap->VQABuf;
     VQADrawer    *drawer = &vqabuf->Drawer;
     VQAConfig    *config = &vqap->Config;

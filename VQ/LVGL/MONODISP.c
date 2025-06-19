@@ -48,6 +48,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
 #include "vq.h"
 #include "vqaplayp.h"
 #include "../VQM32/all.h"
@@ -112,7 +113,6 @@ extern char *HMIDevName;
 *
 ****************************************************************************/
 
-#pragma argsused
 void VQA_InitMono(VQAHandleP *vqap)
 {
 	VQAData   *vqabuf;
@@ -200,7 +200,7 @@ void VQA_InitMono(VQAHandleP *vqap)
 	Mono_Print("               Sound: ");
 
 	if (config->OptionFlags & VQAOPTF_AUDIO) {
-		sprintf(txt,"%u Hz", config->AudioRate);
+		sprintf(txt,"%ld Hz", config->AudioRate);
 		Mono_Print(txt);
 	}	else {
 		Mono_Print("OFF");
@@ -212,11 +212,11 @@ void VQA_InitMono(VQAHandleP *vqap)
 
 	/* Frame rates */
 	Mono_Set_Cursor(MAIN_WX1 + 18, MAIN_WY1 + 4);
-	sprintf(txt,"     Load Frame Rate: %d", config->FrameRate);
+	sprintf(txt,"     Load Frame Rate: %ld", config->FrameRate);
 	Mono_Print(txt);
 
 	Mono_Set_Cursor(MAIN_WX1 + 18, MAIN_WY1 + 5);
-	sprintf(txt,"     Draw Frame Rate: %d", config->DrawRate);
+	sprintf(txt,"     Draw Frame Rate: %ld", config->DrawRate);
 	Mono_Print(txt);
 
 	/* Slow palette */
@@ -339,7 +339,6 @@ void VQA_InitMono(VQAHandleP *vqap)
 *
 ****************************************************************************/
 
-#pragma argsused
 void VQA_UpdateMono(VQAHandleP *vqap)
 {
 	VQAData       *vqabuf;
@@ -368,7 +367,7 @@ void VQA_UpdateMono(VQAHandleP *vqap)
 
 	/* Loader data */
 	Mono_Set_Cursor(LOADER_WX1 + 22, LOADER_WY1 + 1);
-	sprintf(txt,"%4d",vqabuf->Loader.LastFrameNum);
+	sprintf(txt,"%4ld",vqabuf->Loader.LastFrameNum);
 	Mono_Print(txt);
 
 	Mono_Set_Cursor(LOADER_WX1 + 22, LOADER_WY1 + 2);
@@ -380,11 +379,11 @@ void VQA_UpdateMono(VQAHandleP *vqap)
 	Mono_Print(txt);
 
 	Mono_Set_Cursor(LOADER_WX1 + 22, LOADER_WY1 + 4);
-	sprintf(txt,"%5u",vqabuf->Loader.FrameSize);
+	sprintf(txt,"%5ld",vqabuf->Loader.FrameSize);
 	Mono_Print(txt);
 
 	Mono_Set_Cursor(LOADER_WX1 + 22, LOADER_WY1 + 5);
-	sprintf(txt,"%5u",vqabuf->Loader.MaxFrameSize);
+	sprintf(txt,"%5ld",vqabuf->Loader.MaxFrameSize);
 	Mono_Print(txt);
 
 	#if(VQAAUDIO_ON)
@@ -417,11 +416,11 @@ void VQA_UpdateMono(VQAHandleP *vqap)
 
 	/* Drawer data */
 	Mono_Set_Cursor(DRAWER_WX1 + 22,DRAWER_WY1 + 1);
-	sprintf(txt,"%4d", vqabuf->Drawer.LastFrameNum);
+	sprintf(txt,"%4ld", vqabuf->Drawer.LastFrameNum);
 	Mono_Print(txt);
 
 	Mono_Set_Cursor(DRAWER_WX1 + 22,DRAWER_WY1 + 2);
-	sprintf(txt,"%4d", vqabuf->Drawer.DesiredFrame);
+	sprintf(txt,"%4ld", vqabuf->Drawer.DesiredFrame);
 	Mono_Print(txt);
 
 	Mono_Set_Cursor(DRAWER_WX1 + 22,DRAWER_WY1 + 3);
@@ -433,7 +432,7 @@ void VQA_UpdateMono(VQAHandleP *vqap)
 	Mono_Print(txt);
 
 	Mono_Set_Cursor(DRAWER_WX1 + 22,DRAWER_WY1 + 5);
-	sprintf(txt,"%4d", vqabuf->Drawer.NumSkipped);
+	sprintf(txt,"%4ld", vqabuf->Drawer.NumSkipped);
 	Mono_Print(txt);
 
 	Mono_Set_Cursor(DRAWER_WX1 + 22,DRAWER_WY1 + 6);
@@ -503,7 +502,7 @@ void VQA_UpdateMono(VQAHandleP *vqap)
 
 	/* Flipper data */
 	Mono_Set_Cursor(FLIPPER_WX1 + 22,FLIPPER_WY1 + 1);
-	sprintf(txt,"%4d", vqabuf->Flipper.LastFrameNum);
+	sprintf(txt,"%4ld", vqabuf->Flipper.LastFrameNum);
 	Mono_Print(txt);
 	Mono_Set_Cursor(0,0);
 }

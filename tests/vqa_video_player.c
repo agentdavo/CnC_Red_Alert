@@ -1,5 +1,5 @@
 #include "../CODE/lvgl/lvgl_backend.h"
-#include "../VQ/LVGL/INCLUDE/vqaplay.h"
+#include "../VQ/LVGL/include/vqaplay.h"
 #include "../VQ/LVGL/vq_lvgl_player.h"
 #include "../CODE/externs.h"
 #include <stdio.h>

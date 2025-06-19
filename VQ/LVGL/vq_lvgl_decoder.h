@@ -1,6 +1,8 @@
 #ifndef VQ_LVGL_DECODER_H
 #define VQ_LVGL_DECODER_H
 
+#include <stdint.h>
+
 typedef struct {
     uint32_t magic;
     uint16_t w;
