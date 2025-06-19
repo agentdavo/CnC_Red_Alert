@@ -11,6 +11,8 @@ endif()
 
 include(cmake/base.cmake)
 
+add_subdirectory(WWLVGL)
+
 
 add_subdirectory(CODE)
 if(DEFINED PLATFORM_EXCLUDE_SOURCES)
@@ -48,7 +50,7 @@ elseif(REPLACEMENT_ASM_DIR)
 endif()
 
 add_executable(redalert ${SOURCES})
-target_link_libraries(redalert PRIVATE gamecode vqa32 miniaudio pthread)
+target_link_libraries(redalert PRIVATE gamecode vqa32 miniaudio pthread lv_ww_lib)
 if(USE_LVGL)
     target_link_libraries(redalert PRIVATE lvgl)
 endif()
