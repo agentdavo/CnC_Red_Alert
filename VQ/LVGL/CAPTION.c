@@ -41,6 +41,7 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include "../VQM32/font.h"
 #include "../VQM32/text.h"
 #include "../VQM32/graphics.h"
