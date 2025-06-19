@@ -1,0 +1,1 @@
+These cc-demo*.vqa files come from the downloadable demo for "Command & Conquer".
