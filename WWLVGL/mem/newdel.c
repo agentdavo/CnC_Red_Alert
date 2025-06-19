@@ -1,6 +1,6 @@
 /*
- * Memory allocation wrappers for plain C.
- * last updated: 2024-06-22
+ * mem/newdel.c - memory allocation wrappers
+ * Last updated: 2025-06-19
  */
 #include "wwmem.h"
 #include "memflag.h"

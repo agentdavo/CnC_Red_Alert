@@ -1,6 +1,6 @@
 /*
- * Memory allocation flags for the Red Alert memory system.
- * last updated: 2024-06-22
+ * mem/memflag.h - memory allocation flags
+ * Last updated: 2025-06-19
  */
 
 #ifndef MEMFLAG_H

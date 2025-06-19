@@ -1,6 +1,6 @@
 /*
- * Memory pool interface for Red Alert.
- * last updated: 2024-06-22
+ * mem/wwmem.h - memory pool interface
+ * Last updated: 2025-06-19
  */
 
 #ifndef WWMEM_H
