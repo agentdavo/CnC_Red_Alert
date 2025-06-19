@@ -54,7 +54,8 @@
  *   Shorten_Attached_Anims -- Reduces attached animation durations.                           *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#include	"function.h"
+#include "function.h"
+#include <shape.h>
 #define   VIC   1
 
 /***********************************************************************************************

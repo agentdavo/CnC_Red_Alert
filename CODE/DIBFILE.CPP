@@ -51,7 +51,9 @@
 #include <stdio.h>
 #include <math.h>
 #include <io.h>
+#ifdef _WIN32
 #include <direct.h>
+#endif
 #include <stdlib.h>
 #include "dibutil.h"
 #include "dibapi.h"
