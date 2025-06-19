@@ -95,3 +95,7 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Added FILE, BUFFER, FONT, PALETTE and VIDEO subfolders in SRCDEBUG.
 - Each module exposes an interface target using GNU++11.
 - Created SRCDEBUG/AGENTS.md documenting the C++11 requirement.
+
+### 2025-07-01
+- Replaced DirectSound usage in `SRCDEBUG/AUDIO/SOUNDIO.CPP` with the miniaudio device API.
+- Added a minimal `soundint.h` stub in the same folder to remove DirectSound buffer fields.
