@@ -22,13 +22,13 @@
  *                                                                         *
  *                 Project Name : Westwood Library                         *
  *                                                                         *
- *                    File Name : ALLOC.CPP                                *
+ *                    File Name : ALLOC.C                                  *
  *                                                                         *
  *                   Programmer : Joe L. Bostic                            *
  *                                                                         *
  *                   Start Date : February 1, 1992                         *
  *                                                                         *
- *                  Last Update : March 9, 1995 [JLB]                      *
+ *                  Last Update : June 15, 2024 [modernized]               *
  *                                                                         *
  *-------------------------------------------------------------------------*
  * Functions:                                                              *
@@ -43,8 +43,10 @@
 #include <malloc.h>
 #include <string.h>
 #include <stdlib.h>
+#if defined(_WIN32)
 #include <dos.h>
 #include <bios.h>
+#endif
 
 
 #ifndef WWMEM_H
@@ -74,7 +76,7 @@ static unsigned long TotalRam = 0L;
 static unsigned long Memory_Calls = 0L;
 
 void (*Memory_Error)(void) = NULL;
-extern void (*Memory_Error_Exit)(char *string)=NULL;
+void (*Memory_Error_Exit)(char *string) = NULL;
 
 
 //#define MEM_CHECK
@@ -94,9 +96,10 @@ extern void (*Memory_Error_Exit)(char *string)=NULL;
  * HISTORY:                                                                *
  *   06/23/1995 PWG : Created.                                             *
  *=========================================================================*/
-#include"mono.h"
-void DPMI_Lock(VOID const *, long const )
+void DPMI_Lock(const void *ptr, long size)
 {
+    (void)ptr;
+    (void)size;
 }
 
 /***************************************************************************
@@ -111,8 +114,10 @@ void DPMI_Lock(VOID const *, long const )
  * HISTORY:                                                                *
  *   06/23/1995 PWG : Created.                                             *
  *=========================================================================*/
-void DPMI_Unlock(void const *, long const )
+void DPMI_Unlock(const void *ptr, long size)
 {
+    (void)ptr;
+    (void)size;
 }
 
 /***************************************************************************
@@ -444,8 +449,9 @@ void *Resize_Alloc(void *original_ptr, unsigned long new_size_in_bytes)
  * HISTORY:                                                                *
  *   09/03/1991 JLB : Commented.                                           *
  *=========================================================================*/
-long Ram_Free(MemoryFlagType)
+long Ram_Free(MemoryFlagType flag)
 {
+    (void)flag;
 //	return(_memmax());
 #if(0)
 	MEMORYSTATUS	mem_info;
@@ -471,8 +477,9 @@ long Ram_Free(MemoryFlagType)
  * HISTORY:                                                                *
  *   06/21/1994 SKB : Created.                                             *
  *=========================================================================*/
-long Heap_Size(MemoryFlagType )
+long Heap_Size(MemoryFlagType flag)
 {
+    (void)flag;
 	if (!TotalRam) {
 		TotalRam = Total_Ram_Free(MEM_NORMAL);
 	}
@@ -495,8 +502,9 @@ long Heap_Size(MemoryFlagType )
  *   06/21/1994 SKB : Created.                                             *
  *   03/09/1995 JLB : Uses prerecorded heap size maximum.                  *
  *=========================================================================*/
-long Total_Ram_Free(MemoryFlagType )
+long Total_Ram_Free(MemoryFlagType flag)
 {
+    (void)flag;
 #if(0)
 	MEMORYSTATUS	mem_info;
 	mem_info.dwLength=sizeof(mem_info);

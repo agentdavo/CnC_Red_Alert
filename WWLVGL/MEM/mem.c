@@ -51,14 +51,17 @@
  *   Mem_Get_ID -- Returns ID of node.                                     *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-#include <wwstd.h>
+#include "wwstd.h"
 #include "wwmem.h"
-#include <timer.h>
+#include "timer.h"
 
 #include	<stddef.h>
-#include	<mem.h>
+#include	<string.h>
 
 #define DEBUG_FILL FALSE
+
+TimerClass TickCount;
+CountDownTimerClass CountDown;
 
 ////////////////////////////////////////////////////////////////////////////
 
