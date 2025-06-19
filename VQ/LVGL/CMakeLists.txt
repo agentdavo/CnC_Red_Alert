@@ -3,6 +3,8 @@ set(VQLVGL_SOURCES
     CAPTION.c
     CONFIG.c
     DRAWER.c
+    vq_lvgl_player.c
+    vq_lvgl_decoder.c
     DSTREAM.c
     LOADER.c
     MONODISP.c

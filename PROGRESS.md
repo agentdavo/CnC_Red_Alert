@@ -153,3 +153,10 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Added platformDOS, platformWIN and platformLVGL CMake presets to select sources without Windows dependencies.
 - Centralized build options into `cmake/base.cmake` and moved platform specific source lists to the platform files.
 - Added a C11 LVGL variant of the VQA playback library under `VQ/LVGL`.
+- Implemented LVGL-based player that decodes frames into an lv_img object.
+- Rewired the VQA page flip path so LVGL output writes into an `lv_img_dsc_t`
+  buffer for display.
+- Added a background buffer and swap routine so the LVGL player preloads the
+  next frame while displaying the current one.
+- Registered a custom LVGL image decoder so predecoded VQ frames use
+  `LV_COLOR_FORMAT_RAW` for display.
