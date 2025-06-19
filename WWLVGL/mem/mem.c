@@ -53,6 +53,7 @@
 
 #include "wwstd.h"
 #include "wwmem.h"
+#include "memflag.h"
 #include <time.h>
 
 #include	<stddef.h>
@@ -221,7 +222,7 @@ void *Mem_Alloc(void *poolptr, long lsize, unsigned long id)
 	**	If the total free is less than the size of the desired allocation,
 	**	then we KNOW that an allocation will fail -- just return.
 	*/
-	if (pool->TotalMem < size) {
+        if (pool->TotalMem < (unsigned long)size) {
 		return 0;
 	}
 
@@ -236,7 +237,7 @@ void *Mem_Alloc(void *poolptr, long lsize, unsigned long id)
 		/*
 		**	Fetch free memory chunk block and see if it is big enough.
 		*/
-		if (node->Size >= size) {
+                if (node->Size >= (unsigned long)size) {
 			found = TRUE;
 			break;
 		}
@@ -624,7 +625,7 @@ void *Mem_Free_Oldest(void *poolptr)
 	MemChain_Type	*node;		// Copy of pointer to oldest node.
 
 	if (!poolptr) return 0;
-	node = (MemChain *) Mem_Find_Oldest(poolptr);
+        node = (MemChain_Type *) Mem_Find_Oldest(poolptr);
 	if (Mem_Free(poolptr, node)) {
 		return(node);
 	}

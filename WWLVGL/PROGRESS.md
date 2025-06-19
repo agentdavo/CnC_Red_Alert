@@ -36,3 +36,11 @@ As the port progresses, updates on how each dependency has been replaced or stub
 ### 2025-06-20
 - Lowercased remaining MEM directories in WIN32LIB and WWFLAT32.
 - Updated documentation paths to use `mem/`.
+
+### 2025-06-21
+- Adjusted CMake to build only the `mem` library while other modules are
+  ported to C11.
+- Restored `MEM_NEW` flag and added `Add_Long_To_Pointer` helper in
+  `memflag.h`.
+- Fixed several warnings in `mem.c` and ensured the module builds cleanly
+  under strict C11 flags.
