@@ -2815,9 +2815,20 @@ typedef enum TextPrintType {
 	TPF_USE_GRAD_PAL	=0x4000		// Use a gradient palette based on fore color
 } TextPrintType;
 
-inline TextPrintType operator |(TextPrintType, TextPrintType);
-inline TextPrintType operator &(TextPrintType, TextPrintType);
-inline TextPrintType operator ~(TextPrintType);
+inline TextPrintType operator |(TextPrintType a, TextPrintType b)
+{
+    return (TextPrintType)((int)a | (int)b);
+}
+
+inline TextPrintType operator &(TextPrintType a, TextPrintType b)
+{
+    return (TextPrintType)((int)a & (int)b);
+}
+
+inline TextPrintType operator ~(TextPrintType a)
+{
+    return (TextPrintType)(~(int)a);
+}
 
 // Standard button text print flags.
 #define TPF_BUTTON	(TPF_CENTER|TPF_6PT_GRAD|TPF_NOSHADOW)
