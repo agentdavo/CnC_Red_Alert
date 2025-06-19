@@ -25,7 +25,7 @@ The following files include `windows.h` and still rely on Win32 APIs. Each will 
 - `WINCOMM/modemreg.h` – modem registry implementation.
 - `RAWFILE/rawfile.h` – header for raw file access.
 - `RAWFILE/RAWFILE.CPP` – implementation of raw file I/O.
-- `MEM/MSVC/MEM.CPP` – memory manager based on Win32.
+ - `mem/MSVC/MEM.CPP` – memory manager based on Win32.
 - `SRCDEBUG/ICONCACH.CPP` – debug icon cache module.
 - `SRCDEBUG/PROFILE.CPP` – debug profiling helpers.
 - `SRCDEBUG/RAWFILE.CPP` – debug raw file routines.

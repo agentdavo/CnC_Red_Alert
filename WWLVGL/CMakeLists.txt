@@ -11,7 +11,7 @@ set(SUBLIBS
     FONT
     IFF
     KEYBOARD
-    MEM
+    mem
     MISC
     MONO
     PALETTE
