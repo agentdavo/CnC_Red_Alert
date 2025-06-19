@@ -57,15 +57,7 @@
 #include "lint.h"
 
 
-#ifdef WIN32
-//#define WIN32_LEAN_AND_MEAN
-#include	<windows.h>
-#define WWFILE_H
-#define RAWFILE_H
-#define MONOC_H
-
-#define	_MAX_NAME	_MAX_FNAME
-
+#ifdef _WIN32
 #endif
 #include <stdbool.h>
 
@@ -119,7 +111,7 @@ struct NoInitClass {
 #define TIMER_H
 #endif
 
-#ifdef WIN32
+#ifdef _WIN32
 #include	"key.h"
 #endif
 
@@ -168,17 +160,14 @@ typedef struct {
 #include	<stdlib.h>
 #include	<stdio.h>
 #include	<stddef.h>
-#ifdef WIN32
-#include        <dos.h>
-#include        <direct.h>
-#include        <process.h>
-#include        <new>
+#ifdef _WIN32
 #endif
 #include	<stdarg.h>
 #include	<ctype.h>
 #include	<assert.h>
+#include <shape.h>
 
-#ifdef WIN32
+#ifdef _WIN32
 #define	int386x(a,b,c,d)	0
 #define	int386(a,b,c)	0
 #endif
@@ -308,7 +297,7 @@ CELL Coord_Cell(COORDINATE coord);
 #include	"readline.h"
 #include	"vortex.h"
 #include "egos.h"
-#ifdef WIN32
+#ifdef _WIN32
 #include	"pcx.h"
 #endif
 
@@ -317,7 +306,7 @@ CELL Coord_Cell(COORDINATE coord);
 #endif
 
 #if(MPATH)
-#ifdef WIN32
+#ifdef _WIN32
 #include "mpmgrw.h"
 #else
 #include "mpmgrd.h"
@@ -335,7 +324,7 @@ bool PlayMpegMovie(const char* name);
 extern int Get_CD_Drive(void);
 extern void Fatal(char const *message, ...);
 
-#ifdef WIN32
+#ifdef _WIN32
 
 extern void Free_Interpolated_Palettes(void);
 extern int Load_Interpolated_Palettes(char const *filename, BOOL add=FALSE);

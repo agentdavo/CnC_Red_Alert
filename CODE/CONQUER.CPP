@@ -85,7 +85,8 @@ B<A> test;
 
 
 
-#include	"function.h"
+#include "function.h"
+#include <shape.h>
 #include "../src/debug_log.h"
 #ifdef USE_LVGL
 #include "../src/lvgl/src/lvgl.h"
@@ -103,11 +104,15 @@ TcpipManagerClass	Winsock;
 #include	<stdlib.h>
 #include	<stdio.h>
 #include	<string.h>
-#include	<direct.h>
-#include	<fcntl.h>
+#ifdef _WIN32
+#include <direct.h>
+#endif
+#include <fcntl.h>
 #include	<io.h>
 #include	<dos.h>
-#include	<share.h>
+#ifdef _WIN32
+#include <share.h>
+#endif
 #include	"ccdde.h"
 #include	"vortex.h"
 

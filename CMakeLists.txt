@@ -51,6 +51,15 @@ endif()
 
 set(SOURCES
     ${CODE_SOURCES}
+    LAUNCH/main.c
+    src/miniaudio.c
+    src/ddraw/ddraw_stub.c
+    src/fast_stub.c
+    src/ipx_stub.c
+)
+
+if(WIN32)
+    list(APPEND SOURCES
         LAUNCHER/256bmp.c
         LAUNCHER/bitmap.cpp
         LAUNCHER/configfile.cpp
@@ -65,20 +74,8 @@ set(SOURCES
         LAUNCHER/wdebug.cpp
         LAUNCHER/winblows.cpp
         LAUNCHER/wstring.cpp
-        LAUNCH/main.c
-        src/miniaudio.c
-        src/ddraw/ddraw_stub.c
-        src/fast_stub.c
-        src/ipx_stub.c
-)
-
-set(SOURCES
-    ${CODE_SOURCES}
-    ${LAUNCHER_SRC}
-    ${LAUNCH_SRC}
-    src/miniaudio.c
-    src/ddraw/ddraw_stub.c
-)
+    )
+endif()
 
 set(ASM_SOURCES ${CODE_ASM})
 

@@ -49,12 +49,16 @@
 
 #include	"buff.h"
 #include	"function.h"
-#include	<direct.h>
+#ifdef _WIN32
+#include <direct.h>
+#endif
 #include	<fcntl.h>
 #include	<io.h>
 #include	<dos.h>
 #include	<errno.h>
-#include	<share.h>
+#ifdef _WIN32
+#include <share.h>
+#endif
 #include	"mixfile.h"
 
 #include	"cdfile.h"

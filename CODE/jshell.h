@@ -42,6 +42,9 @@
 #include <assert.h>
 #include <stdint.h>
 #include "input_asm_repl.h"
+#include "mouse.h"
+#include "keyboard.h"
+#include <shape.h>
 
 #ifdef WIN32
 //#define getch	Get_Key_Num

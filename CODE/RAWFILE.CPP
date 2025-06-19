@@ -56,8 +56,10 @@
 #include	<stdlib.h>
 #include	<stdio.h>
 #include	<string.h>
-#include	<direct.h>
-#include	<share.h>
+#ifdef _WIN32
+#include <direct.h>
+#include <share.h>
+#endif
 #include	<stddef.h>
 #include        <stdint.h>
 
