@@ -113,36 +113,9 @@
 #ifdef ABS
 #undef ABS
 #endif
-template<class T> T ABS(T a)
-{
-	return (a < 0) ? -a : a;
-}
-int ABS(int);
-long ABS(long);
-
-// Returns the minimum of the two numbers.
-#ifdef MIN
-#undef MIN
-#endif
-template<class T> T MIN(T a, T b)
-{
-	return (b < a) ? b : a;
-};
-short MIN(short, short);
-int MIN(int, int);
-long MIN(long, long);
-
-// Returns the maximum of the two numbers.
-#ifdef MAX
-#undef MAX
-#endif
-template<class T> T MAX(T a, T b)
-{
-	return (b > a) ? b : a;
-};
-short MAX(short, short);
-int MAX(int, int);
-long MAX(long, long);
+#define ABS(a) ((a) < 0 ? -(a) : (a))
+#define MIN(a,b) ((a) < (b) ? (a) : (b))
+#define MAX(a,b) ((a) > (b) ? (a) : (b))
 
 // Returns the low word of a long
 #define	LOW_WORD(a)		((unsigned short)((long)(a) & 0x0000FFFFL))
@@ -230,73 +203,17 @@ typedef void 	VOID;
 */
 #define	PROC_80386		0
 #define	PROC_80486		1
+#define Bit_Flags_On(a,b) ( (a) |= (b) )
+#define Bit_Flags_Off(a,b) ( (a) &= ~(b) )
+#define Bit_Flags_Value(a,b) ((a) & (b))
+#define Bit_Flags_Flip(a,b) ( (a) ^= (b) )
 #define	PROC_PENTIUM	2
 
-// Inline Routines
 //ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 //
 // These Template functions are generally used
 // by classes when they havce over loaded > and <.
 //
-#ifdef __cplusplus
-template<class T> T Min(T a, T b)
-{
-	return (a<b ? a : b);
-}
-
-template<class T> inline  T Max(T a, T b)
-{
-	return (a>b ? a : b);
-}
-
-template<class T> T Abs(T a)
-{
-	return ((a<0) ? -(a) : a);
-}
-
-template<class T> VOID minimize(T &a, T b)
-{
-	if( b<a )
-		a=b;
-}
-
-template<class T> VOID maximize(T &a, T b)
-{
-	if( b>a )
-		a=b;
-}
-#endif
-
-/*
-**	Macros that control bit settings in a variable.
-*/
-#define Bit_Flags_On(a,b)			a |= (b)
-#define Bit_Flags_Off(a,b)			a &= (~(b))
-#define Bit_Flags_Value(a,b)		(a & (b))
-#define Bit_Flags_Flip(a,b)		a ^= (b)
-
-// Template replacements for the user defines above
-#ifdef __cplusplus
-template<class T> VOID BitFlagsOn(T &a, T b)
-{
-	a |= (b);
-}
-
-template<class T> VOID BitFlagsOff(T &a, T b)
-{
-	a &= (~(b));
-}
-
-template<class T> T BitFlagsValue(T a, T b)
-{
-	return (a & (b));
-}
-
-template<class T> VOID BitFlagsFlip(T &a, T b)
-{
-	a ^= (b);
-}
-#endif
 
 typedef enum {
 	TBLACK,
@@ -317,5 +234,4 @@ typedef enum {
 	WHITE,
 	COLOR_PADDING=0x1000
 } ColorType;
-
 #endif
