@@ -2,7 +2,7 @@ set(VQLVGL_SOURCES
     AUDIO.c
     CAPTION.c
     CONFIG.c
-    DRAWER.c
+    lvgl_drawer.c
     vq_lvgl_player.c
     vq_lvgl_decoder.c
     DSTREAM.c
@@ -24,8 +24,9 @@ target_include_directories(vqa32_lvgl PUBLIC
      ${CMAKE_CURRENT_LIST_DIR}/INCLUDE
      ${CMAKE_CURRENT_LIST_DIR}/..
      ${CMAKE_CURRENT_LIST_DIR}/../INCLUDE
-     ${CMAKE_CURRENT_LIST_DIR}/../VQM32
-     "${CMAKE_SOURCE_DIR}"
+    ${CMAKE_CURRENT_LIST_DIR}/../VQM32
+    "${CMAKE_SOURCE_DIR}"
+    "${CMAKE_SOURCE_DIR}/WWFLAT32/INCLUDE"
  )
 
 # Enable LVGL output and C blitters while leaving assembly disabled

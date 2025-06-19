@@ -70,10 +70,10 @@ static VQAConfig _defaultconfig = {
 	 */
 	NULL,
 
-	/* NotifyFlags: Flags representing the events the client wishes to be
-	 * notified about during playback.
-	 */
-	NULL,
+        /* NotifyFlags: Flags representing the events the client wishes to be
+         * notified about during playback.
+         */
+        0,
 
 	/* Vmode: Video mode to use. */
 	MCGA,
@@ -286,7 +286,7 @@ void VQA_INIConfig(VQAConfig *config)
 	 *-----------------------------------------------------------------------*/
 	#if(VQAVIDEO_ON)
 	/* Get video mode from INI */
-	GetINIString("Player", "PlayerMode", "MCGA", buf, 80, ininame);
+    GetINIString("Player", "PlayerMode", "MCGA", buf, 80, (char *)ininame);
 
 	/* Search supported modes for a match. */
 	i = 0;
@@ -384,10 +384,10 @@ void VQA_INIConfig(VQAConfig *config)
 	#endif /* VQAVIDEO_ON */
 
 	/* Get framerate and drawrate. */
-	GetINIString("Player", "FrameRate", "-1", buf, 80, ininame);
+    GetINIString("Player", "FrameRate", "-1", buf, 80, (char *)ininame);
 	config->FrameRate = atoi(buf);
 
-	GetINIString("Player", "DrawRate", "Variable", buf, 80, ininame);
+    GetINIString("Player", "DrawRate", "Variable", buf, 80, (char *)ininame);
 
 	if (!stricmp(buf, "Variable")) {
 		config->DrawRate = -1;
@@ -398,11 +398,11 @@ void VQA_INIConfig(VQAConfig *config)
 	/*-------------------------------------------------------------------------
 	 * AUDIO SETTINGS	 
 	 *-----------------------------------------------------------------------*/
-	GetINIString("Player", "AudioRate", "-1", buf, 80, ininame);
+    GetINIString("Player", "AudioRate", "-1", buf, 80, (char *)ininame);
 	config->AudioRate = atoi(buf);
 
 	/* OptionFlags */
-	GetINIString("Player", "SoundEnabled", "True", buf, 80, ininame);
+    GetINIString("Player", "SoundEnabled", "True", buf, 80, (char *)ininame);
 
 	if (!stricmp(buf, "True") || !stricmp(buf, "1")) {
 		config->OptionFlags |= VQAOPTF_AUDIO;
@@ -421,7 +421,7 @@ void VQA_INIConfig(VQAConfig *config)
 	config->DigiDMA = -1;
 
 	/* Configure sound hardware */
-	GetINIString("Player", "Port", "-1", buf, 80, ininame);
+    GetINIString("Player", "Port", "-1", buf, 80, (char *)ininame);
 
 	if (!stricmp(buf, "-1")) {
 		config->DigiPort = -1;
@@ -429,9 +429,9 @@ void VQA_INIConfig(VQAConfig *config)
 		sscanf(buf, "%lx", &config->DigiPort);
 	}
 
-	GetINIString("Player", "IRQ", "-1", buf, 80, ininame);
+    GetINIString("Player", "IRQ", "-1", buf, 80, (char *)ininame);
 	config->DigiIRQ = atoi(buf);
-	GetINIString("Player", "DMA", "-1", buf, 80, ininame);
+    GetINIString("Player", "DMA", "-1", buf, 80, (char *)ininame);
 	config->DigiDMA = atoi(buf);
 
 	/*-------------------------------------------------------------------------
@@ -439,7 +439,7 @@ void VQA_INIConfig(VQAConfig *config)
 	 *-----------------------------------------------------------------------*/
 
 	/* Enable/Disable single stepping */ 
-	GetINIString("Player", "SingleStep", "False", buf, 80, ininame);
+    GetINIString("Player", "SingleStep", "False", buf, 80, (char *)ininame);
 
 	if (!stricmp(buf, "True") || !stricmp(buf, "1")) {
 		config->OptionFlags |= VQAOPTF_STEP;
@@ -449,7 +449,7 @@ void VQA_INIConfig(VQAConfig *config)
 	}
 
 	/* Enable/Disable Slowpalette */
-	GetINIString("Player", "SlowPalette", "False", buf, 80, ininame);
+    GetINIString("Player", "SlowPalette", "False", buf, 80, (char *)ininame);
 
 	if (!stricmp(buf, "True") || !stricmp(buf, "1")) {
 		config->OptionFlags |= VQAOPTF_SLOWPAL;
@@ -458,7 +458,7 @@ void VQA_INIConfig(VQAConfig *config)
 	}
 
 	/* Enable/Disable monochrome display */
-	GetINIString("Player", "MonoOutput", "False", buf, 80, ininame);
+    GetINIString("Player", "MonoOutput", "False", buf, 80, (char *)ininame);
 
 	if (!stricmp(buf, "True") || !stricmp(buf, "1")) {
 		config->OptionFlags |= VQAOPTF_MONO;

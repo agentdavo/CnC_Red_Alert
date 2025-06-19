@@ -50,6 +50,9 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include "vqaplayp.h"
+#ifndef O_BINARY
+#define O_BINARY 0
+#endif
 
 /*---------------------------------------------------------------------------
  * PRIVATE DECLARATIONS
