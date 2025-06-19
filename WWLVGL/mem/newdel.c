@@ -3,6 +3,7 @@
  * Last Update: June 19, 2025
  */
 #include "wwmem.h"
+#include "memflag.h"
 #include <stddef.h>
 
 void *ww_new(size_t size)

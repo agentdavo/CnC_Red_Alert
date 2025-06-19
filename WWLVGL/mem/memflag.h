@@ -35,6 +35,7 @@
 /* Memory allocation flags used by Alloc */
 typedef enum {
     MEM_NORMAL = 0x0000,
+    MEM_NEW    = 0x0001, /* used by operator new */
     MEM_CLEAR  = 0x0002,
     MEM_REAL   = 0x0004,
     MEM_TEMP   = 0x0008,
@@ -61,5 +62,12 @@ extern void (*Memory_Error)(void);
 extern void (*Memory_Error_Exit)(char *string);
 extern unsigned long MinRam;
 extern unsigned long MaxRam;
+
+#include <stdint.h>
+
+static inline void *Add_Long_To_Pointer(const void *ptr, long size)
+{
+    return (void *)((const char *)ptr + size);
+}
 
 #endif /* MEMFLAG_H */
