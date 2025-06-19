@@ -1,41 +1,19 @@
 /*
-** Command & Conquer Red Alert(tm)
-** Copyright 2025 Electronic Arts Inc.
-**
-** This program is free software: you can redistribute it and/or modify
-** it under the terms of the GNU General Public License as published by
-** the Free Software Foundation, either version 3 of the License, or
-** (at your option) any later version.
-**
-** This program is distributed in the hope that it will be useful,
-** but WITHOUT ANY WARRANTY; without even the implied warranty of
-** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-** GNU General Public License for more details.
-**
-** You should have received a copy of the GNU General Public License
-** along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ * Memory allocation flags for the Red Alert memory system.
+ * last updated: 2024-06-22
+ */
 
-/***************************************************************************
- * C O N F I D E N T I A L --- W E S T W O O D   S T U D I O S
- ***************************************************************************
- *
- * Project Name : Memory System
- * File Name    : MEMFLAG.H
- * Programmer   : Jeff Wilson
- * Start Date   : April 4, 1994
- * Last Update  : June 19, 2025
- *
- ***************************************************************************/
 #ifndef MEMFLAG_H
 #define MEMFLAG_H
 
 #include <stddef.h>
+#include <stdint.h>
+#include "wwstd.h"
 
 /* Memory allocation flags used by Alloc */
 typedef enum {
     MEM_NORMAL = 0x0000,
-    MEM_NEW    = 0x0001, /* used by operator new */
+    MEM_NEW    = 0x0001,
     MEM_CLEAR  = 0x0002,
     MEM_REAL   = 0x0004,
     MEM_TEMP   = 0x0008,
@@ -62,8 +40,6 @@ extern void (*Memory_Error)(void);
 extern void (*Memory_Error_Exit)(char *string);
 extern unsigned long MinRam;
 extern unsigned long MaxRam;
-
-#include <stdint.h>
 
 static inline void *Add_Long_To_Pointer(const void *ptr, long size)
 {

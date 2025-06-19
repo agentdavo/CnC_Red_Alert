@@ -44,3 +44,9 @@ As the port progresses, updates on how each dependency has been replaced or stub
   `memflag.h`.
 - Fixed several warnings in `mem.c` and ensured the module builds cleanly
   under strict C11 flags.
+
+### 2025-06-22
+- Simplified headers in `mem` sources and unified file comments.
+- Updated `memflag.h` prototypes for C11 and added `stdint.h` includes.
+- Verified `mem` library builds cleanly with strict C11 flags.
+- Attempted to compile remaining WWLVGL folders; build failed due to C++ constructs.

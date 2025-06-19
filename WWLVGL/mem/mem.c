@@ -1,55 +1,8 @@
 /*
-**	Command & Conquer Red Alert(tm)
-**	Copyright 2025 Electronic Arts Inc.
-**
-**	This program is free software: you can redistribute it and/or modify
-**	it under the terms of the GNU General Public License as published by
-**	the Free Software Foundation, either version 3 of the License, or
-**	(at your option) any later version.
-**
-**	This program is distributed in the hope that it will be useful,
-**	but WITHOUT ANY WARRANTY; without even the implied warranty of
-**	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-**	GNU General Public License for more details.
-**
-**	You should have received a copy of the GNU General Public License
-**	along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ * Memory pool implementation for Red Alert.
+ * last updated: 2024-06-22
+ */
 
-/***************************************************************************
- **   C O N F I D E N T I A L --- W E S T W O O D    S T U D I O S        **
- ***************************************************************************
- *                                                                         *
- *                 Project Name : Westwood Library                         *
- *                                                                         *
- *                    File Name : MEM.C                                    *
- *                                                                         *
- *                   Programmer : Joe L. Bostic                            *
- *                                Scott K. Bowen                           *
- *                                                                         *
- *                   Start Date : March 31, 1993                           *
- *                                                                         *
- *                  Last Update : June 19, 2025                            *
- *                                                                         *
- *-------------------------------------------------------------------------*
- * Functions:                                                              *
- *   Mem_Free -- Free a block of memory from system.                       *
- *   Mem_Alloc -- Allocate a block of memory from the special memory pool. *
- *   Mem_Init -- Initialize the private memory allocation pool.            *
- *   Mem_Reference -- Updates the reference time for the specified memory blo*
- *   Mem_Find -- Returns with pointer to specified memory block.           *
- *   Mem_Find_Oldest -- Returns with the memory block with the oldest time st*
- *   Mem_Free_Oldest -- Find and free the oldest memory block.             *
- *   Mem_Avail -- Returns the amount of free memory available in the cache.*
- *   Mem_Cleanup -- Performes a garbage collection on the memory cache.    *
- *   MemNode_Unlink -- Unlinks a node from the cache.                      *
- *   MemNode_Insert -- Inserts a node into a cache chain.                  *
- *   Mem_Largest_Avail -- Largest free block available.                    *
- *   Mem_Lock_Block -- Locks a block so that it cannot be moved in cleanup.*
- *   Mem_In_Use -- Makes it so a block will never be returned as oldest*
- *   Mem_Pool_Size -- Returns total amount of memory in pool.              *
- *   Mem_Get_ID -- Returns ID of node.                                     *
- * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 #include "wwstd.h"
 #include "wwmem.h"
