@@ -77,6 +77,11 @@
 #include "vq.h"
 #include "unvq.h"
 #include "vqaplayp.h"
+#ifdef USE_LVGL
+#include "../../src/lvgl/src/lvgl.h"
+#include "vq_lvgl_player.h"
+#include "vq_lvgl_decoder.h"
+#endif
 #include "../VQM32/all.h"
 
 /*---------------------------------------------------------------------------
@@ -108,6 +113,79 @@ static void PageFlip_VESA(VQAHandle *vqabuf);
 
 static long DrawFrame_Buffer(VQAHandle *vqa);
 static long PageFlip_Nop(VQAHandle *vqa);
+
+#ifdef USE_LVGL
+static lv_obj_t *img_obj;
+static lv_img_dsc_t *frame_desc;
+static unsigned char *next_frame_data;
+
+static void decode_frame_node(VQAHandle *vqa, VQAFrameNode *frame, unsigned char *dest)
+{
+    if (!frame)
+        return;
+
+    VQAData      *vqabuf = ((VQAHandleP *)vqa)->VQABuf;
+    VQADrawer    *drawer = &vqabuf->Drawer;
+    VQAFrameNode *save = drawer->CurFrame;
+
+    drawer->CurFrame = frame;
+    Prepare_Frame(vqabuf);
+
+#ifndef PHARLAP_TNT
+    vqabuf->UnVQ(frame->Codebook->Buffer, frame->Pointers,
+                 dest + sizeof(vq_raw_image_t),
+                 drawer->BlocksPerRow, drawer->NumRows, drawer->ImageWidth);
+#else
+    FP_SET(dest, dest + sizeof(vq_raw_image_t), 0x14);
+    vqabuf->UnVQ(frame->Codebook->Buffer, frame->Pointers,
+                 dest + sizeof(vq_raw_image_t),
+                 drawer->BlocksPerRow, drawer->NumRows, drawer->ImageWidth);
+#endif
+
+    drawer->CurFrame = save;
+}
+
+static void swap_lvgl_buffers(void)
+{
+    unsigned char *tmp = frame_desc->data;
+    frame_desc->data = next_frame_data;
+    next_frame_data = tmp;
+
+    vq_raw_image_t *desc_raw = (vq_raw_image_t *)frame_desc->data;
+    desc_raw->data = (const uint8_t *)(desc_raw + 1);
+
+    vq_raw_image_t *next_raw = (vq_raw_image_t *)next_frame_data;
+    next_raw->data = (const uint8_t *)(next_raw + 1);
+
+    lv_img_set_src(img_obj, frame_desc);
+}
+
+static void lvgl_drawer_init(const VQAHeader *header)
+{
+    size_t sz;
+
+    frame_desc = get_lvgl_frame_desc();
+    frame_desc->header.cf = LV_COLOR_FORMAT_RAW;
+    frame_desc->header.w = header->ImageWidth;
+    frame_desc->header.h = header->ImageHeight;
+
+    sz = header->ImageWidth * header->ImageHeight;
+    frame_desc->data_size = sizeof(vq_raw_image_t) + sz;
+    frame_desc->data = malloc(frame_desc->data_size);
+    next_frame_data = malloc(frame_desc->data_size);
+
+    vq_raw_image_t *raw = (vq_raw_image_t *)frame_desc->data;
+    raw->magic = VQ_RAW_MAGIC;
+    raw->w = header->ImageWidth;
+    raw->h = header->ImageHeight;
+    raw->data = (const uint8_t *)(raw + 1);
+    memcpy(next_frame_data, frame_desc->data, sizeof(vq_raw_image_t));
+
+    img_obj = lv_img_create(lv_screen_active());
+    lv_img_set_src(img_obj, frame_desc);
+    vq_lvgl_decoder_init();
+}
+#endif
 
 #ifndef PHARLAP_TNT
 static void cdecl UnVQ_Nop(unsigned char *codebook, unsigned char *pointers,
@@ -160,9 +238,13 @@ void VQA_Configure_Drawer(VQAHandleP *vqap)
 	/* Dereference commonly used data members for quicker access. */
 	vqabuf = vqap->VQABuf;
 	drawer = &vqabuf->Drawer;
-	header = &vqap->Header;
-	config = &vqap->Config;
-	origin = (config->DrawFlags & VQACFGF_ORIGIN);
+        header = &vqap->Header;
+        config = &vqap->Config;
+        origin = (config->DrawFlags & VQACFGF_ORIGIN);
+
+#ifdef USE_LVGL
+        lvgl_drawer_init(header);
+#endif
 
 	/*-------------------------------------------------------------------------
 	 * SET THE DRAW POSITION OF THE MOVIE.
@@ -729,9 +811,13 @@ static long DrawFrame_Xmode(VQAHandle *vqa)
 	vqabuf->Flags |= VQADATF_UPDATE;
 
 	/* Move to the next frame */
-	drawer->CurFrame = curframe->Next;
+        drawer->CurFrame = curframe->Next;
 
-	return (0);
+#ifdef USE_LVGL
+        lv_obj_invalidate(img_obj);
+#endif
+
+        return (0);
 }
 
 
@@ -1429,7 +1515,11 @@ static long DrawFrame_MCGABuf(VQAHandle *vqa)
 
 static long PageFlip_MCGABuf(VQAHandle *vqa)
 {
-	VQAData       *vqabuf;
+#ifdef USE_LVGL
+        (void)vqa;
+        return 0;
+#else
+        VQAData       *vqabuf;
 	VQADrawer     *drawer;
 	VQAFrameNode  *curframe;
 	VQAConfig     *config;
@@ -1520,8 +1610,9 @@ static long PageFlip_MCGABuf(VQAHandle *vqa)
 		}
 	}
 
-	return (0);
+        return (0);
 }
+#endif
 #endif /* VQAMCGA_ON */
 
 
@@ -1937,12 +2028,18 @@ static void PageFlip_VESA(VQAHandle *vqa)
 			break;
 	}
 
-	/* Invoke user's callback routine */
-	if (config->DrawerCallback != NULL) {
-		if ((config->DrawerCallback(drawer->ImageBuf, curframe->FrameNum)) != 0) {
-			return (VQAERR_EOF);
-		}
-	}
+        /* Invoke user's callback routine */
+        if (config->DrawerCallback != NULL) {
+#ifdef USE_LVGL
+                if ((config->DrawerCallback(frame_desc->data + sizeof(vq_raw_image_t), curframe->FrameNum)) != 0) {
+                        return (VQAERR_EOF);
+                }
+#else
+                if ((config->DrawerCallback(drawer->ImageBuf, curframe->FrameNum)) != 0) {
+                        return (VQAERR_EOF);
+                }
+#endif
+        }
 }
 #endif /* VQAVESA_ON */
 
@@ -1969,17 +2066,17 @@ static void PageFlip_VESA(VQAHandle *vqa)
 
 static long DrawFrame_Buffer(VQAHandle *vqa)
 {
-	VQAData      *vqabuf;
-	VQADrawer    *drawer;
-	VQAFrameNode *curframe;
-	VQAConfig    *config;
-	long         rc;
+        VQAData      *vqabuf;
+        VQADrawer    *drawer;
+        VQAFrameNode *curframe;
+        VQAConfig    *config;
+        long         rc;
 
-	#ifndef PHARLAP_TNT
-	unsigned char *buff;
-	#else
-	FARPTR        buff;
-	#endif
+        #ifndef PHARLAP_TNT
+        unsigned char *buff;
+        #else
+        FARPTR        buff;
+        #endif
 
 	/* Dereference data members for quicker access. */
 	config = &((VQAHandleP *)vqa)->Config;
@@ -2012,11 +2109,19 @@ static long DrawFrame_Buffer(VQAHandle *vqa)
 	/* Dereference current frame for quicker access. */
 	curframe = drawer->CurFrame;
 
-	#ifndef PHARLAP_TNT
-	buff = (unsigned char *)(drawer->ImageBuf + drawer->ScreenOffset);
-	#else
-	FP_SET(buff, drawer->ImageBuf + drawer->ScreenOffset, 0x14);
-	#endif
+#ifndef PHARLAP_TNT
+#ifdef USE_LVGL
+        buff = (unsigned char *)frame_desc->data + sizeof(vq_raw_image_t);
+#else
+        buff = (unsigned char *)(drawer->ImageBuf + drawer->ScreenOffset);
+#endif
+#else
+#ifdef USE_LVGL
+        FP_SET(buff, frame_desc->data + sizeof(vq_raw_image_t), 0x14);
+#else
+        FP_SET(buff, drawer->ImageBuf + drawer->ScreenOffset, 0x14);
+#endif
+#endif
 
 	/* Un-VQ the image */
 	vqabuf->UnVQ(curframe->Codebook->Buffer, curframe->Pointers, buff,
@@ -2032,16 +2137,33 @@ static long DrawFrame_Buffer(VQAHandle *vqa)
 	vqabuf->Flags |= VQADATF_UPDATE;
 
 	/* Invoke user's callback routine */
-	if (config->DrawerCallback != NULL) {
-		if ((config->DrawerCallback(drawer->ImageBuf, curframe->FrameNum)) != 0) {
-			return (VQAERR_EOF);
-		}
-	}
+        if (config->DrawerCallback != NULL) {
+#ifdef USE_LVGL
+                if ((config->DrawerCallback(frame_desc->data + sizeof(vq_raw_image_t), curframe->FrameNum)) != 0) {
+                        return (VQAERR_EOF);
+                }
+#else
+                if ((config->DrawerCallback(drawer->ImageBuf, curframe->FrameNum)) != 0) {
+                        return (VQAERR_EOF);
+                }
+#endif
+        }
 
-	/* Move to the next frame */
-	drawer->CurFrame = curframe->Next;
+        /* Move to the next frame */
+        drawer->CurFrame = curframe->Next;
 
-	return (0);
+#ifdef USE_LVGL
+        /* Preload the upcoming frame */
+        decode_frame_node(vqa, drawer->CurFrame, next_frame_data);
+
+        /* Display current frame */
+        lv_obj_invalidate(img_obj);
+
+        /* Swap to the preloaded frame */
+        swap_lvgl_buffers();
+#endif
+
+        return (0);
 }
 
 
