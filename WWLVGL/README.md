@@ -42,7 +42,7 @@ Shared headers: drawing macros, keyboard structures, memory utilities, and other
 ### KEYBOARD/
 Keyboard and mouse input handlers. The old directory contains real-mode assembly drivers (KEYIREAL.ASM), while the main code uses Windows APIs.
 
-### MEM/
+### mem/
 Memory allocators and wrappers, plus assembly helpers like MEM_COPY.ASM and VMPAGEIN.ASM.
 
 ### MISC/

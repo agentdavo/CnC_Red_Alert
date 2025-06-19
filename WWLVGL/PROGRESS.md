@@ -27,3 +27,12 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Switched audio playback to the bundled miniaudio library.
 - Began C11 cleanup of MEM module: removed DOS-only headers, added stub `timer.h`, and replaced deprecated includes.
 - Replaced legacy MEMFLAG.H with C11 version and added timer stubs for MEM build.
+
+### 2025-06-19
+- Renamed MEM/ to mem/ and removed obsolete new.h includes.
+- Updated headers for C11 style.
+- Build attempted with strict flags; compilation errors remain.
+
+### 2025-06-20
+- Lowercased remaining MEM directories in WIN32LIB and WWFLAT32.
+- Updated documentation paths to use `mem/`.
