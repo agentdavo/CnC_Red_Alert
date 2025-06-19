@@ -106,3 +106,8 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Removed `<windows.h>` and `<windowsx.h>` includes from legacy modules listed in `MIGRATION.md`.
 - Added `port.h` to provide `ww_sleep` and other wrappers.
 - Replaced a `Sleep` call in `AUDIO/OLD/SOUNDIO.CPP` with `ww_sleep`.
+
+### 2025-07-03
+- Updated `SRCDEBUG/AUDIO/SOUNDIO.CPP` to initialise a `miniaudio` device
+  directly and dropped the old wrapper calls.
+- `srcdebug_audio_lib` now links against the bundled `miniaudio` library.

@@ -7,3 +7,5 @@ target_include_directories(srcdebug_audio_lib INTERFACE
     ${CMAKE_SOURCE_DIR}/include
     ${CMAKE_CURRENT_LIST_DIR}/../INCLUDE
 )
+
+target_link_libraries(srcdebug_audio_lib INTERFACE miniaudio)

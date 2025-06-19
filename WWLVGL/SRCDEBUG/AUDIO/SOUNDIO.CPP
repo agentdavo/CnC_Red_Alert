@@ -7,8 +7,7 @@
 #include <cstdint>
 #include "audio.h"
 #include "soundint.h"
-#include <ra/audio_decompress.h>
-#include <ra/miniaudio.h>
+#include "miniaudio/miniaudio.h"
 
 #ifndef TRUE
 #define TRUE 1
@@ -26,6 +25,7 @@ typedef struct {
 static ma_slot slots[MAX_SFX];
 static int g_channels = 2;
 static unsigned int g_rate = 22050;
+static ma_device device;
 
 static void mix_callback(void *output, unsigned int frame_count)
 {
@@ -62,15 +62,29 @@ BOOL Audio_Init(void *window, int bits_per_sample, BOOL stereo,
     (void)window; (void)bits_per_sample; (void)reverse_channels;
     g_channels = stereo ? 2 : 1;
     g_rate = rate;
-    ra_timer_init();
     memset(slots, 0, sizeof(slots));
-    return ra_audio_init(rate, g_channels, mix_callback) == 0 ? TRUE : FALSE;
+
+    ma_device_config config = ma_device_config_init(ma_device_type_playback);
+    config.playback.format   = ma_format_s16;
+    config.playback.channels = g_channels;
+    config.sampleRate        = rate;
+    config.dataCallback      = [](ma_device* dev, void* output, const void* input, ma_uint32 frame_count) {
+        (void)dev; (void)input;
+        mix_callback(output, frame_count);
+    };
+
+    if (ma_device_init(NULL, &config, &device) != MA_SUCCESS)
+        return FALSE;
+    if (ma_device_start(&device) != MA_SUCCESS) {
+        ma_device_uninit(&device);
+        return FALSE;
+    }
+    return TRUE;
 }
 
 void Sound_End(void)
 {
-    ra_audio_shutdown();
-    ra_timer_uninit();
+    ma_device_uninit(&device);
     for (int i = 0; i < MAX_SFX; ++i) free_slot(i);
 }
 
