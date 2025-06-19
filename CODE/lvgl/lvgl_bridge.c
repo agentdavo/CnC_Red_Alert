@@ -1,7 +1,7 @@
 #include "lvgl_bridge.h"
 #include "../../src/lvgl/src/lvgl.h"
 #include "../../WWFLAT32/PALETTE/palette.h"
-#include "../../src/debug_log.h"
+#include <ra/debug_log.h>
 #include <stdint.h>
 #include <stddef.h>
 #include <string.h>

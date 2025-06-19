@@ -46,7 +46,8 @@ target_link_libraries(lv_ww_lib INTERFACE
 )
 
 target_include_directories(lv_ww_lib INTERFACE
-    ${CMAKE_CURRENT_LIST_DIR}/INCLUDE
+    ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_SOURCE_DIR}/include/INCLUDE
     ${CMAKE_CURRENT_LIST_DIR}/..
     ${CMAKE_CURRENT_LIST_DIR}/../WWFLAT32/WINDOWS
     ${CMAKE_CURRENT_LIST_DIR}/../VQ/INCLUDE/WWLIB32

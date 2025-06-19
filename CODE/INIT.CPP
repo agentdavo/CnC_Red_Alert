@@ -60,7 +60,7 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 #include	"function.h"
-#include "../src/debug_log.h"
+#include <ra/debug_log.h>
 #include	"loaddlg.h"
 #ifdef WIN32
 #ifdef WINSOCK_IPX

@@ -47,7 +47,7 @@
 #include <palette.h>
 #include "../INCLUDE/surface_api.h"
 #include <stdio.h>
-#include "../../src/debug_log.h"
+#include <ra/debug_log.h>
 
 
 LPDIRECTDRAW		DirectDrawObject=NULL;	// Pointer to the direct draw object

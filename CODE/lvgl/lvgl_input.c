@@ -1,6 +1,6 @@
 #include "lvgl_input.h"
 #include "../../src/lvgl/src/lvgl.h"
-#include "../../src/debug_log.h"
+#include <ra/debug_log.h>
 
 #define KEY_QUEUE_LEN 32
 

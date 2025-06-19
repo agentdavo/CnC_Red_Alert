@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
-#include "debug_log.h"
+#include <ra/debug_log.h>
 #include "vqaplayp.h"
 #include "vq.h"
 #include "unvq.h"

@@ -1,5 +1,5 @@
 #include "../../INCLUDE/surface_api.h"
-#include "../../../src/debug_log.h"
+#include <ra/debug_log.h>
 
 void surface_init(struct WWSurface *surf, int w, int h)
 {

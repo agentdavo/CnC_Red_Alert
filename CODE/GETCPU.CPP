@@ -50,7 +50,7 @@
 
 #define	bool	int
 
-#include "cpuid.h"
+#include <ra/cpuid.h>
 
 
 

@@ -4,7 +4,7 @@
 #include "../../src/lvgl/src/draw/lv_draw_buf_private.h"
 #include "vq_lvgl_player.h"
 #include "vq_lvgl_decoder.h"
-#include "debug_log.h"
+#include <ra/debug_log.h>
 
 static lv_image_decoder_t *vq_dec;
 

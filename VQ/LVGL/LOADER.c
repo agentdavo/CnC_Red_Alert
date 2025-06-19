@@ -75,7 +75,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include "vqaplayp.h"
-#include "debug_log.h"
+#include <ra/debug_log.h>
 #include "vq.h"
 #include "unvq.h"
 #include "../VQM32/all.h"

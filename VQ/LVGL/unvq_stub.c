@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdint.h>
 #include "unvq.h"
-#include "debug_log.h"
+#include <ra/debug_log.h>
 
 /* Simple placeholder implementations for assembly routines. */
 
