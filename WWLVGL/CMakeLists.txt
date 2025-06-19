@@ -9,6 +9,28 @@ set(ENABLE_ASM OFF CACHE BOOL "Enable assembly modules")
 # Build sub-libraries individually
 add_subdirectory(mem)
 add_subdirectory(AUDIO)
+add_subdirectory(PORT)
+add_subdirectory(DIPTHONG)
+add_subdirectory(DRAWBUFF)
+add_subdirectory(EXAMPLE)
+add_subdirectory(FONT)
+add_subdirectory(IFF)
+add_subdirectory(INCLUDE)
+add_subdirectory(KEYBOARD)
+add_subdirectory(MISC)
+add_subdirectory(MONO)
+add_subdirectory(MOVIE)
+add_subdirectory(PALETTE)
+add_subdirectory(PLAYCD)
+add_subdirectory(PROFILE)
+add_subdirectory(RAWFILE)
+add_subdirectory(SHAPE)
+add_subdirectory(SRCDEBUG)
+add_subdirectory(TILE)
+add_subdirectory(TIMER)
+add_subdirectory(WINCOMM)
+add_subdirectory(WSA)
+add_subdirectory(WW_WIN)
 
 set(WWLVGL_SOURCES)
 
@@ -23,7 +45,11 @@ set(WWLVGL_SOURCES)
 # endif()
 
 add_library(lv_ww_lib INTERFACE)
-target_link_libraries(lv_ww_lib INTERFACE mem_lib audio_lib)
+target_link_libraries(lv_ww_lib INTERFACE
+    mem_lib
+    audio_lib
+    port_lib
+)
 
 target_include_directories(lv_ww_lib INTERFACE
     ${CMAKE_CURRENT_LIST_DIR}/INCLUDE

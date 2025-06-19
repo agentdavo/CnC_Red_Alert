@@ -42,7 +42,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <dos.h>
+#include "port.h"
 
 #include "wwstd.h"
 #include "playcd.h"
@@ -80,7 +80,7 @@ GetCDClass::GetCDClass(VOID)
 
 	for (char i='c' ; i<='z' ; i++){
 		path[0]=i;
-		if (GetDriveType (path) == DRIVE_CDROM){
+                if (ww_get_drive_type(path) == DRIVE_CDROM){
 			CDDrives[CDCount++] = (int) (i-'a');
 		}
 	}
@@ -91,7 +91,7 @@ GetCDClass::GetCDClass(VOID)
 	if (CDCount == 0) {
 		for (char i='a' ; i<='b' ; i++){
 			path[0]=i;
-			if (GetDriveType (path) == DRIVE_CDROM){
+                        if (ww_get_drive_type(path) == DRIVE_CDROM){
 				CDDrives[CDCount++] = (int) (i-'a');
 			}
 		}
