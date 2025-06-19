@@ -69,6 +69,7 @@ As the port progresses, updates on how each dependency has been replaced or stub
   for the original assembly routines.
 - Added stubs for missing <dos.h> and <pharlap.h> to keep the build going.
 - Removed legacy compiler pragmas and compiled VQA32 sources as C++.
+- Added CMake build for an LVGL variant (vqa32_lvgl) with C blitters and no assembly.
 - Created portable stubs for the Greenleaf serial functions in `fast.h` and `src/fast_stub.c`.
 - Updated legacy VQM headers to compile under C11 by defining the `cdecl` macro when missing.
 - Fixed remaining DOS path separators in VQM include files.
