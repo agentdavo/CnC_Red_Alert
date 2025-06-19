@@ -34,6 +34,7 @@ int lvgl_init_backend(const char *backend)
         if(!disp) {
             LOG_MSG("lv_sdl_window_create failed\n");
         } else {
+            LOG_CALL("SDL window created\n");
             lv_sdl_mouse_create();
             lv_sdl_mousewheel_create();
             lv_sdl_keyboard_create();
@@ -45,19 +46,25 @@ int lvgl_init_backend(const char *backend)
         disp = lv_wayland_window_create(ScreenWidth, ScreenHeight, "Red Alert", NULL);
         if(!disp) {
             LOG_MSG("lv_wayland_window_create failed\n");
+        } else {
+            LOG_CALL("Wayland window created\n");
         }
 #endif
     } else if(strcasecmp(name, "fbdev") == 0) {
 #if LV_USE_LINUX_FBDEV
         disp = lv_linux_fbdev_create();
-        if(disp)
+        if(disp) {
             lv_linux_fbdev_set_file(disp, "/dev/fb0");
+            LOG_CALL("FBDEV device opened\n");
+        }
 #endif
     } else {
 #if LV_USE_X11
         disp = lv_x11_window_create("Red Alert", ScreenWidth, ScreenHeight);
-        if(disp)
+        if(disp) {
             lv_x11_inputs_create(disp, NULL);
+            LOG_CALL("X11 window created\n");
+        }
 #endif
     }
 
@@ -66,6 +73,7 @@ int lvgl_init_backend(const char *backend)
         LOG_MSG("LVGL backend '%s' failed, falling back to SDL\n", name);
         disp = lv_sdl_window_create(ScreenWidth, ScreenHeight);
         if(disp) {
+            LOG_CALL("SDL fallback window created\n");
             lv_sdl_mouse_create();
             lv_sdl_mousewheel_create();
             lv_sdl_keyboard_create();
@@ -81,6 +89,7 @@ int lvgl_init_backend(const char *backend)
     }
 
     lv_display_set_default(disp);
+    LOG_CALL("LVGL display set as default\n");
 
     if(strcasecmp(name, "sdl") == 0)
         current_backend = LV_BACKEND_SDL;
