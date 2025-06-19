@@ -37,7 +37,16 @@
 
 #include <stddef.h>
 
-#pragma pack(4) 
+#ifndef far
+#define far
+#endif
+#ifndef interrupt
+#define interrupt
+#endif
+
+#ifdef __WATCOMC__
+#pragma pack(4)
+#endif
 extern   WORD     _sosDIGIData_Start;
 extern   WORD     _sosDIGIData_End;
 extern   WORD     _wSOSDriverLinear[];
@@ -122,7 +131,9 @@ extern   WORD  wDetectParam;
 }
 #endif 
 
+#ifdef __WATCOMC__
 #pragma pack()
+#endif
 
 #endif
 
