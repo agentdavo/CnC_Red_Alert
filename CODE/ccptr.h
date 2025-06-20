@@ -54,16 +54,16 @@ class CCPtr
 
 		operator T * (void) const {
 			if (ID == -1) return(NULL);
-			assert(Heap != NULL && (unsigned)ID < Heap->Length());
+                       assert(Heap != NULL && (unsigned)ID < (unsigned)Heap->Length());
 			return((T*) (*Heap)[ID]);
 		}
 		T & operator * (void) const {
-			assert(Heap != NULL && (unsigned)ID < Heap->Length());
+                       assert(Heap != NULL && (unsigned)ID < (unsigned)Heap->Length());
 			return(*(T*)(*Heap)[ID]);
 		}
 		T * operator -> (void) const {
 			if (ID == -1) return(NULL);
-			assert(Heap != NULL && (unsigned)ID < Heap->Length());
+                       assert(Heap != NULL && (unsigned)ID < (unsigned)Heap->Length());
 			return((T*) (*Heap)[ID]);
 		}
 

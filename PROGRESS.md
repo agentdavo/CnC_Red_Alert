@@ -163,3 +163,4 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Introduced portable file I/O wrappers (`src/file_io.c`) that replace DOS-specific calls with standard POSIX functions.
 - Started restructuring WWLVGL build using a dedicated CMakeLists with component library enumeration.
 - Enabled pedantic compilation flags in `WWLVGL/CMakeLists.txt` so every file builds with `-std=gnu11 -pedantic -Wall -Wextra -Werror`.
+- Cast CCPtr assertions to compare unsigned values and silence compiler warnings (CODE/ccptr.h).
