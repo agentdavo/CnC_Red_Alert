@@ -37,6 +37,7 @@
 
 #ifndef MISSION_H
 #define MISSION_H
+#include "defines.h"
 
 #include "object.h"
 #include	"monoc.h"
