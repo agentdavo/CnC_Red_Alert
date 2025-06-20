@@ -389,4 +389,4 @@ PRIVATE BOOL cdecl Bump_Palette(VOID *palette1, UWORD step)
 
 /**************************** End of palette.cpp ***************************/
 
-
+

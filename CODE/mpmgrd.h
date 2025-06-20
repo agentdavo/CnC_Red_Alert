@@ -80,4 +80,3 @@ private:
 
 #endif // mpmgr_h
 
-

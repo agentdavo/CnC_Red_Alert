@@ -54,4 +54,3 @@ void * Get_Icon_Set_Map(void const *iconset);
 
 #endif //TILE_H
 
-
