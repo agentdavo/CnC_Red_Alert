@@ -20,25 +20,25 @@
 #define BLINK_RAPID "\x1b[6m"
 #define CC_CLEAR "\x1b[0m"
 
-enum COLORS
+enum CONIO_COLORS
 {
-  BLACK = 0,
-  BLUE = 1,
-  GREEN = 2,
-  CYAN = 3,
-  RED = 4,
-  MAGENTA = 5,
-  BROWN = 6,
-  LIGHTGRAY = 7,
-  DARKGRAY = 8,
-  LIGHTBLUE = 9,
-  LIGHTGREEN = 10,
-  LIGHTCYAN = 11,
-  LIGHTRED = 12,
-  LIGHTMAGENTA = 13,
-  YELLOW = 14,
-  WHITE = 15,
-  BLINK = 128
+  CONIO_BLACK = 0,
+  CONIO_BLUE = 1,
+  CONIO_GREEN = 2,
+  CONIO_CYAN = 3,
+  CONIO_RED = 4,
+  CONIO_MAGENTA = 5,
+  CONIO_BROWN = 6,
+  CONIO_LIGHTGRAY = 7,
+  CONIO_DARKGRAY = 8,
+  CONIO_LIGHTBLUE = 9,
+  CONIO_LIGHTGREEN = 10,
+  CONIO_LIGHTCYAN = 11,
+  CONIO_LIGHTRED = 12,
+  CONIO_LIGHTMAGENTA = 13,
+  CONIO_YELLOW = 14,
+  CONIO_WHITE = 15,
+  CONIO_BLINK = 128
 };
 
 static struct termios oldterm, newterm;
@@ -120,71 +120,71 @@ void textcolor(int newcolor)
 
   switch (newcolor)
   {
-  case BLACK:
+  case CONIO_BLACK:
     s = "\x1b[30m";
     break;
 
-  case BLUE:
+  case CONIO_BLUE:
     s = "\x1b[34m";
     break;
 
-  case GREEN:
+  case CONIO_GREEN:
     s = "\x1b[32m";
     break;
 
-  case CYAN:
+  case CONIO_CYAN:
     s = "\x1b[36m";
     break;
 
-  case RED:
+  case CONIO_RED:
     s = "\x1b[31;1m";
     break;
 
-  case MAGENTA:
+  case CONIO_MAGENTA:
     s = "\x1b[35m";
     break;
 
-  case BROWN:
+  case CONIO_BROWN:
     s = "\x1b[31m";
     break;
 
-  case LIGHTGRAY:
+  case CONIO_LIGHTGRAY:
     s = "\x1b[30;1m";
     break;
 
-  case DARKGRAY:
+  case CONIO_DARKGRAY:
     s = "\x1b[30m";
     break;
 
-  case LIGHTBLUE:
+  case CONIO_LIGHTBLUE:
     s = "\x1b[34;1m";
     break;
 
-  case LIGHTGREEN:
+  case CONIO_LIGHTGREEN:
     s = "\x1b[32,1m";;
     break;
 
-  case LIGHTCYAN:
+  case CONIO_LIGHTCYAN:
     s = "\x1b[36;1m";
     break;
 
-  case LIGHTRED:
+  case CONIO_LIGHTRED:
     s = "\x1b[31;1m";
     break;
 
-  case LIGHTMAGENTA:
+  case CONIO_LIGHTMAGENTA:
     s = "\x1b[35;1m";
     break;
 
-  case YELLOW:
+  case CONIO_YELLOW:
     s = "\x1b[33;1m";
     break;
 
-  case WHITE:
+  case CONIO_WHITE:
     s = "\x1b[37;1m";
     break;
 
-  case BLINK:
+  case CONIO_BLINK:
     s = "\x1b[30m";
     break;
   };
@@ -200,71 +200,71 @@ void textbackground(int newcolor)
 
   switch (newcolor)
   {
-  case BLACK:
+  case CONIO_BLACK:
     s = "\x1b[40m";
     break;
 
-  case BLUE:
+  case CONIO_BLUE:
     s = "\x1b[44m";
     break;
 
-  case GREEN:
+  case CONIO_GREEN:
     s = "\x1b[42m";
     break;
 
-  case CYAN:
+  case CONIO_CYAN:
     s = "\x1b[46m";
     break;
 
-  case RED:
+  case CONIO_RED:
     s = "\x1b[41;1m";
     break;
 
-  case MAGENTA:
+  case CONIO_MAGENTA:
     s = "\x1b[45m";
     break;
 
-  case BROWN:
+  case CONIO_BROWN:
     s = "\x1b[41m";
     break;
 
-  case LIGHTGRAY:
+  case CONIO_LIGHTGRAY:
     s = "\x1b[40;1m";
     break;
 
-  case DARKGRAY:
+  case CONIO_DARKGRAY:
     s = "\x1b[40m";
     break;
 
-  case LIGHTBLUE:
+  case CONIO_LIGHTBLUE:
     s = "\x1b[44;1m";
     break;
 
-  case LIGHTGREEN:
+  case CONIO_LIGHTGREEN:
     s = "\x1b[42,1m";;
     break;
 
-  case LIGHTCYAN:
+  case CONIO_LIGHTCYAN:
     s = "\x1b[46;1m";
     break;
 
-  case LIGHTRED:
+  case CONIO_LIGHTRED:
     s = "\x1b[41;1m";
     break;
 
-  case LIGHTMAGENTA:
+  case CONIO_LIGHTMAGENTA:
     s = "\x1b[45;1m";
     break;
 
-  case YELLOW:
+  case CONIO_YELLOW:
     s = "\x1b[43;1m";
     break;
 
-  case WHITE:
+  case CONIO_WHITE:
     s = "\x1b[47;1m";
     break;
 
-  case BLINK:
+  case CONIO_BLINK:
     s = "\x1b[40m";
     break;
   };
