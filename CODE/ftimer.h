@@ -299,7 +299,7 @@ inline unsigned long TTimerClass<T>::Value(void) const
 {
        unsigned long value = Accumulated;
        if (this->Started != 0xFFFFFFFFU) {
-               value += BasicTimerClass<T>::Value();
+               value += this->BasicTimerClass<T>::Value();
        }
        return(value);
 }
@@ -326,7 +326,7 @@ inline TTimerClass<T>::operator unsigned long(void) const
 {
        unsigned long value = Accumulated;
        if (this->Started != 0xFFFFFFFFU) {
-               value += BasicTimerClass<T>::Value();
+               value += this->BasicTimerClass<T>::Value();
        }
        return(value);
 }
@@ -353,7 +353,7 @@ inline unsigned long TTimerClass<T>::operator () (void) const
 {
        unsigned long value = Accumulated;
        if (this->Started != 0xFFFFFFFFU) {
-               value += BasicTimerClass<T>::Value();
+               value += this->BasicTimerClass<T>::Value();
        }
        return(value);
 }
@@ -378,7 +378,7 @@ template<class T>
 void TTimerClass<T>::Stop(void)
 {
        if (this->Started != 0xFFFFFFFFU) {
-               Accumulated += BasicTimerClass<T>::operator unsigned long();
+               Accumulated += this->BasicTimerClass<T>::operator unsigned long();
                this->Started = 0xFFFFFFFFU;
        }
 }
@@ -532,16 +532,16 @@ inline CDTimerClass<T>::~CDTimerClass(void)
 template<class T>
 inline unsigned long CDTimerClass<T>::Value(void) const
 {
-	unsigned long remain = DelayTime;
-	if (Started != 0xFFFFFFFFU) {
-		unsigned long value = BasicTimerClass<T>::Value();
-		if (value < remain) {
-			return(remain - value);
-		} else {
-			return(0);
-		}
-	}
-	return(remain);
+        unsigned long remain = this->DelayTime;
+        if (this->Started != 0xFFFFFFFFU) {
+                unsigned long value = this->BasicTimerClass<T>::Value();
+                if (value < remain) {
+                        return(remain - value);
+                } else {
+                        return(0);
+                }
+        }
+        return(remain);
 }
 
 /***********************************************************************************************
@@ -563,16 +563,16 @@ inline unsigned long CDTimerClass<T>::Value(void) const
 template<class T>
 inline CDTimerClass<T>::operator unsigned long(void) const
 {
-	unsigned long remain = DelayTime;
-	if (Started != 0xFFFFFFFFU) {
-		unsigned long value = BasicTimerClass<T>::Value();
-		if (value < remain) {
-			return(remain - value);
-		} else {
-			return(0);
-		}
-	}
-	return(remain);
+        unsigned long remain = this->DelayTime;
+        if (this->Started != 0xFFFFFFFFU) {
+                unsigned long value = this->BasicTimerClass<T>::Value();
+                if (value < remain) {
+                        return(remain - value);
+                } else {
+                        return(0);
+                }
+        }
+        return(remain);
 }
 
 /***********************************************************************************************
@@ -594,16 +594,16 @@ inline CDTimerClass<T>::operator unsigned long(void) const
 template<class T>
 inline unsigned long CDTimerClass<T>::operator () (void) const
 {
-	unsigned long remain = DelayTime;
-	if (Started != 0xFFFFFFFFU) {
-		unsigned long value = BasicTimerClass<T>::Value();
-		if (value < remain) {
-			return(remain - value);
-		} else {
-			return(0);
-		}
-	}
-	return(remain);
+        unsigned long remain = this->DelayTime;
+        if (this->Started != 0xFFFFFFFFU) {
+                unsigned long value = this->BasicTimerClass<T>::Value();
+                if (value < remain) {
+                        return(remain - value);
+                } else {
+                        return(0);
+                }
+        }
+        return(remain);
 }
 
 /***********************************************************************************************
@@ -625,10 +625,10 @@ inline unsigned long CDTimerClass<T>::operator () (void) const
 template<class T>
 void CDTimerClass<T>::Stop(void)
 {
-	if (Started != 0xFFFFFFFFU) {
-		DelayTime = *this;
-		Started = 0xFFFFFFFFU;
-	}
+        if (this->Started != 0xFFFFFFFFU) {
+                this->DelayTime = *this;
+                this->Started = 0xFFFFFFFFU;
+        }
 }
 
 /***********************************************************************************************
@@ -649,9 +649,9 @@ void CDTimerClass<T>::Stop(void)
 template<class T>
 void CDTimerClass<T>::Start(void)
 {
-	if (Started == 0xFFFFFFFFU) {
-		Started = Timer();
-	}
+        if (this->Started == 0xFFFFFFFFU) {
+                this->Started = this->Timer();
+        }
 }
 
 /***********************************************************************************************
@@ -673,7 +673,7 @@ void CDTimerClass<T>::Start(void)
 template<class T>
 inline bool CDTimerClass<T>::Is_Active(void) const
 {
-	return(Started != 0xFFFFFFFFU);
+        return(this->Started != 0xFFFFFFFFU);
 }
 
 #endif
