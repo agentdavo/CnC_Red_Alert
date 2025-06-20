@@ -11,6 +11,7 @@ The original source relies on several legacy libraries that are no longer readil
 - **Greenleaf Communications Library (GCL)** – provides networking/communication routines. Substitute with standard networking APIs or remove if unused.
 - **Human Machine Interface (HMI) "Sound Operating System" (SOS)** – provides audio support. Replace with a modern audio library or stub.
 - **IPX networking components** – some modules expect IPX APIs. Implement wrappers around modern sockets or stub out for now.
+- **LVGL** – included as a Git submodule. Run `git submodule update --init src/lvgl` before building when `USE_LVGL` is enabled.
 
 | Library | Example locations | Replacement or stub | Remaining work |
 | ------- | ----------------- | ------------------ | --------------- |
