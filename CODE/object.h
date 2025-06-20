@@ -37,6 +37,7 @@
 
 #ifndef OBJECT_H
 #define OBJECT_H
+#include "defines.h"
 
 #include	"abstract.h"
 

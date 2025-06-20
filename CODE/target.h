@@ -37,6 +37,7 @@
 
 #ifndef TARGET_H
 #define TARGET_H
+#include "defines.h"
 
 
 inline RTTIType Target_Kind(TARGET a)
