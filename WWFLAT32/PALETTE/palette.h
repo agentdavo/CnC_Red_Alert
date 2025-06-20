@@ -82,4 +82,4 @@ extern "C" extern UBYTE  CurrentPalette[];		/* in pal.asm */
 #endif // PALETTE_H
 
 /***************************** End of palette.h ****************************/
-
+
