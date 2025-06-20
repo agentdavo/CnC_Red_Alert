@@ -1,40 +1,39 @@
 /*
-**	Command & Conquer Red Alert(tm)
-**	Copyright 2025 Electronic Arts Inc.
+** Command & Conquer Red Alert(tm)
+** Copyright 2025 Electronic Arts Inc.
 **
-**	This program is free software: you can redistribute it and/or modify
-**	it under the terms of the GNU General Public License as published by
-**	the Free Software Foundation, either version 3 of the License, or
-**	(at your option) any later version.
+** This program is free software: you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation, either version 3 of the License, or
+** (at your option) any later version.
 **
-**	This program is distributed in the hope that it will be useful,
-**	but WITHOUT ANY WARRANTY; without even the implied warranty of
-**	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-**	GNU General Public License for more details.
+** This program is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+** GNU General Public License for more details.
 **
-**	You should have received a copy of the GNU General Public License
-**	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+** You should have received a copy of the GNU General Public License
+** along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 /***************************************************************************
- **     C O N F I D E N T I A L --- W E S T W O O D   S T U D I O S       **
- ***************************************************************************
  *                                                                         *
  *                 Project Name : wwstd.h                                  *
  *                                                                         *
- *                    File Name : WWLIB.H                                  *
+ *                    File Name : WWSTD.H                                  *
  *                                                                         *
  *                   Programmer : Jeff Wilson                              *
  *                                                                         *
  *                   Start Date : March 1, 1994                            *
  *                                                                         *
- *                  Last Update : March 1, 1994   []                       *
+ *                  Last Update : June 19, 2025                           *
  *                                                                         *
  *-------------------------------------------------------------------------*
  * Functions:                                                              *
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 #ifndef WWSTD_H
+<<<<<<< Updated upstream:WIN32LIB/INCLUDE/WWSTD.H
 #define	WWSTD_H
 
 
@@ -57,61 +56,88 @@
 // Before this library is done, this needs to be able to be set to TRUE.
 // Once it is, the FALSE parts should be removed from the source code.
 #define LIB_EXTERNS_RESOLVED FALSE
+=======
+#define WWSTD_H
+>>>>>>> Stashed changes:WWLVGL/INCLUDE/wwstd.h
 
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <dos.h>
-#include <bios.h>
+#include <stdarg.h>
 
-//================================
+/* Platform-specific includes are removed to avoid issues like the stray character in windows.h.
+ * If Windows-specific functionality is needed, ensure a clean windows.h or use a minimal subset.
+ * For now, we assume a POSIX-like environment or minimal dependencies.
+ */
 
-// TRUE and FALSE are defined in pltypes.h
+/* Common constants */
+#define WW_ERROR (-1)
+#define PRIVATE static
+#define PUBLIC /* Routines & data don't have a specifier */
 
-#ifndef IBM
-#define IBM				TRUE
-#endif
+/* Platform definitions */
+#define WW_ANY TRUE
+#define IBM FALSE
+#define AMIGA FALSE
+#define SEGA FALSE
 
-#ifndef AMIGA
-#define AMIGA			FALSE
-#endif
+#define TRUE 1
+#define FALSE 0
 
-#ifndef	SEGA
-#define	SEGA			FALSE
-#endif
+/* Array size macro */
+#define GET_SIZE(a) (sizeof(a) / sizeof(*(a)))
 
-/*
-**	Common constants used in normal code.
-*/
-#define WW_ERROR		-1
+/* Absolute value macros */
+#define ABS_INT(a) ((a) < 0 ? -(a) : (a))
+#define ABS_LONG(a) ((a) < 0 ? -(a) : (a))
 
-#ifdef NULL
-#undef	NULL
-#endif
+/* Min/max macros */
+#define MIN_SHORT(a, b) ((b) < (a) ? (b) : (a))
+#define MIN_INT(a, b) ((b) < (a) ? (b) : (a))
+#define MIN_LONG(a, b) ((b) < (a) ? (b) : (a))
 
-#ifndef NULL
-#define NULL		0L
-#endif
+#define MAX_SHORT(a, b) ((b) > (a) ? (b) : (a))
+#define MAX_INT(a, b) ((b) > (a) ? (b) : (a))
+#define MAX_LONG(a, b) ((b) > (a) ? (b) : (a))
 
-#ifdef VOID
-#undef VOID
-#endif
+/* Word manipulation macros */
+#define LOW_WORD(a) ((unsigned short)((long)(a) & 0x0000FFFFL))
+#define HIGH_WORD(a) ((unsigned long)(a) >> 16)
+#define MAKE_LONG(a, b) (((long)(a) << 16) | (long)((b) & 0x0000FFFFL))
 
-#define PRIVATE		static
-#define PUBLIC			/* Routines & data don't have a specifier */
+/* Sprintf-like macro */
+#define AssembleTo(dest, fmt, ...) \
+    do { \
+        va_list argptr; \
+        if ((fmt) != (dest)) { \
+            va_start(argptr, fmt); \
+            vsnprintf((dest), sizeof(dest), (fmt), argptr); \
+            va_end(argptr); \
+        } \
+    } while (0)
 
-#ifdef __cplusplus
-#define	__CPPARGS	...
-#else
-#define	__CPPARGS
-#endif
+/* Type definitions */
+typedef void VOID;
+typedef int BOOL; /* 32 bits for speed; use char for size optimization */
+typedef int INT;
+typedef unsigned int UINT;
+typedef char BYTE;
+typedef unsigned char UBYTE;
+typedef unsigned char UCHAR;
+typedef short WORD;
+typedef unsigned short UWORD;
+typedef unsigned short USHORT;
+typedef long LONG;
+typedef unsigned long ULONG;
+typedef unsigned long REALPTR;
+typedef char *FARPTR;
 
-// This macro will get the size (in elements) of the specified array.
-#ifdef GET_SIZE
-#undef GET_SIZE
-#endif
-#define GET_SIZE(a)					((sizeof(a) / sizeof(*a)))
+/* Processor types */
+#define PROC_80386 0
+#define PROC_80486 1
+#define PROC_PENTIUM 2
 
+<<<<<<< Updated upstream:WIN32LIB/INCLUDE/WWSTD.H
 #pragma option -Jg
 // Returns the absolute value of the number.
 #ifdef ABS
@@ -313,26 +339,38 @@ template<class T> VOID BitFlagsFlip(T &a, T b)
 	a ^= (b);
 }
 #endif
+=======
+/* Bit manipulation macros */
+#define Bit_Flags_On(a, b) ((a) |= (b))
+#define Bit_Flags_Off(a, b) ((a) &= (~(b)))
+#define Bit_Flags_Value(a, b) ((a) & (b))
+#define Bit_Flags_Flip(a, b) ((a) ^= (b))
+>>>>>>> Stashed changes:WWLVGL/INCLUDE/wwstd.h
 
+/* Color enumeration */
 typedef enum {
-	TBLACK,
-	PURPLE,
-	CYAN,
-	GREEN,
-	LTGREEN,
-	YELLOW,
-	PINK,
-	BROWN,
-	RED,
-	LTCYAN,
-	LTBLUE,
-	BLUE,
-	BLACK,
-	GREY,
-	LTGREY,
-	WHITE,
-	COLOR_PADDING=0x1000
+    TBLACK,
+    PURPLE,
+    CYAN,
+    GREEN,
+    LTGREEN,
+    YELLOW,
+    PINK,
+    BROWN,
+    RED,
+    LTCYAN,
+    LTBLUE,
+    BLUE,
+    BLACK,
+    GREY,
+    LTGREY,
+    WHITE,
+    COLOR_PADDING = 0x1000
 } ColorType;
 
+<<<<<<< Updated upstream:WIN32LIB/INCLUDE/WWSTD.H
 
 #endif
+=======
+#endif /* WWSTD_H */
+>>>>>>> Stashed changes:WWLVGL/INCLUDE/wwstd.h

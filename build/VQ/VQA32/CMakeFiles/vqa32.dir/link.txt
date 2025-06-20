@@ -1,0 +1,2 @@
+/usr/bin/ar qc libvqa32.a CMakeFiles/vqa32.dir/AUDIO.CPP.o CMakeFiles/vqa32.dir/CAPTION.CPP.o CMakeFiles/vqa32.dir/CONFIG.CPP.o CMakeFiles/vqa32.dir/DRAWER.CPP.o CMakeFiles/vqa32.dir/DSTREAM.CPP.o CMakeFiles/vqa32.dir/LOADER.CPP.o CMakeFiles/vqa32.dir/MONODISP.CPP.o CMakeFiles/vqa32.dir/TASK.CPP.o CMakeFiles/vqa32.dir/VERTAG.CPP.o
+/usr/bin/ranlib libvqa32.a

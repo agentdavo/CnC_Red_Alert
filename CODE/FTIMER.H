@@ -1,63 +1,41 @@
 /*
-**	Command & Conquer Red Alert(tm)
-**	Copyright 2025 Electronic Arts Inc.
+** Command & Conquer Red Alert(tm)
+** Copyright 2025 Electronic Arts Inc.
 **
-**	This program is free software: you can redistribute it and/or modify
-**	it under the terms of the GNU General Public License as published by
-**	the Free Software Foundation, either version 3 of the License, or
-**	(at your option) any later version.
+** This program is free software: you can redistribute it and/or modify
+** it under the terms of the GNU General Public License as published by
+** the Free Software Foundation, either version 3 of the License, or
+** (at your option) any later version.
 **
-**	This program is distributed in the hope that it will be useful,
-**	but WITHOUT ANY WARRANTY; without even the implied warranty of
-**	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-**	GNU General Public License for more details.
+** This program is distributed in the hope that it will be useful,
+** but WITHOUT ANY WARRANTY; without even the implied warranty of
+** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+** GNU General Public License for more details.
 **
-**	You should have received a copy of the GNU General Public License
-**	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+** You should have received a copy of the GNU General Public License
+** along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-/* $Header: /CounterStrike/FTIMER.H 1     3/03/97 10:24a Joe_bostic $ */
-/***********************************************************************************************
- ***              C O N F I D E N T I A L  ---  W E S T W O O D  S T U D I O S               ***
- ***********************************************************************************************
- *                                                                                             *
- *                 Project Name : Command & Conquer                                            *
- *                                                                                             *
- *                    File Name : FTIMER.H                                                     *
- *                                                                                             *
- *                   Programmer : Joe L. Bostic                                                *
- *                                                                                             *
- *                   Start Date : 03/16/95                                                     *
- *                                                                                             *
- *                  Last Update : July 6, 1996 [JLB]                                           *
- *                                                                                             *
- *                                                                                             *
- *---------------------------------------------------------------------------------------------*
- * Functions:                                                                                  *
- *   BasicTimerClass<T>::BasicTimerClass -- Constructor for basic timer class.                 *
- *   BasicTimerClass<T>::operator () -- Function operator for timer object.                    *
- *   BasicTimerClass<T>::operator long -- Conversion to long operator.                         *
- *   BasicTimerClass<T>::~BasicTimerClass -- Destructor for basic timer object.                *
- *   TTimerClass<T>::Is_Active -- Checks to see if the timer is counting.                      *
- *   TTimerClass<T>::Start -- Starts (resumes) a stopped timer.                                *
- *   TTimerClass<T>::Stop -- Stops the current timer from incrementing.                        *
- *   TTimerClass<T>::TTimerClass -- Constructor for timer class object.                        *
- *   TTimerClass<T>::operator () -- Function operator for timer object.                        *
- *   TTimerClass<T>::operator long -- Conversion operator for timer object.                    *
- *   CDTimerClass<T>::CDTimerClass -- Constructor for count down timer.                        *
- *   CDTimerClass<T>::Is_Active -- Checks to see if the timer object is active.                *
- *   CDTimerClass<T>::Start -- Starts (resumes) the count down timer.                          *
- *   CDTimerClass<T>::Stop -- Stops (pauses) the count down timer.                             *
- *   CDTimerClass<T>::operator () -- Function operator for the count down timer.               *
- *   CDTimerClass<T>::operator long -- Conversion to long operator function.                   *
- *   CDTimerClass<T>::~CDTimerClass -- Destructor for the count down timer object.             *
- *   TTimerClass<T>::Value -- Returns with the current value of the timer.                     *
- *   CDTimerClass<T>::Value -- Fetches the current value of the countdown timer.               *
- * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/***************************************************************************
+ *                                                                         *
+ *                 Project Name : Command & Conquer                        *
+ *                                                                         *
+ *                    File Name : FTIMER.H                                 *
+ *                                                                         *
+ *                   Programmer : Joe L. Bostic                            *
+ *                                                                         *
+ *                   Start Date : March 16, 1995                           *
+ *                                                                         *
+ *                  Last Update : June 19, 2025                           *
+ *                                                                         *
+ *-------------------------------------------------------------------------*
+ * Functions:                                                              *
+ * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 #ifndef FTIMER_H
 #define FTIMER_H
 
+<<<<<<< Updated upstream:CODE/FTIMER.H
 
 /*
 **	The "bool" integral type was defined by the C++ committee in
@@ -71,25 +49,21 @@ enum {false=0,true=1};
 typedef int bool;
 #endif
 #endif
+=======
+#include <wwstd.h>
+#include <time.h>
+>>>>>>> Stashed changes:CODE/ftimer.h
 
+/* Timer type enumeration */
+typedef enum {
+    BT_SYSTEM, /* System timer (fixed rate) */
+    BT_USER    /* User timer (variable rate) */
+} BaseTimerEnum;
 
-/**********************************************************************
-**	This class is solely used as a parameter to a constructor that does
-**	absolutely no initialization to the object being constructed. By using
-**	this method, it is possible to load and save data directly from a
-**	class that has virtual functions. The construction process automatically
-**	takes care of initializing the virtual function table pointer and the
-**	rest of the constructor doesn't initialize any data members. After loading
-**	into a class object, simply perform an in-place new operation.
-*/
-#ifndef NOINITCLASS
-#define NOINITCLASS
-struct NoInitClass {
-	public:
-		void operator () (void) const {};
-};
-#endif
+/* Timer tick source */
+ULONG Timer(BaseTimerEnum type); /* Returns current system or user ticks */
 
+<<<<<<< Updated upstream:CODE/FTIMER.H
 
 /*
 **	This is a timer class that watches a constant rate timer (specified by the parameter
@@ -106,23 +80,53 @@ class BasicTimerClass {
 		// Constructor allows assignment as if class was integral 'long' type.
 		BasicTimerClass(unsigned long set=0);
 		BasicTimerClass(NoInitClass const & );
+=======
+/* Basic timer structure for upward counting */
+typedef struct BasicTimer {
+    ULONG started; /* Time started (ticks) */
+} BasicTimer;
+>>>>>>> Stashed changes:CODE/ftimer.h
 
-		~BasicTimerClass(void);
+/* Timer structure with start/stop capability */
+typedef struct TTimer {
+    ULONG started;     /* Time started (ticks) */
+    ULONG accumulated; /* Accumulated ticks */
+    BaseTimerEnum type; /* Timer type (system or user) */
+} TTimer;
 
-		// Fetch current value of timer.
-		unsigned long Value(void) const;
+/* Countdown timer structure */
+typedef struct CDTimer {
+    ULONG started;    /* Time started (ticks) */
+    ULONG delay_time; /* Remaining ticks before expiration */
+    BaseTimerEnum type; /* Timer type (system or user) */
+} CDTimer;
 
-		// Conversion operator to allow consistent treatment with integral types.
-		operator unsigned long(void) const;
+/* Function prototypes for basic timer */
+BasicTimer *BasicTimer_Create(ULONG set);
+VOID BasicTimer_Destroy(BasicTimer *timer);
+ULONG BasicTimer_Value(const BasicTimer *timer);
 
-		// Function operator to allow timer object definition to be cascaded.
-		unsigned long operator () (void) const;
+/* Function prototypes for start/stop timer */
+TTimer *TTimer_Create(BaseTimerEnum type, ULONG set, BOOL start);
+VOID TTimer_Destroy(TTimer *timer);
+ULONG TTimer_Value(const TTimer *timer);
+VOID TTimer_Stop(TTimer *timer);
+VOID TTimer_Start(TTimer *timer);
+BOOL TTimer_Is_Active(const TTimer *timer);
+LONG TTimer_Set(TTimer *timer, LONG value, BOOL start);
+LONG TTimer_Reset(TTimer *timer, BOOL start);
 
-	protected:
-		T Timer;			// Timer regulator (ticks at constant rate).
-		unsigned long Started;	// Time started.
-};
+/* Function prototypes for countdown timer */
+CDTimer *CDTimer_Create(BaseTimerEnum type, ULONG set, BOOL start);
+VOID CDTimer_Destroy(CDTimer *timer);
+ULONG CDTimer_Value(const CDTimer *timer);
+VOID CDTimer_Stop(CDTimer *timer);
+VOID CDTimer_Start(CDTimer *timer);
+BOOL CDTimer_Is_Active(const CDTimer *timer);
+LONG CDTimer_Set(CDTimer *timer, LONG value, BOOL start);
+LONG CDTimer_Reset(CDTimer *timer, BOOL start);
 
+<<<<<<< Updated upstream:CODE/FTIMER.H
 
 template<class T>
 inline BasicTimerClass<T>::BasicTimerClass(NoInitClass const & )
@@ -711,3 +715,9 @@ inline bool CDTimerClass<T>::Is_Active(void) const
 }
 
 #endif
+=======
+/* Global timer system state */
+extern BOOL TimerSystemOn;
+
+#endif /* FTIMER_H */
+>>>>>>> Stashed changes:CODE/ftimer.h

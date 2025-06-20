@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblv_ww_lib.a CMakeFiles/lv_ww_lib.dir/SRCDEBUG/ALLOC.c.o CMakeFiles/lv_ww_lib.dir/SRCDEBUG/WINHIDE.c.o CMakeFiles/lv_ww_lib.dir/SRCDEBUG/_DIPTABL.c.o
+/usr/bin/ranlib liblv_ww_lib.a
