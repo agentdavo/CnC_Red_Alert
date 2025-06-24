@@ -5,4 +5,4 @@ GNU++11 toolchain when modifying these sources.
 
 - Compile with `-std=gnu++11`.
 - Keep the code portable across Windows, Linux and macOS.
-- Document significant changes in `../PROGRESS.md`.
+- Document significant changes in `../progress.md`.

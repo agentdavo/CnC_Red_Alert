@@ -79,7 +79,7 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Introduced `ww_sleep` and `ww_get_ticks` in `PORT` module.
 - Replaced `Sleep` and `GetTickCount` usages in WinComm and memory code.
 - Cleaned `PROFILE/UTIL/PROFILE.CPP` and `SRCDEBUG/MONO.CPP` of DOS-only headers.
-- Updated `AGENTS.md` with coding guidelines for cross-platform development.
+- Updated `agents.md` with coding guidelines for cross-platform development.
 
 ### 2025-06-28
 - Restructured SRCDEBUG into module subfolders (AUDIO, RAWFILE, PROFILE, SHAPE, WINCOMM).
@@ -94,7 +94,7 @@ As the port progresses, updates on how each dependency has been replaced or stub
 ### 2025-06-30
 - Added FILE, BUFFER, FONT, PALETTE and VIDEO subfolders in SRCDEBUG.
 - Each module exposes an interface target using GNU++11.
-- Created SRCDEBUG/AGENTS.md documenting the C++11 requirement.
+- Created SRCDEBUG/agents.md documenting the C++11 requirement.
 
 ### 2025-07-01
 - Added LVGL-based surface API with blit, palette and flip operations.
@@ -103,7 +103,7 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Added a minimal `soundint.h` stub in the same folder to remove DirectSound buffer fields.
 
 ### 2025-07-02
-- Removed `<windows.h>` and `<windowsx.h>` includes from legacy modules listed in `MIGRATION.md`.
+- Removed `<windows.h>` and `<windowsx.h>` includes from legacy modules listed in `migration.md`.
 - Added `port.h` to provide `ww_sleep` and other wrappers.
 - Replaced a `Sleep` call in `AUDIO/OLD/SOUNDIO.CPP` with `ww_sleep`.
 
