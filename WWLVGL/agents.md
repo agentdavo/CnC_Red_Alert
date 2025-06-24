@@ -13,7 +13,7 @@ These instructions apply to all files within this folder only.
 - Prefer C11-compliant code. Avoid C++ features unless absolutely necessary.
 - Replace legacy Windows APIs (e.g., DirectX, HMI SOS) with open source portable libraries or stub implementations.
 - Keep assembly modules intact until a C equivalent is available.
-- Document notable changes and dependency replacements in `PROGRESS.md`.
+- Document notable changes and dependency replacements in `progress.md`.
 - After each modification, run available build or test scripts where possible.
 
 Use this file as a quick reference when planning code conversions or dependency replacements within this folder.
@@ -30,7 +30,7 @@ When working on this folder iteratively:
 
 - Build the WWLVGL sources after each change using either `CMake` or `MAKE.BAT`.
 - Fix any compilation issues before proceeding to the next change.
-- Document each step in `PROGRESS.md` so progress can be tracked.
+- Document each step in `progress.md` so progress can be tracked.
 - Some build scripts (for example `MAKE.BAT`) invoke tools from the `CODE/` directory.
   Keep these cross-directory paths valid or update them if the layout changes.
 
@@ -39,15 +39,15 @@ When working on this folder iteratively:
 Several Markdown files in this folder contain critical details about the original library.
 Consult these documents when porting or refactoring code - update them if anything is wrong or needs clarification.
 
-- `AGENTS.md` – this document.
+- `agents.md` – this document.
 - `README.md` – intro.
-- `DRAWING.md` – explanation of the rendering pipeline and assembly helpers.
-- `SOUND.md` – breakdown of the audio subsystem and DirectSound routines.
-- `DDRAW.md` – lists DirectDraw usage across the code base.
-- `LVGL.md` – documents the LVGL integration.
-- `KEYBOARD.md` – notes on the keyboard handler and LVGL keyboard integration.
-- `MOUSE.md` – notes on the mouse system and LVGL input devices.
-- `PROGRESS.md` – location where you document work completed per PR.
+- `drawing.md` – explanation of the rendering pipeline and assembly helpers.
+- `sound.md` – breakdown of the audio subsystem and DirectSound routines.
+- `ddraw.md` – lists DirectDraw usage across the code base.
+- `lvgl.md` – documents the LVGL integration.
+- `keyboard.md` – notes on the keyboard handler and LVGL keyboard integration.
+- `mouse.md` – notes on the mouse system and LVGL input devices.
+- `progress.md` – location where you document work completed per PR.
 
 ### **C11-Compliance Quick-Check (apply to every legacy source file)**
 

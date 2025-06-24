@@ -88,11 +88,11 @@ Westwood Animation format support (WSA.CPP, XORDELTA.ASM).
 Basic window setup functions for the application (WINDOWS.CPP, WINHIDE.CPP).
 
 ## Migration Status
-`MIGRATION.md` lists remaining dependencies on Windows APIs. Items include DirectDraw routines in `SRCDEBUG/DDRAW.CPP` and DirectSound playback in `AUDIO/SOUNDIO.CPP`. Later entries note that assembly graphics and audio routines have been ported to C and replaced with portable implementations when `ENABLE_ASM` is disabled.
+`migration.md` lists remaining dependencies on Windows APIs. Items include DirectDraw routines in `SRCDEBUG/DDRAW.CPP` and DirectSound playback in `AUDIO/SOUNDIO.CPP`. Later entries note that assembly graphics and audio routines have been ported to C and replaced with portable implementations when `ENABLE_ASM` is disabled.
 
 ## Coding Tasks to Convert WWLVGL to Portable C11
 
-1. **Catalog Windows dependencies.** Audit each subdirectory (e.g., MISC/DDRAW.CPP, AUDIO/SOUNDIO.CPP) and document which functions rely on DirectX, Win32 window management, or serial APIs. Record findings in `PROGRESS.md`.
+1. **Catalog Windows dependencies.** Audit each subdirectory (e.g., MISC/DDRAW.CPP, AUDIO/SOUNDIO.CPP) and document which functions rely on DirectX, Win32 window management, or serial APIs. Record findings in `progress.md`.
 
 2. **Convert C++ sources to C.** Replace constructors, destructors, and other C++ features in DRAWBUFF, RAWFILE, and other modules with plain C functions and structures.
 
@@ -110,6 +110,6 @@ Basic window setup functions for the application (WINDOWS.CPP, WINHIDE.CPP).
 
 9. **Remove Greenleaf modem code.** Replace WINCOMM with a thin POSIX socket layer and stub modem calls so networked play can use standard TCP/UDP.
 
-10. **Update the build system.** Create CMake targets for each library, compiling them as C11 sources. Gradually eliminate Watcom-specific options from `PROJECT.CFG` and the makefiles. Document the new build process and remaining TODO items in `PROGRESS.md`.
+10. **Update the build system.** Create CMake targets for each library, compiling them as C11 sources. Gradually eliminate Watcom-specific options from `PROJECT.CFG` and the makefiles. Document the new build process and remaining TODO items in `progress.md`.
 
 These steps will transform WWLVGL into a portable C11 library, free from Windows-only dependencies and assembly requirements.

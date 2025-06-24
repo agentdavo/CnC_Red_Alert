@@ -36,7 +36,7 @@ This repository is for preservation purposes only and is archived without suppor
 
 ## License
 
-This repository and its contents are licensed under the GPL v3 license, with additional terms applied. Please see [LICENSE.md](LICENSE.md) for details.
+This repository and its contents are licensed under the GPL v3 license, with additional terms applied. Please see [license.md](license.md) for details.
 
 ## Entry points
 
@@ -46,9 +46,9 @@ The DOS launcher begins execution at the `Start` label in `LAUNCH/launch.asm`. I
 
 Rendering can happen through three different routines depending on the platform and resolution:
 
-- **DirectDraw** – used for 640×400 or higher resolutions (see `DDRAW.md`).
-- **ModeX_Blit** – copies 320×200 buffers in VGA Mode X (`MODEX.md`).
-- **Shadow_Blit** – DOS-specific VGA blit (`SHADOWX.md`).
+- **DirectDraw** – used for 640×400 or higher resolutions (see `ddraw.md`).
+- **ModeX_Blit** – copies 320×200 buffers in VGA Mode X (`modex.md`).
+- **Shadow_Blit** – DOS-specific VGA blit (`shadowx.md`).
 
 ## LVGL canvas output
 
@@ -89,8 +89,8 @@ Compilation currently fails because of missing dependencies and obsolete pragmas
 
 ## Input devices
 
-- [KEYBOARD.md](KEYBOARD.md) – keyboard queue and LVGL keyboard notes.
-- [MOUSE.md](MOUSE.md) – mouse handler and LVGL input device notes.
+- [keyboard.md](keyboard.md) – keyboard queue and LVGL keyboard notes.
+- [mouse.md](mouse.md) – mouse handler and LVGL input device notes.
 The input driver defaults to the **x11** backend. Set `LV_BACKEND`
 before running the launcher or use `-DLVGL_BACKEND=<name>` when
 configuring CMake, or pass `--lvgl-backend <name>` on the command line to select

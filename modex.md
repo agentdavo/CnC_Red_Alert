@@ -9,4 +9,4 @@ CODE/GSCREEN.CPP:482:                   ModeX_Blit(&HiddenPage);
 
 The procedure programs the VGA sequencer (`3C4h`) and writes the four planar memory pages sequentially. It expects a pointer to a `GraphicBufferClass` representing the hidden page.
 
-DOS builds use a different function (`Shadow_Blit`) for the final copy. See `SHADOWX.md` for details.
+DOS builds use a different function (`Shadow_Blit`) for the final copy. See `shadowx.md` for details.

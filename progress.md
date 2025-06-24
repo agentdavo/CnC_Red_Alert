@@ -22,19 +22,19 @@ The original source relies on several legacy libraries that are no longer readil
 | IPX components | `CODE/IPXCONN.CPP`, `IPX/` directory | none | Implement socket-based networking |
 
 As the port progresses, updates on how each dependency has been replaced or stubbed should be recorded here.
-- Converted LAUNCH assembly launcher to portable C11 (launch/main.c).
+- Converted LAUNCH assembly launcher to portable C11 (LAUNCH/main.c).
 - Replaced legacy bool typedef with <stdbool.h> (function.h).
 - Replaced HMI SOS timer callbacks with a miniaudio-based implementation (src/miniaudio.c).
 - Added the official miniaudio library under `src/miniaudio` and integrated it via CMake.
 - Replaced bit manipulation assembly pragmas in jshell.h with portable C.
 - Removed references to legacy Borland/Watcom tooling in `CODE/MAKEFILE` in favor of the CMake build system.
-- Removed DOS/4GW stub launcher (CWSTUB.C) and launch/main.c now runs the game directly.
+- Removed DOS/4GW stub launcher (CWSTUB.C) and LAUNCH/main.c now runs the game directly.
 - Replaced bit manipulation assembly pragmas in jshell.h with portable C.
 - Removed segmentation keywords (far/near/huge) from legacy headers for C11 compliance.
 - Launcher now relies only on standard C headers; disk and swap file handling use stub implementations.
 - Removed obsolete `LAUNCH/launch.asm`; `launch_main` now cleans up `.swp` files
   and invokes `game.dat` directly.
-- Renamed files in LAUNCH and LAUNCHER directories to lowercase for cross-platform compatibility.
+- Renamed files in `launch` and `launcher` directories to lowercase for cross-platform compatibility.
 - Identified program entry points: `Start` in `LAUNCH/launch.asm` (ported as `launch_main`) and `WinMain` in `CODE/STARTUP.CPP`.
 - Added debug logging macros for tracing execution (src/debug_log.h).
 - Legacy `WWDebugString` calls now map to `LOG_CALL` via `LOG_MSG` for
@@ -43,12 +43,12 @@ As the port progresses, updates on how each dependency has been replaced or stub
 - Documented legacy pragmas and removed `watcom.h` includes (docs/pragma.md).
 - Added stub `CODE/wwlib32/wwlib32.h` for missing Windows library.
 - Fixed mismatched preprocessor directives in `ftimer.h` and `rect.h`.
-- Documented legacy pragmas and removed `watcom.h` includes (PRAGMA.md).
+- Documented legacy pragmas and removed `watcom.h` includes (pragma.md).
 - Added stub `CODE/wwlib32/wwlib32.h` for missing Windows library.
 - Fixed mismatched preprocessor directives in `ftimer.h` and `rect.h`.
 - Added an LVGL bridge module (`CODE/lvgl/lvgl_bridge.c`) for converting 8-bit screens to an LVGL canvas. Use `USE_LVGL` to enable the call from `GScreenClass::Blit_Display`.
 - Created a minimal DirectDraw shim (`src/ddraw`) so the code can build without legacy headers.
-- Documented graphics blit routines in MODEX.md and SHADOWX.md
+- Documented graphics blit routines in modex.md and shadowx.md
 - Added debug logging macros for tracing execution (src/debug_log.h).
 - `GScreenClass::Blit_Display` now bypasses DirectDraw when `USE_LVGL` is
   enabled and hands the frame buffer to `lvgl_blit`.
